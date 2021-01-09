@@ -6,6 +6,8 @@ import { createMarkdownRenderer, MarkdownOptions } from "./markdown/markdown";
 import { deeplyParseHeader } from "./utils/parseHeader";
 import { PageData, HeadConfig } from "../../types/shared";
 import slash from "slash";
+import cheerio from "cheerio";
+import escapeHtml from "escape-html";
 
 const debug = require("debug")("vitepress:md");
 const cache = new LRUCache<string, MarkdownCompileResult>({ max: 1024 });
@@ -15,8 +17,24 @@ interface MarkdownCompileResult {
   pageData: PageData;
 }
 
+const fetch = (str: string, tag: string, scoped?: boolean) => {
+  const $ = cheerio.load(str, {
+    decodeEntities: false,
+    xmlMode: true,
+  });
+  if (!tag) {
+    return str;
+  }
+  if (tag === "style") {
+    return scoped
+      ? $(`${tag}[scoped]`).html()
+      : $(`${tag}`).not(`${tag}[scoped]`).html();
+  }
+  return $(tag).html();
+};
+
 export function createMarkdownToVueRenderFn(
-  root: string,
+  root: string = process.cwd(),
   options: MarkdownOptions = {}
 ) {
   const md = createMarkdownRenderer(options);
@@ -39,7 +57,7 @@ export function createMarkdownToVueRenderFn(
     html = html
       .replace(/import\.meta/g, "import.<wbr/>meta")
       .replace(/process\.env/g, "process.<wbr/>env");
-
+    console.log(content, frontmatter);
     // TODO validate data.links?
     const pageData: PageData = {
       title: inferTitle(frontmatter, content),
@@ -51,14 +69,48 @@ export function createMarkdownToVueRenderFn(
       lastUpdated: Math.round(fs.statSync(file).mtimeMs),
     };
 
-    const vueSrc =
-      genPageDataCode(data.hoistedTags || [], pageData).join("\n") +
-      `\n<template><div>${html}</div></template>`;
+    const vueCode = data.vueCode;
+    const cn = fetch(content, "cn");
+    const us = fetch(content, "us");
+    const jsfiddle = escapeHtml(
+      JSON.stringify({
+        us,
+        cn,
+        sourceCode: Buffer.from(vueCode).toString("base64"),
+      })
+    );
+    // const vueSrc =
+    //   genPageDataCode(data.hoistedTags || [], pageData).join("\n") +
+    //   `\n<template><div>${html}</div></template>`;
+    const template = fetch(vueCode, "template");
+    const script = fetch(vueCode, "script");
+    const style = fetch(vueCode, "style");
+    const scopedStyle = fetch(vueCode, "style", true);
+    let newContent = `
+    <template>
+      <demo-box :jsfiddle="${jsfiddle}">
+        <template #component>${template}</template>
+        <template #description>${cn}</template>
+        <template #us-description>${us}</template>
+        <template #code>${Buffer.from(vueCode).toString("base64")}</template>
+      </demo-box>
+    </template>`;
+    newContent += script
+      ? `
+      <script>
+      ${script || ""}
+      </script>
+      `
+      : "";
+    newContent += style ? `<style>${style || ""}</style>` : "";
+    newContent += scopedStyle
+      ? `<style scoped>${scopedStyle || ""}</style>`
+      : "";
 
     debug(`[render] ${file} in ${Date.now() - start}ms.`);
 
     const result = {
-      vueSrc,
+      vueSrc: newContent,
       pageData,
     };
     cache.set(src, result);

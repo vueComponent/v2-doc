@@ -7,14 +7,19 @@
 //   3. <!--beforeend-->
 //   4. <!--afterend-->
 
-import MarkdownIt from 'markdown-it'
+import MarkdownIt from "markdown-it";
+import { MarkdownParsedData } from "../markdown";
 
 export const preWrapperPlugin = (md: MarkdownIt) => {
-  const fence = md.renderer.rules.fence!
+  const fence = md.renderer.rules.fence!;
   md.renderer.rules.fence = (...args) => {
-    const [tokens, idx] = args
-    const token = tokens[idx]
-    const rawCode = fence(...args)
-    return `<div class="language-${token.info.trim()}">${rawCode}</div>`
-  }
-}
+    const [tokens, idx] = args;
+    const token = tokens[idx];
+    const data = (md as any).__data as MarkdownParsedData;
+    if (token.info.trim() === "vue") {
+      data.vueCode = token.content;
+    }
+    const rawCode = fence(...args);
+    return `<div class="language-${token.info.trim()}">${rawCode}</div>`;
+  };
+};

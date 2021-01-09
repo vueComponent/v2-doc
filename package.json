@@ -6,13 +6,18 @@
     "build": "vite build"
   },
   "dependencies": {
-    "vue": "^3.0.5",
+    "cheerio": "^1.0.0-rc.5",
+    "diacritics": "^1.3.0",
+    "escape-html": "^1.0.3",
     "markdown-it": "^10.0.0",
     "markdown-it-anchor": "^5.2.7",
     "markdown-it-container": "^2.0.0",
     "markdown-it-emoji": "^1.4.0",
     "markdown-it-table-of-contents": "^0.4.4",
-    "slash": "^3.0.0"
+    "prismjs": "^1.23.0",
+    "querystring": "^0.2.0",
+    "slash": "^3.0.0",
+    "vue": "^3.0.5"
   },
   "devDependencies": {
     "@types/compression": "^1.7.0",
@@ -25,11 +30,11 @@
     "@types/postcss-load-config": "^2.0.1",
     "@vitejs/plugin-vue": "^1.0.4",
     "@vue/compiler-sfc": "^3.0.5",
-    "vite": "^2.0.0-beta.12",
     "fs-extra": "^9.0.0",
     "globby": "^11.0.1",
     "gray-matter": "^4.0.2",
-    "lru-cache": "^6.0.0"
+    "lru-cache": "^6.0.0",
+    "vite": "^2.0.0-beta.12"
   },
   "engines": {
     "node": ">=12.0.0"

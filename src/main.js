@@ -1,4 +1,5 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import App from "./App.vue";
+import DemoBox from "./components/DemoBox.vue";
 
-createApp(App).mount('#app')
+createApp(App).component("demo-box", DemoBox).mount("#app");
