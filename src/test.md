@@ -5,15 +5,13 @@ title:
   en-US: Basic
 ---
 
-<cn>
-#### 基本
-最简单的用法。ddd
-</cn>
+## zh-CN
 
-<us>
-#### basic
+最简单的用法。
+
+## en-US
+
 The simplest usage.
-</us>
 
 ```vue
 <template>
@@ -27,7 +25,7 @@ const state = reactive({ count: 0 });
 export default {};
 </script>
 
-<style scoped>
+<style>
 a {
   color: #42b983;
 }

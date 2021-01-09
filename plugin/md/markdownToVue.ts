@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import LRUCache from "lru-cache";
-import { createMarkdownRenderer, MarkdownOptions } from "./markdown/markdown";
+import { createMarkdownRenderer, MarkdownOptions, MarkdownParsedData } from "./markdown/markdown";
 import { deeplyParseHeader } from "./utils/parseHeader";
 import { PageData, HeadConfig } from "../../types/shared";
 import slash from "slash";
@@ -57,7 +57,6 @@ export function createMarkdownToVueRenderFn(
     html = html
       .replace(/import\.meta/g, "import.<wbr/>meta")
       .replace(/process\.env/g, "process.<wbr/>env");
-    console.log(content, frontmatter);
     // TODO validate data.links?
     const pageData: PageData = {
       title: inferTitle(frontmatter, content),
@@ -68,10 +67,9 @@ export function createMarkdownToVueRenderFn(
       // TODO use git timestamp?
       lastUpdated: Math.round(fs.statSync(file).mtimeMs),
     };
-
-    const vueCode = data.vueCode;
-    const cn = fetch(content, "cn");
-    const us = fetch(content, "us");
+    const { vueCode, headers = [] } = data as MarkdownParsedData;
+    const cn = headers.find(h => h.title === 'zh-CN')?.content;
+    const us = headers.find(h => h.title === 'en-US')?.content;
     const jsfiddle = escapeHtml(
       JSON.stringify({
         us,

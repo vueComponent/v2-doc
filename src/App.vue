@@ -6,7 +6,6 @@
 <script setup>
 import Test from "./test.md";
 import HelloWorld from "./components/HelloWorld.vue";
-console.log(Test);
 </script>
 
 <style>

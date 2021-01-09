@@ -1,10 +1,8 @@
 <template>
-  <div>
-    <slot name="component" />
-    <div>{{ sourceCode }}</div>
-    <slot name="description" />
-    <slot name="us-description" />
-  </div>
+  <slot name="component" />
+  <code>{{ sourceCode }}</code>
+  <slot name="description" />
+  <slot name="us-description" />
 </template>
 
 <script>
