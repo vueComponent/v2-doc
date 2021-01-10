@@ -1,6 +1,6 @@
 import Layout from '../components/layout.jsx';
-import Iframe from '../components/iframe.vue';
-import demoRoutes from './demoRoutes';
+// import Iframe from '../components/iframe.jsx';
+// import demoRoutes from './demoRoutes';
 // import otherRoutes from './otherRoutes';
 import { createRouter, createWebHistory } from 'vue-router';
 

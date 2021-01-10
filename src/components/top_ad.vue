@@ -17,7 +17,7 @@
 
 <script>
 import moment from 'moment';
-import GoogleAdsTop from './GoogleAdsTop';
+import GoogleAdsTop from './GoogleAdsTop.vue';
 const isEffective = (start, end) => {
   return moment().isBetween(start, end);
 };

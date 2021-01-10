@@ -1,4 +1,4 @@
-<script>
+
 // import * as AllDemo from '../demo'
 import { provide } from 'vue';
 export default {
@@ -26,4 +26,3 @@ export default {
     );
   },
 };
-</script>

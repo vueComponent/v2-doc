@@ -1,3 +1,15 @@
+<template>
+   <div class="google-ads">
+        <ins
+          ref="ins"
+          style="display:block"
+          class="adsbygoogle"
+          data-ad-client="ca-pub-4801326429087140"
+          data-ad-slot="2425414214"
+          data-ad-format="auto"
+        ></ins>
+      </div>
+</template>
 <script>
 export default {
   mounted() {
@@ -16,20 +28,6 @@ export default {
       this.scriptDom = e;
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     },
-  },
-  render() {
-    return (
-      <div class="google-ads">
-        <ins
-          ref="ins"
-          style="display:block"
-          class="adsbygoogle"
-          data-ad-client="ca-pub-4801326429087140"
-          data-ad-slot="2425414214"
-          data-ad-format="auto"
-        ></ins>
-      </div>
-    );
   },
 };
 </script>
