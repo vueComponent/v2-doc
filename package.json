@@ -6,18 +6,30 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@vue/babel-plugin-jsx": "^1.0.1",
+    "ant-design-vue": "^2.0.0-rc.8",
+    "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.5",
     "diacritics": "^1.3.0",
+    "docsearch.js": "^2.6.3",
+    "enquire-js": "^0.2.1",
     "escape-html": "^1.0.3",
+    "less": "^4.1.0",
     "markdown-it": "^10.0.0",
     "markdown-it-anchor": "^5.2.7",
     "markdown-it-container": "^2.0.0",
     "markdown-it-emoji": "^1.4.0",
     "markdown-it-table-of-contents": "^0.4.4",
+    "marked": "^1.2.7",
+    "nprogress": "^0.2.0",
     "prismjs": "^1.23.0",
+    "query-string": "^6.13.8",
     "querystring": "^0.2.0",
     "slash": "^3.0.0",
-    "vue": "^3.0.5"
+    "vue": "^3.0.5",
+    "vue-i18n": "^9.0.0-rc.1",
+    "vue-router": "^3.4.9",
+    "vuex": "^4.0.0-rc.2"
   },
   "devDependencies": {
     "@types/compression": "^1.7.0",

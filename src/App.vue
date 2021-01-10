@@ -5,7 +5,6 @@
 
 <script setup>
 import Test from "./test.md";
-import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
 <style>

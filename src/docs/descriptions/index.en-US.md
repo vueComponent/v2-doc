@@ -1,0 +1,22 @@
+## API
+
+### Descriptions props
+
+| Property | Description | Type | Default | Version |
+| --- | --- | --- | --- | --- |
+| bordered | whether to display the border | boolean | false |  |
+| colon | change default props `colon` value of `Descriptions.Item` | boolean | true |  |
+| column | the number of `DescriptionItems` in a row,could be a number or a object like `{ xs: 8, sm: 16, md: 24}`,(Only set `bordered={true}` to take effect) | number | 3 |  |
+| extra | The action area of the description list, placed at the top-right | string \| VNode \| #extra | - | 2.0.0 |
+| layout | Define description layout | `horizontal | vertical` | `horizontal` |  |
+| size | set the size of the list. Can be set to `middle`,`small`, or not filled | `default | middle | small` | `default` |  |
+| title | The title of the description list, placed at the top | string \| VNode \| #title | - |  |
+
+### Item props
+
+| Property | Description                    | Type                      | Default |
+| -------- | ------------------------------ | ------------------------- | ------- |
+| label    | description of the content     | string \| VNode \| #label | -       |
+| span     | The number of columns included | number                    | 1       |
+
+> The number of span Descriptions.Item. span={2} takes up the width of two DescriptionsItems.

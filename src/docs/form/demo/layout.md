@@ -1,0 +1,72 @@
+<cn>
+#### 表单布局
+表单有三种布局。
+</cn>
+
+<us>
+#### Form Layout
+There are three layout for form: `horizontal`, `vertical`, `inline`.
+</us>
+
+```vue
+<template>
+  <a-form :layout="form.layout" :model="form" v-bind="formItemLayout">
+    <a-form-item label="Form Layout">
+      <a-radio-group v-model:value="form.layout">
+        <a-radio-button value="horizontal">
+          Horizontal
+        </a-radio-button>
+        <a-radio-button value="vertical">
+          Vertical
+        </a-radio-button>
+        <a-radio-button value="inline">
+          Inline
+        </a-radio-button>
+      </a-radio-group>
+    </a-form-item>
+    <a-form-item label="Field A">
+      <a-input v-model:value="form.fieldA" placeholder="input placeholder" />
+    </a-form-item>
+    <a-form-item label="Field B">
+      <a-input v-model:value="form.fieldB" placeholder="input placeholder" />
+    </a-form-item>
+    <a-form-item :wrapper-col="buttonItemLayout.wrapperCol">
+      <a-button type="primary">
+        Submit
+      </a-button>
+    </a-form-item>
+  </a-form>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      form: {
+        layout: 'horizontal',
+        fieldA: '',
+        fieldB: '',
+      },
+    };
+  },
+  computed: {
+    formItemLayout() {
+      const { layout } = this.form;
+      return layout === 'horizontal'
+        ? {
+            labelCol: { span: 4 },
+            wrapperCol: { span: 14 },
+          }
+        : {};
+    },
+    buttonItemLayout() {
+      const { layout } = this.form;
+      return layout === 'horizontal'
+        ? {
+            wrapperCol: { span: 14, offset: 4 },
+          }
+        : {};
+    },
+  },
+};
+</script>
+```
