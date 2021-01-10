@@ -1,6 +1,7 @@
 import path from 'path'
 import vue from "@vitejs/plugin-vue";
 import md from "./plugin/md";
+import vueJsx from '@vitejs/plugin-vue-jsx'
 
 /**
  * @type {import('vite').UserConfig}
@@ -11,6 +12,9 @@ export default {
   //   replacement: path.join(__dirname, './src'),
   // }],
   plugins: [
+    vueJsx({
+      // options are passed on to @vue/babel-plugin-jsx
+    }),
     md(),
     vue({
       include: [/\.vue$/, /\.md$/],

@@ -6,6 +6,7 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@vitejs/plugin-vue-jsx": "^1.0.1",
     "@vue/babel-plugin-jsx": "^1.0.1",
     "ant-design-vue": "^2.0.0-rc.8",
     "axios": "^0.21.1",
