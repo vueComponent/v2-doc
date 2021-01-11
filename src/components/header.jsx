@@ -15,7 +15,7 @@ export default {
     };
   },
   mounted() {
-    // this.initDocSearch(this.$i18n.locale);
+    this.initDocSearch(this.$i18n.locale);
     // let notificationKey = localStorage.getItem('jobs-notification-key');
     // const key = '20200602';
     // if (notificationKey !== key) {

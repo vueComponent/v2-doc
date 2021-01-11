@@ -8,21 +8,25 @@
       href="https://time.geekbang.org/column/intro/154?utm_term=zeusGZFFE&utm_source=app&utm_medium=tangjinzhou"
       target="_blank"
     >
-      <img height="100" alt="重学前端" src="https://qn.antdv.com/chongxueqianduan.jpg" />
+      <img
+        height="100"
+        alt="重学前端"
+        src="https://qn.antdv.com/chongxueqianduan.jpg"
+      />
     </a>
   </div>
 </template>
 
-<script>
-import moment from 'moment';
+<script lang="ts">
+import moment from "moment";
 export default {
-  props: ['isMobile'],
+  props: ["isMobile"],
   data() {
     return {
       visible: true,
       effectiveTime: {
-        start: '2019-08-05 17:00:00',
-        end: '2019-09-05 17:00:00',
+        start: "2019-08-05 17:00:00",
+        end: "2019-09-05 17:00:00",
       },
     };
   },
@@ -47,7 +51,7 @@ export default {
   border-radius: 3px;
   font-size: 13px;
   background: #f5f5f5;
-  font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
 #geektime-ads.geektime-ads-mobile {
   width: 100%;

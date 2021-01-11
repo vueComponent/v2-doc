@@ -10,37 +10,32 @@ If you need several buttons, we recommend that you use 1 primary button + n seco
 
 ```vue
 <template>
-  <a-button type="primary">
-    Primary
-  </a-button>
+  <a-button type="primary"> Primary </a-button>
   <a-button>secondary</a-button>
   <a-dropdown>
     <template #overlay>
       <a-menu @click="handleMenuClick">
-        <a-menu-item key="1">
-          1st item
-        </a-menu-item>
-        <a-menu-item key="2">
-          2nd item
-        </a-menu-item>
-        <a-menu-item key="3">
-          3rd item
-        </a-menu-item>
+        <a-menu-item key="1"> 1st item </a-menu-item>
+        <a-menu-item key="2"> 2nd item </a-menu-item>
+        <a-menu-item key="3"> 3rd item </a-menu-item>
       </a-menu>
     </template>
     <a-button> Actions <DownOutlined /> </a-button>
   </a-dropdown>
 </template>
 <script>
-import { DownOutlined } from '@ant-design/icons-vue';
+import { DownOutlined } from "@ant-design/icons-vue";
 export default {
   components: {
     DownOutlined,
   },
-  methods: {
-    handleMenuClick(e) {
-      console.log('click', e);
-    },
+  setup() {
+    const handleMenuClick = (e) => {
+      console.log("click", e);
+    };
+    return {
+      handleMenuClick,
+    };
   },
 };
 </script>

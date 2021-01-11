@@ -6,6 +6,7 @@ import {
   createMarkdownRenderer,
   MarkdownOptions,
   MarkdownParsedData,
+  MarkdownRenderer,
 } from "./markdown/markdown";
 import { deeplyParseHeader } from "./utils/parseHeader";
 import { PageData, HeadConfig } from "../../types/shared";
@@ -56,7 +57,6 @@ export function createMarkdownToVueRenderFn(
 
     const { content, data: frontmatter } = matter(src);
     let { html, data } = md.render(content);
-
     // avoid env variables being replaced by vite
     html = html
       .replace(/import\.meta/g, "import.<wbr/>meta")
@@ -72,7 +72,7 @@ export function createMarkdownToVueRenderFn(
       lastUpdated: Math.round(fs.statSync(file).mtimeMs),
     };
     const newContent = data.vueCode
-      ? genComponentCode(data)
+      ? genComponentCode(md, data)
       : `<template><div>${html}</div></template>`;
 
     debug(`[render] ${file} in ${Date.now() - start}ms.`);
@@ -91,14 +91,21 @@ const scriptSetupRE = /<\s*script[^>]*\bsetup\b[^>]*/;
 const defaultExportRE = /((?:^|\n|;)\s*)export(\s*)default/;
 const namedDefaultExportRE = /((?:^|\n|;)\s*)export(.+)as(\s*)default/;
 
-function genComponentCode(data: PageData) {
+function genComponentCode(md: MarkdownRenderer, data: PageData) {
   const { vueCode, headers = [] } = data as MarkdownParsedData;
   const cn = headers.find((h) => h.title === "zh-CN")?.content;
   const us = headers.find((h) => h.title === "en-US")?.content;
+  let { html } = md.render(`\`\`\`vue
+  ${vueCode}
+  \`\`\``);
+  html = html
+    .replace(/import\.meta/g, "import.<wbr/>meta")
+    .replace(/process\.env/g, "process.<wbr/>env");
   const jsfiddle = escapeHtml(
     JSON.stringify({
       us,
       cn,
+      htmlCode: Buffer.from(html).toString("base64"),
       sourceCode: Buffer.from(vueCode).toString("base64"),
     })
   );
@@ -106,13 +113,13 @@ function genComponentCode(data: PageData) {
   const script = fetch(vueCode, "script");
   const style = fetch(vueCode, "style");
   const scopedStyle = fetch(vueCode, "style", true);
+
   let newContent = `
     <template>
       <demo-box :jsfiddle="${jsfiddle}">
         <template #component>${template}</template>
         <template #description>${cn}</template>
         <template #us-description>${us}</template>
-        <template #code>${Buffer.from(vueCode).toString("base64")}</template>
       </demo-box>
     </template>`;
   newContent += script

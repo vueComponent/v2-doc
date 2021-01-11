@@ -1,15 +1,36 @@
+<template>
+  <div>
+    <Md :cn="md.cn" :us="md.us" />
+    <demo-sort>
+      <Basic />
+      <ButtonGroup />
+      <Disabled />
+      <Ghost />
+      <Icon />
+      <Loading />
+      <Multiple />
+      <Size />
+      <Block />
+    </demo-sort>
+    <api>
+      <US />
+      <CN v-slot:cn />
+    </api>
+  </div>
+</template>
 <script>
-import Basic from './basic';
-import ButtonGroup from './button-group';
-import Disabled from './disabled';
-import Ghost from './ghost';
-import Icon from './icon';
-import Loading from './loading';
-import Multiple from './multiple';
-import Size from './size';
-import Block from './block';
-import CN from '../index.zh-CN.md';
-import US from '../index.en-US.md';
+import Basic from "./basic.md";
+import ButtonGroup from "./button-group.md";
+import Disabled from "./disabled.md";
+import Ghost from "./ghost.md";
+import Icon from "./icon.md";
+import Loading from "./loading.md";
+import Multiple from "./multiple.md";
+import Size from "./size.md";
+import Block from "./block.md";
+import CN from "../index.zh-CN.md";
+import US from "../index.en-US.md";
+console.log(CN);
 const md = {
   cn: `# Button 按钮
           按钮用于开始一个即时操作。
@@ -34,40 +55,37 @@ const md = {
           `,
 };
 export default {
-  category: 'Components',
-  type: 'General',
-  zhType: '通用',
-  title: 'Button',
-  subtitle: '按钮',
-  render() {
-    return (
-      <div>
-        <Md cn={md.cn} us={md.us} />
-        <demo-sort>
-          <Basic />
-          <ButtonGroup />
-          <Disabled />
-          <Ghost />
-          <Icon />
-          <Loading />
-          <Multiple />
-          <Size />
-          <Block />
-        </demo-sort>
-        <api vSlots={{ cn: () => <CN /> }}>
-          <US />
-        </api>
-      </div>
-    );
+  category: "Components",
+  type: "General",
+  zhType: "通用",
+  title: "Button",
+  subtitle: "按钮",
+  components: {
+    CN,
+    US,
+    Basic,
+    ButtonGroup,
+    Disabled,
+    Ghost,
+    Icon,
+    Loading,
+    Multiple,
+    Size,
+    Block,
+  },
+  setup() {
+    return {
+      md,
+    };
   },
 };
 </script>
 <style>
-[id^='components-button-demo-'] .ant-btn {
+[id^="components-button-demo-"] .ant-btn {
   margin-right: 8px;
   margin-bottom: 12px;
 }
-[id^='components-button-demo-'] .ant-btn-group > .ant-btn {
+[id^="components-button-demo-"] .ant-btn-group > .ant-btn {
   margin-right: 0;
 }
 </style>

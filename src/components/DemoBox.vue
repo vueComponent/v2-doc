@@ -1,6 +1,6 @@
 <template>
   <slot name="component" />
-  <code>{{ sourceCode }}</code>
+  <code v-show="false" v-html="htmlCode"></code>
   <slot name="description" />
   <slot name="us-description" />
 </template>
@@ -15,6 +15,9 @@ export default {
     return {
       sourceCode: decodeURIComponent(
         escape(window.atob(props.jsfiddle.sourceCode))
+      ),
+      htmlCode: decodeURIComponent(
+        escape(window.atob(props.jsfiddle.htmlCode))
       ),
     };
   },
