@@ -16,7 +16,9 @@ Customize render list with Table component.
       :target-keys="targetKeys"
       :disabled="disabled"
       :show-search="showSearch"
-      :filter-option="(inputValue, item) => item.title.indexOf(inputValue) !== -1"
+      :filter-option="
+        (inputValue, item) => item.title.indexOf(inputValue) !== -1
+      "
       :show-select-all="false"
       @change="onChange"
     >
@@ -32,7 +34,12 @@ Customize render list with Table component.
       >
         <a-table
           :row-selection="
-            getRowSelection({ disabled: listDisabled, selectedKeys, onItemSelectAll, onItemSelect })
+            getRowSelection({
+              disabled: listDisabled,
+              selectedKeys,
+              onItemSelectAll,
+              onItemSelect,
+            })
           "
           :columns="direction === 'left' ? leftColumns : rightColumns"
           :data-source="filteredItems"
@@ -66,7 +73,7 @@ Customize render list with Table component.
   </div>
 </template>
 <script>
-import difference from 'lodash/difference';
+import { difference } from "lodash-es";
 const mockData = [];
 for (let i = 0; i < 20; i++) {
   mockData.push({
@@ -77,22 +84,24 @@ for (let i = 0; i < 20; i++) {
   });
 }
 
-const originTargetKeys = mockData.filter(item => +item.key % 3 > 1).map(item => item.key);
+const originTargetKeys = mockData
+  .filter((item) => +item.key % 3 > 1)
+  .map((item) => item.key);
 
 const leftTableColumns = [
   {
-    dataIndex: 'title',
-    title: 'Name',
+    dataIndex: "title",
+    title: "Name",
   },
   {
-    dataIndex: 'description',
-    title: 'Description',
+    dataIndex: "description",
+    title: "Description",
   },
 ];
 const rightTableColumns = [
   {
-    dataIndex: 'title',
-    title: 'Name',
+    dataIndex: "title",
+    title: "Name",
   },
 ];
 
@@ -121,10 +130,10 @@ export default {
     },
     getRowSelection({ disabled, selectedKeys, onItemSelectAll, onItemSelect }) {
       return {
-        getCheckboxProps: item => ({ disabled: disabled || item.disabled }),
+        getCheckboxProps: (item) => ({ disabled: disabled || item.disabled }),
         onSelectAll(selected, selectedRows) {
           const treeSelectedKeys = selectedRows
-            .filter(item => !item.disabled)
+            .filter((item) => !item.disabled)
             .map(({ key }) => key);
           const diffKeys = selected
             ? difference(treeSelectedKeys, selectedKeys)

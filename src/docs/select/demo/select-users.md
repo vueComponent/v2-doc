@@ -29,7 +29,7 @@ A complete multiple select sample with remote search, debounce fetch, ajax callb
   </a-select>
 </template>
 <script>
-import debounce from 'lodash/debounce';
+import { debounce } from "lodash-es";
 
 export default {
   data() {
@@ -49,19 +49,19 @@ export default {
   },
   methods: {
     fetchUser(value) {
-      console.log('fetching user', value);
+      console.log("fetching user", value);
       this.lastFetchId += 1;
       const fetchId = this.lastFetchId;
       this.data = [];
       this.fetching = true;
-      fetch('https://randomuser.me/api/?results=5')
-        .then(response => response.json())
-        .then(body => {
+      fetch("https://randomuser.me/api/?results=5")
+        .then((response) => response.json())
+        .then((body) => {
           if (fetchId !== this.lastFetchId) {
             // for fetch callback order
             return;
           }
-          const data = body.results.map(user => ({
+          const data = body.results.map((user) => ({
             text: `${user.name.first} ${user.name.last}`,
             value: user.login.username,
           }));

@@ -2,7 +2,11 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import LRUCache from "lru-cache";
-import { createMarkdownRenderer, MarkdownOptions, MarkdownParsedData } from "./markdown/markdown";
+import {
+  createMarkdownRenderer,
+  MarkdownOptions,
+  MarkdownParsedData,
+} from "./markdown/markdown";
 import { deeplyParseHeader } from "./utils/parseHeader";
 import { PageData, HeadConfig } from "../../types/shared";
 import slash from "slash";
@@ -67,43 +71,9 @@ export function createMarkdownToVueRenderFn(
       // TODO use git timestamp?
       lastUpdated: Math.round(fs.statSync(file).mtimeMs),
     };
-    const { vueCode, headers = [] } = data as MarkdownParsedData;
-    const cn = headers.find(h => h.title === 'zh-CN')?.content;
-    const us = headers.find(h => h.title === 'en-US')?.content;
-    const jsfiddle = escapeHtml(
-      JSON.stringify({
-        us,
-        cn,
-        sourceCode: Buffer.from(vueCode).toString("base64"),
-      })
-    );
-    // const vueSrc =
-    //   genPageDataCode(data.hoistedTags || [], pageData).join("\n") +
-    //   `\n<template><div>${html}</div></template>`;
-    const template = fetch(vueCode, "template");
-    const script = fetch(vueCode, "script");
-    const style = fetch(vueCode, "style");
-    const scopedStyle = fetch(vueCode, "style", true);
-    let newContent = `
-    <template>
-      <demo-box :jsfiddle="${jsfiddle}">
-        <template #component>${template}</template>
-        <template #description>${cn}</template>
-        <template #us-description>${us}</template>
-        <template #code>${Buffer.from(vueCode).toString("base64")}</template>
-      </demo-box>
-    </template>`;
-    newContent += script
-      ? `
-      <script>
-      ${script || ""}
-      </script>
-      `
-      : "";
-    newContent += style ? `<style>${style || ""}</style>` : "";
-    newContent += scopedStyle
-      ? `<style scoped>${scopedStyle || ""}</style>`
-      : "";
+    const newContent = data.vueCode
+      ? genComponentCode(data)
+      : `<template><div>${html}</div></template>`;
 
     debug(`[render] ${file} in ${Date.now() - start}ms.`);
 
@@ -120,6 +90,42 @@ const scriptRE = /<\/script>/;
 const scriptSetupRE = /<\s*script[^>]*\bsetup\b[^>]*/;
 const defaultExportRE = /((?:^|\n|;)\s*)export(\s*)default/;
 const namedDefaultExportRE = /((?:^|\n|;)\s*)export(.+)as(\s*)default/;
+
+function genComponentCode(data: PageData) {
+  const { vueCode, headers = [] } = data as MarkdownParsedData;
+  const cn = headers.find((h) => h.title === "zh-CN")?.content;
+  const us = headers.find((h) => h.title === "en-US")?.content;
+  const jsfiddle = escapeHtml(
+    JSON.stringify({
+      us,
+      cn,
+      sourceCode: Buffer.from(vueCode).toString("base64"),
+    })
+  );
+  const template = fetch(vueCode, "template");
+  const script = fetch(vueCode, "script");
+  const style = fetch(vueCode, "style");
+  const scopedStyle = fetch(vueCode, "style", true);
+  let newContent = `
+    <template>
+      <demo-box :jsfiddle="${jsfiddle}">
+        <template #component>${template}</template>
+        <template #description>${cn}</template>
+        <template #us-description>${us}</template>
+        <template #code>${Buffer.from(vueCode).toString("base64")}</template>
+      </demo-box>
+    </template>`;
+  newContent += script
+    ? `
+      <script>
+      ${script || ""}
+      </script>
+      `
+    : "";
+  newContent += style ? `<style>${style || ""}</style>` : "";
+  newContent += scopedStyle ? `<style scoped>${scopedStyle || ""}</style>` : "";
+  return newContent;
+}
 
 function genPageDataCode(tags: string[], data: PageData) {
   const code = `\nexport const __pageData = ${JSON.stringify(

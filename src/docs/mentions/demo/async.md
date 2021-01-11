@@ -11,7 +11,11 @@ async.
 ```vue
 <template>
   <a-mentions v-model:value="value" :loading="loading" @search="onSearch">
-    <a-mentions-option v-for="{ login, avatar_url: avatar } in users" :key="login" :value="login">
+    <a-mentions-option
+      v-for="{ login, avatar_url: avatar } in users"
+      :key="login"
+      :value="login"
+    >
       <img :src="avatar" :alt="login" style="width: 20px; margin-right: 8px;" />
       <span>{{ login }}</span>
     </a-mentions-option>
@@ -19,11 +23,11 @@ async.
 </template>
 
 <script>
-import debounce from 'lodash/debounce';
+import { debounce } from "lodash-es";
 export default {
   data() {
     return {
-      value: '',
+      value: "",
       loading: false,
       users: [],
     };
@@ -37,7 +41,7 @@ export default {
       this.loading = !!search;
       console.log(!!search);
       this.users = [];
-      console.log('Search:', search);
+      console.log("Search:", search);
       this.loadGithubUsers(search);
     },
     loadGithubUsers(key) {
@@ -46,7 +50,7 @@ export default {
         return;
       }
       fetch(`https://api.github.com/search/users?q=${key}`)
-        .then(res => res.json())
+        .then((res) => res.json())
         .then(({ items = [] }) => {
           const { search } = this;
           if (search !== key) return;

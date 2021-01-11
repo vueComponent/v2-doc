@@ -1,11 +1,10 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <Test />
+  <div>
+    <router-view />
+  </div>
 </template>
 
-<script setup>
-import Test from "./test.md";
-</script>
+<script setup></script>
 
 <style>
 #app {

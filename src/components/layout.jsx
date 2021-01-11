@@ -1,38 +1,44 @@
-
-import { enquireScreen } from 'enquire-js';
-import AllDemo from '../demo';
-import Header from './header.vue';
-import Footer from './footer.vue';
-import GoogleAdsMin from './GoogleAdsMin.vue';
+import AllDemo from "../demo";
+import Header from "./header.jsx";
+import Footer from "./footer.vue";
+import GoogleAdsMin from "./GoogleAdsMin.vue";
 // import Geektime from './geektime';
-import RightBottomAd from './right_bottom_ad.vue';
-import Sponsors from './sponsors.vue';
-import zhCN from 'ant-design-vue/es/locale-provider/zh_CN';
-import enUS from 'ant-design-vue/es/locale-provider/default';
-import sortBy from 'lodash/sortBy';
-import { isZhCN } from '../utils/util';
-import { Provider, create } from 'ant-design-vue/es/_util/store';
-import NProgress from 'nprogress';
-import MobileMenu from 'ant-design-vue/es/vc-drawer/src';
-import TopAd from './top_ad.vue';
-import GoogleAds from './GoogleAds.vue';
-import { LeftOutlined, RightOutlined } from '@ant-design/icons-vue';
-import { provide } from 'vue';
+import RightBottomAd from "./right_bottom_ad.vue";
+import Sponsors from "./sponsors.vue";
+import zhCN from "ant-design-vue/es/locale-provider/zh_CN";
+import enUS from "ant-design-vue/es/locale-provider/default";
+import { sortBy } from "lodash-es";
+import { isZhCN } from "../utils/util";
+import { Provider, create } from "ant-design-vue/es/_util/store";
+import NProgress from "nprogress";
+import MobileMenu from "ant-design-vue/es/vc-drawer/src";
+import TopAd from "./top_ad.vue";
+import GoogleAds from "./GoogleAds.vue";
+import { LeftOutlined, RightOutlined } from "@ant-design/icons-vue";
+import { provide } from "vue";
 
 const docsList = [
-  { key: 'introduce', enTitle: 'Ant Design of Vue', title: 'Ant Design of Vue' },
-  { key: 'getting-started', enTitle: 'Getting Started', title: '快速上手' },
-  { key: 'migration-v2', enTitle: 'V1 to V2', title: '从 v1 到 v2' },
-  { key: 'customize-theme', enTitle: 'Customize Theme', title: '定制主题' },
-  { key: 'changelog', enTitle: 'Change Log', title: '更新日志' },
-  { key: 'i18n', enTitle: 'Internationalization', title: '国际化' },
-  { key: 'faq', enTitle: 'FAQ', title: '常见问题' },
-  { key: 'sponsor', enTitle: 'Sponsor', title: '支持我们' },
-  { key: 'download', enTitle: 'Download Design Resources', title: '下载设计资源' },
+  {
+    key: "introduce",
+    enTitle: "Ant Design of Vue",
+    title: "Ant Design of Vue",
+  },
+  { key: "getting-started", enTitle: "Getting Started", title: "快速上手" },
+  { key: "migration-v2", enTitle: "V1 to V2", title: "从 v1 到 v2" },
+  { key: "customize-theme", enTitle: "Customize Theme", title: "定制主题" },
+  { key: "changelog", enTitle: "Change Log", title: "更新日志" },
+  { key: "i18n", enTitle: "Internationalization", title: "国际化" },
+  { key: "faq", enTitle: "FAQ", title: "常见问题" },
+  { key: "sponsor", enTitle: "Sponsor", title: "支持我们" },
+  {
+    key: "download",
+    enTitle: "Download Design Resources",
+    title: "下载设计资源",
+  },
 ];
 
-const isGitee = window.location.host.indexOf('gitee.io') > -1;
-const showAd = location.host.indexOf('antdv.com') > -1;
+const isGitee = window.location.host.indexOf("gitee.io") > -1;
+const showAd = location.host.indexOf("antdv.com") > -1;
 
 export default {
   props: {
@@ -65,11 +71,11 @@ export default {
         this.store.setState({ currentSubMenu: [] });
         this.addSubMenu();
       },
-      flush: 'sync',
+      flush: "sync",
     },
   },
   created() {
-    provide('demoContext', this);
+    provide("demoContext", this);
   },
   beforeUnmount() {
     if (this.unsubscribe) {
@@ -84,40 +90,26 @@ export default {
     }
   },
   mounted() {
-    if (isGitee) {
-      this.$info({
-        title: '提示',
-        content: '访问国内镜像站点的用户请访问 antdv.com 站点',
-        okText: '立即跳转',
-        onOk() {
-          location.href = 'https://www.antdv.com';
-        },
-      });
-    }
-
     this.$nextTick(() => {
       this.addSubMenu();
-      const nprogressHiddenStyle = document.getElementById('nprogress-style');
+      const nprogressHiddenStyle = document.getElementById("nprogress-style");
       if (nprogressHiddenStyle) {
         this.timer = setTimeout(() => {
           nprogressHiddenStyle.parentNode.removeChild(nprogressHiddenStyle);
         }, 0);
       }
-      enquireScreen((b) => {
-        this.isMobile = !!b;
-      });
     });
   },
   methods: {
     addSubMenu() {
-      if (this.$route.path.indexOf('/docs/vue/') !== -1) {
+      if (this.$route.path.indexOf("/docs/vue/") !== -1) {
         this.$nextTick(() => {
           const menus = [];
-          const doms = [...this.$refs.doc.querySelectorAll(['h2', 'h3'])];
+          const doms = [...this.$refs.doc.querySelectorAll(["h2", "h3"])];
           doms.forEach((dom) => {
             const id = dom.id;
             if (id) {
-              const title = dom.textContent.split('#')[0].trim();
+              const title = dom.textContent.split("#")[0].trim();
               menus.push({ cnTitle: title, usTitle: title, id });
             }
           });
@@ -137,14 +129,28 @@ export default {
       currentSubMenu.forEach(({ cnTitle, usTitle, id }, index) => {
         const title = isCN ? cnTitle : usTitle;
         lis.push(
-          <a-anchor-link class="demo-anchor" key={id + index} href={`#${id}`} title={title} />,
+          <a-anchor-link
+            class="demo-anchor"
+            key={id + index}
+            href={`#${id}`}
+            title={title}
+          />
         );
       });
-      const showApi = this.$route.path.indexOf('/components/') !== -1;
+      const showApi = this.$route.path.indexOf("/components/") !== -1;
       return (
         <a-anchor offsetTop={100}>
           {lis}
-          {showApi ? <a-anchor-link class="demo-anchor" key="API" title="API" href="#API" /> : ''}
+          {showApi ? (
+            <a-anchor-link
+              class="demo-anchor"
+              key="API"
+              title="API"
+              href="#API"
+            />
+          ) : (
+            ""
+          )}
         </a-anchor>
       );
     },
@@ -152,27 +158,36 @@ export default {
       const docsMenu = [];
       docsList.forEach(({ key, enTitle, title }) => {
         const k = isCN ? `${key}-cn` : key;
-        pagesKey.push({ name: k, url: `/docs/vue/${k}/`, title: isCN ? title : enTitle });
+        pagesKey.push({
+          name: k,
+          url: `/docs/vue/${k}/`,
+          title: isCN ? title : enTitle,
+        });
         docsMenu.push(
           <a-menu-item key={k}>
-            <router-link to={`/docs/vue/${k}/`}>{isCN ? title : enTitle}</router-link>
-          </a-menu-item>,
+            <router-link to={`/docs/vue/${k}/`}>
+              {isCN ? title : enTitle}
+            </router-link>
+          </a-menu-item>
         );
       });
       return docsMenu;
     },
     resetDocumentTitle(component, name, isCN) {
-      let titleStr = 'Ant Design Vue';
+      let titleStr = "Ant Design Vue";
       if (component) {
         const { subtitle, title } = component;
-        const componentName = isCN ? subtitle + ' ' + title : title;
-        titleStr = componentName + ' - ' + titleStr;
+        const componentName = isCN ? subtitle + " " + title : title;
+        titleStr = componentName + " - " + titleStr;
       } else {
         const currentKey = docsList.filter((item) => {
           return item.key === name;
         });
         if (currentKey.length) {
-          titleStr = (isCN ? currentKey[0]['title'] : currentKey[0]['enTitle']) + ' - ' + titleStr;
+          titleStr =
+            (isCN ? currentKey[0]["title"] : currentKey[0]["enTitle"]) +
+            " - " +
+            titleStr;
         }
       }
       document.title = titleStr;
@@ -184,6 +199,11 @@ export default {
   },
 
   render() {
+    // return (
+    //   <div>
+    //     <router-view></router-view>
+    //   </div>
+    // );
     const name = this.name;
     const isCN = isZhCN(name);
     const titleMap = {};
@@ -191,8 +211,8 @@ export default {
       General: [],
       Layout: [],
       Navigation: [],
-      'Data Entry': [],
-      'Data Display': [],
+      "Data Entry": [],
+      "Data Display": [],
       Feedback: [],
       Other: [],
     };
@@ -201,19 +221,19 @@ export default {
     let nextPage = null;
     const searchData = [];
     for (const [title, d] of Object.entries(AllDemo)) {
-      const type = d.type || 'Other';
-      const key = `${title.replace(/(\B[A-Z])/g, '-$1').toLowerCase()}`;
+      const type = d.type || "Other";
+      const key = `${title.replace(/(\B[A-Z])/g, "-$1").toLowerCase()}`;
       titleMap[key] = title;
       AllDemo[title].key = key;
       menuConfig[type] = menuConfig[type] || [];
       menuConfig[type].push(d);
     }
     const docsMenu = this.getDocsMenu(isCN, pagesKey);
-    const reName = name.replace(/-cn\/?$/, '');
+    const reName = name.replace(/-cn\/?$/, "");
     const MenuGroup = [];
     for (const [type, menus] of Object.entries(menuConfig)) {
       const MenuItems = [];
-      sortBy(menus, ['title']).forEach(({ title, subtitle, key }) => {
+      sortBy(menus, ["title"]).forEach(({ title, subtitle, key }) => {
         const linkValue = isCN
           ? [<span>{title}</span>, <span class="chinese">{subtitle}</span>]
           : [<span>{title}</span>];
@@ -233,10 +253,12 @@ export default {
         MenuItems.push(
           <a-menu-item key={key}>
             <router-link to={`/components/${key}/`}>{linkValue}</router-link>
-          </a-menu-item>,
+          </a-menu-item>
         );
       });
-      MenuGroup.push(<a-menu-item-group title={type}>{MenuItems}</a-menu-item-group>);
+      MenuGroup.push(
+        <a-menu-item-group title={type}>{MenuItems}</a-menu-item-group>
+      );
     }
     pagesKey.forEach((item, index) => {
       if (item.name === name) {
@@ -262,12 +284,15 @@ export default {
                   <a-menu
                     class="aside-container menu-site"
                     selectedKeys={[name]}
-                    defaultOpenKeys={['Components']}
+                    defaultOpenKeys={["Components"]}
                     inlineIndent={40}
                     mode="inline"
                   >
                     {docsMenu}
-                    <a-sub-menu title={`Components(${searchData.length})`} key="Components">
+                    <a-sub-menu
+                      title={`Components(${searchData.length})`}
+                      key="Components"
+                    >
                       {MenuGroup}
                     </a-sub-menu>
                   </a-menu>
@@ -289,12 +314,15 @@ export default {
                       <a-menu
                         class="aside-container menu-site"
                         selectedKeys={[name]}
-                        defaultOpenKeys={['Components']}
+                        defaultOpenKeys={["Components"]}
                         inlineIndent={40}
                         mode="inline"
                       >
                         {docsMenu}
-                        <a-sub-menu title={`Components(${searchData.length})`} key="Components">
+                        <a-sub-menu
+                          title={`Components(${searchData.length})`}
+                          key="Components"
+                        >
                           {MenuGroup}
                         </a-sub-menu>
                       </a-menu>
@@ -305,26 +333,33 @@ export default {
               <a-col xxl={20} xl={19} lg={19} md={18} sm={24} xs={24}>
                 <section class="main-container main-container-component">
                   <TopAd isCN={isCN} />
-                  {!isMobile ? <GoogleAdsMin key={`GoogleAds_${$route.path}`} /> : null}
                   {!isMobile ? (
-                    <div class={['toc-affix', isCN ? 'toc-affix-cn' : '']} style="width: 150px;">
+                    <GoogleAdsMin key={`GoogleAds_${$route.path}`} />
+                  ) : null}
+                  {!isMobile ? (
+                    <div
+                      class={["toc-affix", isCN ? "toc-affix-cn" : ""]}
+                      style="width: 150px;"
+                    >
                       {this.getSubMenu(isCN)}
                     </div>
                   ) : null}
                   {this.showDemo ? (
-                    <Provider store={this.store} key={isCN ? 'cn' : 'en'}>
+                    <Provider store={this.store} key={isCN ? "cn" : "en"}>
                       <router-view class={`demo-cols-${config.cols || 2}`} />
                     </Provider>
                   ) : (
-                    ''
+                    ""
                   )}
                   {this.showApi ? (
                     <div class="markdown api-container" ref="doc">
                       <router-view />
-                      {showAd ? <GoogleAds key={`GoogleAds_${$route.path}`} /> : null}
+                      {showAd ? (
+                        <GoogleAds key={`GoogleAds_${$route.path}`} />
+                      ) : null}
                     </div>
                   ) : (
-                    ''
+                    ""
                   )}
                 </section>
                 <section class="prev-next-nav">
@@ -334,7 +369,7 @@ export default {
                       &nbsp;&nbsp;{prevPage.title}
                     </router-link>
                   ) : (
-                    ''
+                    ""
                   )}
                   {nextPage ? (
                     <router-link class="next-page" to={`${nextPage.url}`}>
@@ -342,7 +377,7 @@ export default {
                       <RightOutlined />
                     </router-link>
                   ) : (
-                    ''
+                    ""
                   )}
                 </section>
                 <Footer ref="footer" isCN={isCN} />
@@ -350,7 +385,7 @@ export default {
             </a-row>
           </div>
         </a-config-provider>
-        {name.indexOf('back-top') === -1 ? <a-back-top /> : null}
+        {name.indexOf("back-top") === -1 ? <a-back-top /> : null}
         <RightBottomAd isCN={isCN} isMobile={isMobile} />
       </div>
     );

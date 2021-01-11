@@ -16,13 +16,17 @@ Crowded components horizontal spacing.
     <a-upload>
       <a-button> <UploadOutlined /> Click to Upload </a-button>
     </a-upload>
-    <a-popconfirm title="Are you sure delete this task?" ok-text="Yes" cancel-text="No">
+    <a-popconfirm
+      title="Are you sure delete this task?"
+      ok-text="Yes"
+      cancel-text="No"
+    >
       <a-button>Confirm</a-button>
     </a-popconfirm>
   </a-space>
 </template>
 <script>
-import UploadOutlined from '@ant-design/icons-vue/UploadOutlined';
+import { UploadOutlined } from "@ant-design/icons-vue";
 
 export default {
   components: {
