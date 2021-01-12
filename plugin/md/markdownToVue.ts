@@ -99,7 +99,7 @@ function genComponentCode(md: MarkdownRenderer, data: PageData, frontmatter: any
     JSON.stringify({
       us,
       cn,
-      frontmatter,
+      ...frontmatter,
       htmlCode: Buffer.from(html).toString('base64'),
       sourceCode: Buffer.from(vueCode).toString('base64'),
     }),

@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
     "module": "esnext",
-    "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "resolveJsonModule": true,
     "types": ["node"],
     "paths": {
@@ -17,6 +16,6 @@
     "allowJs": true,
     "lib": ["ESNext", "DOM", "DOM.Iterable", "ScriptHost"]
   },
-  "include": ["src/**/*.md", "src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "files": ["./src/typings.d.ts"]
 }

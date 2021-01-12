@@ -37,7 +37,7 @@ export function createVueToMarkdownRenderFn(root: string = process.cwd()): any {
 
     const start = Date.now();
 
-    const docs = fetch(src, 'docs');
+    const docs = fetch(src, 'docs').trim();
     const template = fetch(src, 'template');
     const script = fetch(src, 'script');
     const style = fetch(src, 'style');

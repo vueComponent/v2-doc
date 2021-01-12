@@ -4,7 +4,5 @@ declare module '*.json' {
   export default value;
 }
 
-declare module '*.md';
-
 export * from '../plugin/docs';
 export * from '../plugin/md';
