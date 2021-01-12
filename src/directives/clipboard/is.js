@@ -5,9 +5,7 @@
  * @return {Boolean}
  */
 export const node = function (value) {
-  return (
-    value !== undefined && value instanceof HTMLElement && value.nodeType === 1
-  );
+  return value !== undefined && value instanceof HTMLElement && value.nodeType === 1;
 };
 
 /**
@@ -21,8 +19,8 @@ export const nodeList = function (value) {
 
   return (
     value !== undefined &&
-    (type === "[object NodeList]" || type === "[object HTMLCollection]") &&
-    "length" in value &&
+    (type === '[object NodeList]' || type === '[object HTMLCollection]') &&
+    'length' in value &&
     (value.length === 0 || node(value[0]))
   );
 };
@@ -34,7 +32,7 @@ export const nodeList = function (value) {
  * @return {Boolean}
  */
 export const string = function (value) {
-  return typeof value === "string" || value instanceof String;
+  return typeof value === 'string' || value instanceof String;
 };
 
 /**
@@ -46,7 +44,7 @@ export const string = function (value) {
 export const fn = function (value) {
   var type = Object.prototype.toString.call(value);
 
-  return type === "[object Function]";
+  return type === '[object Function]';
 };
 
 export default {

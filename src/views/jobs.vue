@@ -3,11 +3,11 @@
     <h1>
       如果您正在寻找顶级的 Vue.js 开发者，请联系
       <a-tooltip title="发送邮件到：antdv@foxmail.com">
-        <a href="mailto:antdv@foxmail.com"> 我们 </a>
+        <a href="mailto:antdv@foxmail.com">我们</a>
       </a-tooltip>
       ！！！
     </h1>
-    <div style="margin-top: 30px;">
+    <div style="margin-top: 30px">
       <a-list item-layout="vertical" size="large" :data-source="list">
         <a-list-item v-show="isEffective(item.effectiveTime)" slot="renderItem" slot-scope="item">
           <a-list-item-meta>
@@ -23,7 +23,7 @@
               </h2>
             </div>
           </a-list-item-meta>
-          <template slot="actions">
+          <template v-slot:actions>
             <div>
               <a-tooltip title="发送邮件到：antdv@foxmail.com">
                 <a :href="`mailto:antdv@foxmail.com?subject=应聘 ${item.id} 职位`">
@@ -32,7 +32,7 @@
                 </a>
               </a-tooltip>
 
-              <span>注：邮件中请注明投递岗位 ID </span>
+              <span>注：邮件中请注明投递岗位 ID</span>
             </div>
           </template>
           <p v-html="item.condition" />

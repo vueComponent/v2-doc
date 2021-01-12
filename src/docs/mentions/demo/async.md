@@ -23,11 +23,11 @@ async.
 </template>
 
 <script>
-import { debounce } from "lodash-es";
+import { debounce } from 'lodash-es';
 export default {
   data() {
     return {
-      value: "",
+      value: '',
       loading: false,
       users: [],
     };
@@ -41,7 +41,7 @@ export default {
       this.loading = !!search;
       console.log(!!search);
       this.users = [];
-      console.log("Search:", search);
+      console.log('Search:', search);
       this.loadGithubUsers(search);
     },
     loadGithubUsers(key) {

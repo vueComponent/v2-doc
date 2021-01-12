@@ -1,20 +1,21 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import LRUCache from "lru-cache";
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import LRUCache from 'lru-cache';
 import {
   createMarkdownRenderer,
   MarkdownOptions,
   MarkdownParsedData,
   MarkdownRenderer,
-} from "./markdown/markdown";
-import { deeplyParseHeader } from "./utils/parseHeader";
-import { PageData, HeadConfig } from "../../types/shared";
-import slash from "slash";
-import cheerio from "cheerio";
-import escapeHtml from "escape-html";
+} from './markdown/markdown';
+import { deeplyParseHeader } from './utils/parseHeader';
+import { PageData, HeadConfig } from '../../typings/shared';
+import slash from 'slash';
+import cheerio from 'cheerio';
+import escapeHtml from 'escape-html';
 
-const debug = require("debug")("vitepress:md");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const debug = require('debug')('vitepress:md');
 const cache = new LRUCache<string, MarkdownCompileResult>({ max: 1024 });
 
 interface MarkdownCompileResult {
@@ -30,18 +31,16 @@ const fetch = (str: string, tag: string, scoped?: boolean) => {
   if (!tag) {
     return str;
   }
-  if (tag === "style") {
-    return scoped
-      ? $(`${tag}[scoped]`).html()
-      : $(`${tag}`).not(`${tag}[scoped]`).html();
+  if (tag === 'style') {
+    return scoped ? $(`${tag}[scoped]`).html() : $(`${tag}`).not(`${tag}[scoped]`).html();
   }
   return $(tag).html();
 };
 
 export function createMarkdownToVueRenderFn(
   root: string = process.cwd(),
-  options: MarkdownOptions = {}
-) {
+  options: MarkdownOptions = {},
+): any {
   const md = createMarkdownRenderer(options);
 
   return (src: string, file: string): MarkdownCompileResult => {
@@ -56,11 +55,12 @@ export function createMarkdownToVueRenderFn(
     const start = Date.now();
 
     const { content, data: frontmatter } = matter(src);
+    // eslint-disable-next-line prefer-const
     let { html, data } = md.render(content);
     // avoid env variables being replaced by vite
     html = html
-      .replace(/import\.meta/g, "import.<wbr/>meta")
-      .replace(/process\.env/g, "process.<wbr/>env");
+      .replace(/import\.meta/g, 'import.<wbr/>meta')
+      .replace(/process\.env/g, 'process.<wbr/>env');
     // TODO validate data.links?
     const pageData: PageData = {
       title: inferTitle(frontmatter, content),
@@ -72,11 +72,10 @@ export function createMarkdownToVueRenderFn(
       lastUpdated: Math.round(fs.statSync(file).mtimeMs),
     };
     const newContent = data.vueCode
-      ? genComponentCode(md, data)
+      ? genComponentCode(md, data, frontmatter)
       : `<template><div>${html}</div></template>`;
 
     debug(`[render] ${file} in ${Date.now() - start}ms.`);
-
     const result = {
       vueSrc: newContent,
       pageData,
@@ -86,83 +85,53 @@ export function createMarkdownToVueRenderFn(
   };
 }
 
-const scriptRE = /<\/script>/;
-const scriptSetupRE = /<\s*script[^>]*\bsetup\b[^>]*/;
-const defaultExportRE = /((?:^|\n|;)\s*)export(\s*)default/;
-const namedDefaultExportRE = /((?:^|\n|;)\s*)export(.+)as(\s*)default/;
-
-function genComponentCode(md: MarkdownRenderer, data: PageData) {
+function genComponentCode(md: MarkdownRenderer, data: PageData, frontmatter: any) {
   const { vueCode, headers = [] } = data as MarkdownParsedData;
-  const cn = headers.find((h) => h.title === "zh-CN")?.content;
-  const us = headers.find((h) => h.title === "en-US")?.content;
+  const cn = headers.find(h => h.title === 'zh-CN')?.content;
+  const us = headers.find(h => h.title === 'en-US')?.content;
   let { html } = md.render(`\`\`\`vue
   ${vueCode}
   \`\`\``);
   html = html
-    .replace(/import\.meta/g, "import.<wbr/>meta")
-    .replace(/process\.env/g, "process.<wbr/>env");
+    .replace(/import\.meta/g, 'import.<wbr/>meta')
+    .replace(/process\.env/g, 'process.<wbr/>env');
   const jsfiddle = escapeHtml(
     JSON.stringify({
       us,
       cn,
-      htmlCode: Buffer.from(html).toString("base64"),
-      sourceCode: Buffer.from(vueCode).toString("base64"),
-    })
+      frontmatter,
+      htmlCode: Buffer.from(html).toString('base64'),
+      sourceCode: Buffer.from(vueCode).toString('base64'),
+    }),
   );
-  const template = fetch(vueCode, "template");
-  const script = fetch(vueCode, "script");
-  const style = fetch(vueCode, "style");
-  const scopedStyle = fetch(vueCode, "style", true);
+  const template = fetch(vueCode, 'template');
+  const script = fetch(vueCode, 'script');
+  const style = fetch(vueCode, 'style');
+  const scopedStyle = fetch(vueCode, 'style', true);
 
   let newContent = `
     <template>
       <demo-box :jsfiddle="${jsfiddle}">
         <template #component>${template}</template>
-        <template #description>${cn}</template>
-        <template #us-description>${us}</template>
+        <template #description>${cn || ''}</template>
+        <template #us-description>${us || ''}</template>
       </demo-box>
     </template>`;
   newContent += script
     ? `
-      <script>
-      ${script || ""}
+      <script lang="ts">
+      ${script || ''}
       </script>
       `
-    : "";
-  newContent += style ? `<style>${style || ""}</style>` : "";
-  newContent += scopedStyle ? `<style scoped>${scopedStyle || ""}</style>` : "";
+    : '';
+  newContent += style ? `<style>${style || ''}</style>` : '';
+  newContent += scopedStyle ? `<style scoped>${scopedStyle || ''}</style>` : '';
   return newContent;
-}
-
-function genPageDataCode(tags: string[], data: PageData) {
-  const code = `\nexport const __pageData = ${JSON.stringify(
-    JSON.stringify(data)
-  )}`;
-
-  const existingScriptIndex = tags.findIndex((tag) => {
-    return scriptRE.test(tag) && !scriptSetupRE.test(tag);
-  });
-
-  if (existingScriptIndex > -1) {
-    const tagSrc = tags[existingScriptIndex];
-    // user has <script> tag inside markdown
-    // if it doesn't have export default it will error out on build
-    const hasDefaultExport =
-      defaultExportRE.test(tagSrc) || namedDefaultExportRE.test(tagSrc);
-    tags[existingScriptIndex] = tagSrc.replace(
-      scriptRE,
-      code + (hasDefaultExport ? `` : `\nexport default{}\n`) + `</script>`
-    );
-  } else {
-    tags.unshift(`<script>${code}\nexport default {}</script>`);
-  }
-
-  return tags;
 }
 
 const inferTitle = (frontmatter: any, content: string) => {
   if (frontmatter.home) {
-    return "Home";
+    return 'Home';
   }
   if (frontmatter.title) {
     return deeplyParseHeader(frontmatter.title);
@@ -171,27 +140,24 @@ const inferTitle = (frontmatter: any, content: string) => {
   if (match) {
     return deeplyParseHeader(match[1].trim());
   }
-  return "";
+  return '';
 };
 
 const inferDescription = (frontmatter: Record<string, any>) => {
   if (!frontmatter.head) {
-    return "";
+    return '';
   }
 
-  return getHeadMetaContent(frontmatter.head, "description") || "";
+  return getHeadMetaContent(frontmatter.head, 'description') || '';
 };
 
-const getHeadMetaContent = (
-  head: HeadConfig[],
-  name: string
-): string | undefined => {
+const getHeadMetaContent = (head: HeadConfig[], name: string): string | undefined => {
   if (!head || !head.length) {
     return undefined;
   }
 
   const meta = head.find(([tag, attrs = {}]) => {
-    return tag === "meta" && attrs.name === name && attrs.content;
+    return tag === 'meta' && attrs.name === name && attrs.content;
   });
 
   return meta && meta[1].content;

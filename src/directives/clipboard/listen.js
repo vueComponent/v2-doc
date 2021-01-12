@@ -1,5 +1,5 @@
-import is from "./is";
-import delegate from "./delegate";
+import is from './is';
+import delegate from './delegate';
 
 /**
  * Validates all params and calls the right
@@ -12,15 +12,15 @@ import delegate from "./delegate";
  */
 function listen(target, type, callback) {
   if (!target && !type && !callback) {
-    throw new Error("Missing required arguments");
+    throw new Error('Missing required arguments');
   }
 
   if (!is.string(type)) {
-    throw new TypeError("Second argument must be a String");
+    throw new TypeError('Second argument must be a String');
   }
 
   if (!is.fn(callback)) {
-    throw new TypeError("Third argument must be a Function");
+    throw new TypeError('Third argument must be a Function');
   }
 
   if (is.node(target)) {
@@ -31,7 +31,7 @@ function listen(target, type, callback) {
     return listenSelector(target, type, callback);
   } else {
     throw new TypeError(
-      "First argument must be a String, HTMLElement, HTMLCollection, or NodeList"
+      'First argument must be a String, HTMLElement, HTMLCollection, or NodeList',
     );
   }
 }

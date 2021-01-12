@@ -6,7 +6,7 @@ import { inject } from 'vue';
 import marked from 'marked';
 import { isZhCN } from '../utils/util';
 const renderer = new marked.Renderer();
-renderer.heading = function(text, level) {
+renderer.heading = function (text, level) {
   return (
     '<h' + level + ' id="' + text.replace(/[^\w]+/g, '-') + '">' + text + '</h' + level + '>\n'
   );

@@ -53,7 +53,7 @@ Use the operating area and customize the sub-nodes, suitable for use in the need
           Running
         </a-tag>
       </template>
-      <template slot="extra">
+      <template v-slot:extra>
         <a-button key="3">
           Operation
         </a-button>

@@ -43,13 +43,13 @@ Integration [@ant-design-vue/use](https://github.com/vueComponent/use) use form 
   </a-form>
 </template>
 <script>
-import { reactive, toRaw, computed } from "vue";
-import { useForm } from "@ant-design-vue/use";
-import { toArray } from "lodash-es";
+import { reactive, toRaw, computed } from 'vue';
+import { useForm } from '@ant-design-vue/use';
+import { toArray } from 'lodash-es';
 export default {
   setup() {
     const modelRef = reactive({
-      name: "",
+      name: '',
       region: undefined,
       type: [],
     });
@@ -57,26 +57,26 @@ export default {
       name: [
         {
           required: true,
-          message: "Please input name",
+          message: 'Please input name',
         },
       ],
       region: [
         {
           required: true,
-          message: "Please select region",
+          message: 'Please select region',
         },
       ],
       type: [
         {
           required: true,
-          message: "Please select type",
-          type: "array",
+          message: 'Please select type',
+          type: 'array',
         },
       ],
     });
     const { resetFields, validate, validateInfos, mergeValidateInfo } = useForm(
       modelRef,
-      rulesRef
+      rulesRef,
     );
     const onSubmit = (e) => {
       e.preventDefault();
@@ -85,7 +85,7 @@ export default {
           console.log(toRaw(modelRef));
         })
         .catch((err) => {
-          console.log("error", err);
+          console.log('error', err);
         });
     };
     const errorInfos = computed(() => {

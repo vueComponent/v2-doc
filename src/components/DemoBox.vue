@@ -13,12 +13,8 @@ export default {
   },
   setup(props) {
     return {
-      sourceCode: decodeURIComponent(
-        escape(window.atob(props.jsfiddle.sourceCode))
-      ),
-      htmlCode: decodeURIComponent(
-        escape(window.atob(props.jsfiddle.htmlCode))
-      ),
+      sourceCode: decodeURIComponent(escape(window.atob(props.jsfiddle.sourceCode))),
+      htmlCode: decodeURIComponent(escape(window.atob(props.jsfiddle.htmlCode))),
     };
   },
 };

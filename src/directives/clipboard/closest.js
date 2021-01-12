@@ -3,7 +3,7 @@ var DOCUMENT_NODE_TYPE = 9;
 /**
  * A polyfill for Element.matches()
  */
-if (typeof Element !== "undefined" && !Element.prototype.matches) {
+if (typeof Element !== 'undefined' && !Element.prototype.matches) {
   var proto = Element.prototype;
 
   proto.matches =
@@ -23,7 +23,7 @@ if (typeof Element !== "undefined" && !Element.prototype.matches) {
  */
 function closest(element, selector) {
   while (element && element.nodeType !== DOCUMENT_NODE_TYPE) {
-    if (typeof element.matches === "function" && element.matches(selector)) {
+    if (typeof element.matches === 'function' && element.matches(selector)) {
       return element;
     }
     element = element.parentNode;

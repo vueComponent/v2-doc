@@ -3,36 +3,34 @@
 </template>
 <script>
 const carbonUrls = {
-  "www.antdv.com":
-    "//cdn.carbonads.com/carbon.js?serve=CK7DL2JW&placement=antdvcom",
+  'www.antdv.com': '//cdn.carbonads.com/carbon.js?serve=CK7DL2JW&placement=antdvcom',
   // 'tangjinzhou.gitee.io':
   //   '//cdn.carbonads.com/carbon.js?serve=CK7DL2JN&placement=tangjinzhougiteeio',
   // 'ant-design-vue.gitee.io':
   //   '//cdn.carbonads.com/carbon.js?serve=CK7DL2JN&placement=antdesignvuegiteeio',
-  "vue.ant.design":
-    "//cdn.carbonads.com/carbon.js?serve=CK7DL2JW&placement=vueantdesign",
+  'vue.ant.design': '//cdn.carbonads.com/carbon.js?serve=CK7DL2JW&placement=vueantdesign',
 };
 const carbonUrl =
   carbonUrls[location.host] ||
-  "//cdn.carbonads.com/carbon.js?serve=CK7DL2JW&placement=vueantdesign";
+  '//cdn.carbonads.com/carbon.js?serve=CK7DL2JW&placement=vueantdesign';
 export default {
   props: {
     isMobile: Boolean,
   },
   watch: {
     $route(e, t) {
-      let adId = "#carbonads";
+      let adId = '#carbonads';
       // if(isGitee) {
       //   adId = '#cf';
       // }
       if (e.path !== t.path && this.$el.querySelector(adId)) {
-        this.$el.innerHTML = "";
+        this.$el.innerHTML = '';
         this.load();
       }
       this.adInterval && clearInterval(this.adInterval);
       this.adInterval = setInterval(() => {
         if (!this.$el.querySelector(adId)) {
-          this.$el.innerHTML = "";
+          this.$el.innerHTML = '';
           this.load();
         }
       }, 20000);
@@ -50,8 +48,8 @@ export default {
       //   });
       // } else
       if (carbonUrl) {
-        const e = document.createElement("script");
-        e.id = "_carbonads_js";
+        const e = document.createElement('script');
+        e.id = '_carbonads_js';
         e.src = carbonUrl;
         this.$el.appendChild(e);
       }
@@ -74,7 +72,7 @@ export default {
   border-radius: 3px;
   font-size: 13px;
   background: #f5f5f5;
-  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
 }
 #carbonads {
   overflow: hidden;

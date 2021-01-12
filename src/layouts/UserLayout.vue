@@ -1,8 +1,6 @@
 <template>
   <div :class="$style.container">
-    <div :class="$style.lang">
-      中文
-    </div>
+    <div :class="$style.lang">中文</div>
     <div :class="$style.content">
       <div :class="$style.top">
         <div :class="$style.header">

@@ -45,7 +45,8 @@
 旧版 Icon 使用方式将被废弃：
 
 ```html
-<a-icon type="smile" /> <a-button icon="smile" />
+<a-icon type="smile" />
+<a-button icon="smile" />
 ```
 
 2.0 中会采用按需引入的方式：

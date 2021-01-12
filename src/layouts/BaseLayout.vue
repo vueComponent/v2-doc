@@ -1,10 +1,10 @@
 <template>
   <div>
-    <Header :name="name" />
-    <div style="padding: 20px;margin: 0 auto;width: 960px;">
+    <header :name="name" />
+    <div style="padding: 20px; margin: 0 auto; width: 960px">
       <router-view />
     </div>
-    <Footer />
+    <footer />
   </div>
 </template>
 

@@ -1,11 +1,11 @@
 <script>
-import Basic from "./basic";
-import Card from "./card";
-import NoticeCalendar from "./notice-calendar";
-import Select from "./select.md";
-import CustomizeHeader from "./customize-header.md";
-import CN from "../index.zh-CN.md";
-import US from "../index.en-US.md";
+import Basic from './basic';
+import Card from './card';
+import NoticeCalendar from './notice-calendar';
+import Select from './select.md';
+import CustomizeHeader from './customize-header.md';
+import CN from '../index.zh-CN.md';
+import US from '../index.en-US.md';
 const md = {
   cn: `# Calendar 日历
 
@@ -27,12 +27,12 @@ When data is in the form of dates, such as schedules, timetables, prices calenda
 `,
 };
 export default {
-  category: "Components",
-  type: "Data Display",
-  zhType: "数据展示",
-  subtitle: "日历",
+  category: 'Components',
+  type: 'Data Display',
+  zhType: '数据展示',
+  subtitle: '日历',
   cols: 1,
-  title: "Calendar",
+  title: 'Calendar',
   render() {
     return (
       <div>

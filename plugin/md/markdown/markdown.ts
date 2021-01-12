@@ -1,21 +1,22 @@
-import MarkdownIt from "markdown-it";
-import { parseHeader } from "../utils/parseHeader";
-import { highlight } from "./plugins/highlight";
-import { slugify } from "./plugins/slugify";
-import { highlightLinePlugin } from "./plugins/highlightLines";
-import { lineNumberPlugin } from "./plugins/lineNumbers";
-import { componentPlugin } from "./plugins/component";
-import { containerPlugin } from "./plugins/containers";
-import { snippetPlugin } from "./plugins/snippet";
-import { hoistPlugin } from "./plugins/hoist";
-import { preWrapperPlugin } from "./plugins/preWrapper";
-import { linkPlugin } from "./plugins/link";
-import { extractHeaderPlugin } from "./plugins/header";
-import { Header } from "../../../types/shared";
+/* eslint-disable @typescript-eslint/no-var-requires */
+import MarkdownIt from 'markdown-it';
+import { parseHeader } from '../utils/parseHeader';
+import { highlight } from './plugins/highlight';
+import { slugify } from './plugins/slugify';
+import { highlightLinePlugin } from './plugins/highlightLines';
+import { lineNumberPlugin } from './plugins/lineNumbers';
+import { componentPlugin } from './plugins/component';
+import { containerPlugin } from './plugins/containers';
+import { snippetPlugin } from './plugins/snippet';
+import { hoistPlugin } from './plugins/hoist';
+import { preWrapperPlugin } from './plugins/preWrapper';
+import { linkPlugin } from './plugins/link';
+import { extractHeaderPlugin } from './plugins/header';
+import { Header } from '../../../typings/shared';
 
-const emoji = require("markdown-it-emoji");
-const anchor = require("markdown-it-anchor");
-const toc = require("markdown-it-table-of-contents");
+const emoji = require('markdown-it-emoji');
+const anchor = require('markdown-it-anchor');
+const toc = require('markdown-it-table-of-contents');
 
 export interface MarkdownOptions extends MarkdownIt.Options {
   lineNumbers?: boolean;
@@ -42,9 +43,7 @@ export interface MarkdownRenderer {
   render: (src: string, env?: any) => { html: string; data: any };
 }
 
-export const createMarkdownRenderer = (
-  options: MarkdownOptions = {}
-): MarkdownRenderer => {
+export const createMarkdownRenderer = (options: MarkdownOptions = {}): MarkdownRenderer => {
   const md = MarkdownIt({
     html: true,
     linkify: true,
@@ -61,8 +60,8 @@ export const createMarkdownRenderer = (
     .use(containerPlugin)
     .use(extractHeaderPlugin)
     .use(linkPlugin, {
-      target: "_blank",
-      rel: "noopener noreferrer",
+      target: '_blank',
+      rel: 'noopener noreferrer',
       ...options.externalLinks,
     })
 
@@ -72,8 +71,8 @@ export const createMarkdownRenderer = (
       slugify,
       permalink: true,
       permalinkBefore: true,
-      permalinkSymbol: "#",
-      permalinkAttrs: () => ({ "aria-hidden": true }),
+      permalinkSymbol: '#',
+      permalinkAttrs: () => ({ 'aria-hidden': true }),
       ...options.anchor,
     })
     .use(toc, {
@@ -94,7 +93,7 @@ export const createMarkdownRenderer = (
 
   // wrap render so that we can return both the html and extracted data.
   const render = md.render;
-  const wrappedRender: MarkdownRenderer["render"] = (src) => {
+  const wrappedRender: MarkdownRenderer['render'] = src => {
     (md as any).__data = {};
     const html = render.call(md, src);
     return {

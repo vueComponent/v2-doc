@@ -21,9 +21,9 @@ export default {
       if (this.scriptDom) {
         this.$el.removeChild(this.scriptDom);
       }
-      this.$refs.ins.innerHTML = "";
-      const e = document.createElement("script");
-      e.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+      this.$refs.ins.innerHTML = '';
+      const e = document.createElement('script');
+      e.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
       e.async = true;
       this.$el.appendChild(e);
       this.scriptDom = e;

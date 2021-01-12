@@ -1,6 +1,6 @@
 <template>
-  <div style="fontSize: 14px;lineHeight: 22px;marginBottom: 7px;color: rgba(0,0,0,0.65)">
-    <p style="marginRight: 8px;display: inline-block;color: rgba(0,0,0,0.85)">
+  <div style="fontsize: 14px; lineheight: 22px; marginbottom: 7px; color: rgba(0, 0, 0, 0.65)">
+    <p style="marginright: 8px; display: inline-block; color: rgba(0, 0, 0, 0.85)">
       {{ title }}
     </p>
     <template v-if="content">

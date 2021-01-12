@@ -1,4 +1,4 @@
-import closest from "./closest";
+import closest from './closest';
 
 /**
  * Delegates event to a selector.
@@ -34,19 +34,19 @@ function _delegate(element, selector, type, callback, useCapture) {
  */
 function delegate(elements, selector, type, callback, useCapture) {
   // Handle the regular Element usage
-  if (typeof elements.addEventListener === "function") {
+  if (typeof elements.addEventListener === 'function') {
     return _delegate.apply(null, arguments);
   }
 
   // Handle Element-less usage, it defaults to global delegation
-  if (typeof type === "function") {
+  if (typeof type === 'function') {
     // Use `document` as the first parameter, then apply arguments
     // This is a short way to .unshift `arguments` without running into deoptimizations
     return _delegate.bind(null, document).apply(null, arguments);
   }
 
   // Handle Selector-based usage
-  if (typeof elements === "string") {
+  if (typeof elements === 'string') {
     elements = document.querySelectorAll(elements);
   }
 

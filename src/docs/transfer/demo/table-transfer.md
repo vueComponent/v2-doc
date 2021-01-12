@@ -73,7 +73,7 @@ Customize render list with Table component.
   </div>
 </template>
 <script>
-import { difference } from "lodash-es";
+import { difference } from 'lodash-es';
 const mockData = [];
 for (let i = 0; i < 20; i++) {
   mockData.push({
@@ -90,18 +90,18 @@ const originTargetKeys = mockData
 
 const leftTableColumns = [
   {
-    dataIndex: "title",
-    title: "Name",
+    dataIndex: 'title',
+    title: 'Name',
   },
   {
-    dataIndex: "description",
-    title: "Description",
+    dataIndex: 'description',
+    title: 'Description',
   },
 ];
 const rightTableColumns = [
   {
-    dataIndex: "title",
-    title: "Name",
+    dataIndex: 'title',
+    title: 'Name',
   },
 ];
 

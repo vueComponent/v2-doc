@@ -12,9 +12,9 @@
         </li> -->
         <li v-if="isCN && isEffective(effectiveTime.kkb)" class="sponsorsItem">
           <a href="https://datayi.cn/w/Y9J3M2vR" target="_blank">
-            <img height="66" src="https://qn.antdv.com/kaikeba_ssr.jpeg" alt="kaikeba">
+            <img height="66" src="https://qn.antdv.com/kaikeba_ssr.jpeg" alt="kaikeba" />
           </a>
-          <span style="position: absolute; top: 0px;right: 10px">广告</span>
+          <span style="position: absolute; top: 0px; right: 10px">广告</span>
         </li>
         <!-- <li class="sponsorsItem">
           <a-button type="primary" ghost style="font-size: 12px" @click="handleClick">
@@ -24,9 +24,13 @@
       </ul>
     </div>
     <a-modal v-model:visible="visible" title="成为赞助商" @ok="visible = false">
-      如果您有品牌推广、活动推广、招聘推广、社区合作等需求，欢迎联系我们，成为赞助商。<br>
-      您的广告将出现在 And Design Vue 文档所有子页面及 GitHub Readme 等页面。<br>
-      咨询邮箱：<a href="mailto:antdv@foxmail.com">antdv@foxmail.com</a><br>
+      如果您有品牌推广、活动推广、招聘推广、社区合作等需求，欢迎联系我们，成为赞助商。
+      <br />
+      您的广告将出现在 And Design Vue 文档所有子页面及 GitHub Readme 等页面。
+      <br />
+      咨询邮箱：
+      <a href="mailto:antdv@foxmail.com">antdv@foxmail.com</a>
+      <br />
     </a-modal>
   </div>
 </template>

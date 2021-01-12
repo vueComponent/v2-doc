@@ -23,8 +23,8 @@ A dynamic progress bar is better.
   </div>
 </template>
 <script>
-import { MinusOutlined } from "@ant-design/icons-vue";
-import { PlusOutlined } from "@ant-design/icons-vue";
+import { MinusOutlined } from '@ant-design/icons-vue';
+import { PlusOutlined } from '@ant-design/icons-vue';
 
 export default {
   components: {

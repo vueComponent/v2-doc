@@ -19,7 +19,7 @@ The example of infinite load with [vue-infinite-scroll](https://github.com/Eleme
     <a-list :data-source="data">
       <a-list-item #renderItem="{ item, index }">
         <a-list-item-meta :description="item.email">
-          <template slot="title">
+          <template v-slot:title>
             <a :href="item.href">{{ item.name.last }}</a>
           </template>
           <a-avatar
