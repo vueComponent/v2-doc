@@ -63,14 +63,14 @@ export default [
     path: 'grid-cn',
     component: () => import('../docs/grid/demo/index.vue'),
   },
-  {
-    path: 'icon',
-    component: () => import('../docs/icon/demo/index.vue'),
-  },
-  {
-    path: 'icon-cn',
-    component: () => import('../docs/icon/demo/index.vue'),
-  },
+  // {
+  //   path: 'icon',
+  //   component: () => import('../docs/icon/demo/index.vue'),
+  // },
+  // {
+  //   path: 'icon-cn',
+  //   component: () => import('../docs/icon/demo/index.vue'),
+  // },
   {
     path: 'input',
     component: () => import('../docs/input/demo/index.vue'),

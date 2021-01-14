@@ -1,5 +1,5 @@
 import 'ant-design-vue/dist/antd.css';
-// import "./index.less";
+import './index.less';
 import 'nprogress/nprogress.css';
 import { createApp, Transition, TransitionGroup } from 'vue';
 import i18n from './i18n';

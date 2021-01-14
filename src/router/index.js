@@ -1,5 +1,4 @@
 import Layout from '../components/layout.jsx';
-import SimpleLayout from '../components/SimpleLayout.vue';
 // import Iframe from '../components/iframe.jsx';
 import demoRoutes from './demoRoutes';
 // import otherRoutes from './otherRoutes';
@@ -8,7 +7,7 @@ const routes = [
   // ...otherRoutes,
   {
     path: '/components',
-    component: SimpleLayout,
+    component: Layout,
     props: route => {
       const name = route.path.split('/components/')[1].split('/')[0];
       return { name, showDemo: true };

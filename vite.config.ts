@@ -30,16 +30,16 @@ export default {
       'ant-design-vue/es/locale-provider/default',
       'ant-design-vue/es/vc-drawer/src',
       'ant-design-vue/es/_util/store',
+      '@ant-design/icons-vue',
+      'lodash-es',
     ],
   },
   css: {
     preprocessorOptions: {
       less: {
-        lessOptions: {
-          modifyVars: {},
-          javascriptEnabled: true,
-          // includePaths: ["node_modules/"],
-        },
+        modifyVars: {},
+        javascriptEnabled: true,
+        // includePaths: ["node_modules/"],
       },
     },
   },

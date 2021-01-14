@@ -3,31 +3,31 @@
     <Md :cn="md.cn" :us="md.us" />
     <demo-sort>
       <basic />
-      <!-- <button-group />
       <disabled />
       <ghost />
       <icon />
       <loading />
       <multiple />
       <size />
-      <block /> -->
+      <block />
     </demo-sort>
     <api>
-      <u-s />
-      <c-n v-slot:cn />
+      <US />
+      <template v-slot:cn>
+        <CN />
+      </template>
     </api>
   </div>
 </template>
 <script lang="ts">
 import Basic from './basic.vue';
-// import ButtonGroup from './button-group.vue';
-// import Disabled from './disabled.vue';
-// import Ghost from './ghost.vue';
-// import Icon from './icon.vue';
-// import Loading from './loading.vue';
-// import Multiple from './multiple.vue';
-// import Size from './size.vue';
-// import Block from './block.vue';
+import Disabled from './disabled.vue';
+import Ghost from './ghost.vue';
+import Icon from './icon.vue';
+import Loading from './loading.vue';
+import Multiple from './multiple.vue';
+import Size from './size.vue';
+import Block from './block.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
 import { defineComponent } from 'vue';
@@ -64,14 +64,13 @@ export default defineComponent({
     CN,
     US,
     Basic,
-    // ButtonGroup,
-    // Disabled,
-    // Ghost,
-    // Icon,
-    // Loading,
-    // Multiple,
-    // Size,
-    // Block,
+    Disabled,
+    Ghost,
+    Icon,
+    Loading,
+    Multiple,
+    Size,
+    Block,
   },
   setup() {
     return {

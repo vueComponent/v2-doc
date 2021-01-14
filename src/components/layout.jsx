@@ -1,7 +1,6 @@
 import AllDemo from '../demo';
 import Header from './header.jsx';
 import Footer from './footer.vue';
-import GoogleAdsMin from './GoogleAdsMin.vue';
 // import Geektime from './geektime';
 import RightBottomAd from './right_bottom_ad.vue';
 import Sponsors from './sponsors.vue';
@@ -37,7 +36,6 @@ const docsList = [
   },
 ];
 
-const isGitee = window.location.host.indexOf('gitee.io') > -1;
 const showAd = location.host.indexOf('antdv.com') > -1;
 
 export default {
@@ -305,8 +303,7 @@ export default {
               )}
               <a-col xxl={20} xl={19} lg={19} md={18} sm={24} xs={24}>
                 <section class="main-container main-container-component">
-                  <TopAd isCN={isCN} />
-                  {!isMobile ? <GoogleAdsMin key={`GoogleAds_${$route.path}`} /> : null}
+                  {process.env.NODE_ENV !== 'development' ? <TopAd isCN={isCN} /> : null}
                   {!isMobile ? (
                     <div class={['toc-affix', isCN ? 'toc-affix-cn' : '']} style="width: 150px;">
                       {this.getSubMenu(isCN)}

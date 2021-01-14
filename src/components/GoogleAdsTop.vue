@@ -1,5 +1,5 @@
 <template>
-  <div class="google-ads">
+  <div v-if="process.env.NODE_ENV !== 'development'" class="google-ads">
     <ins
       ref="ins"
       style="display: block"
@@ -11,7 +11,9 @@
   </div>
 </template>
 <script>
-export default {
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   mounted() {
     this.load();
   },
@@ -29,5 +31,5 @@ export default {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     },
   },
-};
+});
 </script>

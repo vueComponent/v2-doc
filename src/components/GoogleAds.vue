@@ -1,5 +1,5 @@
 <template>
-  <div class="google-ads" id="API">
+  <div v-if="process.env.NODE_ENV !== 'development'" class="google-ads" id="API">
     <ins
       ref="ins"
       class="adsbygoogle"
@@ -12,7 +12,9 @@
   </div>
 </template>
 <script>
-export default {
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   mounted() {
     this.load();
   },
@@ -30,5 +32,5 @@ export default {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     },
   },
-};
+});
 </script>

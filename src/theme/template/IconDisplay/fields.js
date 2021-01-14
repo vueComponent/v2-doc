@@ -1,4 +1,4 @@
-import * as AntdIcons from '@ant-design/icons-vue/es/icons';
+import * as AntdIcons from '@ant-design/icons-vue';
 
 const all = Object.keys(AntdIcons)
   .map(n => n.replace(/(Outlined|Filled|TwoTone)$/, ''))
