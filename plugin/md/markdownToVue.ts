@@ -11,8 +11,8 @@ import {
 import { deeplyParseHeader } from './utils/parseHeader';
 import { PageData, HeadConfig } from '../../typings/shared';
 import slash from 'slash';
-import cheerio from 'cheerio';
 import escapeHtml from 'escape-html';
+import fetchCode from './utils/fetchCode';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const debug = require('debug')('vitepress:md');
@@ -22,20 +22,6 @@ interface MarkdownCompileResult {
   vueSrc: string;
   pageData: PageData;
 }
-
-const fetch = (str: string, tag: string, scoped?: boolean) => {
-  const $ = cheerio.load(str, {
-    decodeEntities: false,
-    xmlMode: true,
-  });
-  if (!tag) {
-    return str;
-  }
-  if (tag === 'style') {
-    return scoped ? $(`${tag}[scoped]`).html() : $(`${tag}`).not(`${tag}[scoped]`).html();
-  }
-  return $(tag).html();
-};
 
 export function createMarkdownToVueRenderFn(
   root: string = process.cwd(),
@@ -104,28 +90,24 @@ function genComponentCode(md: MarkdownRenderer, data: PageData, frontmatter: any
       sourceCode: Buffer.from(vueCode).toString('base64'),
     }),
   );
-  const template = fetch(vueCode, 'template');
-  const script = fetch(vueCode, 'script');
-  const style = fetch(vueCode, 'style');
-  const scopedStyle = fetch(vueCode, 'style', true);
+  const template = fetchCode(vueCode, 'template').replace(
+    '<template>',
+    '<template v-slot:default>',
+  );
+  const script = fetchCode(vueCode, 'script');
+  const style = fetchCode(vueCode, 'style');
 
-  let newContent = `
+  const newContent = `
     <template>
       <demo-box :jsfiddle="${jsfiddle}">
-        <template #component>${template}</template>
+        ${template}
         <template #description>${cn || ''}</template>
         <template #us-description>${us || ''}</template>
       </demo-box>
-    </template>`;
-  newContent += script
-    ? `
-      <script lang="ts">
-      ${script || ''}
-      </script>
-      `
-    : '';
-  newContent += style ? `<style>${style || ''}</style>` : '';
-  newContent += scopedStyle ? `<style scoped>${scopedStyle || ''}</style>` : '';
+    </template>
+    ${script}
+    ${style}
+    `;
   return newContent;
 }
 

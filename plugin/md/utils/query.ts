@@ -1,14 +1,14 @@
-import qs from "querystring";
+import qs from 'querystring';
 
 export interface VueQuery {
   vue?: boolean;
   src?: boolean;
-  type?: "script" | "template" | "style" | "custom";
+  type?: 'script' | 'template' | 'style' | 'custom';
   index?: number;
   lang?: string;
 }
 
-export function parseVueRequest(id: string) {
+export function parseVueRequest(id: string): any {
   const [filename, rawQuery] = id.split(`?`, 2);
   const query = qs.parse(rawQuery) as VueQuery;
   if (query.vue != null) {
