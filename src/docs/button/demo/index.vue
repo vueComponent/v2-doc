@@ -11,12 +11,7 @@
       <size />
       <block />
     </demo-sort>
-    <api>
-      <US />
-      <template v-slot:cn>
-        <CN />
-      </template>
-    </api>
+    <api :us="US" :cn="CN"></api>
   </div>
 </template>
 <script lang="ts">
@@ -61,8 +56,6 @@ export default defineComponent({
   title: 'Button',
   subtitle: '按钮',
   components: {
-    CN,
-    US,
     Basic,
     Disabled,
     Ghost,
@@ -75,6 +68,8 @@ export default defineComponent({
   setup() {
     return {
       md,
+      CN,
+      US,
     };
   },
 });

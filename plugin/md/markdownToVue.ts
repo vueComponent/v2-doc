@@ -59,11 +59,17 @@ export function createMarkdownToVueRenderFn(
     };
     const newContent = data.vueCode
       ? genComponentCode(md, data, frontmatter)
-      : `<template><div>${html}</div></template>`;
+      : `
+<template><div>${html}</div></template>
+
+<script>
+export default { pageData: ${JSON.stringify(pageData)} }
+</script>
+`;
 
     debug(`[render] ${file} in ${Date.now() - start}ms.`);
     const result = {
-      vueSrc: newContent,
+      vueSrc: newContent.trim(),
       pageData,
     };
     cache.set(src, result);
