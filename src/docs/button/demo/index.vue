@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Md :cn="md.cn" :us="md.us" />
+    <!-- <CN /> -->
     <demo-sort>
       <basic />
       <disabled />
@@ -11,7 +11,6 @@
       <size />
       <block />
     </demo-sort>
-    <api :us="US" :cn="CN"></api>
   </div>
 </template>
 <script lang="ts">
@@ -26,35 +25,17 @@ import Block from './block.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
 import { defineComponent } from 'vue';
-const md = {
-  cn: `# Button 按钮
-          按钮用于开始一个即时操作。
-          ## 何时使用
-          标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑。
-          ## 组件注册
-          \`\`\`js
-          import { Button } from 'ant-design-vue';
-          app.use(Button);
-          \`\`\`
-          ## 代码演示`,
-  us: `# Button
-          To trigger an operation.
-          ## When To Use
-          A button means an operation (or a series of operations). Clicking a button will trigger corresponding business logic.
-          ## Component Registration
-          \`\`\`js
-          import { Button } from 'ant-design-vue';
-          app.use(Button);
-          \`\`\`
-          ## Examples
-          `,
-};
+
 export default defineComponent({
-  category: 'Components',
-  type: 'General',
-  zhType: '通用',
-  title: 'Button',
-  subtitle: '按钮',
+  // category: 'Components',
+  // type: 'General',
+  // zhType: '通用',
+  // title: 'Button',
+  // subtitle: '按钮',
+  pageData: {
+    cn: CN.pageDate,
+    us: US.pageData,
+  },
   components: {
     Basic,
     Disabled,
@@ -67,7 +48,6 @@ export default defineComponent({
   },
   setup() {
     return {
-      md,
       CN,
       US,
     };

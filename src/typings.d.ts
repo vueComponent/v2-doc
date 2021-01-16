@@ -1,8 +1,18 @@
-declare module '*.md';
-
-declare module '*.vue' {
+interface Header {
+  level: number;
+  title: string;
+  slug: string;
+  content: string;
+}
+interface PageData {
+  title: string;
+  description: string;
+  headers: Header[];
+  frontmatter: Record<string, any>;
+}
+declare module '*.md' {
   import type { DefineComponent } from 'vue';
   // eslint-disable-next-line @typescript-eslint/ban-types
-  const component: DefineComponent<{}, {}, any>;
+  const component: DefineComponent<any, any, any> & { readonly pageDate?: PageData };
   export default component;
 }

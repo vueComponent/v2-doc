@@ -1,5 +1,5 @@
 <template>
-  <slot name="component" />
+  <slot />
   <code v-show="false" v-html="htmlCode"></code>
   <slot name="description" />
   <slot name="us-description" />
@@ -14,7 +14,6 @@ export default defineComponent({
     isIframe: Boolean,
   },
   setup(props) {
-    console.log(props.jsfiddle);
     return {
       sourceCode: decodeURIComponent(escape(window.atob(props.jsfiddle.sourceCode))),
       htmlCode: decodeURIComponent(escape(window.atob(props.jsfiddle.htmlCode))),
