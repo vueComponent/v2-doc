@@ -16,3 +16,5 @@ declare module '*.md' {
   const component: DefineComponent<any, any, any> & { readonly pageDate?: PageData };
   export default component;
 }
+
+declare module '*.svg';
