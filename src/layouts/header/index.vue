@@ -58,4 +58,4 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="less" scoped src="./indexless"></style>
+<style lang="less" scoped src="./index.less"></style>

@@ -1,5 +1,5 @@
 import AllDemo from '../demo';
-import Header from './header.jsx';
+import Header from '../layouts/header/index.vue';
 import Footer from './footer.vue';
 // import Geektime from './geektime';
 import RightBottomAd from './right_bottom_ad.vue';

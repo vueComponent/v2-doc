@@ -1,3 +1,4 @@
+import path from 'path';
 import vue from '@vitejs/plugin-vue';
 import md from './plugin/md';
 import docs from './plugin/docs';
@@ -13,6 +14,7 @@ export default {
   // }],
   alias: {
     moment: 'moment/dist/moment.js',
+    '@': path.join(__dirname, './src'),
   },
   plugins: [
     vueJsx({
