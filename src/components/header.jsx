@@ -16,31 +16,6 @@ export default {
   },
   mounted() {
     this.initDocSearch(this.$i18n.locale);
-    // let notificationKey = localStorage.getItem('jobs-notification-key');
-    // const key = '20200602';
-    // if (notificationKey !== key) {
-    //   this.$notification.open({
-    //     message: '您有新的工作机会',
-    //     description: '蚂蚁金服、校宝在线、美团、阿拉丁......',
-    //     duration: 0,
-    //     btn: h => {
-    //       return (
-    //         <a-button
-    //           onClick={() => {
-    //             this.$notification.close(key);
-    //             this.handleClose(key);
-    //             this.$router.push('/jobs/list');
-    //           }}
-    //           type="primary"
-    //         >
-    //           去查看
-    //         </a-button>
-    //       );
-    //     },
-    //     key,
-    //     onClose: () => this.handleClose(key),
-    //   });
-    // }
   },
   methods: {
     handleClose(key) {
