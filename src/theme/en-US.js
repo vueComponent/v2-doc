@@ -12,6 +12,7 @@ export default {
   'app.header.menu.pro.v4': 'Ant Design Pro',
   'app.header.menu.charts': 'Ant Design Charts',
   'app.header.menu.ecosystem': 'Ecosystem',
+  'app.header.menu.store': 'Store',
   'app.header.lang': '中文',
   'app.content.edit-page': 'Edit this page on GitHub!',
   'app.content.edit-demo': 'Edit this demo on GitHub!',

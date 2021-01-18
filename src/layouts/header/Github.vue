@@ -8,7 +8,7 @@
 </template>
 <style lang="less" scoped>
 @import '../../theme/static/theme.less';
-
+@import './Github.less';
 #github-btn {
   display: flex;
   flex-flow: nowrap;

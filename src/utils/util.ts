@@ -2,6 +2,18 @@ export function isZhCN(name: string): boolean {
   return /-cn\/?$/.test(name);
 }
 
+export function isLocalStorageNameSupported() {
+  const testKey = 'test';
+  const storage = window.localStorage;
+  try {
+    storage.setItem(testKey, '1');
+    storage.removeItem(testKey);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
 export function getLocalizedPathname(
   path: string,
   zhCN?: boolean,
@@ -11,7 +23,7 @@ export function getLocalizedPathname(
     enUS: string;
   },
 ): {
-  pathname: string;
+  path: string;
   query: Record<string, any>;
 } {
   const pathname = path.startsWith('/') ? path : `/${path}`;
@@ -31,6 +43,5 @@ export function getLocalizedPathname(
     const localHash = hash[zhCN ? 'zhCN' : 'enUS'];
     fullPath += `#${localHash}`;
   }
-
-  return { pathname: fullPath, query };
+  return { path: fullPath, query };
 }

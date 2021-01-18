@@ -1,4 +1,5 @@
 import 'ant-design-vue/dist/antd.css';
+import 'docsearch.js/dist/cdn/docsearch.css';
 import './index.less';
 import 'nprogress/nprogress.css';
 import { createApp, Transition, TransitionGroup } from 'vue';

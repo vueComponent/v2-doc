@@ -1,3 +1,7 @@
+interface Window {
+  docsearch: any;
+}
+
 interface Header {
   level: number;
   title: string;

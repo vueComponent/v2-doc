@@ -12,6 +12,7 @@ export default {
   'app.header.menu.pro.v4': 'Ant Design Pro',
   'app.header.menu.charts': 'Ant Design Charts',
   'app.header.menu.ecosystem': '生态',
+  'app.header.menu.store': '商店',
   'app.header.lang': 'English',
   'app.content.edit-page': '在 GitHub 上编辑此页！',
   'app.content.edit-demo': '在 GitHub 上编辑此示例！',

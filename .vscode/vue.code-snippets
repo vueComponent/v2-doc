@@ -1,0 +1,51 @@
+{
+  "新页面": {
+    "prefix": "adp",
+    "body": [
+      "<template>",
+      "</template>",
+      "<script lang=\"ts\">",
+      "import { ref, defineComponent } from 'vue'",
+      "export default defineComponent({",
+      "  name: '$1',",
+      "  setup() {",
+      "    return {",
+      "    }",
+      "  },",
+      "})",
+      "</script>",
+      "<style lang=\"less\" scoped>",
+      "// TODO",
+      "</style>",
+      ""
+    ],
+    "description": "新组件"
+  },
+  "新Store": {
+    "prefix": "adm",
+    "body": [
+      "import { Commit } from 'vuex'",
+      "const state = {",
+      "  demo: '',",
+      "}",
+      "type IState = typeof state",
+      "const module = {",
+      "  namespaced: true,",
+      "  state,",
+      "  getters: {},",
+      "  mutations: {",
+      "    MDemo(state: IState, playload: string) {",
+      "      state.demo = playload",
+      "    },",
+      "  },",
+      "  actions: {",
+      "    async ADemo({ commit }: { commit: Commit }) {",
+      "      commit('MDemo', '')",
+      "    },",
+      "  },",
+      "}",
+      "export default module",
+      ""
+    ]
+  }
+}

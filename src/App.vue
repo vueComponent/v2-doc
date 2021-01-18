@@ -15,6 +15,7 @@ export interface GlobalConfig {
   isMobile: Ref<boolean>;
   lang: Ref<'zh-CN' | 'en-US'>;
   isZhCN: Ref<boolean>;
+  responsive: Ref<null | 'narrow' | 'crowded'>;
 }
 export default defineComponent({
   setup() {
@@ -22,8 +23,17 @@ export default defineComponent({
     const i18n = useI18n();
     const colSize = useMediaQuery();
     const isMobile = computed(() => colSize.value === 'sm' || colSize.value === 'xs');
+    const responsive = computed(() => {
+      if (colSize.value === 'xs') {
+        return 'crowded';
+      } else if (colSize.value === 'sm') {
+        return 'narrow';
+      }
+      return null;
+    });
     const globalConfig: GlobalConfig = {
       isMobile,
+      responsive,
       lang: computed(() => i18n.locale.value as any),
       isZhCN: computed(() => i18n.locale.value === 'zh-CN'),
     };
