@@ -20,6 +20,15 @@ export default [
 
   {
     path: 'button:lang(.*)',
+    meta: {
+      category: 'Components',
+      type: '通用',
+      enType: 'General',
+      title: 'Button',
+      enTitle: 'Button',
+      subtitle: '按钮',
+      cover: 'https://gw.alipayobjects.com/zos/alicdn/fNUKzY1sk/Button.svg',
+    },
     component: () => import('../docs/button/demo/index.vue'),
   },
 

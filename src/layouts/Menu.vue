@@ -10,7 +10,7 @@
       <template v-else>
         <a-menu-item :key="m.path">
           <router-link :to="getLocalizedPathname(m.path, isZhCN)">
-            {{ isZhCN ? m.title : m.enTitle }}
+            {{ isZhCN ? `${m.title} ${m.subtitle || ''}` : m.enTitle }}
           </router-link>
         </a-menu-item>
       </template>

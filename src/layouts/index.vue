@@ -4,14 +4,14 @@
     <a-row>
       <template v-if="isMobile">
         <a-drawer key="Mobile-menu" wrapperClassName="drawer-wrapper">
-          <Menu :menus="menus" :activeMenuItem="activeMenuItem" />
+          <Menu :menus="menus" :activeMenuItem="activeMenuItem" :isZhCN="isZhCN" />
         </a-drawer>
       </template>
       <template v-else>
         <a-col :xxl="4" :xl="5" :lg="6" :md="6" :sm="24" :xs="24" class="main-menu">
           <a-affix>
             <section class="main-menu-inner">
-              <Menu :menus="menus" :activeMenuItem="activeMenuItem" />
+              <Menu :menus="menus" :activeMenuItem="activeMenuItem" :isZhCN="isZhCN" />
             </section>
           </a-affix>
         </a-col>
@@ -55,7 +55,7 @@ export default defineComponent({
       const path = route.path;
       const category = path.split('/')[1];
       return routes
-        .filter(r => r.meta && r.meta.category === category)
+        .filter(r => r.meta && r.meta.category && r.meta.category.toLowerCase() === category)
         .map(r => ({ ...r.meta, path: r.path.split(':lang')[0] }));
     });
 
@@ -80,6 +80,7 @@ export default defineComponent({
     const globalConfig = inject<GlobalConfig>(GLOBAL_CONFIG);
     return {
       isMobile: globalConfig.isMobile,
+      isZhCN: globalConfig.isZhCN,
       mainContainerClass: {
         'main-container': true,
         'main-container-component': isDemo.value,
