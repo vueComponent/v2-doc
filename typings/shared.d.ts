@@ -30,6 +30,7 @@ export interface PageData {
   headers: Header[];
   frontmatter: Record<string, any>;
   lastUpdated: number;
+  content?: string;
 }
 
 export interface Header {

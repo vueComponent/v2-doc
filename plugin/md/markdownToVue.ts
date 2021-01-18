@@ -54,17 +54,19 @@ export function createMarkdownToVueRenderFn(
       frontmatter,
       headers: data.headers,
       relativePath,
+      content,
       // TODO use git timestamp?
       lastUpdated: Math.round(fs.statSync(file).mtimeMs),
     };
     const newContent = data.vueCode
       ? genComponentCode(md, data, frontmatter)
       : `
-<template><div>${html}</div></template>
+<template><article class="markdown">${html}</article></template>
 
 <script>
 export default { pageData: ${JSON.stringify(pageData)} }
 </script>
+${fetchCode(content, 'style')}
 `;
 
     debug(`[render] ${file} in ${Date.now() - start}ms.`);

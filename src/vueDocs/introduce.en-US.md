@@ -85,7 +85,7 @@ import "ant-design-vue/dist/antd.css"; // or 'ant-design-vue/dist/antd.less'
 
 - Use [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) (Recommended)
 
-  ```js
+  ```jsx
   // .babelrc or babel-loader option
   {
     "plugins": [

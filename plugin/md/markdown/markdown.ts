@@ -69,7 +69,7 @@ export const createMarkdownRenderer = (options: MarkdownOptions = {}): MarkdownR
     .use(emoji)
     .use(anchor, {
       slugify,
-      permalink: true,
+      permalink: false,
       permalinkBefore: true,
       permalinkSymbol: '#',
       permalinkAttrs: () => ({ 'aria-hidden': true }),

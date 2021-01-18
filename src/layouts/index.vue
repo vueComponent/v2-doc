@@ -19,6 +19,16 @@
       <a-col :xxl="20" :xl="19" :lg="18" :md="18" :sm="24" :xs="24">
         <section :class="mainContainerClass">
           <router-view />
+          <a-affix v-if="headers.length" class="toc-affix" :offsetTop="20">
+            <a-anchor>
+              <a-anchor-link
+                v-for="h in headers"
+                :key="h.title"
+                :href="`#${h.title}`"
+                :title="h.title"
+              ></a-anchor-link>
+            </a-anchor>
+          </a-affix>
         </section>
         <PrevAndNext :menus="menus" :currentMenuIndex="currentMenuIndex" />
         <Footer />
@@ -61,7 +71,12 @@ export default defineComponent({
         route.path.indexOf('/components') === 0 && route.path.indexOf('/components/overview') !== 0
       );
     });
-
+    const matchCom = computed(() => {
+      return route.matched[route.matched.length - 1]?.components?.default as any;
+    });
+    const headers = computed(() => {
+      return (matchCom.value?.pageData?.headers || []).filter(h => h.level === 2);
+    });
     const globalConfig = inject<GlobalConfig>(GLOBAL_CONFIG);
     return {
       isMobile: globalConfig.isMobile,
@@ -72,6 +87,7 @@ export default defineComponent({
       menus,
       currentMenuIndex,
       activeMenuItem,
+      headers,
     };
   },
   components: {
@@ -82,4 +98,23 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.toc-affix ::v-deep(.ant-anchor) {
+  font-size: 12px;
+  max-width: 110px;
+  .ant-anchor-link {
+    border-left: 2px solid #f0f0f0;
+    padding: 4px 0 4px 16px;
+  }
+
+  .ant-anchor-link-active {
+    border-left: 2px solid #1890ff;
+  }
+  .ant-anchor-ink::before {
+    display: none;
+  }
+  .ant-anchor-ink-ball {
+    display: none;
+  }
+}
+</style>

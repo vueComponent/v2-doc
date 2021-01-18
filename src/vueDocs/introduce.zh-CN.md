@@ -1,3 +1,4 @@
+
 # Ant Design of Vue
 
 这里是 Ant Design 的 Vue 实现，开发和服务于企业级后台产品。
@@ -87,7 +88,7 @@ import "ant-design-vue/dist/antd.css"; // or 'ant-design-vue/dist/antd.less'
 
 - 使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import)（推荐）。
 
-  ```js
+  ```jsx
   // .babelrc or babel-loader option
   {
     "plugins": [
