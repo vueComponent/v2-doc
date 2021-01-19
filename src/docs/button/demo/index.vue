@@ -1,16 +1,14 @@
 <template>
-  <div>
-    <demo-sort>
-      <basic />
-      <disabled />
-      <ghost />
-      <icon />
-      <loading />
-      <multiple />
-      <size />
-      <block />
-    </demo-sort>
-  </div>
+  <demo-sort>
+    <basic />
+    <disabled />
+    <ghost />
+    <icon />
+    <loading />
+    <multiple />
+    <size />
+    <block />
+  </demo-sort>
 </template>
 <script lang="ts">
 import Basic from './basic.vue';
@@ -26,15 +24,8 @@ import US from '../index.en-US.md';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  // category: 'Components',
-  // type: 'General',
-  // zhType: '通用',
-  // title: 'Button',
-  // subtitle: '按钮',
-  pageData: {
-    cn: CN.pageData,
-    us: US.pageData,
-  },
+  CN,
+  US,
   components: {
     Basic,
     Disabled,

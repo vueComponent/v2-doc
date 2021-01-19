@@ -4,7 +4,9 @@
       <slot />
     </section>
     <section class="code-box-meta markdown">
-      <div class="code-box-title">{{ title }}</div>
+      <div class="code-box-title">
+        <a :href="`#${sectionId}`">{{ title }}</a>
+      </div>
       <div class="code-box-description">
         <slot v-if="isZhCN" name="description" />
         <slot v-else name="us-description" />
@@ -69,7 +71,7 @@
 <script lang="ts">
 import { GlobalConfig } from '@/App.vue';
 import { GLOBAL_CONFIG } from '@/SymbolKey';
-import { computed, defineComponent, inject, ref } from 'vue';
+import { computed, defineComponent, inject, onMounted, ref } from 'vue';
 import { CheckOutlined, SnippetsOutlined } from '@ant-design/icons-vue';
 export default defineComponent({
   props: {
@@ -89,6 +91,8 @@ export default defineComponent({
         .join('-')
         .replace('.vue', '')}`;
     });
+    const addDemosInfo: any = inject('addDemosInfo');
+
     const globalConfig = inject<GlobalConfig>(GLOBAL_CONFIG);
     const title = computed(
       () => props.jsfiddle?.title[globalConfig.isZhCN.value ? 'zh-CN' : 'en-US'],
@@ -115,6 +119,12 @@ export default defineComponent({
         'highlight-wrapper': true,
         'highlight-wrapper-expand': codeExpand.value,
       };
+    });
+    onMounted(() => {
+      addDemosInfo({
+        href: `#${sectionId.value}`,
+        title,
+      });
     });
     return {
       theme: 'light',

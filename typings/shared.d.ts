@@ -31,6 +31,7 @@ export interface PageData {
   frontmatter: Record<string, any>;
   lastUpdated: number;
   content?: string;
+  html?: string;
 }
 
 export interface Header {

@@ -18,13 +18,16 @@
       </template>
       <a-col :xxl="20" :xl="19" :lg="18" :md="18" :sm="24" :xs="24">
         <section :class="mainContainerClass">
-          <router-view />
+          <Demo v-if="isDemo" :pageData="pageData" :isZhCN="isZhCN">
+            <component :is="matchCom" />
+          </Demo>
+          <router-view v-else />
           <a-affix v-if="headers.length" class="toc-affix" :offsetTop="20">
             <a-anchor>
               <a-anchor-link
                 v-for="h in headers"
                 :key="h.title"
-                :href="`#${h.title}`"
+                :href="h.href || `#${h.title}`"
                 :title="h.title"
               ></a-anchor-link>
             </a-anchor>
@@ -39,18 +42,20 @@
 <script lang="ts">
 import { GlobalConfig } from '@/App.vue';
 import { GLOBAL_CONFIG } from '@/SymbolKey';
-import { defineComponent, inject, computed } from 'vue';
+import { defineComponent, inject, computed, ref, provide, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import Header from './header/index.vue';
 import Footer from './Footer.vue';
 import Menu from './Menu.vue';
 import PrevAndNext from './PrevAndNext.vue';
+import Demo from './Demo.vue';
 export default defineComponent({
   name: 'Layout',
   setup() {
     const route = useRoute();
     const router = useRouter();
     const routes = router.getRoutes();
+    const globalConfig = inject<GlobalConfig>(GLOBAL_CONFIG);
     const menus = computed(() => {
       const path = route.path;
       const category = path.split('/')[1];
@@ -58,6 +63,19 @@ export default defineComponent({
         .filter(r => r.meta && r.meta.category && r.meta.category.toLowerCase() === category)
         .map(r => ({ ...r.meta, path: r.path.split(':lang')[0] }));
     });
+
+    const demos = ref([]);
+
+    provide('addDemosInfo', info => {
+      demos.value.push(info);
+    });
+
+    watch(
+      () => route.path,
+      () => {
+        demos.value.length = 0;
+      },
+    );
 
     const activeMenuItem = computed(() => {
       return route.path.split('-cn')[0];
@@ -74,25 +92,41 @@ export default defineComponent({
     const matchCom = computed(() => {
       return route.matched[route.matched.length - 1]?.components?.default as any;
     });
-    console.log(matchCom);
+    const isZhCN = globalConfig.isZhCN;
+    const pageData = computed(() =>
+      isDemo.value
+        ? matchCom.value[isZhCN.value ? 'CN' : 'US']?.pageData
+        : matchCom.value?.pageData,
+    );
     const headers = computed(() => {
-      return (matchCom.value?.pageData?.headers || []).filter(h => h.level === 2);
+      if (isDemo.value) {
+        return [...demos.value, { title: 'API', href: '#API' }];
+      } else {
+        return (pageData.value?.headers || []).filter(h => h.level === 2);
+      }
     });
-    const globalConfig = inject<GlobalConfig>(GLOBAL_CONFIG);
-    return {
-      isMobile: globalConfig.isMobile,
-      isZhCN: globalConfig.isZhCN,
-      mainContainerClass: {
+
+    const mainContainerClass = computed(() => {
+      return {
         'main-container': true,
         'main-container-component': isDemo.value,
-      },
+      };
+    });
+    return {
+      isMobile: globalConfig.isMobile,
+      isZhCN,
+      mainContainerClass,
       menus,
       currentMenuIndex,
       activeMenuItem,
       headers,
+      isDemo,
+      matchCom,
+      pageData,
     };
   },
   components: {
+    Demo,
     Header,
     Footer,
     Menu,

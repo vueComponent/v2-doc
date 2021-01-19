@@ -8,10 +8,6 @@ const routes = [
   {
     path: '/components',
     component: Layout,
-    props: route => {
-      const name = route.path.split('/components/')[1].split('/')[0];
-      return { name, showDemo: true };
-    },
     children: [
       {
         path: 'overview:lang(.*)',

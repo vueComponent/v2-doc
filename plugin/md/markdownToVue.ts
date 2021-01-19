@@ -56,6 +56,7 @@ export function createMarkdownToVueRenderFn(
       headers: data.headers,
       relativePath,
       content: escapeHtml(content),
+      html,
       // TODO use git timestamp?
       lastUpdated: Math.round(fs.statSync(file).mtimeMs),
     };
