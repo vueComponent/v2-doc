@@ -21,8 +21,8 @@
           ></path>
         </svg>
       </span>
-      <span>{{ prev.enTitle }}</span>
-      <span v-if="isZhCN" class="chinese">{{ prev.title }}</span>
+      <span>{{ prev.title }}</span>
+      <span v-if="isZhCN" class="chinese">{{ prev.subtitle }}</span>
     </router-link>
     <router-link
       key="next"
@@ -30,8 +30,8 @@
       class="next-page"
       :to="getLocalizedPathname(next.path, isZhCN)"
     >
-      <span>{{ next.enTitle }}</span>
-      <span v-if="isZhCN" class="chinese">{{ next.title }}</span>
+      <span>{{ next.title }}</span>
+      <span v-if="isZhCN" class="chinese">{{ next.subtitle }}</span>
       <span role="img" aria-label="right" class="anticon anticon-right footer-nav-icon-after">
         <svg
           viewBox="64 64 896 896"
