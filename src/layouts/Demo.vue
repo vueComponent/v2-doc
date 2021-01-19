@@ -1,5 +1,5 @@
 <template>
-  <article class="markdown">
+  <article>
     <section class="markdown">
       <h1>
         {{ frontmatter.title }}
