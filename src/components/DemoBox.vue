@@ -10,14 +10,22 @@
         <slot v-else name="us-description" />
       </div>
       <div class="code-box-actions">
-        <span class="code-expand-icon code-box-code-action" style="width: auto">TS</span>
+        <a-tooltip :title="$t(`app.demo.type.${type ? 'js' : 'ts'}`)">
+          <span
+            class="code-expand-icon code-box-code-action"
+            style="width: auto"
+            @click="handleChangeType"
+          >
+            {{ type }}
+          </span>
+        </a-tooltip>
         <a-tooltip
           :title="$t(`app.demo.${copied ? 'copied' : 'copy'}`)"
           :visible="copyTooltipVisible"
           @visibleChange="onCopyTooltipVisibleChange"
         >
           <component
-            v-clipboard:copy="sourceCode"
+            v-clipboard:copy="type === 'TS' ? sourceCode : jsSourceCode"
             v-clipboard:success="handleCodeCopied"
             :is="copied && copyTooltipVisible ? 'CheckOutlined' : 'SnippetsOutlined'"
             class="code-box-code-copy code-box-code-action"
@@ -51,7 +59,8 @@
     </section>
     <section :class="highlightClass">
       <div class="highlight">
-        <slot name="htmlCode" />
+        <slot v-if="type === 'TS'" name="htmlCode" />
+        <slot v-else name="jsVersionHtml" />
       </div>
     </section>
   </section>
@@ -68,8 +77,8 @@ export default defineComponent({
     isIframe: Boolean,
   },
   setup(props) {
-    console.log(props.jsfiddle);
     const codeExpand = ref(false);
+    const type = ref('TS');
     const copyTooltipVisible = ref(false);
     const copied = ref(false);
     const sectionId = computed(() => {
@@ -98,6 +107,9 @@ export default defineComponent({
     const handleCodeCopied = () => {
       copied.value = true;
     };
+    const handleChangeType = () => {
+      type.value = type.value === 'TS' ? 'JS' : 'TS';
+    };
     const highlightClass = computed(() => {
       return {
         'highlight-wrapper': true,
@@ -106,6 +118,7 @@ export default defineComponent({
     });
     return {
       theme: 'light',
+      type,
       isZhCN: globalConfig.isZhCN,
       sectionId,
       title,
@@ -115,6 +128,7 @@ export default defineComponent({
       onCopyTooltipVisibleChange,
       handleCodeExpand,
       handleCodeCopied,
+      handleChangeType,
       highlightClass,
       sourceCode: decodeURIComponent(escape(window.atob(props.jsfiddle.sourceCode))),
       jsSourceCode: decodeURIComponent(escape(window.atob(props.jsfiddle.jsSourceCode))),

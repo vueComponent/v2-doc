@@ -23,6 +23,8 @@ export default {
   'app.component.examples.visible': '显示调试专用演示',
   'app.component.examples.hide': '隐藏调试专用演示',
   'app.demo.debug': '此演示仅供调试，线上不会展示',
+  'app.demo.type.js': '切换到 TypeScript',
+  'app.demo.type.ts': '切换到 JavaScript',
   'app.demo.copy': '复制代码',
   'app.demo.copied': '复制成功',
   'app.demo.code.show': '显示代码',

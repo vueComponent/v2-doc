@@ -23,6 +23,8 @@ export default {
   'app.component.examples.visible': 'Expand debug examples',
   'app.component.examples.hide': 'Collapse debug examples',
   'app.demo.debug': "Debug only, won't display at online",
+  'app.demo.type.js': 'Switch to TypeScript',
+  'app.demo.type.ts': 'Switch to JavaScript',
   'app.demo.copy': 'Copy code',
   'app.demo.copied': 'Copied!',
   'app.demo.code.show': 'Show code',
