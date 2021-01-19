@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <CN /> -->
     <demo-sort>
       <basic />
       <disabled />
@@ -33,7 +32,7 @@ export default defineComponent({
   // title: 'Button',
   // subtitle: '按钮',
   pageData: {
-    cn: CN.pageDate,
+    cn: CN.pageData,
     us: US.pageData,
   },
   components: {
@@ -47,10 +46,7 @@ export default defineComponent({
     Block,
   },
   setup() {
-    return {
-      CN,
-      US,
-    };
+    return {};
   },
 });
 </script>
@@ -59,7 +55,15 @@ export default defineComponent({
   margin-right: 8px;
   margin-bottom: 12px;
 }
-[id^='components-button-demo-'] .ant-btn-group > .ant-btn {
+[id^='components-button-demo-'] .ant-btn-rtl {
   margin-right: 0;
+  margin-left: 8px;
+}
+[id^='components-button-demo-'] .ant-btn-group > .ant-btn,
+[id^='components-button-demo-'] .ant-btn-group > span > .ant-btn {
+  margin-right: 0;
+}
+[data-theme='dark'] .site-button-ghost-wrapper {
+  background: rgba(255, 255, 255, 0.2);
 }
 </style>

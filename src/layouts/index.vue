@@ -74,6 +74,7 @@ export default defineComponent({
     const matchCom = computed(() => {
       return route.matched[route.matched.length - 1]?.components?.default as any;
     });
+    console.log(matchCom);
     const headers = computed(() => {
       return (matchCom.value?.pageData?.headers || []).filter(h => h.level === 2);
     });
