@@ -1,4 +1,5 @@
 const scriptRE = /<script[^>]*>([\s\S]*)<\/script>/;
+const scriptContentRE = /(?<=<script[^>]*>)([\s\S]*)(?=<\/script>)/;
 const templateRE = /<template[^>]*>([\s\S]*)<\/template>/;
 const styleRE = /<style[^>]*>([\s\S]*)<\/style>/;
 const docsRE = /(?<=<docs>)([\s\S]*)(?=<\/docs>)/;
@@ -7,6 +8,7 @@ const reObj = {
   style: styleRE,
   docs: docsRE,
   template: templateRE,
+  scriptContent: scriptContentRE,
 };
 
 export default function fetchCode(src: string, type: string): string {

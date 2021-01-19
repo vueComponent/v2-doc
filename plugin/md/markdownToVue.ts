@@ -13,6 +13,7 @@ import { PageData, HeadConfig } from '../../typings/shared';
 import slash from 'slash';
 import escapeHtml from 'escape-html';
 import fetchCode from './utils/fetchCode';
+import tsToJs from './utils/tsToJs';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const debug = require('debug')('vitepress:md');
@@ -89,29 +90,46 @@ ${vueCode.trim()}
   html = html
     .replace(/import\.meta/g, 'import.<wbr/>meta')
     .replace(/process\.env/g, 'process.<wbr/>env');
+  const template = fetchCode(vueCode, 'template');
+  const script = fetchCode(vueCode, 'script');
+  const style = fetchCode(vueCode, 'style');
+  const scriptContent = fetchCode(vueCode, 'scriptContent');
+  const jsCode = tsToJs(scriptContent);
+  const jsSourceCode = `
+${template}
+<script>
+${jsCode}
+</script>
+${style}
+  `.trim();
+  let { html: jsVersion } = md.render(`\`\`\`vue
+${jsSourceCode}
+\`\`\``);
+  jsVersion = jsVersion
+    .replace(/import\.meta/g, 'import.<wbr/>meta')
+    .replace(/process\.env/g, 'process.<wbr/>env');
+
   const jsfiddle = escapeHtml(
     JSON.stringify({
       us,
       cn,
       ...pageData.frontmatter,
       relativePath: pageData.relativePath,
-      htmlCode: Buffer.from(html).toString('base64'),
+      // htmlCode: Buffer.from(html).toString('base64'),
+      // jsVersionHtml: Buffer.from(jsVersion).toString('base64'),
       sourceCode: Buffer.from(vueCode).toString('base64'),
+      jsSourceCode: Buffer.from(jsSourceCode).toString('base64'),
     }),
   );
-  const template = fetchCode(vueCode, 'template').replace(
-    '<template>',
-    '<template v-slot:default>',
-  );
-  const script = fetchCode(vueCode, 'script');
-  const style = fetchCode(vueCode, 'style');
 
   const newContent = `
     <template>
       <demo-box :jsfiddle="${jsfiddle}">
-        ${template}
+        ${template.replace('<template>', '<template v-slot:default>')}
         <template #description>${md.render(cn || '').html}</template>
         <template #us-description>${md.render(us || '').html}</template>
+        <template #htmlCode>${html}</template>
+        <template #jsVersionHtml>${jsVersion}</template>
       </demo-box>
     </template>
     ${script}

@@ -10,6 +10,7 @@
         <slot v-else name="us-description" />
       </div>
       <div class="code-box-actions">
+        <span class="code-expand-icon code-box-code-action" style="width: auto">TS</span>
         <a-tooltip
           :title="$t(`app.demo.${copied ? 'copied' : 'copy'}`)"
           :visible="copyTooltipVisible"
@@ -49,7 +50,9 @@
       </div>
     </section>
     <section :class="highlightClass">
-      <div class="highlight" v-html="htmlCode"></div>
+      <div class="highlight">
+        <slot name="htmlCode" />
+      </div>
     </section>
   </section>
 </template>
@@ -114,7 +117,7 @@ export default defineComponent({
       handleCodeCopied,
       highlightClass,
       sourceCode: decodeURIComponent(escape(window.atob(props.jsfiddle.sourceCode))),
-      htmlCode: decodeURIComponent(escape(window.atob(props.jsfiddle.htmlCode))),
+      jsSourceCode: decodeURIComponent(escape(window.atob(props.jsfiddle.jsSourceCode))),
     };
   },
   components: {
