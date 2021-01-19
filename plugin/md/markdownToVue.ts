@@ -59,7 +59,7 @@ export function createMarkdownToVueRenderFn(
       lastUpdated: Math.round(fs.statSync(file).mtimeMs),
     };
     const newContent = data.vueCode
-      ? genComponentCode(md, data, frontmatter)
+      ? genComponentCode(md, data, pageData)
       : `
 <template><article class="markdown">${html}</article></template>
 
@@ -79,13 +79,13 @@ ${fetchCode(content, 'style')}
   };
 }
 
-function genComponentCode(md: MarkdownRenderer, data: PageData, frontmatter: any) {
+function genComponentCode(md: MarkdownRenderer, data: PageData, pageData: PageData) {
   const { vueCode, headers = [] } = data as MarkdownParsedData;
   const cn = headers.find(h => h.title === 'zh-CN')?.content;
   const us = headers.find(h => h.title === 'en-US')?.content;
   let { html } = md.render(`\`\`\`vue
-  ${vueCode}
-  \`\`\``);
+${vueCode.trim()}
+\`\`\``);
   html = html
     .replace(/import\.meta/g, 'import.<wbr/>meta')
     .replace(/process\.env/g, 'process.<wbr/>env');
@@ -93,7 +93,8 @@ function genComponentCode(md: MarkdownRenderer, data: PageData, frontmatter: any
     JSON.stringify({
       us,
       cn,
-      ...frontmatter,
+      ...pageData.frontmatter,
+      relativePath: pageData.relativePath,
       htmlCode: Buffer.from(html).toString('base64'),
       sourceCode: Buffer.from(vueCode).toString('base64'),
     }),
@@ -109,8 +110,8 @@ function genComponentCode(md: MarkdownRenderer, data: PageData, frontmatter: any
     <template>
       <demo-box :jsfiddle="${jsfiddle}">
         ${template}
-        <template #description>${cn || ''}</template>
-        <template #us-description>${us || ''}</template>
+        <template #description>${md.render(cn || '').html}</template>
+        <template #us-description>${md.render(us || '').html}</template>
       </demo-box>
     </template>
     ${script}
