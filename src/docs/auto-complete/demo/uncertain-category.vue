@@ -22,7 +22,6 @@ Lookup-Patterns - Uncertain Category.
       class="global-search"
       size="large"
       style="width: 100%"
-      placeholder="input here"
       option-label-prop="title"
       @select="onSelect"
       @search="handleSearch"
@@ -37,62 +36,50 @@ Lookup-Patterns - Uncertain Category.
           >
             {{ item.category }}
           </a>
-          <span className="global-search-item-count">{{ item.count }} results</span>
+          <span class="global-search-item-count">{{ item.count }} results</span>
         </a-select-option>
       </template>
-      <a-input>
-        <a-button
-          #suffix
-          style="margin-right: -12px"
-          class="search-btn"
-          size="large"
-          type="primary"
-        >
-          <search-outlined />
-        </a-button>
-      </a-input>
+      <a-input-search size="large" placeholder="input here" enterButton></a-input-search>
     </a-auto-complete>
   </div>
 </template>
 
 <script lang="ts">
-import { SearchOutlined } from '@ant-design/icons-vue';
+import { defineComponent, ref } from 'vue';
 
-export default {
-  components: {
-    SearchOutlined,
-  },
-  data() {
-    return {
-      value: '',
-      dataSource: [],
-    };
-  },
-  methods: {
-    onSelect(value) {
+export default defineComponent({
+  setup() {
+    const value = ref('');
+    const dataSource = ref([]);
+    const onSelect = value => {
       console.log('onSelect', value);
-    },
+    };
 
-    handleSearch(value) {
-      this.dataSource = value ? this.searchResult(value) : [];
-    },
-
-    getRandomInt(max, min = 0) {
+    const getRandomInt = (max, min = 0) => {
       return Math.floor(Math.random() * (max - min + 1)) + min;
-    },
+    };
 
-    searchResult(query) {
-      return new Array(this.getRandomInt(5))
+    const searchResult = query => {
+      return new Array(getRandomInt(5))
         .join('.')
         .split('.')
         .map((item, idx) => ({
           query,
           category: `${query}${idx}`,
-          count: this.getRandomInt(200, 100),
+          count: getRandomInt(200, 100),
         }));
-    },
+    };
+    const handleSearch = val => {
+      dataSource.value = val ? searchResult(val) : [];
+    };
+    return {
+      value,
+      dataSource,
+      onSelect,
+      handleSearch,
+    };
   },
-};
+});
 </script>
 
 <style>

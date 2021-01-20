@@ -26,17 +26,22 @@ A non-case-sensitive AutoComplete.
 </template>
 
 <script lang="ts">
-export default {
-  data() {
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const filterOption = (input, option) => {
+      return option.value.toUpperCase().indexOf(input.toUpperCase()) >= 0;
+    };
     return {
-      value: '',
-      options: [{ value: 'Burns Bay Road' }, { value: 'Downing Street' }, { value: 'Wall Street' }],
+      value: ref(''),
+      options: ref([
+        { value: 'Burns Bay Road' },
+        { value: 'Downing Street' },
+        { value: 'Wall Street' },
+      ]),
+      filterOption,
     };
   },
-  methods: {
-    filterOption(input, option) {
-      return option.value.toUpperCase().indexOf(input.toUpperCase()) >= 0;
-    },
-  },
-};
+});
 </script>

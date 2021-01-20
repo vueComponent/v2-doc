@@ -45,9 +45,10 @@ Three sizes and two shapes are available.
 
 <script lang="ts">
 import { UserOutlined } from '@ant-design/icons-vue';
-export default {
+import { defineComponent } from 'vue';
+export default defineComponent({
   components: {
     UserOutlined,
   },
-};
+});
 </script>

@@ -23,7 +23,7 @@ export default defineComponent({
     Basic,
     Type,
     Dynamic,
-    Badge
+    Badge,
   },
   setup() {
     return {};

@@ -30,7 +30,7 @@ export default defineComponent({
     Custom,
     NonCaseSensitive,
     CertainCategory,
-    UncertainCategory
+    UncertainCategory,
   },
   setup() {
     return {};

@@ -31,23 +31,27 @@ You could pass `#dataSource` as children of `AutoComplete`, instead of using `da
 </template>
 
 <script lang="ts">
-export default {
-  data() {
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const value = ref('');
+    const result = ref([]);
+    const handleSearch = value => {
+      let res;
+      if (!value || value.indexOf('@') >= 0) {
+        res = [];
+      } else {
+        res = ['gmail.com', '163.com', 'qq.com'].map(domain => `${value}@${domain}`);
+      }
+      result.value = res;
+    };
+
     return {
-      value: '',
-      result: [],
+      value,
+      result,
+      handleSearch,
     };
   },
-  methods: {
-    handleSearch(value) {
-      let result;
-      if (!value || value.indexOf('@') >= 0) {
-        result = [];
-      } else {
-        result = ['gmail.com', '163.com', 'qq.com'].map(domain => `${value}@${domain}`);
-      }
-      this.result = result;
-    },
-  },
-};
+});
 </script>

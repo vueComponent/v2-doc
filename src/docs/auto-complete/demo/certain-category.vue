@@ -38,7 +38,8 @@ Lookup-Patterns - Certain Category.
                 href="https://www.google.com/search?q=antd"
                 target="_blank"
                 rel="noopener noreferrer"
-                >more
+              >
+                more
               </a>
             </span>
           </template>
@@ -58,7 +59,7 @@ Lookup-Patterns - Certain Category.
         </a-select-option>
       </template>
       <a-input>
-        <template #suffix><search-outlined class="certain-category-icon"/></template>
+        <template #suffix><search-outlined class="certain-category-icon" /></template>
       </a-input>
     </a-auto-complete>
   </div>
@@ -66,6 +67,7 @@ Lookup-Patterns - Certain Category.
 
 <script lang="ts">
 import { SearchOutlined } from '@ant-design/icons-vue';
+import { defineComponent, ref } from 'vue';
 const dataSource = [
   {
     title: 'Libraries',
@@ -103,17 +105,17 @@ const dataSource = [
     ],
   },
 ];
-export default {
-  components: {
-    SearchOutlined,
-  },
-  data() {
+export default defineComponent({
+  setup() {
     return {
-      value: '',
+      value: ref(''),
       dataSource,
     };
   },
-};
+  components: {
+    SearchOutlined,
+  },
+});
 </script>
 
 <style>

@@ -28,36 +28,39 @@ Basic Usage, set datasource of autocomplete with `options` property.
 </template>
 
 <script lang="ts">
+import { defineComponent, ref, watch } from 'vue';
+
 const mockVal = (str, repeat = 1) => {
   return {
     value: str.repeat(repeat),
   };
 };
-export default {
-  data() {
-    return {
-      value: '',
-      options: [],
-    };
-  },
-  watch: {
-    value(val) {
-      console.log('value', val);
-    },
-  },
-  methods: {
-    onSearch(searchText) {
+export default defineComponent({
+  setup() {
+    const value = ref('');
+    const options = ref([]);
+    const onSearch = (searchText: string) => {
       console.log('searchText');
-      this.options = !searchText
+      options.value = !searchText
         ? []
         : [mockVal(searchText), mockVal(searchText, 2), mockVal(searchText, 3)];
-    },
-    onSelect(value) {
+    };
+    const onSelect = (value: string) => {
       console.log('onSelect', value);
-    },
-    onChange(value) {
+    };
+    const onChange = (value: string) => {
       console.log('onChange', value);
-    },
+    };
+    watch(value, () => {
+      console.log('value', value.value);
+    });
+    return {
+      value,
+      options,
+      onSearch,
+      onSelect,
+      onChange,
+    };
   },
-};
+});
 </script>

@@ -16,7 +16,7 @@ Usually used for reminders and notifications.
 </docs>
 
 <template>
-  <span style="margin-right:24px">
+  <span style="margin-right: 24px">
     <a-badge :count="1">
       <a-avatar shape="square">
         <template #icon><UserOutlined /></template>
@@ -34,11 +34,12 @@ Usually used for reminders and notifications.
 
 <script lang="ts">
 import { UserOutlined } from '@ant-design/icons-vue';
-export default {
+import { defineComponent } from 'vue';
+export default defineComponent({
   components: {
     UserOutlined,
   },
-};
+});
 </script>
 
 <style>

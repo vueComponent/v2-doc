@@ -33,25 +33,29 @@ Customize Input Component.
 </template>
 
 <script lang="ts">
-export default {
-  data() {
-    return {
-      value: '',
-      options: [],
-    };
-  },
-  methods: {
-    onSelect(value) {
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+  setup() {
+    const value = ref('');
+    const options = ref([]);
+    const onSelect = value => {
       console.log('onSelect', value);
-    },
-    handleSearch(value) {
-      this.options = !value
+    };
+    const handleSearch = value => {
+      options.value = !value
         ? []
         : [{ value }, { value: value + value }, { value: value + value + value }];
-    },
-    handleKeyPress(ev) {
+    };
+    const handleKeyPress = ev => {
       console.log('handleKeyPress', ev);
-    },
+    };
+    return {
+      value,
+      options,
+      onSelect,
+      handleSearch,
+      handleKeyPress,
+    };
   },
-};
+});
 </script>
