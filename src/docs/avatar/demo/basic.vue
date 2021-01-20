@@ -3,7 +3,7 @@
 order: 0
 title:
   zh-CN: 基本
-  en-US: basic
+  en-US: Basic
 ---
 
 ## zh-CN

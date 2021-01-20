@@ -1,14 +1,20 @@
-<cn>
-#### 查询模式 - 确定类目
-查询模式 - 确定类目
-</cn>
+<docs>
+---
+order: 4
+title:
+  zh-CN: 查询模式 - 确定类目
+  en-US: Lookup-Patterns - Certain Category
+---
 
-<us>
-#### Lookup-Patterns - Certain Category
-Lookup-Patterns - Certain Category
-</us>
+## zh-CN
 
-```vue
+查询模式 - 确定类目。
+
+## en-US
+
+Lookup-Patterns - Certain Category.
+</docs>
+
 <template>
   <div class="certain-category-search-wrapper" style="width: 250px">
     <a-auto-complete
@@ -57,7 +63,8 @@ Lookup-Patterns - Certain Category
     </a-auto-complete>
   </div>
 </template>
-<script>
+
+<script lang="ts">
 import { SearchOutlined } from '@ant-design/icons-vue';
 const dataSource = [
   {
@@ -108,6 +115,7 @@ export default {
   },
 };
 </script>
+
 <style>
 .certain-category-search-dropdown .ant-select-dropdown-menu-item-group-title {
   color: #666;
@@ -131,6 +139,7 @@ export default {
   max-height: 300px;
 }
 </style>
+
 <style scoped>
 .certain-category-search-wrapper
   ::v-deep(.certain-category-search.ant-select-auto-complete)
@@ -154,4 +163,3 @@ export default {
   font-size: 16px;
 }
 </style>
-```

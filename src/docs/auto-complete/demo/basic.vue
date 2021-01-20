@@ -1,14 +1,20 @@
-<cn>
-#### 基本使用
-基本使用。通过 options 设置自动完成的数据源
-</cn>
+<docs>
+---
+order: 0
+title:
+  zh-CN: 基本使用
+  en-US: Basic Usage
+---
 
-<us>
-#### Basic Usage
+## zh-CN
+
+基本使用。通过 options 设置自动完成的数据源。
+
+## en-US
+
 Basic Usage, set datasource of autocomplete with `options` property.
-</us>
+</docs>
 
-```vue
 <template>
   <a-auto-complete
     v-model:value="value"
@@ -20,7 +26,8 @@ Basic Usage, set datasource of autocomplete with `options` property.
     @change="onChange"
   />
 </template>
-<script>
+
+<script lang="ts">
 const mockVal = (str, repeat = 1) => {
   return {
     value: str.repeat(repeat),
@@ -54,4 +61,3 @@ export default {
   },
 };
 </script>
-```

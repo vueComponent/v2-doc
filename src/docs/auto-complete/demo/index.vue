@@ -1,50 +1,39 @@
-<script>
-import Basic from './basic';
-import CertainCategory from './certain-category';
-import Custom from './custom';
-import NonCaseSensitive from './non-case-sensitive';
-import Options from './options';
-import UncertainCategory from './uncertain-category';
+<template>
+  <demo-sort>
+    <basic />
+    <options />
+    <custom />
+    <non-case-sensitive />
+    <certain-category />
+    <uncertain-category />
+  </demo-sort>
+</template>
+
+<script lang="ts">
+import Basic from './basic.vue';
+import Options from './options.vue';
+import Custom from './custom.vue';
+import NonCaseSensitive from './non-case-sensitive.vue';
+import CertainCategory from './certain-category.vue';
+import UncertainCategory from './uncertain-category.vue';
 
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
-const md = {
-  cn: `# AutoComplete 自动完成
-          输入框自动完成功能。
-## 何时使用
-需要自动完成时。
-          ## 代码演示`,
-  us: `# AutoComplete
-        Autocomplete function of input field.
-## When To Use
-When there is a need for autocomplete functionality.
-## Examples
-`,
-};
-export default {
-  category: 'Components',
-  subtitle: '自动完成',
-  type: 'Data Entry',
-  zhType: '数据录入',
-  cols: 2,
-  title: 'AutoComplete',
-  render() {
-    return (
-      <div>
-        <Md cn={md.cn} us={md.us} />
-        <demo-sort>
-          <Basic />
-          <CertainCategory />
-          <Custom />
-          <NonCaseSensitive />
-          <Options />
-          <UncertainCategory />
-        </demo-sort>
-        <api vSlots={{ cn: () => <CN /> }}>
-          <US />
-        </api>
-      </div>
-    );
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  CN,
+  US,
+  components: {
+    Basic,
+    Options,
+    Custom,
+    NonCaseSensitive,
+    CertainCategory,
+    UncertainCategory
   },
-};
+  setup() {
+    return {};
+  },
+});
 </script>

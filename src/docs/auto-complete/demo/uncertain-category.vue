@@ -1,14 +1,20 @@
-<cn>
-#### 查询模式 - 不确定类目
-查询模式 - 不确定类目
-</cn>
+<docs>
+---
+order: 5
+title:
+  zh-CN: 查询模式 - 不确定类目
+  en-US: Lookup-Patterns - Uncertain Category
+---
 
-<us>
-#### Lookup-Patterns - Uncertain Category
-Lookup-Patterns - Uncertain Category
-</us>
+## zh-CN
 
-```vue
+查询模式 - 不确定类目。
+
+## en-US
+
+Lookup-Patterns - Uncertain Category.
+</docs>
+
 <template>
   <div class="global-search-wrapper" style="width: 300px">
     <a-auto-complete
@@ -48,7 +54,8 @@ Lookup-Patterns - Uncertain Category
     </a-auto-complete>
   </div>
 </template>
-<script>
+
+<script lang="ts">
 import { SearchOutlined } from '@ant-design/icons-vue';
 
 export default {
@@ -124,4 +131,3 @@ export default {
   flex: none;
 }
 </style>
-```

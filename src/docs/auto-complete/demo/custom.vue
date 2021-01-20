@@ -1,14 +1,20 @@
-<cn>
-#### 自定义输入组件
+<docs>
+---
+order: 2
+title:
+  zh-CN: 自定义输入组件
+  en-US: Customize Input Component
+---
+
+## zh-CN
+
 自定义输入组件。
-</cn>
 
-<us>
-#### Customize Input Component
-Customize Input Component
-</us>
+## en-US
 
-```vue
+Customize Input Component.
+</docs>
+
 <template>
   <a-auto-complete
     v-model:value="value"
@@ -25,7 +31,8 @@ Customize Input Component
     />
   </a-auto-complete>
 </template>
-<script>
+
+<script lang="ts">
 export default {
   data() {
     return {
@@ -48,4 +55,3 @@ export default {
   },
 };
 </script>
-```

@@ -1,14 +1,20 @@
-<cn>
-#### 不区分大小写
-不区分大小写的 AutoComplete
-</cn>
+<docs>
+---
+order: 3
+title:
+  zh-CN: 不区分大小写
+  en-US: Non-case-sensitive AutoComplete
+---
 
-<us>
-#### Non-case-sensitive AutoComplete
-A non-case-sensitive AutoComplete
-</us>
+## zh-CN
 
-```vue
+不区分大小写的 AutoComplete。
+
+## en-US
+
+A non-case-sensitive AutoComplete.
+</docs>
+
 <template>
   <a-auto-complete
     v-model:value="value"
@@ -18,7 +24,8 @@ A non-case-sensitive AutoComplete
     :filter-option="filterOption"
   />
 </template>
-<script>
+
+<script lang="ts">
 export default {
   data() {
     return {
@@ -33,4 +40,3 @@ export default {
   },
 };
 </script>
-```

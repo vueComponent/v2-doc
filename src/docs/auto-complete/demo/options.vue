@@ -1,14 +1,20 @@
-<cn>
-#### 自定义选项
-也可以直接传递 #dataSource 的Option
-</cn>
+<docs>
+---
+order: 1
+title:
+  zh-CN: 自定义选项
+  en-US: Customized
+---
 
-<us>
-#### Customized
-You could pass `#dataSource` as children of `AutoComplete`, instead of using `dataSource`。
-</us>
+## zh-CN
 
-```vue
+也可以直接传递 #dataSource 的Option。
+
+## en-US
+
+You could pass `#dataSource` as children of `AutoComplete`, instead of using `dataSource`.
+</docs>
+
 <template>
   <a-auto-complete
     v-model:value="value"
@@ -23,7 +29,8 @@ You could pass `#dataSource` as children of `AutoComplete`, instead of using `da
     </template>
   </a-auto-complete>
 </template>
-<script>
+
+<script lang="ts">
 export default {
   data() {
     return {
@@ -44,4 +51,3 @@ export default {
   },
 };
 </script>
-```
