@@ -39,7 +39,7 @@ The count will be animated as it changes.
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons-vue';
-export default {
+export default defineComponent({
   components: {
     MinusOutlined,
     PlusOutlined,
@@ -48,19 +48,19 @@ export default {
     const count = ref<number>(5);
     const decline = () => {
       if (count.value >= 1) {
-        count.value--
+        count.value--;
       }
-    }
+    };
 
     const increase = () => {
-      count.value++
-    }
+      count.value++;
+    };
     return {
       count,
       show: ref<boolean>(true),
       decline,
-      increase
-    }
-  }
-};
+      increase,
+    };
+  },
+});
 </script>
