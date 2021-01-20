@@ -1,16 +1,22 @@
-<cn>
-#### 监听锚点链接改变
-监听锚点链接改变
-</cn>
+<docs>
+---
+order: 3
+title:
+  zh-CN: 自定义锚点高亮
+  en-US: Customize the anchor highlight
+---
 
-<us>
-#### Listening for anchor link change
-Listening for anchor link change.
-</us>
+## zh-CN
 
-```vue
+自定义锚点高亮。
+
+## en-US
+
+Customize the anchor highlight.
+</docs>
+
 <template>
-  <a-anchor :affix="false" @change="onChange">
+  <a-anchor :affix="false" :get-current-anchor="getCurrentAnchor">
     <a-anchor-link href="#components-anchor-demo-basic" title="Basic demo" />
     <a-anchor-link href="#components-anchor-demo-static" title="Static demo" />
     <a-anchor-link href="#API" title="API">
@@ -19,13 +25,13 @@ Listening for anchor link change.
     </a-anchor-link>
   </a-anchor>
 </template>
-<script>
+
+<script lang="ts">
 export default {
   methods: {
-    onChange(link) {
-      console.log('Anchor:OnChange', link);
+    getCurrentAnchor() {
+      return '#components-anchor-demo-static';
     },
   },
 };
 </script>
-```

@@ -1,14 +1,20 @@
-<cn>
-#### 基本
+<docs>
+---
+order: 0
+title:
+  zh-CN: 基本
+  en-US: basic
+---
+
+## zh-CN
+
 最简单的用法。
-</cn>
 
-<us>
-#### basic
+## en-US
+
 The simplest usage.
-</us>
+</docs>
 
-```vue
 <template>
   <a-anchor>
     <a-anchor-link href="#components-anchor-demo-basic" title="Basic demo" />
@@ -24,4 +30,3 @@ The simplest usage.
     </a-anchor-link>
   </a-anchor>
 </template>
-```

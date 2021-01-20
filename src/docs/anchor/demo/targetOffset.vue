@@ -1,16 +1,22 @@
-<cn>
-#### 自定义 click 事件
-点击锚点不记录历史。
-</cn>
+<docs>
+---
+order: 4
+title:
+  zh-CN: 设置锚点滚动偏移量
+  en-US: Set Anchor scroll offset
+---
 
-<us>
-#### Customize the click event
-Clicking on an anchor does not record history.
-</us>
+## zh-CN
 
-```vue
+锚点目标滚动到屏幕正中间。
+
+## en-US
+
+Anchor target scroll to screen center.
+</docs>
+
 <template>
-  <a-anchor :affix="false" @click="handleClick">
+  <a-anchor :target-offset="targetOffset">
     <a-anchor-link href="#components-anchor-demo-basic" title="Basic demo" />
     <a-anchor-link href="#components-anchor-demo-static" title="Static demo" />
     <a-anchor-link href="#API" title="API">
@@ -19,14 +25,16 @@ Clicking on an anchor does not record history.
     </a-anchor-link>
   </a-anchor>
 </template>
-<script>
+
+<script lang="ts">
 export default {
-  methods: {
-    handleClick(e, link) {
-      e.preventDefault();
-      console.log(link);
-    },
+  data() {
+    return {
+      targetOffset: undefined,
+    };
+  },
+  mounted() {
+    this.targetOffset = window.innerHeight / 2;
   },
 };
 </script>
-```

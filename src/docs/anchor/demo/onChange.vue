@@ -1,16 +1,22 @@
-<cn>
-#### 静态位置
-不浮动，状态不随页面滚动变化。
-</cn>
+<docs>
+---
+order: 5
+title:
+  zh-CN: 监听锚点链接改变
+  en-US: Listening for anchor link change
+---
 
-<us>
-#### Static
-Do not change state when page is scrolling.
-</us>
+## zh-CN
 
-```vue
+监听锚点链接改变。
+
+## en-US
+
+Listening for anchor link change.
+</docs>
+
 <template>
-  <a-anchor :affix="false">
+  <a-anchor :affix="false" @change="onChange">
     <a-anchor-link href="#components-anchor-demo-basic" title="Basic demo" />
     <a-anchor-link href="#components-anchor-demo-static" title="Static demo" />
     <a-anchor-link href="#API" title="API">
@@ -19,4 +25,13 @@ Do not change state when page is scrolling.
     </a-anchor-link>
   </a-anchor>
 </template>
-```
+
+<script lang="ts">
+export default {
+  methods: {
+    onChange(link) {
+      console.log('Anchor:OnChange', link);
+    },
+  },
+};
+</script>
