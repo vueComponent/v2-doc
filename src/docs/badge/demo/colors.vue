@@ -1,26 +1,29 @@
-<cn>
-#### 多彩徽标
+<docs>
+---
+order: 7
+title: 
+  zh-CN: 多彩徽标
+  en-US: Colorful Badge
+---
+
+## zh-CN
+
 1.5.0 后新增。我们添加了多种预设色彩的徽标样式，用作不同场景使用。如果预设值不能满足你的需求，可以设置为具体的色值。
-</cn>
 
-<us>
-#### Colorful Badge
+## en-US
+
 New feature after 3.16.0. We preset a series of colorful Badge styles for use in different situations. You can also set it to a hex color string for custom color.
-</us>
 
-```vue
+</docs>
+
 <template>
-  <h4 style="margin-bottom: 16px">
-    Presets:
-  </h4>
+  <h4 style="margin-bottom: 16px">Presets:</h4>
   <div>
     <div v-for="color in colors" :key="color">
       <a-badge :color="color" :text="color" />
     </div>
   </div>
-  <h4 style="margin: 16px 0">
-    Custom:
-  </h4>
+  <h4 style="margin: 16px 0">Custom:</h4>
   <div>
     <a-badge color="#f50" text="#f50" />
     <br />
@@ -31,7 +34,9 @@ New feature after 3.16.0. We preset a series of colorful Badge styles for use in
     <a-badge color="#108ee9" text="#108ee9" />
   </div>
 </template>
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
+
 const colors = [
   'pink',
   'red',
@@ -47,12 +52,11 @@ const colors = [
   'gold',
   'lime',
 ];
-export default {
-  data() {
+export default defineComponent({
+  setup() {
     return {
       colors,
     };
   },
-};
+});
 </script>
-```
