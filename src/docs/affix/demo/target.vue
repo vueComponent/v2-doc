@@ -1,21 +1,26 @@
-<cn>
-#### 滚动容器
+<docs>
+---
+order: 2
+title:
+  zh-CN: 滚动容器
+  en-US: Container to scroll.
+---
+
+## zh-CN
+
 用 `target` 设置 `Affix` 需要监听其滚动事件的元素，默认为 `window`。
-</cn>
 
-<us>
-#### Container to scroll.
+## en-US
+
 Set a `target` for 'Affix', which is listen to scroll event of target element (default is `window`).
-</us>
 
-```vue
+</docs>
+
 <template>
   <div id="components-affix-demo-target" ref="container" class="scrollable-container">
     <div class="background">
       <a-affix :target="() => this.$refs.container">
-        <a-button type="primary">
-          Fixed at the top of container
-        </a-button>
+        <a-button type="primary">Fixed at the top of container</a-button>
       </a-affix>
     </div>
   </div>
@@ -31,4 +36,3 @@ Set a `target` for 'Affix', which is listen to scroll event of target element (d
   background-image: url('https://zos.alipayobjects.com/rmsportal/RmjwQiJorKyobvI.jpg');
 }
 </style>
-```

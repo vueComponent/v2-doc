@@ -1,3 +1,18 @@
+---
+category: Components
+type: Navigation
+title: Affix
+cover: https://gw.alipayobjects.com/zos/alicdn/tX6-md4H6/Affix.svg
+---
+
+Wrap Affix around another component to make it stick the viewport.
+
+## When To Use
+
+On longer web pages, its helpful for some content to stick to the viewport. This is common for menus and actions.
+
+Please note that Affix should not cover other content on the page, especially when the size of the viewport is small.
+
 ## API
 
 | Property | Description | Type | Default | Version |
