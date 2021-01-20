@@ -1,44 +1,39 @@
-<script>
-import Basic from './basic';
-import Badge from './badge';
-import Type from './type';
-import Dynamic from './dynamic';
+<template>
+  <demo-sort>
+    <basic />
+    <type />
+    <dynamic />
+    <badge />
+  </demo-sort>
+</template>
+
+<script lang="ts">
+import Basic from './basic.vue';
+import Type from './type.vue';
+import Dynamic from './dynamic.vue';
+import Badge from './badge.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
+import { defineComponent } from 'vue';
 
-const md = {
-  cn: `# Avatar头像
-          用来代表用户或事物，支持图片、图标或字符展示。
-          ## 设计师专属
-安装 [Kitchen Sketch 插件 �](https://kitchen.alipay.com)，一键填充高逼格头像和文本.
-
-          ## 代码演示`,
-  us: `# Avatar
-          Avatars can be used to represent people or objects. It supports images, 'Icon's, or letters.
-          ## Examples
-          `,
-};
-export default {
-  category: 'Components',
-  subtitle: '头像',
-  type: 'Data Display',
-  zhType: '数据展示',
-  title: 'Avatar',
-  render() {
-    return (
-      <div>
-        <Md cn={md.cn} us={md.us} />
-        <demo-sort>
-          <Basic />
-          <Badge />
-          <Type />
-          <Dynamic />
-        </demo-sort>
-        <api vSlots={{ cn: () => <CN /> }}>
-          <US />
-        </api>
-      </div>
-    );
+export default defineComponent({
+  CN,
+  US,
+  components: {
+    Basic,
+    Type,
+    Dynamic,
+    Badge
   },
-};
+  setup() {
+    return {};
+  },
+});
 </script>
+
+<style>
+[id^='components-avatar-demo-'] .ant-avatar {
+  margin-top: 16px;
+  margin-right: 16px;
+}
+</style>
