@@ -1,14 +1,21 @@
-<cn>
-#### 图标
+<docs>
+---
+order: 4
+title:
+  zh-CN: 图标
+  en-US: Icon
+---
+
+## zh-CN
+
 可口的图标让信息类型更加醒目。
-</cn>
 
-<us>
-#### Icon
+## en-US
+
 Decent icon make information more clear and more friendly.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-alert message="Success Tips" type="success" show-icon />
   <a-alert message="Informational Notes" type="info" show-icon />
@@ -39,4 +46,3 @@ Decent icon make information more clear and more friendly.
     show-icon
   />
 </template>
-```

@@ -1,14 +1,21 @@
-<cn>
-#### 自定义图标
-自定义图标让信息类型更加醒目。
-</cn>
+<docs>
+---
+order: 7
+title:
+  zh-CN: 自定义图标
+  en-US: Custom Icon
+---
 
-<us>
-#### Custom Icon
+## zh-CN
+
+可以自定义关闭，自定义的文字会替换原先的关闭 `Icon`。
+
+## en-US
+
 Custom Icon make information more clear and more friendly.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-alert message="showIcon = false" type="success">
     <template #icon><smile-outlined /></template>
@@ -59,12 +66,12 @@ Custom Icon make information more clear and more friendly.
   </a-alert>
 </template>
 
-<script>
+<script lang="ts">
 import { SmileOutlined } from '@ant-design/icons-vue';
-export default {
+import { defineComponent } from 'vue';
+export default defineComponent({
   components: {
     SmileOutlined,
   },
-};
+});
 </script>
-```

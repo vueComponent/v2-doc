@@ -1,14 +1,21 @@
-<cn>
-#### 顶部公告
-页面顶部通告形式，默认有图标且`type` 为 'warning'。
-</cn>
+<docs>
+---
+order: 6
+title:
+  zh-CN: 顶部公告
+  en-US: Banner
+---
 
-<us>
-#### Banner
+## zh-CN
+
+最简单的用法，适用于简短的警告提示。
+
+## en-US
+
 Display Alert as a banner at top of page.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-alert message="Warning text" banner />
   <br />
@@ -22,4 +29,3 @@ Display Alert as a banner at top of page.
   <br />
   <a-alert type="error" message="Error text" banner />
 </template>
-```

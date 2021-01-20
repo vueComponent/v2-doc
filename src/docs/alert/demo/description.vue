@@ -1,14 +1,21 @@
-<cn>
-#### 含有辅助性文字介绍
+<docs>
+---
+order: 3
+title:
+  zh-CN: 含有辅助性文字介绍
+  en-US: Description
+---
+
+## zh-CN
+
 含有辅助性文字介绍的警告提示。
-</cn>
 
-<us>
-#### Description
+## en-US
+
 Additional description for alert message.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-alert message="Success Text" type="success">
     <template #description>
@@ -33,4 +40,3 @@ Additional description for alert message.
     type="error"
   />
 </template>
-```

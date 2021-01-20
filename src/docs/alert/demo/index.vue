@@ -1,62 +1,50 @@
+<template>
+  <demo-sort>
+    <basic />
+    <four-style />
+    <closable />
+    <description />
+    <icon />
+    <close-text />
+    <banner />
+    <custom-icon />
+    <smooth-closed />
+  </demo-sort>
+</template>
 <script>
-import Banner from './banner';
-import Basic from './basic';
-import Closable from './closable';
-import CloseText from './close-text';
-import Description from './description';
-import Icon from './icon';
-import Style from './style';
-import SmoothClosed from './smooth-closed';
-import CustomIcon from './custom-icon';
-
+import Banner from './banner.vue';
+import Basic from './basic.vue';
+import Closable from './closable.vue';
+import CloseText from './close-text.vue';
+import Description from './description.vue';
+import Icon from './icon.vue';
+import Style from './style.vue';
+import SmoothClosed from './smooth-closed.vue';
+import CustomIcon from './custom-icon.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
-const md = {
-  cn: `# Alert 警告提示
-          警告提示，展现需要关注的信息。
-## 何时使用
-- 当某个页面需要向用户显示警告的信息时。
-- 非浮层的静态展现形式，始终展现，不会自动消失，用户可以点击关闭。
-          ## 代码演示`,
-  us: `# Alert
-          Alert component for feedback.
-## When To Use
-- When you need to show alert messages to users.
-- When you need a persistent static container which is closable by user actions.
-## Examples
-`,
-};
-export default {
-  category: 'Components',
-  subtitle: '警告提示',
-  type: 'Feedback',
-  zhType: '反馈',
-  title: 'Alert',
-  render() {
-    return (
-      <div id="components-alert-demo">
-        <Md cn={md.cn} us={md.us} />
-        <demo-sort>
-          <Banner />
-          <Basic />
-          <Closable />
-          <CloseText />
-          <Description />
-          <Icon />
-          <Style />
-          <SmoothClosed />
-          <CustomIcon />
-        </demo-sort>
-        <api vSlots={{ cn: () => <CN /> }}>
-          <US />
-        </api>
-      </div>
-    );
+import { defineComponent } from 'vue';
+export default defineComponent({
+  CN,
+  US,
+  components: {
+    Basic,
+    Banner,
+    Closable,
+    CloseText,
+    Description,
+    Icon,
+    FourStyle: Style, //style 标签报错
+    SmoothClosed,
+    CustomIcon,
   },
-};
+  setup() {
+    return {};
+  },
+});
 </script>
 <style>
-#components-alert-demo .ant-alert {
+[id^='components-alert-demo'] .ant-alert {
   margin-bottom: 16px;
 }
 </style>
