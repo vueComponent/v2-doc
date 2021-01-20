@@ -1,3 +1,19 @@
+---
+category: Components
+subtitle: 面包屑
+type: 导航
+title: Breadcrumb
+cover: https://gw.alipayobjects.com/zos/alicdn/9Ltop8JwH/Breadcrumb.svg
+---
+
+显示当前页面在系统层级结构中的位置，并能向上返回。
+
+## 何时使用
+
+- 当系统拥有超过两级以上的层级结构时；
+- 当需要告知用户『你在哪里』时；
+- 当需要向上导航的功能时。
+
 ## API
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
@@ -20,11 +36,11 @@
 | -------- | -------- | -------------------- | ---- |
 | click    | 单击事件 | (e:MouseEvent)=>void | -    | 1.5.0 |
 
-### Breadcrumb.Separator `3.21.0`
+### Breadcrumb.Separator `1.5.0`
 
-| 参数 | 参数 | 类型 | 默认值 | 版本 |
-| ---- | ---- | ---- | ------ | ---- |
-
+| 参数 | 类型 | 默认值 | 版本 |
+| ---- | ---- | ------ | ---- |
+| - | - | - | - |
 
 > 注意：在使用 `Breadcrumb.Separator` 时，其父组件的分隔符必须设置为 `separator=""`，否则会出现父组件默认的分隔符。
 
@@ -34,7 +50,7 @@
 interface Route {
   path: string;
   breadcrumbName: string;
-  children: Array<{
+  children?: Array<{
     path: string;
     breadcrumbName: string;
   }>;
@@ -58,40 +74,50 @@ interface Route {
     </template>
   </a-breadcrumb>
 </template>
-<script>
-  export default {
-    data() {
-      return {
-        routes: [
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+interface Route {
+  path: string;
+  breadcrumbName: string;
+  children?: Array<{
+    path: string;
+    breadcrumbName: string;
+  }>;
+}
+export default defineComponent({
+  setup () {
+    const routes = ref<Route[]>([
+      {
+        path: 'index',
+        breadcrumbName: 'home',
+      },
+      {
+        path: 'first',
+        breadcrumbName: 'first',
+        children: [
           {
-            path: 'index',
-            breadcrumbName: 'home',
+            path: '/general',
+            breadcrumbName: 'General',
           },
           {
-            path: 'first',
-            breadcrumbName: 'first',
-            children: [
-              {
-                path: '/general',
-                breadcrumbName: 'General',
-              },
-              {
-                path: '/layout',
-                breadcrumbName: 'Layout',
-              },
-              {
-                path: '/navigation',
-                breadcrumbName: 'Navigation',
-              },
-            ],
+            path: '/layout',
+            breadcrumbName: 'Layout',
           },
           {
-            path: 'second',
-            breadcrumbName: 'second',
+            path: '/navigation',
+            breadcrumbName: 'Navigation',
           },
         ],
-      };
-    },
-  };
+      },
+      {
+        path: 'second',
+        breadcrumbName: 'second',
+      },
+    ]);
+    return {
+      routes,
+    }
+  }
+});
 </script>
 ```

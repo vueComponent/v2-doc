@@ -1,14 +1,21 @@
-<cn>
-  #### 基本
-  最简单的用法
-</cn>
+<docs>
+---
+order: 0
+title:
+  zh-CN: 基本
+  en-US: Basic Usage
+---
 
-<us>
-  #### Basic usage 
-  The simplest use
-</us>
+## zh-CN
 
-```vue
+最简单的用法。
+
+## en-US
+
+The simplest use.
+
+</docs>
+
 <template>
   <a-breadcrumb>
     <a-breadcrumb-item>Home</a-breadcrumb-item>
@@ -17,4 +24,3 @@
     <a-breadcrumb-item>An Application</a-breadcrumb-item>
   </a-breadcrumb>
 </template>
-```
