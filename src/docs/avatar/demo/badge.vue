@@ -32,7 +32,7 @@ Usually used for reminders and notifications.
   </span>
 </template>
 
-<script>
+<script lang="ts">
 import { UserOutlined } from '@ant-design/icons-vue';
 export default {
   components: {

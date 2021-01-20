@@ -13,7 +13,6 @@ title:
 ## en-US
 
 Three sizes and two shapes are available.
-
 </docs>
 
 <template>
@@ -43,7 +42,8 @@ Three sizes and two shapes are available.
     <template #icon><UserOutlined /></template>
   </a-avatar>
 </template>
-<script>
+
+<script lang="ts">
 import { UserOutlined } from '@ant-design/icons-vue';
 export default {
   components: {

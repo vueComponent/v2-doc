@@ -13,7 +13,6 @@ title:
 ## en-US
 
 Image, Icon and letter are supported, and the latter two kinds avatar can have custom colors and background colors.
-
 </docs>
 
 <template>
@@ -32,7 +31,8 @@ Image, Icon and letter are supported, and the latter two kinds avatar can have c
     </template>
   </a-avatar>
 </template>
-<script>
+
+<script lang="ts">
 import { UserOutlined } from '@ant-design/icons-vue';
 export default {
   components: {

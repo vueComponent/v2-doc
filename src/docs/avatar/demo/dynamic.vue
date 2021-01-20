@@ -31,7 +31,8 @@ For letter type Avatar, when the letters are too long to display, the font size 
     改变
   </a-button>
 </template>
-<script>
+
+<script lang="ts">
 const UserList = ['U', 'Lucy', 'Tom', 'Edward'];
 const colorList = ['#f56a00', '#7265e6', '#ffbf00', '#00a2ae'];
 export default {
@@ -50,4 +51,3 @@ export default {
   },
 };
 </script>
-
