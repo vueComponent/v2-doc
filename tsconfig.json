@@ -9,6 +9,7 @@
     "sourceMap": true,
     "baseUrl": "./",
     "resolveJsonModule": true,
+    "strict": true,
     "types": ["node"],
     "paths": {
       "@/*": ["src/*"]
