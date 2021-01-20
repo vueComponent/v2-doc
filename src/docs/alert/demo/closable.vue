@@ -35,10 +35,13 @@ To show close button.
 <script lang="ts">
 import { defineComponent } from 'vue';
 export default defineComponent({
-  methods: {
-    onClose(e: MouseEvent) {
+  setup() {
+    const onClose = (e: MouseEvent) => {
       console.log(e, 'I was closed.');
-    },
+    };
+    return {
+      onClose,
+    };
   },
 });
 </script>

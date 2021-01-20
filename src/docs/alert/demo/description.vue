@@ -20,7 +20,9 @@ Additional description for alert message.
   <a-alert message="Success Text" type="success">
     <template #description>
       <p>
-        Success Description <span style="color: red">Success</span> Description Success Description
+        Success Description
+        <span style="color: red">Success</span>
+        Description Success Description
       </p>
     </template>
   </a-alert>

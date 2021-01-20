@@ -31,12 +31,12 @@ export default defineComponent({
   setup() {
     const visible = ref(true);
     const handleClose = () => {
-      visible.value = false
-    }
+      visible.value = false;
+    };
     return {
       visible,
-      handleClose
-    }
-  }
+      handleClose,
+    };
+  },
 });
 </script>

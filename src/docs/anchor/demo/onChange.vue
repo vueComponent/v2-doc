@@ -27,11 +27,16 @@ Listening for anchor link change.
 </template>
 
 <script lang="ts">
-export default {
-  methods: {
-    onChange(link) {
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const onChange = (link: string) => {
       console.log('Anchor:OnChange', link);
-    },
+    };
+    return {
+      onChange,
+    };
   },
-};
+});
 </script>

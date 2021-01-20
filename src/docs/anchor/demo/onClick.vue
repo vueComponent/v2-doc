@@ -27,12 +27,17 @@ Clicking on an anchor does not record history.
 </template>
 
 <script lang="ts">
-export default {
-  methods: {
-    handleClick(e, link) {
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const handleClick = (e: Event, link: string) => {
       e.preventDefault();
       console.log(link);
-    },
+    };
+    return {
+      handleClick,
+    };
   },
-};
+});
 </script>
