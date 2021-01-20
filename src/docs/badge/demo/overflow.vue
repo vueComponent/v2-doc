@@ -1,14 +1,21 @@
-<cn>
-#### 封顶数字
+<docs>
+---
+order: 2
+title: 
+  zh-CN: 封顶数字
+  en-US: Overflow Count
+---
+
+## zh-CN
+
 超过 `overflowCount` 的会显示为 `${overflowCount}+`，默认的 `overflowCount` 为 `99`。
-</cn>
 
-<us>
-#### Overflow Count
+## en-US
+
 `${overflowCount}+` is displayed when count is larger than `overflowCount`. The default value of `overflowCount` is `99`.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-badge :count="99">
     <a href="#" class="head-example" />
@@ -23,4 +30,3 @@
     <a href="#" class="head-example" />
   </a-badge>
 </template>
-```

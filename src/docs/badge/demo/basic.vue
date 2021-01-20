@@ -1,14 +1,20 @@
-<cn>
-#### 基本
+<docs>
+---
+order: 0
+title: 
+  zh-CN: 基本
+  en-US: Basic
+---
+
+## zh-CN
+
 简单的徽章展示，当 `count` 为 `0` 时，默认不显示，但是可以使用 `showZero` 修改为显示。
-</cn>
 
-<us>
-#### basic
+## en-US
+
 Simplest Usage. Badge will be hidden when `count` is `0`, but we can use `showZero` to show it.
-</us>
 
-```vue
+</docs>
 <template>
   <a-badge count="5">
     <a href="#" class="head-example" />
@@ -24,12 +30,12 @@ Simplest Usage. Badge will be hidden when `count` is `0`, but we can use `showZe
   </a-badge>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import { ClockCircleOutlined } from '@ant-design/icons-vue';
-export default {
+export default defineComponent({
   components: {
     ClockCircleOutlined,
   },
-};
+});
 </script>
-```

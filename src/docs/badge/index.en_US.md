@@ -1,3 +1,16 @@
+---
+category: Components
+type: Data Display
+title: Badge
+cover: https://gw.alipayobjects.com/zos/alicdn/fNUKzY1sk/Button.svg
+---
+
+Small numerical value or status descriptor for UI elements.
+
+## When To Use
+
+Badge normally appears in proximity to notifications or user avatars with eye-catching appeal, typically displaying unread messages count.
+
 ## API
 
 ```html

@@ -1,14 +1,20 @@
-<cn>
-#### 动态
-  展示动态变化的效果。
-</cn>
+<docs>
+---
+order: 5
+title: 
+  zh-CN: 动态
+  en-US: Dynamic
+---
 
-<us>
-#### Dynamic
-  The count will be animated as it changes.
-</us>
+## zh-CN
 
-```vue
+展示动态变化的效果。
+
+# en-US
+  
+The count will be animated as it changes.
+</docs>
+
 <template>
   <div>
     <a-badge :count="count">
@@ -30,31 +36,31 @@
     <a-switch v-model:checked="show" />
   </div>
 </template>
-<script>
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons-vue';
 export default {
   components: {
     MinusOutlined,
     PlusOutlined,
   },
-  data() {
-    return {
-      count: 5,
-      show: true,
-    };
-  },
-  methods: {
-    decline() {
-      let count = this.count - 1;
-      if (count < 0) {
-        count = 0;
+  setup() {
+    const count = ref<number>(5);
+    const decline = () => {
+      if (count.value >= 1) {
+        count.value--
       }
-      this.count = count;
-    },
-    increase() {
-      this.count++;
-    },
-  },
+    }
+
+    const increase = () => {
+      count.value++
+    }
+    return {
+      count,
+      show: ref<boolean>(true),
+      decline,
+      increase
+    }
+  }
 };
 </script>
-```

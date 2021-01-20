@@ -1,14 +1,20 @@
-<cn>
-#### 状态点
-  用于表示状态的小圆点。
-</cn>
+<docs>
+---
+order: 4
+title: 
+  zh-CN: 状态点
+  en-US: Status
+---
 
-<us>
-#### Status
-  Standalone badge with status.
-</us>
+## zh-CN
 
-```vue
+用于表示状态的小圆点。
+
+## en-US
+
+Standalone badge with status.
+</docs>
+
 <template>
   <a-badge status="success" />
   <a-badge status="error" />
@@ -26,4 +32,3 @@
   <br />
   <a-badge status="warning" text="warning" />
 </template>
-```
