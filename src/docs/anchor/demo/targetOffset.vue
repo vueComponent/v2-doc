@@ -31,7 +31,7 @@ import { defineComponent, onMounted, ref } from 'vue';
 
 export default defineComponent({
   setup() {
-    const targetOffset = ref(undefined);
+    const targetOffset = ref<number | undefined>(undefined);
     onMounted(() => {
       targetOffset.value = window.innerHeight / 2;
     });

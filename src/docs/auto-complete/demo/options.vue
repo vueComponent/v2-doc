@@ -36,13 +36,13 @@ import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
     const value = ref('');
-    const result = ref([]);
-    const handleSearch = value => {
-      let res;
-      if (!value || value.indexOf('@') >= 0) {
+    const result = ref<string[]>([]);
+    const handleSearch = (val: string) => {
+      let res: string[];
+      if (!val || val.indexOf('@') >= 0) {
         res = [];
       } else {
-        res = ['gmail.com', '163.com', 'qq.com'].map(domain => `${value}@${domain}`);
+        res = ['gmail.com', '163.com', 'qq.com'].map(domain => `${val}@${domain}`);
       }
       result.value = res;
     };

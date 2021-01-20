@@ -46,20 +46,24 @@ Lookup-Patterns - Uncertain Category.
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-
+interface Option {
+  query: string;
+  category: string;
+  count: number;
+}
 export default defineComponent({
   setup() {
     const value = ref('');
-    const dataSource = ref([]);
-    const onSelect = value => {
+    const dataSource = ref<Option[]>([]);
+    const onSelect = (value: string) => {
       console.log('onSelect', value);
     };
 
-    const getRandomInt = (max, min = 0) => {
+    const getRandomInt = (max: number, min = 0) => {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     };
 
-    const searchResult = query => {
+    const searchResult = (query: string): Option[] => {
       return new Array(getRandomInt(5))
         .join('.')
         .split('.')
@@ -69,7 +73,7 @@ export default defineComponent({
           count: getRandomInt(200, 100),
         }));
     };
-    const handleSearch = val => {
+    const handleSearch = (val: string) => {
       dataSource.value = val ? searchResult(val) : [];
     };
     return {

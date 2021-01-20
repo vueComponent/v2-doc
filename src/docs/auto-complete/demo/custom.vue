@@ -37,16 +37,16 @@ import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
     const value = ref('');
-    const options = ref([]);
-    const onSelect = value => {
+    const options = ref<{ value: string }[]>([]);
+    const onSelect = (value: string) => {
       console.log('onSelect', value);
     };
-    const handleSearch = value => {
+    const handleSearch = (value: string) => {
       options.value = !value
         ? []
         : [{ value }, { value: value + value }, { value: value + value + value }];
     };
-    const handleKeyPress = ev => {
+    const handleKeyPress = (ev: KeyboardEvent) => {
       console.log('handleKeyPress', ev);
     };
     return {

@@ -19,7 +19,7 @@ Used together with `vue-router`
 <template>
   <div>
     <a-breadcrumb :routes="routes">
-      <template #itemRender="{ route, params, routes, paths }">
+      <template #itemRender="{ route, routes, paths }">
         <span v-if="routes.indexOf(route) === routes.length - 1">
           {{ route.breadcrumbName }}
         </span>

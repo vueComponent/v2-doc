@@ -30,7 +30,10 @@ Basic Usage, set datasource of autocomplete with `options` property.
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue';
 
-const mockVal = (str, repeat = 1) => {
+interface MockVal {
+  value: string;
+}
+const mockVal = (str: string, repeat = 1): MockVal => {
   return {
     value: str.repeat(repeat),
   };
@@ -38,7 +41,7 @@ const mockVal = (str, repeat = 1) => {
 export default defineComponent({
   setup() {
     const value = ref('');
-    const options = ref([]);
+    const options = ref<MockVal[]>([]);
     const onSearch = (searchText: string) => {
       console.log('searchText');
       options.value = !searchText
