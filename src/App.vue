@@ -8,7 +8,7 @@ import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import useMediaQuery from './hooks/useMediaQuery';
 import { GLOBAL_CONFIG } from './SymbolKey';
-function isZhCN(name) {
+function isZhCN(name: string) {
   return /-cn\/?$/.test(name);
 }
 export interface GlobalConfig {
