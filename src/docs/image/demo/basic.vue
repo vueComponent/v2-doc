@@ -1,21 +1,28 @@
-<cn>
-#### 基本用法
+<docs>
+---
+order: 0
+title:
+  zh-CN: 基本用法
+  en-US: Basic usage
+---
+
+## zh-CN
+
 单击图像可以放大显示。
-</cn>
 
-<us>
-#### Basic usage
+## en-US
+
 Click the image to zoom in.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-image
     :width="200"
     src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
   />
 </template>
-<script>
-export default {};
+<script lang="ts">
+import { defineComponent } from 'vue';
+export default defineComponent({});
 </script>
-```

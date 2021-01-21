@@ -1,21 +1,26 @@
-<cn>
-#### 渐进加载
+<docs>
+---
+order: 1
+title:
+  zh-CN: 渐进加载
+  en-US: Progressive Loading
+---
+
+## zh-CN
+
 大图使用 placeholder 渐进加载。
-</cn>
 
-<us>
-#### Progressive Loading
+## en-US
+
 Progressive when large image loading.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-space :size="12">
     <a-image
       :width="200"
-      :src="
-        `https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?${random}`
-      "
+      :src="`https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?${random}`"
     >
       <template #placeholder>
         <a-image
@@ -25,19 +30,16 @@ Progressive when large image loading.
         />
       </template>
     </a-image>
-    <a-button type="primary" @click="random = Date.now()">
-      reload
-    </a-button>
+    <a-button type="primary" @click="random = Date.now()">reload</a-button>
   </a-space>
 </template>
-<script>
-import { ref } from 'vue';
-export default {
+<script lang="ts">
+import { ref, defineComponent } from 'vue';
+export default defineComponent({
   setup() {
     return {
       random: ref(Date.now()),
     };
   },
-};
+});
 </script>
-```

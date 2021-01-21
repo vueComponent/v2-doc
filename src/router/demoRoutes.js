@@ -253,6 +253,15 @@ export default [
   },
   {
     path: 'image:lang(.*)',
+    meta: {
+      category: 'Components',
+      type: '数据展示',
+      enType: 'Data Display',
+      title: 'Image',
+      enTitle: 'Image',
+      subtitle: '图片',
+      cover: 'https://gw.alipayobjects.com/zos/antfincdn/D1dXz9PZqa/image.svg',
+    },
     component: () => import('../docs/image/demo/index.vue'),
   },
   {

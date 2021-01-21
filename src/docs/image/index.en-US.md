@@ -1,3 +1,17 @@
+---
+category: Components
+type: Data Display
+title: Image
+cover: https://gw.alipayobjects.com/zos/antfincdn/D1dXz9PZqa/image.svg
+---
+
+Previewable image.
+
+## 何时使用
+
+- When you need to display pictures.
+- Display when loading a large image or fault tolerant handling when loading fail.
+
 ## API
 
 | Property | Description | Type | Default | Version |
@@ -16,7 +30,7 @@
 {
   visible?: boolean;
   onVisibleChange?: (visible, prevVisible) => void;
-  getContainer?: string | HTMLElement | (() => HTMLElement); // V4.8.0
+  getContainer?: string | HTMLElement | (() => HTMLElement);
 }
 ```
 

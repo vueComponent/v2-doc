@@ -1,3 +1,18 @@
+---
+category: Components
+type: 数据展示
+title: Image
+subtitle: 图片
+cover: https://gw.alipayobjects.com/zos/antfincdn/D1dXz9PZqa/image.svg
+---
+
+可预览的图片。
+
+## 何时使用
+
+- 需要展示图片时使用。
+- 加载大图时显示 loading 或加载失败时容错处理。
+
 ## API
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |

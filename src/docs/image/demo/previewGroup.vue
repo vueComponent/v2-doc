@@ -1,21 +1,28 @@
-<cn>
-#### 多张图片预览
+<docs>
+---
+order: 3
+title:
+  zh-CN: 多张图片预览
+  en-US: Multiple image preview
+---
+
+## zh-CN
+
 点击左右切换按钮可以预览多张图片。
-</cn>
 
-<us>
-#### Multiple image preview
+## en-US
+
 Click the left and right switch buttons to preview multiple images.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-image-preview-group>
     <a-image :width="200" src="https://qn.antdv.com/vue.png" />
     <a-image :width="200" src="https://qn.antdv.com/logo.png" />
   </a-image-preview-group>
 </template>
-<script>
-export default {};
+<script lang="ts">
+import { defineComponent } from 'vue';
+export default defineComponent({});
 </script>
-```
