@@ -8,6 +8,7 @@
     <Change />
     <Title />
     <Colors />
+    <Link />
   </demo-sort>
 </template>
 <script lang="ts">
@@ -19,6 +20,7 @@ import Overflow from './overflow.vue';
 import Status from './status.vue';
 import Title from './title.vue';
 import Colors from './colors.vue';
+import Link from './link.vue';
 import CN from './../index.zh-CN.md';
 import US from './../index.en_US.md';
 import { defineComponent } from 'vue';
@@ -35,6 +37,7 @@ export default defineComponent({
     Change,
     Title,
     Colors,
+    Link,
   },
 });
 </script>
