@@ -1,14 +1,21 @@
-<cn>
-  #### 支持更多内容配置
-  一种支持封面、头像、标题和描述信息的卡片。
-</cn>
+<docs>
+---
+order: 7
+title:
+  zh-CN: 支持更多内容配置
+  en-US: Support more content configuration
+---
 
-<us>
-  #### Support more content configuration
-  A Card that supports `cover`, `avatar`, `title` and `description`.
-</us>
+## zh-CN
 
-```vue
+一种支持封面、头像、标题和描述信息的卡片。
+
+## en-US
+
+A Card that supports `cover`, `avatar`, `title` and `description`.
+
+</docs>
+
 <template>
   <a-card hoverable style="width: 300px">
     <template #cover>
@@ -30,14 +37,14 @@
   </a-card>
 </template>
 
-<script>
+<script lang="ts">
 import { SettingOutlined, EditOutlined, EllipsisOutlined } from '@ant-design/icons-vue';
-export default {
+import { defineComponent } from 'vue';
+export default defineComponent({
   components: {
     SettingOutlined,
     EditOutlined,
     EllipsisOutlined,
   },
-};
+});
 </script>
-```

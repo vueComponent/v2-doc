@@ -1,3 +1,16 @@
+---
+category: Components
+type: Data Display
+title: Card
+cover: https://gw.alipayobjects.com/zos/antfincdn/NqXt8DJhky/Card.svg
+---
+
+Simple rectangular container.
+
+## When To Use
+
+A card can be used to display content related to a single subject. The content can consist of multiple elements of varying types and sizes.
+
 ## API
 
 ### Card
@@ -23,8 +36,8 @@
 ### events
 
 | Events Name | Description                   | Arguments     | Version |
-| ----------- | ----------------------------- | ------------- | ------- |
-| tabChange   | Callback when tab is switched | (key) => void | -       |  |
+| ----------- | ----------------------------- | ------------- | ------- | --- |
+| tabChange   | Callback when tab is switched | (key) => void | -       |     |
 
 ### Card.Grid
 

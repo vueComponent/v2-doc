@@ -1,14 +1,21 @@
-<cn>
-#### 简洁卡片
+<docs>
+---
+order: 8
+title:
+  zh-CN: 简洁卡片
+  en-US: Simple card
+---
+
+## zh-CN
+
 只包含内容区域。
-</cn>
 
-<us>
-#### Simple card
+## en-US
+
 A simple card only containing a content area.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-card style="width: 300px">
     <p>Card content</p>
@@ -16,4 +23,3 @@ A simple card only containing a content area.
     <p>Card content</p>
   </a-card>
 </template>
-```

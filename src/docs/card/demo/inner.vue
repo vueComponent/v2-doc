@@ -1,17 +1,24 @@
-<cn>
-  #### 内部卡片
-  可以放在普通卡片内部，展示多层级结构的信息
-</cn>
+<docs>
+---
+order: 5
+title:
+  zh-CN: 内部卡片
+  en-US: Inner card
+---
 
-<us>
-  #### Inner card
-  It can be placed inside the ordinary card to display the information of the multilevel structure
-</us>
+## zh-CN
 
-```vue
+可以放在普通卡片内部，展示多层级结构的信息
+
+## en-US
+
+It can be placed inside the ordinary card to display the information of the multilevel structure
+
+</docs>
+
 <template>
   <a-card title="Card title">
-    <p style="fontSize: 14px;color: rgba(0, 0, 0, 0.85); marginBottom: 16px;fontWeight: 500">
+    <p style="fontsize: 14px; color: rgba(0, 0, 0, 0.85); marginbottom: 16px; fontweight: 500">
       Group title
     </p>
     <a-card title="Inner card title">
@@ -28,4 +35,3 @@
     </a-card>
   </a-card>
 </template>
-```
