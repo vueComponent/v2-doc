@@ -1,3 +1,16 @@
+---
+category: Components
+type: Data Entry
+title: InputNumber
+cover: https://gw.alipayobjects.com/zos/alicdn/XOS8qZ0kU/InputNumber.svg
+---
+
+Enter a number within certain range with the mouse or keyboard.
+
+## When To Use
+
+When a numeric value needs to be provided.
+
 ## API
 
 | property | description | type | default |
@@ -18,7 +31,7 @@
 ### events
 
 | Events Name | Description | Arguments | Version |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | change | The callback triggered when the value is changed. | function(value: number \| string) |  |  |
 | pressEnter | The callback function that is triggered when Enter key is pressed. | function(e) |  | 1.5.0 |
 

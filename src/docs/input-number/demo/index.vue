@@ -1,46 +1,32 @@
-<script>
-import Basic from './basic.md';
-import Disabled from './disabled.md';
-import Digit from './digit.md';
-import Formatter from './formatter.md';
-import Size from './size.md';
+<template>
+  <demo-sort>
+    <basic />
+    <size />
+    <disabled />
+    <digit />
+    <formatter />
+  </demo-sort>
+</template>
+<script lang="ts">
+import Basic from './basic.vue';
+import Disabled from './disabled.vue';
+import Digit from './digit.vue';
+import Formatter from './formatter.vue';
+import Size from './size.vue';
+
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
+import { defineComponent } from 'vue';
 
-const md = {
-  cn: `# 数字输入框
-  通过鼠标或键盘，输入范围内的数值。
-  ## 何时使用
-  当需要获取标准数值时。
-        ## 代码演示`,
-  us: `# InputNumber
-  Enter a number within certain range with the mouse or keyboard.
-  ## When To Use
-  When a numeric value needs to be provided.
-  ## Examples
-  `,
-};
-export default {
-  category: 'Components',
-  subtitle: '数字输入框',
-  type: 'Data Entry',
-  title: 'InputNumber',
-  render() {
-    return (
-      <div>
-        <Md cn={md.cn} us={md.us} />
-        <demo-sort>
-          <Basic />
-          <Size />
-          <Disabled />
-          <Digit />
-          <Formatter />
-        </demo-sort>
-        <api vSlots={{ cn: () => <CN /> }}>
-          <US />
-        </api>
-      </div>
-    );
+export default defineComponent({
+  CN,
+  US,
+  components: {
+    Basic,
+    Disabled,
+    Digit,
+    Formatter,
+    Size,
   },
-};
+});
 </script>

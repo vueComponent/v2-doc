@@ -1,3 +1,17 @@
+---
+category: Components
+type: 数据录入
+title: InputNumber
+subtitle: 数字输入框
+cover: https://gw.alipayobjects.com/zos/alicdn/XOS8qZ0kU/InputNumber.svg
+---
+
+通过鼠标或键盘，输入范围内的数值。
+
+## 何时使用
+
+当需要获取标准数值时。
+
 ## API
 
 属性如下

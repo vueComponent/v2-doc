@@ -1,29 +1,38 @@
-<cn>
-#### 小数
+<docs>
+---
+order: 0
+title:
+  zh-CN: 小数
+  en-US: Decimals
+---
+
+## zh-CN
+
 和原生的数字输入框一样，value 的精度由 step 的小数位数决定。
-</cn>
 
-<us>
-#### Decimals
+## en-US
+
 A numeric-only input box whose values can be increased or decreased using a decimal step. The number of decimals (also known as precision) is determined by the step prop.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-input-number v-model:value="value" :min="0" :max="10" :step="0.1" @change="onChange" />
 </template>
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+  setup() {
+    const value = ref<number>();
+
+    const onChange = (value: number) => {
+      console.log('changed', value);
+    };
+
     return {
-      value: null,
+      value,
+      onChange,
     };
   },
-  methods: {
-    onChange(value) {
-      console.log('changed', value);
-    },
-  },
-};
+});
 </script>
-```
