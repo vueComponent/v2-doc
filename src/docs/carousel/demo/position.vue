@@ -1,28 +1,26 @@
-<cn>
-#### 位置
+<docs>
+---
+order: 1
+title:
+  zh-CN: 位置
+  en-US: Position
+---
+
+## zh-CN
+
 位置有 4 个方向。
-</cn>
 
-<us>
-#### Position
+## en-US
+
 There are 4 position options available.
-</us>
+</docs>
 
-```vue
 <template>
   <a-radio-group v-model:value="dotPosition" style="margin-bottom: 8px">
-    <a-radio-button value="top">
-      Top
-    </a-radio-button>
-    <a-radio-button value="bottom">
-      Bottom
-    </a-radio-button>
-    <a-radio-button value="left">
-      Left
-    </a-radio-button>
-    <a-radio-button value="right">
-      Right
-    </a-radio-button>
+    <a-radio-button value="top">Top</a-radio-button>
+    <a-radio-button value="bottom">Bottom</a-radio-button>
+    <a-radio-button value="left">Left</a-radio-button>
+    <a-radio-button value="right">Right</a-radio-button>
   </a-radio-group>
   <a-carousel :dot-position="dotPosition">
     <div><h3>1</h3></div>
@@ -31,14 +29,16 @@ There are 4 position options available.
     <div><h3>4</h3></div>
   </a-carousel>
 </template>
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  setup() {
     return {
-      dotPosition: 'top',
+      dotPosition: ref('top'),
     };
   },
-};
+});
 </script>
 <style scoped>
 /* For demo */
@@ -54,4 +54,3 @@ export default {
   color: #fff;
 }
 </style>
-```

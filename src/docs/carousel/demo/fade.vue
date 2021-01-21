@@ -1,25 +1,29 @@
-<cn>
-#### 自动切换
-定时切换下一张。
-</cn>
+<docs>
+---
+order: 2
+title:
+  zh-CN: 渐显
+  en-US: Fade in
+---
 
-<us>
-#### Scroll automatically
-Timing of scrolling to the next card/picture.
-</us>
+## zh-CN
 
-```vue
+切换效果为渐显。
+
+## en-US
+
+Slides use fade for transition.
+
+</docs>
+
 <template>
-  <a-carousel autoplay>
+  <a-carousel effect="fade">
     <div><h3>1</h3></div>
     <div><h3>2</h3></div>
     <div><h3>3</h3></div>
     <div><h3>4</h3></div>
   </a-carousel>
 </template>
-<script>
-export default {};
-</script>
 <style scoped>
 /* For demo */
 .ant-carousel ::v-deep(.slick-slide) {
@@ -34,4 +38,3 @@ export default {};
   color: #fff;
 }
 </style>
-```

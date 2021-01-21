@@ -1,57 +1,36 @@
-<script>
-import Basic from './basic';
-import Fade from './fade';
-import Autoplay from './autoplay';
-import Position from './position';
-import CustomPaging from './customPaging';
-import CustomArrows from './customArrows';
+<template>
+  <demo-sort :cols="1">
+    <Basic />
+    <Position />
+    <Fade />
+    <Autoplay />
+    <CustomPaging />
+    <CustomArrows />
+  </demo-sort>
+</template>
+
+<script lang="ts">
+import Basic from './basic.vue';
+import Fade from './fade.vue';
+import Autoplay from './autoplay.vue';
+import Position from './position.vue';
+import CustomPaging from './customPaging.vue';
+import CustomArrows from './customArrows.vue';
 
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
+import { defineComponent } from 'vue';
 
-const md = {
-  cn: `# Carousel 走马灯
-        旋转木马，一组轮播的区域。
-       ## 何时使用
-
-      - 当有一组平级的内容。
-      - 当内容空间不足时，可以用走马灯的形式进行收纳，进行轮播展现。
-      - 常用于一组图片或卡片轮播。
-       ## 代码演示
-        `,
-  us: `# Carousel
-          A carousel component. Scales with its container.
-       ## When To Use
-
-      - When there is a group of content on the same level.
-      - When there is insufficient content space, it can be used to save space in the form of a revolving door.
-      - Commonly used for a group of pictures/cards.
-       ## Examples
-        `,
-};
-export default {
-  category: 'Components',
-  type: 'Data Display',
-  zhType: '数据展示',
-  title: 'Carousel',
-  subtitle: '走马灯',
-  render() {
-    return (
-      <div>
-        <Md cn={md.cn} us={md.us} />
-        <demo-sort cols={1}>
-          <Basic />
-          <Position />
-          <Fade />
-          <Autoplay />
-          <CustomPaging />
-          <CustomArrows />
-        </demo-sort>
-        <api vSlots={{ cn: () => <CN /> }}>
-          <US />
-        </api>
-      </div>
-    );
+export default defineComponent({
+  CN,
+  US,
+  components: {
+    Basic,
+    Fade,
+    Autoplay,
+    Position,
+    CustomPaging,
+    CustomArrows,
   },
-};
+});
 </script>

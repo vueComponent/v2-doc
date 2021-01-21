@@ -1,14 +1,21 @@
-<cn>
-#### 自定义分页
+<docs>
+---
+order: 4
+title:
+  zh-CN: 自定义分页
+  en-US: Custom Paging
+---
+
+## zh-CN
+
 自定义分页展示。
-</cn>
 
-<us>
-#### Custom Paging
+## en-US
+
 Custom paging display
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-carousel arrows dots-class="slick-dots slick-thumb">
     <template #customPaging="props">
@@ -21,21 +28,22 @@ Custom paging display
     </div>
   </a-carousel>
 </template>
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
+
 const baseUrl =
   'https://raw.githubusercontent.com/vueComponent/ant-design-vue/master/components/vc-slick/assets/img/react-slick/';
-export default {
-  data() {
+export default defineComponent({
+  setup() {
+    const getImgUrl = i => {
+      return `${baseUrl}abstract0${i + 1}.jpg`;
+    };
     return {
       baseUrl,
+      getImgUrl,
     };
   },
-  methods: {
-    getImgUrl(i) {
-      return `${baseUrl}abstract0${i + 1}.jpg`;
-    },
-  },
-};
+});
 </script>
 <style scoped>
 /* For demo */
@@ -68,4 +76,3 @@ export default {
   filter: grayscale(0%);
 }
 </style>
-```

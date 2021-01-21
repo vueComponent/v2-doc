@@ -1,24 +1,43 @@
-<cn>
-#### 渐显
-切换效果为渐显。
-</cn>
+<docs>
+---
+order: 0
+title:
+  zh-CN: 基本
+  en-US: Basic
+---
 
-<us>
-#### Fade in
-Slides use fade for transition.
-</us>
+## zh-CN
 
-```vue
+最简单的用法。
+
+## en-US
+
+Basic usage.
+
+</docs>
+
 <template>
-  <a-carousel effect="fade">
+  <a-carousel :after-change="onChange">
     <div><h3>1</h3></div>
     <div><h3>2</h3></div>
     <div><h3>3</h3></div>
     <div><h3>4</h3></div>
   </a-carousel>
 </template>
-<script>
-export default {};
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const onChange = (current: number) => {
+      console.log(current);
+    };
+
+    return {
+      onChange,
+    };
+  },
+});
 </script>
 <style scoped>
 /* For demo */

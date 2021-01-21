@@ -1,18 +1,25 @@
-<cn>
-#### 自定义箭头
+<docs>
+---
+order: 5
+title:
+  zh-CN: 自定义箭头
+  en-US: Custom Arrows
+---
+
+## zh-CN
+
 自定义箭头展示。
-</cn>
 
-<us>
-#### Custom Arrows
+## en-US
+
 Custom arrows display
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-carousel arrows>
     <template #prevArrow>
-      <div class="custom-slick-arrow" style="left: 10px;zIndex: 1">
+      <div class="custom-slick-arrow" style="left: 10px; zindex: 1">
         <left-circle-outlined />
       </div>
     </template>
@@ -27,14 +34,15 @@ Custom arrows display
     <div><h3>4</h3></div>
   </a-carousel>
 </template>
-<script>
+<script lang="ts">
 import { LeftCircleOutlined, RightCircleOutlined } from '@ant-design/icons-vue';
-export default {
+import { defineComponent } from 'vue';
+export default defineComponent({
   components: {
     LeftCircleOutlined,
     RightCircleOutlined,
   },
-};
+});
 </script>
 <style scoped>
 /* For demo */
@@ -65,4 +73,3 @@ export default {
   color: #fff;
 }
 </style>
-```

@@ -1,31 +1,29 @@
-<cn>
-#### 基本
-最简单的用法。
-</cn>
+<docs>
+---
+order: 3
+title:
+  zh-CN: 自动切换
+  en-US: Scroll automatically
+---
 
-<us>
-#### Basic
-Basic usage.
-</us>
+## zh-CN
 
-```vue
+定时切换下一张。
+
+## en-US
+
+Timing of scrolling to the next card/picture.
+
+</docs>
+
 <template>
-  <a-carousel :after-change="onChange">
+  <a-carousel autoplay>
     <div><h3>1</h3></div>
     <div><h3>2</h3></div>
     <div><h3>3</h3></div>
     <div><h3>4</h3></div>
   </a-carousel>
 </template>
-<script>
-export default {
-  methods: {
-    onChange(a, b, c) {
-      console.log(a, b, c);
-    },
-  },
-};
-</script>
 <style scoped>
 /* For demo */
 .ant-carousel ::v-deep(.slick-slide) {
@@ -40,4 +38,3 @@ export default {
   color: #fff;
 }
 </style>
-```
