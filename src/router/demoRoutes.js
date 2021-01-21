@@ -74,11 +74,6 @@ export default [
   // },
 
   {
-    path: 'input:lang(.*)',
-    component: () => import('../docs/input/demo/index.vue'),
-  },
-
-  {
     path: 'mentions:lang(.*)',
     component: () => import('../docs/mentions/demo/index.vue'),
   },
@@ -247,10 +242,35 @@ export default [
     path: 'table:lang(.*)',
     component: () => import('../docs/table/demo/index.vue'),
   },
+
   {
     path: 'input-number:lang(.*)',
+    meta: {
+      category: 'Components',
+      type: '数据录入',
+      enType: 'Data Entry',
+      title: 'InputNumber',
+      enTitle: 'InputNumber',
+      subtitle: '数字输入框',
+      cover: 'https://gw.alipayobjects.com/zos/alicdn/XOS8qZ0kU/InputNumber.svg',
+    },
     component: () => import('../docs/input-number/demo/index.vue'),
   },
+
+  {
+    path: 'input:lang(.*)',
+    meta: {
+      category: 'Components',
+      type: '数据录入',
+      enType: 'Data Entry',
+      title: 'Input',
+      enTitle: 'Input',
+      subtitle: '输入框',
+      cover: 'https://gw.alipayobjects.com/zos/alicdn/xS9YEJhfe/Input.svg',
+    },
+    component: () => import('../docs/input/demo/index.vue'),
+  },
+
   {
     path: 'image:lang(.*)',
     meta: {
@@ -273,12 +293,12 @@ export default [
     component: () => import('../docs/upload/demo/index.vue'),
   },
   {
-    path: 'tree:lang(.*)',
-    component: () => import('../docs/tree/demo/index.vue'),
-  },
-  {
     path: 'tree-select:lang(.*)',
     component: () => import('../docs/tree-select/demo/index.vue'),
+  },
+  {
+    path: 'tree:lang(.*)',
+    component: () => import('../docs/tree/demo/index.vue'),
   },
   {
     path: 'layout:lang(.*)',
