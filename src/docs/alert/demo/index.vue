@@ -11,7 +11,7 @@
     <smooth-closed />
   </demo-sort>
 </template>
-<script>
+<script lang="ts">
 import Banner from './banner.vue';
 import Basic from './basic.vue';
 import Closable from './closable.vue';

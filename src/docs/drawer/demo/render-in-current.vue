@@ -1,14 +1,21 @@
-<cn>
-#### 渲染在当前 DOM
+<docs>
+---
+order: 2
+title:
+  zh-CN: 渲染在当前 DOM
+  en-US: Render in current dom
+---
+
+## zh-CN
+
 渲染在当前 dom 里。自定义容器，查看 getContainer。
-</cn>
 
-<us>
-#### Render in current dom
+## en-US
+
 Render in current dom. custom container, check getContainer.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div
     :style="{
@@ -24,9 +31,7 @@ Render in current dom. custom container, check getContainer.
   >
     Render in this
     <div style="margin-top: 16px">
-      <a-button type="primary" @click="showDrawer">
-        Open
-      </a-button>
+      <a-button type="primary" @click="showDrawer">Open</a-button>
     </div>
     <a-drawer
       title="Basic Drawer"
@@ -41,24 +46,29 @@ Render in current dom. custom container, check getContainer.
     </a-drawer>
   </div>
 </template>
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+  setup() {
+    const visible = ref(false);
+
+    const afterVisibleChange = (bool: boolean) => {
+      console.log('visible', bool);
+    };
+
+    const showDrawer = () => {
+      visible.value = true;
+    };
+
+    const onClose = () => {
+      visible.value = false;
+    };
     return {
-      visible: false,
+      visible,
+      afterVisibleChange,
+      showDrawer,
+      onClose,
     };
   },
-  methods: {
-    afterVisibleChange(val) {
-      console.log('visible', val);
-    },
-    showDrawer() {
-      this.visible = true;
-    },
-    onClose() {
-      this.visible = false;
-    },
-  },
-};
+});
 </script>
-```

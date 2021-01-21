@@ -1,16 +1,26 @@
-<cn>
-#### 抽屉表单
+<docs>
+---
+order: 3
+title:
+  zh-CN: 抽屉表单
+  en-US: Submit form in drawer
+---
+
+## zh-CN
+
 在抽屉中使用表单。
-</cn>
 
-<us>
-#### Submit form in drawer
+## en-US
+
 Use form in drawer with submit button.
-</us>
 
-```vue
+</docs>
+
 <template>
-  <a-button type="primary" @click="showDrawer"> <PlusOutlined /> New account </a-button>
+  <a-button type="primary" @click="showDrawer">
+    <PlusOutlined />
+    New account
+  </a-button>
   <a-drawer
     title="Create a new account"
     :width="720"
@@ -41,24 +51,16 @@ Use form in drawer with submit button.
         <a-col :span="12">
           <a-form-item label="Owner" name="owner">
             <a-select placeholder="Please a-s an owner" v-model:value="form.owner">
-              <a-select-option value="xiao">
-                Xiaoxiao Fu
-              </a-select-option>
-              <a-select-option value="mao">
-                Maomao Zhou
-              </a-select-option>
+              <a-select-option value="xiao">Xiaoxiao Fu</a-select-option>
+              <a-select-option value="mao">Maomao Zhou</a-select-option>
             </a-select>
           </a-form-item>
         </a-col>
         <a-col :span="12">
           <a-form-item label="Type" name="type">
             <a-select placeholder="Please choose the type" v-model:value="form.type">
-              <a-select-option value="private">
-                Private
-              </a-select-option>
-              <a-select-option value="public">
-                Public
-              </a-select-option>
+              <a-select-option value="private">Private</a-select-option>
+              <a-select-option value="public">Public</a-select-option>
             </a-select>
           </a-form-item>
         </a-col>
@@ -67,12 +69,8 @@ Use form in drawer with submit button.
         <a-col :span="12">
           <a-form-item label="Approver" name="approver">
             <a-select placeholder="Please choose the approver" v-model:value="form.approver">
-              <a-select-option value="jack">
-                Jack Ma
-              </a-select-option>
-              <a-select-option value="tom">
-                Tom Liu
-              </a-select-option>
+              <a-select-option value="jack">Jack Ma</a-select-option>
+              <a-select-option value="tom">Tom Liu</a-select-option>
             </a-select>
           </a-form-item>
         </a-col>
@@ -111,53 +109,55 @@ Use form in drawer with submit button.
         zIndex: 1,
       }"
     >
-      <a-button :style="{ marginRight: '8px' }" @click="onClose">
-        Cancel
-      </a-button>
-      <a-button type="primary" @click="onClose">
-        Submit
-      </a-button>
+      <a-button :style="{ marginRight: '8px' }" @click="onClose">Cancel</a-button>
+      <a-button type="primary" @click="onClose">Submit</a-button>
     </div>
   </a-drawer>
 </template>
-<script>
+<script lang="ts">
 import { PlusOutlined } from '@ant-design/icons-vue';
-
-export default {
+import { defineComponent, reactive, ref } from 'vue';
+export default defineComponent({
   components: {
     PlusOutlined,
   },
-  data() {
+  setup() {
+    const form = reactive({
+      name: '',
+      url: '',
+      owner: '',
+      type: '',
+      approver: '',
+      dateTime: '',
+      description: '',
+    });
+
+    const rules = {
+      name: [{ required: true, message: 'Please enter user name' }],
+      url: [{ required: true, message: 'please enter url' }],
+      owner: [{ required: true, message: 'Please select an owner' }],
+      type: [{ required: true, message: 'Please choose the type' }],
+      approver: [{ required: true, message: 'Please choose the approver' }],
+      dateTime: [{ required: true, message: 'Please choose the dateTime', type: 'object' }],
+      description: [{ required: true, message: 'Please enter url description' }],
+    };
+
+    const visible = ref(false);
+
+    const showDrawer = () => {
+      visible.value = true;
+    };
+
+    const onClose = () => {
+      visible.value = false;
+    };
     return {
-      form: {
-        name: '',
-        url: '',
-        owner: '',
-        type: '',
-        approver: '',
-        dateTime: '',
-        description: '',
-      },
-      rules: {
-        name: [{ required: true, message: 'Please enter user name' }],
-        url: [{ required: true, message: 'please enter url' }],
-        owner: [{ required: true, message: 'Please select an owner' }],
-        type: [{ required: true, message: 'Please choose the type' }],
-        approver: [{ required: true, message: 'Please choose the approver' }],
-        dateTime: [{ required: true, message: 'Please choose the dateTime', type: 'object' }],
-        description: [{ required: true, message: 'Please enter url description' }],
-      },
-      visible: false,
+      form,
+      rules,
+      visible,
+      showDrawer,
+      onClose,
     };
   },
-  methods: {
-    showDrawer() {
-      this.visible = true;
-    },
-    onClose() {
-      this.visible = false;
-    },
-  },
-};
+});
 </script>
-```
