@@ -7,7 +7,7 @@ cover: https://gw.alipayobjects.com/zos/antfincdn/D1dXz9PZqa/image.svg
 
 Previewable image.
 
-## 何时使用
+## When To Use
 
 - When you need to display pictures.
 - Display when loading a large image or fault tolerant handling when loading fail.
