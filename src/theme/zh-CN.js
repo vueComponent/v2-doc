@@ -120,6 +120,7 @@ export default {
   'app.docs.color.pick-primary': '选择你的主色',
   'app.docs.color.pick-background': '选择你的背景色',
   'app.docs.components.icon.search.placeholder': '在此搜索图标，点击图标可复制代码',
+  'app.docs.components.icon.pick-theme': '选择图标主题风格',
   'app.docs.components.icon.outlined': '线框风格',
   'app.docs.components.icon.filled': '实底风格',
   'app.docs.components.icon.two-tone': '双色风格',

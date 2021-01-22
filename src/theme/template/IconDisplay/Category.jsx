@@ -1,7 +1,8 @@
 import { message } from 'ant-design-vue';
-import CopyableIcon from './CopyableIcon';
+import { defineComponent } from 'vue';
+import CopyableIcon from './CopyableIcon.vue';
 
-const Category = {
+const Category = defineComponent({
   props: ['icons', 'title', 'newIcons', 'theme'],
   data() {
     return {
@@ -38,11 +39,13 @@ const Category = {
     });
     return (
       <div>
-        <h3>{this.$t(`app.docs.components.icon.category.${title}`)}</h3>
+        <h3 style="margin: 1.6em 0 .6em;">
+          {this.$t(`app.docs.components.icon.category.${title}`)}
+        </h3>
         <ul class={'anticons-list'}>{items}</ul>
       </div>
     );
   },
-};
+});
 
 export default Category;

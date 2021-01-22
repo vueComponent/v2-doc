@@ -68,10 +68,19 @@ export default [
     component: () => import('../docs/grid/demo/index.vue'),
   },
 
-  // {
-  //   path: 'icon:lang(.*)',
-  //   component: () => import('../docs/icon/demo/index.vue'),
-  // },
+  {
+    path: 'icon:lang(.*)',
+    meta: {
+      category: 'Components',
+      type: '通用',
+      enType: 'General',
+      title: 'Icon',
+      enTitle: 'Icon',
+      subtitle: '图标',
+      cover: 'https://gw.alipayobjects.com/zos/alicdn/rrwbSt3FQ/Icon.svg',
+    },
+    component: () => import('../docs/icon/demo/index.vue'),
+  },
 
   {
     path: 'mentions:lang(.*)',

@@ -15,11 +15,11 @@
 <script>
 import * as AntdIcons from '@ant-design/icons-vue';
 import { Badge } from 'ant-design-vue';
-import 'ant-design-vue/es/badge/style';
+import { defineComponent } from 'vue';
 
 const allIcons = AntdIcons;
 
-export default {
+export default defineComponent({
   components: {
     'a-badge': Badge,
   },
@@ -35,5 +35,5 @@ export default {
       this.$emit('copied', this.type, this.text);
     },
   },
-};
+});
 </script>

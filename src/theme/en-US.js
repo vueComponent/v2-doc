@@ -121,6 +121,7 @@ export default {
   'app.docs.color.pick-primary': 'Pick your primary color',
   'app.docs.color.pick-background': 'Pick your background color',
   'app.docs.components.icon.search.placeholder': 'Search icons here, click icon to copy code',
+  'app.docs.components.icon.pick-theme': 'Select the Icon Theme',
   'app.docs.components.icon.outlined': 'Outlined',
   'app.docs.components.icon.filled': 'Filled',
   'app.docs.components.icon.two-tone': 'Two Tone',

@@ -1,3 +1,11 @@
+---
+category: Components
+type: 通用
+title: Icon
+subtitle: 图标
+cover: https://gw.alipayobjects.com/zos/alicdn/rrwbSt3FQ/Icon.svg
+---
+
 ## API
 
 从 2.0 开始，ant-design-vue 不再内置 Icon 组件，请使用独立的包 `@ant-design/icons-vue`。
@@ -44,14 +52,17 @@ import { StarOutlined, StarFilled, StarTwoTone } from '@ant-design/icons-vue';
 所有的图标都会以 `<svg>` 标签渲染，可以使用 `style` 和 `class` 设置图标的大小和单色图标的颜色。例如：
 
 ```html
-<template> <MessageOutlined :style="{fontSize: '16px', color: '#08c'}" /> </template>
+<template>
+  <MessageOutlined :style="{fontSize: '16px', color: '#08c'}" />
+</template>
 <script>
   import { MessageOutlined } from '@ant-design/icons-vue';
-  export default {
+  import { defineComponent } from 'vue';
+  export default defineComponent({
     components: {
       MessageOutlined,
     },
-  };
+  });
 </script>
 ```
 
@@ -70,16 +81,16 @@ getTwoToneColor(); // #eb2f96
 
 在 `1.2.0` 之后，我们提供了一个 `createFromIconfontCN` 方法，方便开发者调用在 [iconfont.cn](http://iconfont.cn/) 上自行管理的图标。
 
-```js
+```jsx
 import { createFromIconfontCN } from '@ant-design/icons-vue';
-const MyIcon = Icon.createFromIconfontCN({
+import { defineComponent } from 'vue';
+const MyIcon = createFromIconfontCN({
   scriptUrl: '//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js', // 在 iconfont.cn 上生成
 });
-new Vue({
-  el: '#app',
-  template: '<my-icon type="icon-example" />',
-  components: {
-    'my-icon': MyIcon,
+
+export default defineComponent({
+  setup() {
+    return () => <MyIcon type="icon-dianzan" />;
   },
 });
 ```
@@ -115,19 +126,13 @@ module.exports = {
 ```
 
 ```jsx
+import { defineComponent } from 'vue';
 import Icon from '@ant-design/icons-vue';
-import MessageSvg from 'path/to/message.svg'; // path to your '*.svg' file.
+import MessageSvg from 'path/to/message.svg'; // '*.svg' 文件的路径
 
-new Vue({
-  el: '#app',
-  template: '<icon :component="MessageSvg" />',
-  components: {
-    Icon,
-  },
-  data() {
-    return {
-      MessageSvg,
-    };
+export default defineComponent({
+  setup() {
+    return () => <Icon type={MessageSvg} />;
   },
 });
 ```

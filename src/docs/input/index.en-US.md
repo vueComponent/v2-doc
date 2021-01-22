@@ -1,3 +1,17 @@
+---
+category: Components
+type: Data Entry
+title: Input
+cover: https://gw.alipayobjects.com/zos/alicdn/XOS8qZ0kU/InputNumber.svg
+---
+
+A basic widget for getting the user input is a text field. Keyboard and mouse can be used for providing or changing data.
+
+## When To Use
+
+- A user input in a form field is needed.
+- A search input is required.
+
 ## API
 
 ### Input
@@ -20,8 +34,8 @@
 ### Input Events
 
 | Events Name | Description                                                        | Arguments   |
-| ----------- | ------------------------------------------------------------------ | ----------- |
-| change      | callback when user input                                           | function(e) |  |
+| ----------- | ------------------------------------------------------------------ | ----------- | --- |
+| change      | callback when user input                                           | function(e) |     |
 | pressEnter  | The callback function that is triggered when Enter key is pressed. | function(e) |
 
 > When `Input` is used in a `Form.Item` context, if the `Form.Item` has the `id` and `options` props defined then `value`, `defaultValue`, and `id` props of `Input` are automatically set.
@@ -29,8 +43,8 @@
 ### Input.TextArea
 
 | Property | Description | Type | Default | Version |
-| --- | --- | --- | --- | --- |
-| autosize | Height autosize feature, can be set to `true|false` or an object `{ minRows: 2, maxRows: 6 }` | boolean\|object | false |  |
+| --- | --- | --- | --- | --- | --- |
+| autosize | Height autosize feature, can be set to `true | false`or an object`{ minRows: 2, maxRows: 6 }` | boolean\|object | false |  |
 | defaultValue | The initial input content | string |  |  |
 | value(v-model) | The input content value | string |  |  |
 | allowClear | allow to remove input content with clear icon | boolean |  | 1.5.0 |
@@ -53,7 +67,7 @@ The rest of the props of `Input.TextArea` are the same as the original [textarea
 ### Input.Search Events
 
 | Events Name | Description | Arguments | Version |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | search | The callback function that is triggered when you click on the search-icon or press Enter key. | function(value, event) |  |
 | loading | Search box with loading. | boolean |  |  |
 

@@ -12,6 +12,7 @@ export default {
   'app.welcome.link.fetch-blocks': 'Get all block',
   'app.welcome.link.block-list': 'Quickly build standard, pages based on `block` development',
   'app.docs.components.icon.search.placeholder': 'Search icon here, click icon to copy code',
+  'app.docs.components.icon.pick-theme': 'Select the Icon Theme',
   'app.docs.components.icon.outlined': 'Outlined',
   'app.docs.components.icon.filled': 'Filled',
   'app.docs.components.icon.two-tone': 'Two Tone',

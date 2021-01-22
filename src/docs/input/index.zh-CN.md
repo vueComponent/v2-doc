@@ -1,3 +1,18 @@
+---
+category: Components
+type: 数据录入
+title: Input
+subtitle: 输入框
+cover: https://gw.alipayobjects.com/zos/alicdn/XOS8qZ0kU/InputNumber.svg
+---
+
+通过鼠标或键盘输入内容，是最基础的表单域的包装。
+
+## 何时使用
+
+- 需要用户输入表单域内容时。
+- 提供组合型输入框，带搜索的输入框，还可以进行大小选择。
+
 ## API
 
 ### Input
@@ -20,8 +35,8 @@
 ### Input 事件
 
 | 事件名称   | 说明                   | 回调参数    |
-| ---------- | ---------------------- | ----------- |
-| change     | 输入框内容变化时的回调 | function(e) |  |
+| ---------- | ---------------------- | ----------- | --- |
+| change     | 输入框内容变化时的回调 | function(e) |     |
 | pressEnter | 按下回车的回调         | function(e) |
 
 > 如果 `Input` 在 `Form.Item` 内，并且 `Form.Item` 设置了 `id` 和 `options` 属性，则 `value` `defaultValue` 和 `id` 属性会被自动设置。
@@ -29,8 +44,8 @@
 ### Input.TextArea
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- |
-| autosize | 自适应内容高度，可设置为 `true|false` 或对象：`{ minRows: 2, maxRows: 6 }` | boolean\|object | false |  |
+| --- | --- | --- | --- | --- | --- |
+| autosize | 自适应内容高度，可设置为 `true | false` 或对象：`{ minRows: 2, maxRows: 6 }` | boolean\|object | false |  |
 | defaultValue | 输入框默认内容 | string |  |  |
 | value(v-model) | 输入框内容 | string |  |  |
 | allowClear | 可以点击清除图标删除内容 | boolean |  | 1.5.0 |

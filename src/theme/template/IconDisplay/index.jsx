@@ -3,7 +3,7 @@ import { categories } from './fields';
 import { FilledIcon, OutlinedIcon, TwoToneIcon } from './themeIcons';
 import Category from './Category';
 import { Radio } from 'ant-design-vue';
-import 'ant-design-vue/es/radio/style';
+import { defineComponent } from 'vue';
 
 const ThemeType = {
   Filled: 'Filled',
@@ -13,7 +13,7 @@ const ThemeType = {
 
 const allIcons = AntdIcons;
 
-const IconDisplay = {
+const IconDisplay = defineComponent({
   cagetories: categories,
   components: {
     ARadio: Radio,
@@ -61,7 +61,7 @@ const IconDisplay = {
   render() {
     return (
       <div>
-        <h3>{this.$t('app.docs.components.icon.pick-theme')}</h3>
+        <h3 style="margin: 1.6em 0 .6em;">{this.$t('app.docs.components.icon.pick-theme')}</h3>
         <a-radio-group value={this.theme} onChange={this.handleChangeTheme}>
           <a-radio-button value={ThemeType.Outlined}>
             <Icon component={OutlinedIcon} /> {this.$t('app.docs.components.icon.outlined')}
@@ -77,6 +77,6 @@ const IconDisplay = {
       </div>
     );
   },
-};
+});
 
 export default IconDisplay;

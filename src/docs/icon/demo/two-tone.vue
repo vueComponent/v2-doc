@@ -1,14 +1,21 @@
-<cn>
-#### 多色图标
+<docs>
+---
+order: 3
+title:
+  zh-CN: 多色图标
+  en-US: Two-tone icon and colorful icon
+---
+
+## zh-CN
+
 双色图标可以通过 `twoToneColor` 属性设置主题色。
-</cn>
 
-<us>
-#### Two-tone icon and colorful icon
+## en-US
+
 You can set `twoToneColor` prop to specific primary color for two-tone icons.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div class="icons-list">
     <SmileTwoTone />
@@ -32,4 +39,3 @@ export default {
   font-size: 24px;
 }
 </style>
-```
