@@ -142,7 +142,7 @@ export default defineComponent({
       description: [{ required: true, message: 'Please enter url description' }],
     };
 
-    const visible = ref(false);
+    const visible = ref<boolean>(false);
 
     const showDrawer = () => {
       visible.value = true;

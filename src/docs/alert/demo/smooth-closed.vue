@@ -29,7 +29,7 @@ Smoothly and unaffectedly unmount Alert.
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
-    const visible = ref(true);
+    const visible = ref<boolean>(true);
     const handleClose = () => {
       visible.value = false;
     };

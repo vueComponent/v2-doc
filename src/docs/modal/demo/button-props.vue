@@ -36,7 +36,7 @@ Passing `okButtonProps` and `cancelButtonProps` can customize the ok button and 
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
-    const visible = ref(false);
+    const visible = ref<boolean>(false);
 
     const showModal = () => {
       visible.value = true;

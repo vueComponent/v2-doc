@@ -136,7 +136,7 @@ export default defineComponent({
     descriptionItem,
   },
   setup() {
-    const visible = ref(false);
+    const visible = ref<boolean>(false);
     const pStyle = {
       fontSize: '16px',
       color: 'rgba(0,0,0,0.85)',

@@ -58,9 +58,9 @@ import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   setup() {
-    const visible = ref(false);
+    const visible = ref<boolean>(false);
 
-    const childrenDrawer = ref(false);
+    const childrenDrawer = ref<boolean>(false);
 
     const showDrawer = () => {
       visible.value = true;

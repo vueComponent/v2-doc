@@ -40,8 +40,8 @@ The Drawer can appear from any edge of the screen.
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
-    const placement = ref('left');
-    const visible = ref(false);
+    const placement = ref<string>('left');
+    const visible = ref<boolean>(false);
 
     const showDrawer = () => {
       visible.value = true;

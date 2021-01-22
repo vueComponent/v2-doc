@@ -52,8 +52,8 @@ You can use `centered`,`style.top` or other styles to set position of modal dial
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
-    const modal1Visible = ref(false);
-    const modal2Visible = ref(false);
+    const modal1Visible = ref<boolean>(false);
+    const modal2Visible = ref<boolean>(false);
 
     const setModal1Visible = (visible: boolean) => {
       modal1Visible.value = visible;

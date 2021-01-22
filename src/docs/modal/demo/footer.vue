@@ -40,8 +40,8 @@ You could set `footer` to `null` if you don't need default footer buttons.
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
-    const loading = ref(false);
-    const visible = ref(false);
+    const loading = ref<boolean>(false);
+    const visible = ref<boolean>(false);
 
     const showModal = () => {
       visible.value = true;

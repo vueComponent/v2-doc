@@ -34,9 +34,9 @@ you can use this pattern when you submit a form.
 import { ref, defineComponent } from 'vue';
 export default defineComponent({
   setup() {
-    const modalText = ref('Content of the modal');
-    const visible = ref(false);
-    const confirmLoading = ref(false);
+    const modalText = ref<string>('Content of the modal');
+    const visible = ref<boolean>(false);
+    const confirmLoading = ref<boolean>(false);
 
     const showModal = () => {
       visible.value = true;
