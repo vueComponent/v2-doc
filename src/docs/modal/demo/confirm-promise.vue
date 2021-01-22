@@ -1,27 +1,32 @@
-<cn>
-#### 确认对话框(promise)
-使用 `confirm()` 可以快捷地弹出确认框。onCancel/onOk 返回 promise 可以延迟关闭
-</cn>
+<docs>
+---
+order: 9
+title:
+  zh-CN: 确认对话框(promise)
+  en-US: Confirmation modal dialog use promise
+---
 
-<us>
-#### Confirmation modal dialog use promise
+## zh-CN
+
+使用 `confirm()` 可以快捷地弹出确认框。onCancel/onOk 返回 promise 可以延迟关闭
+
+## en-US
+
 To use `confirm()` to popup confirmation modal dialog. Let onCancel/onOk function return a promise object to
 delay closing the dialog.
-</us>
 
-```vue
+</docs>
+
 <template>
-  <a-button @click="showConfirm">
-    Confirm
-  </a-button>
+  <a-button @click="showConfirm">Confirm</a-button>
 </template>
-<script>
+<script lang="ts">
 import { ExclamationCircleOutlined } from '@ant-design/icons-vue';
-import { createVNode } from 'vue';
+import { createVNode, defineComponent } from 'vue';
 import { Modal } from 'ant-design-vue';
-export default {
-  methods: {
-    showConfirm() {
+export default defineComponent({
+  setup() {
+    const showConfirm = () => {
       Modal.confirm({
         title: 'Do you want to delete these items?',
         icon: createVNode(ExclamationCircleOutlined),
@@ -33,8 +38,10 @@ export default {
         },
         onCancel() {},
       });
-    },
+    };
+    return {
+      showConfirm
+    }
   },
-};
+});
 </script>
-```

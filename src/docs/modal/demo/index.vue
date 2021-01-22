@@ -1,69 +1,59 @@
-<script>
-import Async from './async';
-import Basic from './basic';
-import ConfirmPromise from './confirm-promise';
-import Confirm from './confirm';
-import Footer from './footer';
-import Info from './info';
-import Locale from './locale';
-import Manual from './manual';
-import Position from './position';
-import ButtonProps from './button-props';
-import ConfirmRouter from './confirm-router';
-
+<template>
+  <demo-sort>
+    <basic />
+    <async />
+    <custom-footer />
+    <confirm />
+    <info />
+    <locale />
+    <manual />
+    <position />
+    <confirm-router />
+    <confirm-promise />
+    <width />
+    <button-props />
+  </demo-sort>
+</template>
+<script lang="ts">
+import Basic from './basic.vue';
+import Async from './async.vue';
+import Footer from './footer.vue';
+import Confirm from './confirm.vue';
+import Info from './info.vue';
+import Locale from './locale.vue';
+import Manual from './manual.vue';
+import Position from './position.vue';
+import ConfirmRouter from './confirm-router.vue';
+import ConfirmPromise from './confirm-promise.vue';
+import Width from './width.vue'
+import ButtonProps from './button-props.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
-const md = {
-  cn: `# Modal 对话框
-          模态对话框。
-## 何时使用
-需要用户处理事务，又不希望跳转页面以致打断工作流程时，可以使用 \`Modal\` 在当前页面正中打开一个浮层，承载相应的操作。
-另外当需要一个简洁的确认框询问用户时，可以使用 \`Modal.confirm()\` 等语法糖方法。
-          ## 代码演示`,
-  us: `# Modal
-          Modal dialogs.
-## When To Use
-When requiring users to interact with the application, but without jumping to a new page and interrupting
-the user's workflow, you can use \`Modal\` to create a new floating layer over the current page to get user
-feedback or display information.
-Additionally, if you need show a simple confirmation dialog, you can use \`antd.Modal.confirm()\`,
-and so on.
-## Examples
-`,
-};
-export default {
-  type: 'Feedback',
-  category: 'Components',
-  subtitle: '对话框',
-  title: 'Modal',
-  render() {
-    return (
-      <div id="components-modal-demo">
-        <Md cn={md.cn} us={md.us} />
-        <demo-sort>
-          <Async />
-          <Basic />
-          <ConfirmPromise />
-          <Confirm />
-          <Footer />
-          <Info />
-          <Locale />
-          <Manual />
-          <Position />
-          <ButtonProps />
-          <ConfirmRouter />
-        </demo-sort>
-        <api vSlots={{ cn: () => <CN /> }}>
-          <US />
-        </api>
-      </div>
-    );
+import { defineComponent } from 'vue';
+export default defineComponent({
+  CN,
+  US,
+  components: {
+    Basic,
+    Async,
+    CustomFooter: Footer,
+    Confirm,
+    Info,
+    Locale,
+    Manual,
+    Position,
+    ConfirmRouter,
+    ConfirmPromise,
+    Width,
+    ButtonProps,
   },
-};
+  setup() {
+    return {};
+  },
+});
 </script>
-
 <style>
-#components-modal-demo .ant-btn {
+[id^='components-modal-demo'] .ant-btn {
   margin-right: 8px;
 }
 </style>

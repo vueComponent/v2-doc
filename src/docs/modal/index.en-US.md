@@ -1,3 +1,20 @@
+---
+category: Components
+type: Feedback
+title: Modal
+cover: https://gw.alipayobjects.com/zos/alicdn/3StSdUlSH/Modal.svg
+---
+
+Modal dialogs.
+
+## When To Use
+
+When requiring users to interact with the application, but without jumping to a new page and interrupting
+the user's workflow, you can use `Modal` to create a new floating layer over the current page to get user
+feedback or display information.
+Additionally, if you need show a simple confirmation dialog, you can use `antd.Modal.confirm()`,
+and so on.
+
 ## API
 
 | Property | Description | Type | Default | Version |
@@ -7,7 +24,7 @@
 | cancelText | Text of the Cancel button | string\|slot | `Cancel` |  |
 | centered | Centered Modal | Boolean | `false` |  |
 | closable | Whether a close (x) button is visible on top right of the modal dialog or not | boolean | true |  |
-| closeIcon | custom close icon | VNode \| slot | - | 1.5.0 |
+| closeIcon | custom close icon | VNode \| slot | - |  |
 | confirmLoading | Whether to apply loading visual effect for OK button or not | boolean | false |  |
 | destroyOnClose | Whether to unmount child components on onClose | boolean | false |  |
 | footer | Footer content, set as `:footer="null"` when you don't need default buttons | string\|slot | OK and Cancel buttons |  |
@@ -25,8 +42,8 @@
 | width | Width of the modal dialog | string\|number | 520 |  |
 | wrapClassName | The class name of the container of the modal dialog | string | - |  |
 | zIndex | The `z-index` of the Modal | Number | 1000 |  |
-| dialogStyle | Style of floating layer, typically used at least for adjusting the position. | object | - | 1.6.1 |
-| dialogClass | className of floating layer. | string | - | 1.6.1 |
+| dialogStyle | Style of floating layer, typically used at least for adjusting the position. | object | - |  |
+| dialogClass | className of floating layer. | string | - |  |
 
 ### events
 
@@ -72,7 +89,7 @@ The items listed above are all functions, expecting a settings object as paramet
 | zIndex | The `z-index` of the Modal | Number | 1000 |  |
 | onCancel | Specify a function that will be called when the user clicks the Cancel button. The parameter of this function is a function whose execution should include closing the dialog. You can also just return a promise and when the promise is resolved, the modal dialog will also be closed | function | - |  |
 | onOk | Specify a function that will be called when the user clicks the OK button. The parameter of this function is a function whose execution should include closing the dialog. You can also just return a promise and when the promise is resolved, the modal dialog will also be closed | function | - |  |
-| parentContext | The parent context of the popup is generally used to get the parent provider, such as the configuration of `ConfigProvider` | vue instance | - | 1.4.11 |
+| parentContext | The parent context of the popup is generally used to get the parent provider, such as the configuration of `ConfigProvider` | vue instance | - |  |
 
 All the `Modal.method`s will return a reference, and then we can update and close the modal dialog by the reference.
 

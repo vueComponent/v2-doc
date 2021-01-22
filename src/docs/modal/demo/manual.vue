@@ -1,24 +1,30 @@
-<cn>
-#### 手动更新和移除
+<docs>
+---
+order: 6
+title:
+  zh-CN: 手动更新和移除
+  en-US: Manual to update destroy
+---
+
+## zh-CN
+
 手动更新和关闭 `Modal.method` 方式创建的对话框。
-</cn>
 
-<us>
-#### Manual to update destroy
+## en-US
+
 Manually updating and destroying a modal from `Modal.method`.
-</us>
 
-```vue
+</docs>
+
 <template>
-  <a-button @click="countDown">
-    Open modal to close in 5s
-  </a-button>
+  <a-button @click="countDown">Open modal to close in 5s</a-button>
 </template>
-<script>
+<script lang="ts">
 import { Modal } from 'ant-design-vue';
-export default {
-  methods: {
-    countDown() {
+import { defineComponent } from 'vue';
+export default defineComponent({
+  setup() {
+    const countDown = () => {
       let secondsToGo = 5;
       const modal = Modal.success({
         title: 'This is a notification message',
@@ -34,8 +40,10 @@ export default {
         clearInterval(interval);
         modal.destroy();
       }, secondsToGo * 1000);
-    },
+    };
+    return {
+      countDown,
+    };
   },
-};
+});
 </script>
-```

@@ -1,27 +1,31 @@
-<cn>
-#### 销毁确认对话框
+<docs>
+---
+order: 8
+title:
+  zh-CN: 销毁确认对话框
+  en-US: destroy confirmation modal dialog
+---
+
+## zh-CN
+
 使用 `Modal.destroyAll()` 可以销毁弹出的确认窗。通常用于路由监听当中，处理路由前进、后退不能销毁确认对话框的问题。
-</cn>
 
-<us>
-#### destroy confirmation modal dialog
+## en-US
+
 `Modal.destroyAll()` could destroy all confirmation modal dialogs. Usually, you can use it in router change event to destroy confirm modal dialog automatically
-</us>
 
-```vue
+</docs>
+
 <template>
-  <a-button @click="showConfirm">
-    Confirm
-  </a-button>
+  <a-button @click="showConfirm">Confirm</a-button>
 </template>
-<script>
+<script lang="ts">
 import { ExclamationCircleOutlined } from '@ant-design/icons-vue';
-import { createVNode } from 'vue';
+import { createVNode, defineComponent } from 'vue';
 import { Modal } from 'ant-design-vue';
-export default {
-  methods: {
-    showConfirm() {
-      const self = this;
+export default defineComponent({
+  setup() {
+    const showConfirm = () => {
       for (let i = 0; i < 3; i += 1) {
         setTimeout(() => {
           Modal.confirm({
@@ -34,16 +38,15 @@ export default {
             },
             cancelText: 'Click to destroy all',
             onCancel() {
-              self.destroyAll();
+              Modal.destroyAll();
             },
           });
         }, i * 500);
       }
-    },
-    destroyAll() {
-      this.$destroyAll();
-    },
+    };
+    return {
+      showConfirm,
+    };
   },
-};
+});
 </script>
-```

@@ -1,14 +1,21 @@
-<cn>
-#### 自定义位置
+<docs>
+---
+order: 7
+title:
+  zh-CN: 自定义位置
+  en-US: To customize the position of modal
+---
+
+## zh-CN
+
 使用 `centered` 或类似 `style.top` 的样式来设置对话框位置。
-</cn>
 
-<us>
-#### To customize the position of modal
+## en-US
+
 You can use `centered`,`style.top` or other styles to set position of modal dialog.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div id="components-modal-demo-position">
     <a-button type="primary" @click="setModal1Visible(true)">
@@ -16,7 +23,7 @@ You can use `centered`,`style.top` or other styles to set position of modal dial
     </a-button>
     <a-modal
       title="20px to Top"
-      style="top: 20px;"
+      style="top: 20px"
       v-model:visible="modal1Visible"
       @ok="setModal1Visible(false)"
     >
@@ -24,7 +31,8 @@ You can use `centered`,`style.top` or other styles to set position of modal dial
       <p>some contents...</p>
       <p>some contents...</p>
     </a-modal>
-    <br /><br />
+    <br />
+    <br />
     <a-button type="primary" @click="modal2Visible = true">
       Vertically centered modal dialog
     </a-button>
@@ -40,19 +48,21 @@ You can use `centered`,`style.top` or other styles to set position of modal dial
     </a-modal>
   </div>
 </template>
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+  setup() {
+    const modal1Visible = ref(false);
+    const modal2Visible = ref(false);
+
+    const setModal1Visible = (visible: boolean) => {
+      modal1Visible.value = visible;
+    };
     return {
-      modal1Visible: false,
-      modal2Visible: false,
+      modal1Visible,
+      modal2Visible,
+      setModal1Visible,
     };
   },
-  methods: {
-    setModal1Visible(modal1Visible) {
-      this.modal1Visible = modal1Visible;
-    },
-  },
-};
+});
 </script>
-```

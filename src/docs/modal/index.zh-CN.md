@@ -1,3 +1,19 @@
+---
+category: Components
+type: 反馈
+title: Modal
+subtitle: 对话框
+cover: https://gw.alipayobjects.com/zos/alicdn/3StSdUlSH/Modal.svg
+---
+
+模态对话框。
+
+## 何时使用
+
+需要用户处理事务，又不希望跳转页面以致打断工作流程时，可以使用 `Modal` 在当前页面正中打开一个浮层，承载相应的操作。
+
+另外当需要一个简洁的确认框询问用户时，可以使用 `Modal.confirm()` 等语法糖方法。
+
 ## API
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
@@ -7,7 +23,7 @@
 | cancelText | 取消按钮文字 | string\| slot | 取消 |  |
 | centered | 垂直居中展示 Modal | Boolean | `false` |  |
 | closable | 是否显示右上角的关闭按钮 | boolean | true |  |
-| closeIcon | 自定义关闭图标 | VNode \| slot | - | 1.5.0 |
+| closeIcon | 自定义关闭图标 | VNode \| slot | - |  |
 | confirmLoading | 确定按钮 loading | boolean | 无 |  |
 | destroyOnClose | 关闭时销毁 Modal 里的子元素 | boolean | false |  |
 | footer | 底部内容，当不需要默认底部按钮时，可以设为 `:footer="null"` | string\|slot | 确定取消按钮 |  |
@@ -26,8 +42,8 @@
 | width | 宽度 | string\|number | 520 |  |
 | wrapClassName | 对话框外层容器的类名 | string | - |  |
 | zIndex | 设置 Modal 的 `z-index` | Number | 1000 |  |
-| dialogStyle | 可用于设置浮层的样式，调整浮层位置等 | object | - | 1.6.1 |
-| dialogClass | 可用于设置浮层的类名 | string | - | 1.6.1 |
+| dialogStyle | 可用于设置浮层的样式，调整浮层位置等 | object | - |  |
+| dialogClass | 可用于设置浮层的类名 | string | - |  |
 
 ### 事件
 
@@ -73,7 +89,7 @@
 | zIndex | 设置 Modal 的 `z-index` | Number | 1000 |  |
 | onCancel | 取消回调，参数为关闭函数，返回 promise 时 resolve 后自动关闭 | function | 无 |  |
 | onOk | 点击确定回调，参数为关闭函数，返回 promise 时 resolve 后自动关闭 | function | 无 |  |
-| parentContext | 弹窗的父级上下文，一般用于获取父级 provider， 如获取 `ConfigProvider` 的配置 | vue instance | - | 1.4.11 |
+| parentContext | 弹窗的父级上下文，一般用于获取父级 provider， 如获取 `ConfigProvider` 的配置 | vue instance | - |  |
 
 以上函数调用后，会返回一个引用，可以通过该引用更新和关闭弹窗。
 

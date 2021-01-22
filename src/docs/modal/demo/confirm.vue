@@ -1,34 +1,35 @@
-<cn>
-#### 确认对话框
+<docs>
+---
+order: 3
+title:
+  zh-CN: 确认对话框
+  en-US: Confirmation modal dialog
+---
+
+## zh-CN
+
 使用 `confirm()` 可以快捷地弹出确认框。
-</cn>
 
-<us>
-#### Confirmation modal dialog
+## en-US
+
 To use `confirm()` to show a confirmation modal dialog.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div>
-    <a-button @click="showConfirm">
-      Confirm
-    </a-button>
-    <a-button type="dashed" @click="showDeleteConfirm">
-      Delete
-    </a-button>
-    <a-button type="dashed" @click="showPropsConfirm">
-      With extra props
-    </a-button>
+    <a-button @click="showConfirm">Confirm</a-button>
+    <a-button type="dashed" @click="showDeleteConfirm">Delete</a-button>
+    <a-button type="dashed" @click="showPropsConfirm">With extra props</a-button>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { ExclamationCircleOutlined } from '@ant-design/icons-vue';
-import { createVNode } from 'vue';
+import { createVNode, defineComponent } from 'vue';
 import { Modal } from 'ant-design-vue';
-export default {
-  methods: {
-    showConfirm() {
+export default defineComponent({
+  setup() {
+    const showConfirm = () => {
       Modal.confirm({
         title: 'Do you Want to delete these items?',
         icon: createVNode(ExclamationCircleOutlined),
@@ -41,9 +42,8 @@ export default {
         },
         class: 'test',
       });
-    },
-
-    showDeleteConfirm() {
+    };
+    const showDeleteConfirm = () => {
       Modal.confirm({
         title: 'Are you sure delete this task?',
         icon: createVNode(ExclamationCircleOutlined),
@@ -58,8 +58,8 @@ export default {
           console.log('Cancel');
         },
       });
-    },
-    showPropsConfirm() {
+    };
+    const showPropsConfirm = () => {
       Modal.confirm({
         title: 'Are you sure delete this task?',
         icon: createVNode(ExclamationCircleOutlined),
@@ -77,8 +77,12 @@ export default {
           console.log('Cancel');
         },
       });
-    },
+    };
+    return {
+      showConfirm,
+      showDeleteConfirm,
+      showPropsConfirm,
+    };
   },
-};
+});
 </script>
-```
