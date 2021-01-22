@@ -1,3 +1,17 @@
+---
+category: Components
+type: Feedback
+title: Message
+cover: https://gw.alipayobjects.com/zos/alicdn/hAkKTIW0K/Message.svg
+---
+
+Display global messages as feedback in response to user operations.
+
+## When To Use
+
+- To provide feedback such as success, warning, error etc.
+- A message is displayed at top and center and will be dismissed automatically, as a non-interrupting light-weighted prompt.
+
 ## API
 
 This components provides some static methods, with usage and arguments as following:
@@ -38,7 +52,7 @@ The properties of config are as follows:
 | duration | time(seconds) before auto-dismiss, don't dismiss if set to 0 | number | 3 |  |
 | onClose | Specify a function that will be called when the message is closed | function | - |  |
 | icon | Customized Icon | VNode | - |  |
-| key | The unique identifier of the Message | string\|number | - | 1.5.0 |
+| key | The unique identifier of the Message | string\|number | - |  |
 
 ### Global static methods
 

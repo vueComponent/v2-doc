@@ -1,3 +1,18 @@
+---
+category: Components
+type: 反馈
+title: Message
+subtitle: 全局提示
+cover: https://gw.alipayobjects.com/zos/alicdn/hAkKTIW0K/Message.svg
+---
+
+全局展示操作反馈信息。
+
+## 何时使用
+
+- 可提供成功、警告和错误等反馈信息。
+- 顶部居中显示并自动消失，是一种不打断用户操作的轻量级提示方式。
+
 ## API
 
 组件提供了一些静态方法，使用方式和参数如下：
@@ -38,7 +53,7 @@
 | duration | 自动关闭的延时，单位秒。设为 0 时不自动关闭。 | number         | 3      |       |
 | onClose  | 关闭时触发的回调函数                          | Function       | -      |       |
 | icon     | 自定义图标                                    | VNode          | -      |       |
-| key      | 当前提示的唯一标志                            | string\|number | -      | 1.5.0 |
+| key      | 当前提示的唯一标志                            | string\|number | -      |       |
 
 ### 全局方法
 
