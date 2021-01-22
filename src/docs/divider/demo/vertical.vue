@@ -1,14 +1,20 @@
-<cn>
-#### 垂直分割线
+<docs>
+---
+order: 2
+title:
+  zh-CN: 垂直分割线
+  en-US: Vertical
+---
+
+## zh-CN
+
 使用 `type="vertical"` 设置为行内的垂直分割线。
-</cn>
 
-<us>
-#### Vertical
+## en-US
+
 Use `type="vertical"` make it vertical.
-</us>
+</docs>
 
-```vue
 <template>
   <div>
     Text
@@ -18,4 +24,3 @@ Use `type="vertical"` make it vertical.
     <a href="#">Link</a>
   </div>
 </template>
-```

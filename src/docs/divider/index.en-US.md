@@ -1,6 +1,18 @@
-## API
+---
+category: Components
+type: Layout
+title: Divider
+cover: https://gw.alipayobjects.com/zos/alicdn/5swjECahe/Divider.svg
+---
 
-### Divider
+A divider line separates different content.
+
+## When To Use
+
+- Divide sections of article.
+- Divide inline text and links such as the operation column of table.
+
+## API
 
 | Property    | Description                      | Type                          | Default      |
 | ----------- | -------------------------------- | ----------------------------- | ------------ |

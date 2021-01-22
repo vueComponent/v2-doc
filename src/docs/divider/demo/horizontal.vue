@@ -1,37 +1,38 @@
-<cn>
-#### 带文字的分割线
-分割线中带有文字，可以用 `orientation` 指定文字位置。
-</cn>
+<docs>
+---
+order: 0
+title:
+  zh-CN: 水平分割线
+  en-US: Horizontal
+---
 
-<us>
-#### Divider with title
-Divider with inner title, set `orientation="left/right"` to align it.
-</us>
+## zh-CN
 
-```vue
+默认为水平分割线，可在中间加入文字。
+
+## en-US
+
+Divider is `horizontal` by default. You can add text within Divider.
+</docs>
+
 <template>
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista
     probare, quae sunt a te dicta? Refert tamen, quo modo.
   </p>
-  <a-divider>Text</a-divider>
+  <a-divider />
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista
     probare, quae sunt a te dicta? Refert tamen, quo modo.
   </p>
-  <a-divider orientation="left">
-    Left Text
-  </a-divider>
+  <a-divider>With Text</a-divider>
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista
     probare, quae sunt a te dicta? Refert tamen, quo modo.
   </p>
-  <a-divider orientation="right">
-    Right Text
-  </a-divider>
+  <a-divider dashed />
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista
     probare, quae sunt a te dicta? Refert tamen, quo modo.
   </p>
 </template>
-```
