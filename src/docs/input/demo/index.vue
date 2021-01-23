@@ -1,35 +1,36 @@
 <template>
   <demo-sort>
-    <!-- <Basic />
-          <AutosizeTextarea />
-          <Presuffix />
-          <SearchInput />
-          <SearchInputLoading />
-          <Size />
-          <Group />
-          <TextArea />
-          <Addon />
-          <Tooltip />
-          <AllowClear />
-          <PasswordInput />
-          <ShowCount /> -->
+    <basic />
+    <autosize-textarea />
+    <presuffix />
+    <search-input />
+    <search-input-loading />
+    <size />
+    <group />
+    <text-area />
+    <addon />
+    <tooltip />
+    <allow-clear />
+    <password-input />
+    <show-count />
+    <textarea-resize />
   </demo-sort>
 </template>
 
 <script>
-// import Basic from './basic';
-// import AutosizeTextarea from './autosize-textarea';
-// import Presuffix from './presuffix';
-// import SearchInput from './search-input';
-// import SearchInputLoading from './search-input-loading';
-// import Size from './size';
-// import Group from './group';
-// import TextArea from './textarea';
-// import AllowClear from './allowClear';
-// import PasswordInput from './password-input';
-// import ShowCount from './show-count';
-// import Addon from './addon';
-// import Tooltip from './tooltip';
+import Basic from './basic.vue';
+import AutosizeTextarea from './autosize-textarea.vue';
+import Presuffix from './presuffix.vue';
+import SearchInput from './search-input.vue';
+import SearchInputLoading from './search-input-loading.vue';
+import Size from './size.vue';
+import Group from './group.vue';
+import TextArea from './textarea.vue';
+import AllowClear from './allow-clear.vue';
+import PasswordInput from './password-input.vue';
+import ShowCount from './show-count.vue';
+import Addon from './addon.vue';
+import Tooltip from './tooltip.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
 import { defineComponent } from 'vue';
@@ -37,6 +38,21 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   CN,
   US,
+  components: {
+    Basic,
+    AutosizeTextarea,
+    Presuffix,
+    SearchInput,
+    SearchInputLoading,
+    Size,
+    Group,
+    TextArea,
+    Addon,
+    Tooltip,
+    AllowClear,
+    PasswordInput,
+    ShowCount,
+  },
 });
 </script>
 <style></style>

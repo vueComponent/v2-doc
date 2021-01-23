@@ -1,14 +1,20 @@
-<cn>
-#### 搜索框 loading
+<docs>
+---
+order: 4
+title:
+  zh-CN: 搜索框 loading
+  en-US: Search box with loading
+---
+
+## zh-CN
+
 用于 `onSearch` 的时候展示 `loading`。
-</cn>
 
-<us>
-#### Search box with loading
+## en-US
+
 Search loading when onSearch.
-</us>
 
-```vue
+</docs>
 <template>
   <div>
     <a-input-search v-model:value="value" placeholder="input search loading deault" loading />
@@ -22,13 +28,14 @@ Search loading when onSearch.
     />
   </div>
 </template>
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+  setup() {
+    const value = ref<string>('');
     return {
-      value: '',
+      value,
     };
   },
-};
+});
 </script>
-```

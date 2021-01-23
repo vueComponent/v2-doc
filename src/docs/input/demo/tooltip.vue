@@ -1,24 +1,30 @@
-<cn>
-#### 输入时格式化展示
+<docs>
+---
+order: 9
+title:
+  zh-CN: 输入时格式化展示
+  en-US: Format Tooltip Input
+---
+
+## zh-CN
+
 结合 [Tooltip](/components/tooltip-cn/) 组件，实现一个数值输入框，方便内容超长时的全量展现。
-</cn>
 
-<us>
-#### Format Tooltip Input
+## en-US
+
 You can use the Input in conjunction with [Tooltip](/components/tooltip/) component to create a Numeric Input, which can provide a good experience for extra-long content display.
-</us>
 
-```vue
+</docs>
 <template>
   <a-tooltip :trigger="['focus']" placement="topLeft" overlay-class-name="numeric-input">
-    <template v-if="value" #title>
+    <template v-if="inputValue" #title>
       <span class="numeric-input-title">
-        {{ value !== '-' ? formatNumber(value) : '-' }}
+        {{ formatValue }}
       </span>
     </template>
 
     <a-input
-      :value="value"
+      :value="inputValue"
       placeholder="Input a number"
       :max-length="25"
       style="width: 120px"
@@ -27,48 +33,63 @@ You can use the Input in conjunction with [Tooltip](/components/tooltip/) compon
     />
   </a-tooltip>
 </template>
-<script>
-function formatNumber(value) {
+<script lang="ts">
+import { computed, defineComponent, ref } from 'vue';
+
+function formatNumber(value: string) {
   value += '';
   const list = value.split('.');
   const prefix = list[0].charAt(0) === '-' ? '-' : '';
   let num = prefix ? list[0].slice(1) : list[0];
   let result = '';
+
   while (num.length > 3) {
     result = `,${num.slice(-3)}${result}`;
     num = num.slice(0, num.length - 3);
   }
+
   if (num) {
     result = num + result;
   }
+
   return `${prefix}${result}${list[1] ? `.${list[1]}` : ''}`;
 }
 
-export default {
-  data() {
-    return {
-      value: '111',
-    };
-  },
-  methods: {
-    formatNumber,
-    onChange(e) {
+export default defineComponent({
+  setup() {
+    const inputValue = ref<string>('111');
+    const formatValue = computed(() => {
+      if (inputValue.value === '-') return '-';
+      return formatNumber(inputValue.value);
+    });
+
+    const onChange = (e: Event) => {
       const { value } = e.target;
       const reg = /^-?[0-9]*(\.[0-9]*)?$/;
+
       if ((!isNaN(value) && reg.test(value)) || value === '' || value === '-') {
-        this.value = value;
+        inputValue.value = value;
       }
-    },
+    };
+
     // '.' at the end or only '-' in the input box.
-    onBlur() {
-      const { value, onChange } = this;
-      let valueTemp = value;
-      if (value.charAt(value.length - 1) === '.' || value === '-') {
-        onChange({ value: value.slice(0, -1) });
+    const onBlur = () => {
+      if (
+        inputValue.value.charAt(inputValue.value.length - 1) === '.' ||
+        inputValue.value === '-'
+      ) {
+        onChange({ target: { value: inputValue.value.slice(0, -1) } });
       }
-    },
+    };
+
+    return {
+      inputValue,
+      onChange,
+      onBlur,
+      formatValue,
+    };
   },
-};
+});
 </script>
 <style>
 /* to prevent the arrow overflow the popup container,
@@ -82,4 +103,3 @@ or the height is not enough when content is empty */
   font-size: 14px;
 }
 </style>
-```

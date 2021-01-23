@@ -1,21 +1,29 @@
-<cn>
-#### 前缀和后缀
+<docs>
+---
+order: 2
+title:
+  zh-CN: 前缀和后缀
+  en-US: prefix and suffix
+---
+
+## zh-CN
+
 在输入框上添加前缀或后缀图标。
-</cn>
 
-<us>
-#### prefix and suffix
+## en-US
+
 Add prefix or suffix icons inside input.
-</us>
 
-```vue
+</docs>
 <template>
   <div class="components-input-demo-presuffix">
-    <a-input placeholder="Basic usage" v-model:value="userName" ref="userNameInput">
-      <template #prefix><user-outlined type="user"/></template>
+    <a-input placeholder="Basic usage" v-model:value="userName">
+      <template #prefix>
+        <user-outlined type="user" />
+      </template>
       <template #suffix>
         <a-tooltip title="Extra information">
-          <info-circle-outlined style="color: rgba(0,0,0,.45)" />
+          <info-circle-outlined style="color: rgba(0, 0, 0, 0.45)" />
         </a-tooltip>
       </template>
     </a-input>
@@ -25,24 +33,20 @@ Add prefix or suffix icons inside input.
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { UserOutlined, InfoCircleOutlined } from '@ant-design/icons-vue';
-export default {
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
   components: {
     UserOutlined,
     InfoCircleOutlined,
   },
-  data() {
+
+  setup() {
+    const userName = ref<string>('');
     return {
-      userName: '',
+      userName,
     };
   },
-  methods: {
-    emitEmpty() {
-      this.$refs.userNameInput.focus();
-      this.userName = '';
-    },
-  },
-};
+});
 </script>
-```

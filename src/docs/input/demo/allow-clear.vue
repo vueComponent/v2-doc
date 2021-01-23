@@ -1,14 +1,20 @@
-<cn>
-#### 带移除图标
+<docs>
+---
+order: 10
+title:
+  zh-CN: 带移除图标
+  en-US: With clear icon
+---
+
+## zh-CN
+
 带移除图标的输入框，点击图标删除所有内容。
-</cn>
 
-<us>
-#### With clear icon
+## en-US
+
 Input type of password.
-</us>
 
-```vue
+</docs>
 <template>
   <div>
     <a-input
@@ -27,19 +33,22 @@ Input type of password.
     />
   </div>
 </template>
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+  setup() {
+    const value1 = ref<string>('');
+    const value2 = ref<string>('');
+
+    const onChange = (e: Event) => {
+      console.log(e);
+    };
+
     return {
-      value1: '',
-      value2: '',
+      value1,
+      value2,
+      onChange,
     };
   },
-  methods: {
-    onChange(e) {
-      console.log(e);
-    },
-  },
-};
+});
 </script>
-```
