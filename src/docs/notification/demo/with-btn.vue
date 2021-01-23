@@ -1,30 +1,37 @@
-<cn>
-#### 自定义按钮
+<docs>
+---
+order: 4
+title:
+  zh-CN: 自定义按钮
+  en-US: Custom close button
+---
+
+## zh-CN
+
 自定义关闭按钮的样式和文字。
-</cn>
 
-<us>
-#### Custom close button
+## en-US
+
 To customize the style or font of the close button.
-</us>
 
-```vue
+</docs>
+
 <template>
-  <a-button type="primary" @click="openNotification">
-    Open the notification box
-  </a-button>
+  <a-button type="primary" @click="openNotification">Open the notification box</a-button>
 </template>
-<script>
+
+<script lang="ts">
 import { notification, Button } from 'ant-design-vue';
-import { h } from 'vue';
+import { h, defineComponent } from 'vue';
+
 const close = () => {
   console.log(
     'Notification was closed. Either the close button was clicked or duration time elapsed.',
   );
 };
-export default {
-  methods: {
-    openNotification() {
+export default defineComponent({
+  setup() {
+    const openNotification = () => {
       const key = `open${Date.now()}`;
       notification.open({
         message: 'Notification Title',
@@ -42,8 +49,11 @@ export default {
         key,
         onClose: close,
       });
-    },
+    };
+
+    return {
+      openNotification,
+    };
   },
-};
+});
 </script>
-```

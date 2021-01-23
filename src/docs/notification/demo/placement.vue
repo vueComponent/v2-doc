@@ -1,14 +1,21 @@
-<cn>
-#### 位置
+<docs>
+---
+order: 6
+title:
+  zh-CN: 位置
+  en-US: Placement
+---
+
+## zh-CN
+
 可以设置通知从右上角、右下角、左下角、左上角弹出。
-</cn>
 
-<us>
-#### Placement
+## en-US
+
 A notification box can pop up from `topRight` or `bottomRight` or `bottomLeft` or `topLeft`.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div>
     <a-button type="primary" @click="openNotification('topLeft')">
@@ -30,7 +37,7 @@ A notification box can pop up from `topRight` or `bottomRight` or `bottomLeft` o
     </a-button>
   </div>
 </template>
-<script>
+<script lang="ts">
 import {
   RadiusUpleftOutlined,
   RadiusUprightOutlined,
@@ -38,23 +45,26 @@ import {
   RadiusBottomrightOutlined,
 } from '@ant-design/icons-vue';
 import { notification } from 'ant-design-vue';
-export default {
+import { defineComponent } from 'vue';
+export default defineComponent({
   components: {
     RadiusUpleftOutlined,
     RadiusUprightOutlined,
     RadiusBottomleftOutlined,
     RadiusBottomrightOutlined,
   },
-  methods: {
-    openNotification(placement) {
+  setup() {
+    const openNotification = (placement: string) => {
       notification.open({
         message: `Notification ${placement}`,
         description:
           'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
         placement,
       });
-    },
+    };
+    return {
+      openNotification,
+    };
   },
-};
+});
 </script>
-```

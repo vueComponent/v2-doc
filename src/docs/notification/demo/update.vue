@@ -1,25 +1,33 @@
-<cn>
-#### 更新消息内容
+<docs>
+---
+order: 7 
+title: 
+  zh-CN: 更新消息内容 
+  en-US: Update Message Content
+---
+
+## zh-CN
+
 可以通过唯一的 key 来更新内容。
-</cn>
 
-<us>
-#### Update Message Content
+## en-US
+
 Update content with unique key.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-button type="primary" @click="openNotification">
     Open the notification box
   </a-button>
 </template>
-<script>
+<script lang="ts">
 import { notification } from 'ant-design-vue';
+import { defineComponent } from 'vue';
 const key = 'updatable';
-export default {
-  methods: {
-    openNotification() {
+export default defineComponent({
+  setup() {
+    const openNotification = () => {
       notification.open({
         key,
         message: 'Notification Title',
@@ -32,8 +40,10 @@ export default {
           description: 'New description.',
         });
       }, 1000);
-    },
-  },
-};
+    }
+    return {
+      openNotification
+    }
+  }
+});
 </script>
-```

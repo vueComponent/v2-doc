@@ -34,7 +34,7 @@ Basic drawer.
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
-    const visible = ref(false);
+    const visible = ref<boolean>(false);
 
     const afterVisibleChange = (bool: boolean) => {
       console.log('visible', bool);
