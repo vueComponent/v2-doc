@@ -23,7 +23,7 @@ Custom paging display
         <img :src="getImgUrl(props.i)" />
       </a>
     </template>
-    <div v-for="item in 4">
+    <div v-for="item in 4" :key="item">
       <img :src="baseUrl + 'abstract0' + item + '.jpg'" />
     </div>
   </a-carousel>
@@ -35,7 +35,7 @@ const baseUrl =
   'https://raw.githubusercontent.com/vueComponent/ant-design-vue/master/components/vc-slick/assets/img/react-slick/';
 export default defineComponent({
   setup() {
-    const getImgUrl = i => {
+    const getImgUrl = (i: number) => {
       return `${baseUrl}abstract0${i + 1}.jpg`;
     };
     return {

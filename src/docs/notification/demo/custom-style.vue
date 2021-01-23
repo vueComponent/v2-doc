@@ -1,24 +1,30 @@
-<cn>
-#### 自定义样式
+<docs>
+---
+order: 5
+title:
+  zh-CN: 自定义样式
+  en-US: Customized style
+---
+
+## zh-CN
+
 使用 style 和 className 来定义样式。
-</cn>
 
-<us>
-#### Customized style
+## en-US
+
 The style and className are available to customize Notification.
-</us>
 
-```vue
+</docs>
+
 <template>
-  <a-button type="primary" @click="openNotification">
-    Open the notification box
-  </a-button>
+  <a-button type="primary" @click="openNotification">Open the notification box</a-button>
 </template>
 <script>
 import { notification } from 'ant-design-vue';
-export default {
-  methods: {
-    openNotification() {
+import { defineComponent } from 'vue';
+export default defineComponent({
+  setup() {
+    const openNotification = () => {
       notification.open({
         message: 'Notification Title',
         description:
@@ -28,8 +34,10 @@ export default {
           marginLeft: `${335 - 600}px`,
         },
       });
-    },
+    };
+    return {
+      openNotification
+    }
   },
-};
+});
 </script>
-```
