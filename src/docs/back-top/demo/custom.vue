@@ -18,12 +18,10 @@ You can customize the style of the button, just note the size limit: no more tha
 <template>
   <div id="components-back-top-demo-custom">
     <a-back-top>
-      <div class="ant-back-top-inner">
-        UP
-      </div>
+      <div class="ant-back-top-inner">UP</div>
     </a-back-top>
     Scroll down to see the bottom-right
-    <strong style="color: #1088e9"> blue </strong>
+    <strong style="color: #1088e9">blue</strong>
     button.
   </div>
 </template>
