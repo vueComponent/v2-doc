@@ -1,3 +1,17 @@
+---
+category: Components
+type: Data Entry
+title: Mentions
+subtitle: 提及
+cover: https://gw.alipayobjects.com/zos/alicdn/jPE-itMFM/Mentions.svg
+---
+
+提及组件。
+
+## 何时使用
+
+- 用于在输入中提及某人或某事，常用于发布、聊天或评论功能。
+
 ## API
 
 ### Mentions

@@ -1,3 +1,16 @@
+---
+category: Components
+type: Data Entry
+title: Mentions
+cover: https://gw.alipayobjects.com/zos/alicdn/jPE-itMFM/Mentions.svg
+---
+
+Mention component.
+
+## When To Use
+
+- When need to mention someone or something.
+
 ## API
 
 ### Mention

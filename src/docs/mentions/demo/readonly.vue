@@ -1,14 +1,20 @@
-<cn>
-#### 无效或只读
+<docs>
+---
+order: 3
+title:
+  zh-CN: 无效或只读
+  en-US: disabled or readonly
+---
+
+## zh-CN
+
 通过 `disabled` 属性设置是否生效。通过 `readonly` 属性设置是否只读。
-</cn>
 
-<us>
-#### disabled or readonly
+## en-US
+
 Configurate disabled and readonly.
-</us>
 
-```vue
+</docs>
 <template>
   <div>
     <div style="margin-bottom: 10px">
@@ -25,15 +31,18 @@ Configurate disabled and readonly.
     </a-mentions>
   </div>
 </template>
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+  setup() {
+    const value1 = ref<string>('');
+    const value2 = ref<string>('');
+    const options = ref<string[]>(['afc163', 'zombieJ', 'yesmeck']);
     return {
-      value1: '',
-      value2: '',
-      options: ['afc163', 'zombieJ', 'yesmeck'],
+      value1,
+      value2,
+      options,
     };
   },
-};
+});
 </script>
-```
