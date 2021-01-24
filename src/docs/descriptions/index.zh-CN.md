@@ -1,9 +1,23 @@
+---
+category: Components
+type: 数据展示
+title: Descriptions
+subtitle: 描述列表
+cover: https://gw.alipayobjects.com/zos/alicdn/MjtG9_FOI/Descriptions.svg
+---
+
+成组展示多个只读字段。
+
+## 何时使用
+
+常见于详情页的信息展示。
+
 ## API
 
 ### Descriptions props
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- |
 | bordered | 是否展示边框 | boolean | false |  |
 | colon | 配置 `Descriptions.Item` 的 `colon` 的默认值 | boolean | true |  |
 | column | 一行的 `DescriptionItems` 数量，可以写成像素值或支持响应式的对象写法 `{ xs: 8, sm: 16, md: 24}` | number | 3 |  |
