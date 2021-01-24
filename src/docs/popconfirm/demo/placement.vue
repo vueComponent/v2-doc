@@ -1,14 +1,21 @@
-<cn>
-#### 位置
+<docs>
+---
+order: 3
+title:
+  zh-CN: 位置
+  en-US: Placement
+---
+
+## zh-CN
+
 位置有十二个方向。如需箭头指向目标元素中心，可以设置 `arrowPointAtCenter`。
-</cn>
 
-<us>
-#### Placement
+## en-US
+
 There are 12 `placement` options available. Use `arrowPointAtCenter` if you want arrow point at the center of target.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div id="components-a-popconfirm-demo-placement">
     <div :style="{ marginLeft: `${buttonWidth}px`, whiteSpace: 'nowrap' }">
@@ -107,20 +114,23 @@ There are 12 `placement` options available. Use `arrowPointAtCenter` if you want
 </template>
 <script>
 import { message } from 'ant-design-vue';
+import { defineComponent } from 'vue';
+export default defineComponent({
+  setup() {
+    const buttonWidth = 70;
 
-export default {
-  data() {
+    const text = 'Are you sure to delete this task?';
+
+    const confirm = () => {
+      message.info('Clicked on Yes.');
+    };
     return {
-      buttonWidth: 70,
-      text: 'Are you sure to delete this task?',
+      buttonWidth,
+      text,
+      confirm,
     };
   },
-  methods: {
-    confirm() {
-      message.info('Clicked on Yes.');
-    },
-  },
-};
+});
 </script>
 <style scoped>
 #components-a-popconfirm-demo-placement .ant-btn {
@@ -131,4 +141,3 @@ export default {
   margin-bottom: 8px;
 }
 </style>
-```
