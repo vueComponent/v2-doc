@@ -1,14 +1,21 @@
-<cn>
-#### 自定义文字格式
+<docs>
+---
+order: 6
+title:
+  zh-CN: 自定义文字格式
+  en-US: Custom text format
+---
+
+## zh-CN
+
 `format` 属性指定格式。
-</cn>
 
-<us>
-#### Custom text format
+## en-US
+
 You can set a custom text by setting the `format` prop.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div>
     <a-progress type="circle" :percent="75" :format="percent => `${percent} Days`" />
@@ -20,11 +27,4 @@ You can set a custom text by setting the `format` prop.
     </a-progress>
   </div>
 </template>
-<style scoped>
-div.ant-progress-circle,
-div.ant-progress-line {
-  margin-right: 8px;
-  margin-bottom: 8px;
-}
-</style>
-```
+

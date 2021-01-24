@@ -1,3 +1,20 @@
+---
+category: Components
+type: 反馈
+title: Progress
+subtitle: 进度条
+cover: https://gw.alipayobjects.com/zos/alicdn/xqsDu4ZyR/Progress.svg
+---
+
+展示操作的当前进度。
+
+## 何时使用
+
+在操作需要较长时间才能完成时，为用户显示该操作的当前进度和状态。
+
+- 当一个操作会打断当前界面，或者需要在后台运行，且耗时可能超过2秒时；
+- 当需要显示一个操作完成的百分比时。
+
 ## API
 
 各类型共用的属性。
@@ -18,7 +35,7 @@
 | 属性 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | strokeWidth | 进度条线的宽度，单位 px | number | 10 |  |
-| strokeColor | 进度条的色彩，传入 object 时为渐变 | string \| { from: string; to: string; direction: string } | - | 1.5.0 |
+| strokeColor | 进度条的色彩，传入 object 时为渐变 | string \| { from: string; to: string; direction: string } | - |  |
 
 ### `type="circle"`
 
@@ -26,7 +43,7 @@
 | --- | --- | --- | --- | --- |
 | width | 圆形进度条画布宽度，单位 px | number | 132 |  |
 | strokeWidth | 圆形进度条线的宽度，单位是进度条画布宽度的百分比 | number | 6 |  |
-| strokeColor | 圆形进度条线的色彩，传入 object 时为渐变 | string \| object | - | 1.5.0 |
+| strokeColor | 圆形进度条线的色彩，传入 object 时为渐变 | string \| object | - |  |
 
 ### `type="dashboard"`
 

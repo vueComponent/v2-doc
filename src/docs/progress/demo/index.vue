@@ -1,64 +1,58 @@
-<script>
-import Line from './line.md';
-import Circle from './circle.md';
-import LineMini from './line-mini.md';
-import CircleMini from './circle-mini.md';
-import CircleDynamic from './circle-dynamic.md';
-import Format from './format.md';
-import Dynamic from './dynamic.md';
-import Dashboard from './dashboard.md';
-import Segment from './segment.md';
-import Linecap from './linecap.md';
-import GradientLine from './gradient-line';
+<template>
+  <demo-sort>
+    <line-demo />
+    <circle-demo />
+    <line-mini />
+    <circle-mini />
+    <dynamic />
+    <circle-dynamic />
+    <format />
+    <dashboard />
+    <segment />
+    <line-cap />
+    <gradient-line />
+  </demo-sort>
+</template>
+<script lang="ts">
+import Line from './line.vue';
+import Circle from './circle.vue';
+import LineMini from './line-mini.vue';
+import CircleMini from './circle-mini.vue';
+import Dynamic from './dynamic.vue';
+import CircleDynamic from './circle-dynamic.vue';
+import Format from './format.vue';
+import Dashboard from './dashboard.vue';
+import Segment from './segment.vue'
+import LineCap from './linecap.vue'
+import GradientLine from './gradient-line.vue'
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
+import { defineComponent } from 'vue';
 
-const md = {
-  cn: `# Progress 进度条
-  展示操作的当前进度。
-  ## 何时使用
-  在操作需要较长时间才能完成时，为用户显示该操作的当前进度和状态。
-
-  - 当一个操作会打断当前界面，或者需要在后台运行，且耗时可能超过2秒时；
-  - 当需要显示一个操作完成的百分比时。
-        ## 代码演示`,
-  us: `# Progress
-  Display the current progress of an operation flow.
-  ## When To Use
-  If it will take a long time to complete an operation, you can use \`Progress\` to show the current progress and status.
-
-  - When an operation will interrupt the current interface, or it needs to run in the background for more than 2 seconds.
-  - When you need to display the completion percentage of an operation.
-  ## Examples
-  `,
-};
-export default {
-  category: 'Components',
-  subtitle: '进度条',
-  type: 'Feedback',
-  title: 'Progress',
-  render() {
-    return (
-      <div>
-        <Md cn={md.cn} us={md.us} />
-        <demo-sort>
-          <Line />
-          <Circle />
-          <LineMini />
-          <CircleMini />
-          <CircleDynamic />
-          <Format />
-          <Dynamic />
-          <Dashboard />
-          <Segment />
-          <Linecap />
-          <GradientLine />
-        </demo-sort>
-        <api vSlots={{ cn: () => <CN /> }}>
-          <US />
-        </api>
-      </div>
-    );
+export default defineComponent({
+  CN,
+  US,
+  components: {
+    LineDemo: Line,
+    CircleDemo: Circle,
+    LineMini,
+    CircleMini,
+    Dynamic,
+    CircleDynamic,
+    Format,
+    Dashboard,
+    Segment,
+    LineCap,
+    GradientLine,
   },
-};
+  setup() {
+    return {};
+  },
+});
 </script>
+<style>
+[id^='components-progress-demo-'] .ant-progress {
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+</style>

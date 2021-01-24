@@ -1,14 +1,21 @@
-<cn>
-#### 分段进度条
+<docs>
+---
+order: 8
+title:
+  zh-CN: 分段进度条
+  en-US: Progress bar with success segment
+---
+
+## zh-CN
+
 标准的进度条。
-</cn>
 
-<us>
-#### Progress bar with success segment
+## en-US
+
 A standard progress bar.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div>
     <a-tooltip title="3 done / 3 in progress / 4 to do">
@@ -22,4 +29,3 @@ A standard progress bar.
     </a-tooltip>
   </div>
 </template>
-```

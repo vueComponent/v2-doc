@@ -1,3 +1,19 @@
+---
+category: Components
+type: Feedback
+title: Progress
+cover: https://gw.alipayobjects.com/zos/alicdn/xqsDu4ZyR/Progress.svg
+---
+
+Display the current progress of an operation flow.
+
+## When To Use
+
+If it will take a long time to complete an operation, you can use `Progress` to show the current progress and status.
+
+- When an operation will interrupt the current interface, or it needs to run in the background for more than 2 seconds.
+- When you need to display the completion percentage of an operation.
+
 ## API
 
 Properties that shared by all types.
@@ -18,7 +34,7 @@ Properties that shared by all types.
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
 | strokeWidth | to set the width of the progress bar, unit: `px` | number | 10 |  |
-| strokeColor | color of progress bar, render `linear-gradient` when passing an object | string \| { from: string; to: string; direction: string } | - | 1.5.0 |
+| strokeColor | color of progress bar, render `linear-gradient` when passing an object | string \| { from: string; to: string; direction: string } | - |  |
 
 ### `type="circle"`
 
@@ -26,7 +42,7 @@ Properties that shared by all types.
 | --- | --- | --- | --- | --- |
 | width | to set the canvas width of the circular progress, unit: `px` | number | 132 |  |
 | strokeWidth | to set the width of the circular progress, unit: percentage of the canvas width | number | 6 |  |
-| strokeColor | color of circular progress, render `linear-gradient` when passing an object | string \| object | - | 1.5.0 |
+| strokeColor | color of circular progress, render `linear-gradient` when passing an object | string \| object | - |  |
 
 ### `type="dashboard"`
 
