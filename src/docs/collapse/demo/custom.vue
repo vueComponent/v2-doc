@@ -1,14 +1,21 @@
-<cn>
-#### 自定义面板
+<docs>
+---
+order: 4
+title:
+  zh-CN: 自定义面板
+  en-US: Custom Panel
+---
+
+## zh-CN
+
 自定义各个面板的背景色、圆角、边距和图标。
-</cn>
 
-<us>
-#### Custom Panel
+## en-US
+
 Customize the background, border and margin styles and icon for each panel.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-collapse v-model:activeKey="activeKey" :bordered="false">
     <template #expandIcon="{ isActive }">
@@ -25,21 +32,24 @@ Customize the background, border and margin styles and icon for each panel.
     </a-collapse-panel>
   </a-collapse>
 </template>
-<script>
+<script lang="ts">
 import { CaretRightOutlined } from '@ant-design/icons-vue';
+import { defineComponent, ref } from 'vue';
 
-export default {
+export default defineComponent({
   components: {
     CaretRightOutlined,
   },
-  data() {
+  setup() {
+    const activeKey = ref(['1']);
+    const text = `A dog is a type of domesticated animal.Known for its loyalty and faithfulness,it can be found as a welcome guest in many households across the world.`;
+    const customStyle =
+      'background: #f7f7f7;border-radius: 4px;margin-bottom: 24px;border: 0;overflow: hidden';
     return {
-      activeKey: ['1'],
-      text: `A dog is a type of domesticated animal.Known for its loyalty and faithfulness,it can be found as a welcome guest in many households across the world.`,
-      customStyle:
-        'background: #f7f7f7;border-radius: 4px;margin-bottom: 24px;border: 0;overflow: hidden',
+      activeKey,
+      text,
+      customStyle,
     };
   },
-};
+});
 </script>
-```

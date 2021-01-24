@@ -1,14 +1,21 @@
-<cn>
-#### 简洁风格
+<docs>
+---
+order: 3
+title:
+  zh-CN: 简洁风格
+  en-US: Borderless
+---
+
+## zh-CN
+
 一套没有边框的简洁样式。
-</cn>
 
-<us>
-#### Borderless
+## en-US
+
 A borderless style of Collapse.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-collapse v-model:activeKey="activeKey" :bordered="false">
     <a-collapse-panel key="1" header="This is panel header 1">
@@ -22,14 +29,16 @@ A borderless style of Collapse.
     </a-collapse-panel>
   </a-collapse>
 </template>
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+  setup() {
+    const activeKey = ref(['1']);
+    const text = `A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.`;
     return {
-      activeKey: ['1'],
-      text: `A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.`,
+      activeKey,
+      text,
     };
   },
-};
+});
 </script>
-```

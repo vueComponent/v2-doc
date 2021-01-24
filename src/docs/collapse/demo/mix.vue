@@ -1,14 +1,21 @@
-<cn>
-#### 面板嵌套
+<docs>
+---
+order: 2
+title:
+  zh-CN: 面板嵌套
+  en-US: Nested panel
+---
+
+## zh-CN
+
 嵌套折叠面板。
-</cn>
 
-<us>
-#### Nested panel
+## en-US
+
 `Collapse` is nested inside the `Collapse`.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-collapse v-model:activeKey="activeKey" @change="changeActivekey">
     <a-collapse-panel key="1" header="This is panel header 1">
@@ -26,19 +33,23 @@
     </a-collapse-panel>
   </a-collapse>
 </template>
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const activeKey = ref([]);
+    const text = `A dog is a type of domesticated animal.Known for its loyalty and faithfulness,it can be found as a welcome guest in many households across the world.`;
+
+    const changeActivekey = key => {
+      console.log(key);
+    };
+
     return {
-      activeKey: [],
-      text: `A dog is a type of domesticated animal.Known for its loyalty and faithfulness,it can be found as a welcome guest in many households across the world.`,
+      activeKey,
+      text,
+      changeActivekey,
     };
   },
-  methods: {
-    changeActivekey(key) {
-      console.log(key);
-    },
-  },
-};
+});
 </script>
-```

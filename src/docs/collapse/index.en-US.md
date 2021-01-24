@@ -1,3 +1,16 @@
+---
+category: Components
+type: Data Display
+title: Collapse
+cover: https://gw.alipayobjects.com/zos/alicdn/IxH16B9RD/Collapse.svg
+---
+
+A content area which can be collapsed and expanded.
+## When To Use
+
+- Can be used to group or hide complex regions to keep the page clean.
+- 'Accordion' is a special kind of 'Collapse', which allows only one panel to be expanded at a time.
+
 ## API
 
 ### Collapse
