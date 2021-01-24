@@ -1,14 +1,20 @@
-<cn>
-#### 上一步和下一步
+<docs>
+---
+order: 8
+title:
+  zh-CN: 上一步和下一步
+  en-US: Prev and next
+---
+
+## zh-CN
+
 修改上一步和下一步为文字链接。
-</cn>
 
-<us>
-#### Prev and next
+## en-US
+
 Use text link for prev and next button.
-</us>
+</docs>
 
-```vue
 <template>
   <a-pagination :total="500">
     <template #itemRender="{ page, type, originalElement }">
@@ -18,14 +24,16 @@ Use text link for prev and next button.
     </template>
   </a-pagination>
 </template>
-<script>
+<script lang="ts">
+import { defineComponent, ref, watch } from 'vue';
+
 function renderVNode(_, { attrs: { vnode } }) {
   return vnode;
 }
-export default {
+export default defineComponent({
   components: {
     renderVNode,
   },
-};
+});
 </script>
-```
+

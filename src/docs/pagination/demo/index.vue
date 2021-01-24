@@ -1,64 +1,46 @@
-<script>
-import Basic from './basic';
-import Changer from './changer';
-import CustomChanger from './custom-changer';
-import ItemRender from './itemRender';
-import Jump from './jump';
-import Mini from './mini';
-import More from './more';
-import Simple from './simple';
-import Total from './total';
+<template>
+  <demo-sort>
+    <Basic />
+    <More />
+    <Changer />
+    <CustomChanger />
+    <Jump />
+    <Mini />
+    <Simple />
+    <Total />
+    <ItemRender />
+  </demo-sort>
+</template>
+<script lang="ts">
+import Basic from './basic.vue';
+import More from './more.vue';
+import Changer from './changer.vue';
+import CustomChanger from './custom-changer.vue';
+import Jump from './jump.vue';
+import Simple from './simple.vue';
+import ItemRender from './itemRender.vue';
+import Mini from './mini.vue';
+import Total from './total.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
+import { defineComponent } from 'vue';
 
-const md = {
-  cn: `# Pagination 分页
-
-    采用分页的形式分隔长列表，每次只加载一个页面。
-
-    ## 何时使用
-
-    - 当加载/渲染所有数据将花费很多时间时；
-    - 可切换页码浏览数据。
-
-    ## 代码演示`,
-
-  us: `# Pagination
-
-    A long list can be divided into several pages by 'Pagination', and only one page will be loaded at a time.
-
-    ## When To Use
-
-    - When it will take a long time to load/render all items.
-    - If you want to browse the data by navigating through pages.
-    ## Examples `,
-};
-export default {
-  category: 'Components',
-  subtitle: '分页',
-  type: 'Navigation',
-  title: 'Pagination',
-  cols: 1,
-  render() {
-    return (
-      <div>
-        <Md cn={md.cn} us={md.us} />
-        <demo-sort cols={1}>
-          <Basic />
-          <More />
-          <Changer />
-          <CustomChanger />
-          <Jump />
-          <Mini />
-          <Simple />
-          <Total />
-          <ItemRender />
-        </demo-sort>
-        <api vSlots={{ cn: () => <CN /> }}>
-          <US />
-        </api>
-      </div>
-    );
+export default defineComponent({
+  CN,
+  US,
+  components: {
+    Basic,
+    More,
+    Changer,
+    CustomChanger,
+    Jump,
+    Simple,
+    Mini,
+    Total,
+    ItemRender
   },
-};
+  setup() {
+    return {};
+  },
+})
 </script>

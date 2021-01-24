@@ -1,14 +1,19 @@
-<cn>
-#### 迷你
+<docs>
+---
+order: 5
+title:
+  zh-CN: 迷你
+  en-US: Mini size
+---
+
+## zh-CN
+
 迷你版本。
-</cn>
 
-<us>
-#### Mini size
+## en-US
+
 Mini size pagination.
-</us>
-
-```vue
+</docs>
 <template>
   <div id="components-pagination-demo-mini">
     <a-pagination size="small" :total="50" />
@@ -21,4 +26,4 @@ Mini size pagination.
   margin-bottom: 24px;
 }
 </style>
-```
+

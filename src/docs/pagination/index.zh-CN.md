@@ -1,3 +1,14 @@
+---
+category: Components
+subtitle: 分页
+type: 导航
+title: Pagination
+cols: 1
+cover: https://gw.alipayobjects.com/zos/alicdn/1vqv2bj68/Pagination.svg
+---
+
+采用分页的形式分隔长列表，每次只加载一个页面。
+
 ## API
 
 ```html
@@ -13,7 +24,7 @@
 | hideOnSinglePage | 只有一页时是否隐藏分页器 | boolean | false |  |
 | itemRender | 用于自定义页码的结构，可用于优化 SEO | ({page, type: 'page' \| 'prev' \| 'next', originalElement}) => vNode \| v-slot | - |  |
 | pageSizeOptions | 指定每页可以显示多少条 | string\[] | \['10', '20', '30', '40'] |  |
-| showLessItems | show less page items | boolean | false | 1.5.0 |
+| showLessItems | 是否显示较少页面内容 | boolean | false | 1.5.0 |
 | showQuickJumper | 是否可以快速跳转至某页 | boolean | false |  |
 | showSizeChanger | 是否可以改变 pageSize | boolean | false |  |
 | showTotal | 用于显示数据总量和当前数据顺序 | Function(total, range) | - |  |

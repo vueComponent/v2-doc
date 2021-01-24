@@ -1,14 +1,20 @@
-<cn>
-#### 总数
+<docs>
+---
+order: 7
+title:
+  zh-CN: 总数
+  en-US: Total number
+---
+
+## zh-CN
+
 通过设置 `showTotal` 展示总共有多少数据。
-</cn>
 
-<us>
-#### Total number
+## en-US
+
 You can show the total number of data by setting `showTotal`.
-</us>
+</docs>
 
-```vue
 <template>
   <div>
     <a-pagination
@@ -26,19 +32,20 @@ You can show the total number of data by setting `showTotal`.
     />
   </div>
 </template>
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref} from 'vue';
+export default defineComponent({
+  setup() {
+    const current1 = ref<number>(1);
+    const current2 = ref<number>(2);
+    const onChange = (pageNumber: number) => {
+      console.log('Page: ', pageNumber);
+    }
     return {
-      current1: 1,
-      current2: 1,
+      current1,
+      current2,
+      onChange
     };
   },
-  methods: {
-    onChange(pageNumber) {
-      console.log('Page: ', pageNumber);
-    },
-  },
-};
+});
 </script>
-```
