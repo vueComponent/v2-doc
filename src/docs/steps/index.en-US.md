@@ -1,3 +1,23 @@
+---
+category: Components
+type: Navigation
+cols: 1
+title: Steps
+cover: https://gw.alipayobjects.com/zos/antfincdn/UZYqMizXHaj/Steps.svg
+---
+
+`Steps` is a navigation bar that guides users through the steps of a task.
+
+## API
+
+```jsx
+<a-steps>
+  <a-step title="first step" />
+  <a-step title="second step" />
+  <a-step title="third step" />
+</a-steps>
+```
+
 ### Steps
 
 The whole of the step bar.

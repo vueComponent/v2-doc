@@ -1,14 +1,19 @@
-<cn>
-#### 基本用法
+<docs>
+---
+order: 0
+title:
+  zh-CN: 基本用法
+  en-US: Basic
+---
+
+## zh-CN
+
 简单的步骤条。
-</cn>
 
-<us>
-#### Basic
+## en-US
+
 The most basic step bar.
-</us>
-
-```vue
+</docs>
 <template>
   <a-steps :current="1">
     <a-step>
@@ -24,4 +29,3 @@ The most basic step bar.
     <a-step title="Waiting" description="This is a description." />
   </a-steps>
 </template>
-```

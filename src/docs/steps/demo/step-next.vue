@@ -1,14 +1,19 @@
-<cn>
-#### 步骤切换
+<docs>
+---
+order: 3
+title:
+  zh-CN: 步骤切换
+  en-US: Switch Step
+---
+
+## zh-CN
+
 通常配合内容及按钮使用，表示一个流程的处理进度。
-</cn>
 
-<us>
-#### Switch Step
+## en-US
+
 Cooperate with the content and buttons, to represent the progress of a process.
-</us>
-
-```vue
+</docs>
 <template>
   <div>
     <a-steps :current="current">
@@ -34,11 +39,20 @@ Cooperate with the content and buttons, to represent the progress of a process.
     </div>
   </div>
 </template>
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const current = ref<number>(0);
+    const next = () => {
+      current.value++;
+    }
+    const prev = () => {
+      current.value--;
+    }
     return {
-      current: 0,
+      current,
       steps: [
         {
           title: 'First',
@@ -53,17 +67,11 @@ export default {
           content: 'Last-content',
         },
       ],
+      next,
+      prev,
     };
   },
-  methods: {
-    next() {
-      this.current++;
-    },
-    prev() {
-      this.current--;
-    },
-  },
-};
+});
 </script>
 <style scoped>
 .steps-content {
@@ -80,4 +88,3 @@ export default {
   margin-top: 24px;
 }
 </style>
-```

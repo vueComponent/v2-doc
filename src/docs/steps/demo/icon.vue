@@ -1,14 +1,19 @@
-<cn>
-#### 带图标的步骤条
+<docs>
+---
+order: 2
+title:
+  zh-CN: 带图标的步骤条
+  en-US: With icon
+---
+
+## zh-CN
+
 通过设置 `Steps.Step` 的 `icon` 属性，可以启用自定义图标。
-</cn>
 
-<us>
-#### With icon
+## en-US
+
 You can use your own custom icons by setting the property `icon` for `Steps.Step`.
-</us>
-
-```vue
+</docs>
 <template>
   <a-steps>
     <a-step status="finish" title="Login">
@@ -33,7 +38,8 @@ You can use your own custom icons by setting the property `icon` for `Steps.Step
     </a-step>
   </a-steps>
 </template>
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import {
   UserOutlined,
   SolutionOutlined,
@@ -41,13 +47,12 @@ import {
   SmileOutlined,
 } from '@ant-design/icons-vue';
 
-export default {
+export default defineComponent({
   components: {
     UserOutlined,
     SolutionOutlined,
     LoadingOutlined,
     SmileOutlined,
   },
-};
+});
 </script>
-```

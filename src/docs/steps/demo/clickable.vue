@@ -1,14 +1,20 @@
-<cn>
-#### 可点击
-设置 `@change` 后，Steps 变为可点击状态。
-</cn>
+<docs>
+---
+order: 9
+title:
+  zh-CN: 可点击
+  en-US: Clickable
+---
 
-<us>
-#### Clickable
-Setting `@change` makes Steps clickable.
-</us>
+## zh-CN
 
-```vue
+设置 `onChange` 后，Steps 变为可点击状态。
+
+## en-US
+
+Setting `onChange` makes Steps clickable.
+</docs>
+
 <template>
   <div>
     <a-steps :current="current" @change="onChange">
@@ -24,19 +30,20 @@ Setting `@change` makes Steps clickable.
     </a-steps>
   </div>
 </template>
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const current = ref<number>(0);
+    const onChange = (value: number) => {
+      console.log('onChange:', value);
+      current.value = value;
+    }
     return {
-      current: 0,
+      current,
+      onChange
     };
   },
-  methods: {
-    onChange(current) {
-      console.log('onChange:', current);
-      this.current = current;
-    },
-  },
-};
+});
 </script>
-```

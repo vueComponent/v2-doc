@@ -1,14 +1,20 @@
-<cn>
-#### 导航步骤
+<docs>
+---
+order: 10
+title:
+  zh-CN: 导航步骤
+  en-US: Navigation Steps
+---
+
+## zh-CN
+
 导航类型的步骤条。
-</cn>
 
-<us>
-#### Navigation Steps
+## en-US
+
 Navigation steps.
-</us>
+</docs>
 
-```vue
 <template>
   <div>
     <a-steps v-model:current="current" type="navigation" size="small" :style="stepStyle">
@@ -45,11 +51,15 @@ Navigation steps.
     </a-steps>
   </div>
 </template>
-<script>
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
 export default {
-  data() {
+  setup() {
+    const current = ref<number>(0);
+
     return {
-      current: 0,
+      current,
       stepStyle: {
         marginBottom: '60px',
         boxShadow: '0px -1px 0 0 #e8e8e8 inset',
@@ -58,4 +68,3 @@ export default {
   },
 };
 </script>
-```

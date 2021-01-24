@@ -1,3 +1,28 @@
+---
+category: Components
+subtitle: 步骤条
+type: 导航
+cols: 1
+title: Steps
+cover: https://gw.alipayobjects.com/zos/antfincdn/UZYqMizXHaj/Steps.svg
+---
+
+引导用户按照流程完成任务的导航条。
+
+## 何时使用
+
+当任务复杂或者存在先后关系时，将其分解成一系列步骤，从而简化任务。
+
+## API
+
+```jsx
+<a-steps>
+  <a-step title="第一步" />
+  <a-step title="第二步" />
+  <a-step title="第三步" />
+</a-steps>
+```
+
 ### Steps
 
 整体步骤条。

@@ -1,14 +1,20 @@
-<cn>
-#### 自定义点状步骤条
+<docs>
+---
+order: 8
+title:
+  zh-CN: 自定义点状步骤条
+  en-US: Customized Dot Style
+---
+
+## zh-CN
+
 为点状步骤条增加自定义展示。
-</cn>
 
-<us>
-#### Customized Dot Style
+## en-US
+
 You can customize the display for Steps with progress dot style.
-</us>
+</docs>
 
-```vue
 <template>
   <div>
     <a-steps :current="1">
@@ -27,4 +33,3 @@ You can customize the display for Steps with progress dot style.
     </a-steps>
   </div>
 </template>
-```

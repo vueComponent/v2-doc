@@ -1,65 +1,52 @@
-<script>
-import CustomizedProgressDot from './customized-progress-dot';
-import Error from './error';
-import Icon from './icon';
-import ProgressDot from './progress-dot';
-import Simple from './simple';
-import SmallSize from './small-size';
-import StepNext from './step-next';
-import VerticalSmall from './vertical-small';
-import Vertical from './vertical';
-import Clickable from './clickable';
-import Nav from './nav';
+<template>
+  <demo-sort :cols="1">
+    <Simple />
+    <SmallSize />
+    <Icon />
+    <StepNext />
+    <Vertical />
+    <VerticalSmall />
+    <Error />
+    <ProgressDot />
+    <CustomizedProgressDot />
+    <Clickable />
+    <Nav />
+  </demo-sort>
+</template>
+<script lang="ts">
+import CustomizedProgressDot from './customized-progress-dot.vue';
+import Error from './error.vue';
+import Icon from './icon.vue';
+import ProgressDot from './progress-dot.vue';
+import Simple from './simple.vue';
+import SmallSize from './small-size.vue';
+import StepNext from './step-next.vue';
+import VerticalSmall from './vertical-small.vue';
+import Vertical from './vertical.vue';
+import Clickable from './clickable.vue';
+import Nav from './nav.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
+import { defineComponent } from 'vue';
 
-const md = {
-  cn: `# Steps
-
-  引导用户按照流程完成任务的导航条。
-
-  ## 何时使用
-
-  当任务复杂或者存在先后关系时，将其分解成一系列步骤，从而简化任务。
-            ## 代码演示`,
-  us: `# Steps
-
-  'Steps' is a navigation bar that guides users through the steps of a task.
-
-  # When To Use
-
-  When the task is complicated or has a certain sequence in the series of subtasks, we can decompose it into several steps to make things easier.
-  ## Examples
-  `,
-};
 export default {
-  category: 'Components',
-  subtitle: '步骤条',
-  type: 'Navigation',
-  cols: 1,
-  title: 'Steps',
-  render() {
-    return (
-      <div>
-        <Md cn={md.cn} us={md.us} />
-        <demo-sort cols={1}>
-          <Simple />
-          <SmallSize />
-          <Icon />
-          <StepNext />
-          <Vertical />
-          <VerticalSmall />
-          <Error />
-          <ProgressDot />
-          <CustomizedProgressDot />
-          <Clickable />
-          <Nav />
-        </demo-sort>
-        <api vSlots={{ cn: () => <CN /> }}>
-          <US />
-        </api>
-      </div>
-    );
+  CN,
+  US,
+  components: {
+    Simple,
+    SmallSize,
+    Icon,
+    StepNext,
+    Vertical,
+    VerticalSmall,
+    Error,
+    ProgressDot,
+    CustomizedProgressDot,
+    Clickable,
+    Nav
+  },
+  setup() {
+    return {};
   },
 };
 </script>
