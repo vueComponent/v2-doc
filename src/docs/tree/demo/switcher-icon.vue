@@ -1,14 +1,21 @@
-<cn>
-#### 自定义展开/折叠图标
+<docs>
+---
+order: 8
+title:
+  zh-CN: 自定义展开/折叠图标
+  en-US: Customize collapse/expand icon
+---
+
+## zh-CN
+
 自定义展开/折叠图标。
-</cn>
 
-<us>
-#### Customize collapse/expand icon
+## en-US
+
 customize collapse/expand icon of tree node
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-tree showLine :defaultExpandedKeys="['0-0-0']" @select="onSelect">
     <template #switcherIcon><down-outlined /></template>
@@ -28,17 +35,21 @@ customize collapse/expand icon of tree node
     </a-tree-node>
   </a-tree>
 </template>
-<script>
+<script lang="ts">
 import { DownOutlined } from '@ant-design/icons-vue';
-export default {
+import { SelectEvent } from 'ant-design-vue/lib/tree/Tree';
+import { defineComponent } from 'vue';
+export default defineComponent({
   components: {
     DownOutlined,
   },
-  methods: {
-    onSelect(selectedKeys, info) {
+  setup() {
+    const onSelect = (selectedKeys: string[], info: SelectEvent) => {
       console.log('selected', selectedKeys, info);
-    },
+    };
+    return {
+      onSelect,
+    };
   },
-};
+});
 </script>
-```

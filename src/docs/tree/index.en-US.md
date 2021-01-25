@@ -1,3 +1,16 @@
+---
+category: Components
+type: Data Display
+title: Tree
+cover: https://gw.alipayobjects.com/zos/alicdn/Xh-oWqg9k/Tree.svg
+---
+
+A hierarchical list structure component.
+
+## When To Use
+
+Almost anything can be represented in a tree structure. Examples include directories, organization hierarchies, biological classifications, countries, etc. The `Tree` component is a way of representing the hierarchical relationship between these things. You can also expand, collapse, and select a treeNode within a `Tree`.
+
 ## API
 
 ### Tree props
@@ -7,7 +20,7 @@
 | treeData | treeNode of tree, please use `treeNodes` before v1.1.4 | array | - |  |
 | replaceFields | Replace the title,key and children fields in treeNode with the corresponding fields in treeData | object | { children:'children', title:'title', key:'key' } |  |
 | autoExpandParent | Whether to automatically expand a parent treeNode | boolean | true |  |
-| blockNode | Whether treeNode fill remaining horizontal space | boolean | false | 1.5.0 |
+| blockNode | Whether treeNode fill remaining horizontal space | boolean | false |  |
 | checkable | Adds a `Checkbox` before the treeNodes | boolean | false |  |
 | checkedKeys(v-model) | (Controlled) Specifies the keys of the checked treeNodes (PS: When this specifies the key of a treeNode which is also a parent treeNode, all the children treeNodes of will be checked; and vice versa, when it specifies the key of a treeNode which is a child treeNode, its parent treeNode will also be checked. When `checkable` and `checkStrictly` is true, its object has `checked` and `halfChecked` property. Regardless of whether the child or parent treeNode is checked, they won't impact each other. | string\[] \| number\[] \| {checked: string\[] \| number\[], halfChecked: string\[] \| number\[]} | \[] |  |
 | checkStrictly | Check treeNode precisely; parent treeNode and children treeNodes are not associated | boolean | false |  |
@@ -53,7 +66,7 @@ One of the Tree `treeNode` prop for describing the tree's node, TreeNode has the
 | --- | --- | --- | --- | --- |
 | class | className | string | - |  |
 | style | style | string\|object | - |  |
-| checkable | When Tree is checkable, set TreeNode display Checkbox or not | boolean | - | 1.5.0 |
+| checkable | When Tree is checkable, set TreeNode display Checkbox or not | boolean | - |  |
 | disableCheckbox | Disables the checkbox of the treeNode | boolean | false |  |
 | disabled | Disables the treeNode | boolean | false |  |
 | icon | customize icon. When you pass component, whose render will receive full TreeNode props as component props | slot\|slot-scope | - |  |

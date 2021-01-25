@@ -1,10 +1,24 @@
+---
+category: Components
+type: 数据展示
+title: Tree
+subtitle: 树形控件
+cover: https://gw.alipayobjects.com/zos/alicdn/Xh-oWqg9k/Tree.svg
+---
+
+多层次的结构列表。
+
+## 何时使用
+
+文件夹、组织架构、生物分类、国家地区等等，世间万物的大多数结构都是树形结构。使用`树控件`可以完整展现其中的层级关系，并具有展开收起选择等交互功能。
+
 ## API
 
 ### Tree props
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
-| blockNode | 是否节点占据一行 | boolean | false | 1.5.0 |
+| blockNode | 是否节点占据一行 | boolean | false |  |
 | treeData | treeNodes 数据，如果设置则不需要手动构造 TreeNode 节点（key 在整个树范围内唯一） | array\<{key, title, children, \[disabled, selectable]}> | -- |  |
 | replaceFields | 替换 treeNode 中 title,key,children 字段为 treeData 中对应的字段 | object | {children:'children', title:'title', key:'key' } |  |
 | autoExpandParent | 是否自动展开父节点 | boolean | true |  |
@@ -53,7 +67,7 @@
 | --- | --- | --- | --- | --- |
 | class | 节点的 class | string | - |  |
 | style | 节点的 style | string\|object | - |  |
-| checkable | 当树为 checkable 时，设置独立节点是否展示 Checkbox | boolean | - | 1.5.0 |
+| checkable | 当树为 checkable 时，设置独立节点是否展示 Checkbox | boolean | - |  |
 | disableCheckbox | 禁掉 checkbox | boolean | false |  |
 | disabled | 禁掉响应 | boolean | false |  |
 | icon | 自定义图标。可接收组件，props 为当前节点 props | slot\|slot-scope | - |  |

@@ -1,14 +1,21 @@
-<cn>
-#### 自定义TreeNode字段
+<docs>
+---
+order: 9
+title:
+  zh-CN: 自定义TreeNode字段
+  en-US: ReplaceFields
+---
+
+## zh-CN
+
 替换treeNode中 title,key,children字段为treeData中对应的字段
-</cn>
 
-<us>
-#### ReplaceFields
+## en-US
+
 Replace the title,key and children fields in treeNode with the corresponding fields in treeData.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-tree
     checkable
@@ -21,8 +28,17 @@ Replace the title,key and children fields in treeNode with the corresponding fie
     @check="onCheck"
   />
 </template>
-<script>
-const treeData = [
+<script lang="ts">
+import { CheckEvent, SelectEvent } from 'ant-design-vue/lib/tree/Tree';
+import { defineComponent, ref } from 'vue';
+interface TreeDataItem {
+  name: string;
+  key: string;
+  disabled?: boolean;
+  disableCheckbox?: boolean;
+  child?: TreeDataItem[];
+}
+const treeData: TreeDataItem[] = [
   {
     name: 'parent 1',
     key: '0-0',
@@ -45,24 +61,26 @@ const treeData = [
   },
 ];
 
-export default {
-  data() {
+export default defineComponent({
+  setup() {
+    const replaceFields = {
+      children: 'child',
+      title: 'name',
+    };
+
+    const onSelect = (keys: string[], info: SelectEvent) => {
+      console.log('Trigger Select', keys, event);
+    };
+
+    const onCheck = (keys: string[], info: CheckEvent) => {
+      console.log('onCheck', keys, info);
+    };
     return {
+      replaceFields,
       treeData,
-      replaceFields: {
-        children: 'child',
-        title: 'name',
-      },
+      onSelect,
+      onCheck,
     };
   },
-  methods: {
-    onSelect(selectedKeys, info) {
-      console.log('selected', selectedKeys, info);
-    },
-    onCheck(checkedKeys, info) {
-      console.log('onCheck', checkedKeys, info);
-    },
-  },
-};
+});
 </script>
-```

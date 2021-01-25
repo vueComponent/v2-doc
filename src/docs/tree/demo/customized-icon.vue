@@ -1,14 +1,21 @@
-<cn>
-#### 自定义图标
+<docs>
+---
+order: 6
+title:
+  zh-CN: 自定义图标
+  en-US: Customize Icon
+---
+
+## zh-CN
+
 可以针对不同的节点定制图标。
-</cn>
 
-<us>
-#### Customize Icon
+## en-US
+
 You can customize icons for different nodes.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-tree :tree-data="treeData" show-icon default-expand-all :default-selected-keys="['0-0-0']">
     <template #switcherIcon>
@@ -26,10 +33,19 @@ You can customize icons for different nodes.
     </template>
   </a-tree>
 </template>
-<script>
+<script lang="ts">
 import { DownOutlined, SmileOutlined, FrownOutlined, FrownFilled } from '@ant-design/icons-vue';
-
-const treeData = [
+import { CheckEvent, SelectEvent } from 'ant-design-vue/lib/tree/Tree';
+import { defineComponent } from 'vue';
+interface TreeDataItem {
+  key?: string;
+  title?: string;
+  disabled?: boolean;
+  disableCheckbox?: boolean;
+  slots?: any;
+  children?: TreeDataItem[];
+}
+const treeData: TreeDataItem[] = [
   {
     title: 'parent 1',
     key: '0-0',
@@ -43,26 +59,26 @@ const treeData = [
   },
 ];
 
-export default {
+export default defineComponent({
   components: {
     DownOutlined,
     SmileOutlined,
     FrownOutlined,
     FrownFilled,
   },
-  data() {
+  setup() {
+    const onSelect = (selectedKeys: string[], info: SelectEvent) => {
+      console.log('selected', selectedKeys, info);
+    };
+
+    const onCheck = (checkedKeys: string[], info: CheckEvent) => {
+      console.log('onCheck', checkedKeys, info);
+    };
     return {
+      onSelect,
+      onCheck,
       treeData,
     };
   },
-  methods: {
-    onSelect(selectedKeys, info) {
-      console.log('selected', selectedKeys, info);
-    },
-    onCheck(checkedKeys, info) {
-      console.log('onCheck', checkedKeys, info);
-    },
-  },
-};
+});
 </script>
-```

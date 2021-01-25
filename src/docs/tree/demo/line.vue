@@ -1,21 +1,30 @@
-<cn>
-#### 连接线
-带连接线的树。
-</cn>
+<docs>
+---
+order: 5
+title:
+  zh-CN: 连接线
+  en-US: Tree With Line
+---
 
-<us>
-#### Tree With Line
-Tree With Line
-</us>
+## zh-CN
 
-```vue
+节点之间带连接线的树，常用于文件目录结构展示。使用 `showLine` 开启，可以用 `switcherIcon` 修改默认图标。
+
+## en-US
+
+Tree with connected line between nodes, turn on by `showLine`, customize the preseted icon by `switcherIcon`.
+
+</docs>
+
 <template>
   <div>
     <div style="margin-bottom: 16px">
-      showLine: <a-switch v-model:checked="showLine" />
+      showLine:
+      <a-switch v-model:checked="showLine" />
       <br />
       <br />
-      showIcon: <a-switch v-model:checked="showIcon" />
+      showIcon:
+      <a-switch v-model:checked="showIcon" />
     </div>
     <a-tree
       :show-line="showLine"
@@ -59,24 +68,27 @@ Tree With Line
     </a-tree>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { CarryOutOutlined, FormOutlined } from '@ant-design/icons-vue';
-export default {
+import { SelectEvent } from 'ant-design-vue/lib/tree/Tree';
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
   components: {
     CarryOutOutlined,
     FormOutlined,
   },
-  data() {
+  setup() {
+    const showLine = ref<boolean>(true);
+    const showIcon = ref<boolean>(false);
+
+    const onSelect = (selectedKeys: string[], info: SelectEvent) => {
+      console.log('selected', selectedKeys, info);
+    };
     return {
-      showLine: true,
-      showIcon: false,
+      showLine,
+      showIcon,
+      onSelect,
     };
   },
-  methods: {
-    onSelect(selectedKeys, info) {
-      console.log('selected', selectedKeys, info);
-    },
-  },
-};
+});
 </script>
-```

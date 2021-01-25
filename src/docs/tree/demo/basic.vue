@@ -1,14 +1,21 @@
-<cn>
-#### 基本用法
+<docs>
+---
+order: 0
+title:
+  zh-CN: 基本用法
+  en-US: Basic usage
+---
+
+## zh-CN
+
 最简单的用法，展示可勾选，可选中，禁用，默认展开等功能。
-</cn>
 
-<us>
-#### Basic
+## en-US
+
 The most basic usage, tell you how to use checkable, selectable, disabled, defaultExpandKeys, and etc.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-tree
     checkable
@@ -22,8 +29,20 @@ The most basic usage, tell you how to use checkable, selectable, disabled, defau
     <template #title0010><span style="color: #1890ff">sss</span></template>
   </a-tree>
 </template>
-<script>
-const treeData = [
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+import { SelectEvent, CheckEvent } from 'ant-design-vue/lib/tree/Tree'
+
+interface TreeDataItem {
+  key?: string;
+  title?: string;
+  disabled?: boolean;
+  disableCheckbox?: boolean;
+  slots?: any;
+  children?: TreeDataItem[];
+}
+
+const treeData: TreeDataItem[] = [
   {
     title: 'parent 1',
     key: '0-0',
@@ -46,23 +65,26 @@ const treeData = [
   },
 ];
 
-export default {
-  data() {
+export default defineComponent({
+  setup() {
+    const expandedKeys = ref<string[]>(['0-0-0', '0-0-1'])
+    const selectedKeys = ref<string[]>(['0-0-0', '0-0-1'])
+    const checkedKeys = ref<string[]>(['0-0-0', '0-0-1'])
+    
+    const onSelect = (selectedKeys: string[], info: SelectEvent) => {
+      console.log('selected', selectedKeys, info);
+    }
+    const onCheck = (checkedKeys: string[], info: CheckEvent) => {
+      console.log('onCheck', checkedKeys, info);
+    }
     return {
       treeData,
-      expandedKeys: ['0-0-0', '0-0-1'],
-      selectedKeys: ['0-0-0', '0-0-1'],
-      checkedKeys: ['0-0-0', '0-0-1'],
-    };
-  },
-  methods: {
-    onSelect(selectedKeys, info) {
-      console.log('selected', selectedKeys, info);
-    },
-    onCheck(checkedKeys, info) {
-      console.log('onCheck', checkedKeys, info);
-    },
-  },
-};
+      expandedKeys,
+      selectedKeys,
+      checkedKeys,
+      onSelect,
+      onCheck
+    }
+  }
+});
 </script>
-```

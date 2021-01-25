@@ -1,14 +1,21 @@
-<cn>
-#### 拖动示例
+<docs>
+---
+order: 2
+title:
+  zh-CN: 拖动示例
+  en-US: draggable
+---
+
+## zh-CN
+
 将节点拖拽到其他节点内部或前后。
-</cn>
 
-<us>
-#### draggable
+## en-US
+
 Drag treeNode to insert after the other treeNode or insert into the other parent TreeNode.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-tree
     class="draggable-tree"
@@ -20,15 +27,37 @@ Drag treeNode to insert after the other treeNode or insert into the other parent
   />
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, ref, VNode } from 'vue';
+
+interface TreeDataItem {
+  title?: string;
+  key?: string;
+  children?: TreeDataItem[];
+}
+interface DragEnterEvent {
+  event: DragEvent;
+  expandedKeys: string[];
+  node: VNode;
+}
+
+interface DropEvent {
+  dragNode: any;
+  dragNodesKeys: string[];
+  dropPosition: number;
+  dropToGap: boolean;
+  event: DragEvent;
+  node: any;
+}
+
 const x = 3;
 const y = 2;
 const z = 1;
-const gData = [];
+const genData: TreeDataItem[] = [];
 
-const generateData = (_level, _preKey, _tns) => {
+const generateData = (_level: number, _preKey?: string, _tns?: TreeDataItem[]) => {
   const preKey = _preKey || '0';
-  const tns = _tns || gData;
+  const tns = _tns || genData;
 
   const children = [];
   for (let i = 0; i < x; i++) {
@@ -48,26 +77,23 @@ const generateData = (_level, _preKey, _tns) => {
   });
 };
 generateData(z);
-export default {
-  data() {
-    return {
-      gData,
-      expandedKeys: ['0-0', '0-0-0', '0-0-0-0'],
-    };
-  },
-  methods: {
-    onDragEnter(info) {
+export default defineComponent({
+  setup() {
+    const expandedKeys = ref<string[]>(['0-0', '0-0-0', '0-0-0-0']);
+    const gData = ref<TreeDataItem[]>(genData);
+    const onDragEnter = (info: DragEnterEvent) => {
       console.log(info);
       // expandedKeys 需要受控时设置
       // this.expandedKeys = info.expandedKeys
-    },
-    onDrop(info) {
+    };
+
+    const onDrop = (info: DropEvent) => {
       console.log(info);
       const dropKey = info.node.eventKey;
       const dragKey = info.dragNode.eventKey;
       const dropPos = info.node.pos.split('-');
       const dropPosition = info.dropPosition - Number(dropPos[dropPos.length - 1]);
-      const loop = (data, key, callback) => {
+      const loop = (data: TreeDataItem[], key: string, callback: any) => {
         data.forEach((item, index, arr) => {
           if (item.key === key) {
             return callback(item, index, arr);
@@ -77,17 +103,17 @@ export default {
           }
         });
       };
-      const data = [...this.gData];
+      const data = [...gData.value];
 
       // Find dragObject
-      let dragObj;
-      loop(data, dragKey, (item, index, arr) => {
+      let dragObj: TreeDataItem = {};
+      loop(data, dragKey, (item: TreeDataItem, index: number, arr: TreeDataItem[]) => {
         arr.splice(index, 1);
         dragObj = item;
       });
       if (!info.dropToGap) {
         // Drop on the content
-        loop(data, dropKey, item => {
+        loop(data, dropKey, (item: TreeDataItem) => {
           item.children = item.children || [];
           // where to insert 示例添加到尾部，可以是随意位置
           item.children.push(dragObj);
@@ -97,15 +123,15 @@ export default {
         info.node.expanded && // Is expanded
         dropPosition === 1 // On the bottom gap
       ) {
-        loop(data, dropKey, item => {
+        loop(data, dropKey, (item: TreeDataItem) => {
           item.children = item.children || [];
           // where to insert 示例添加到尾部，可以是随意位置
           item.children.unshift(dragObj);
         });
       } else {
-        let ar;
-        let i;
-        loop(data, dropKey, (item, index, arr) => {
+        let ar: TreeDataItem[] = [];
+        let i: number = 0;
+        loop(data, dropKey, (item: TreeDataItem, index: number, arr: TreeDataItem[]) => {
           ar = arr;
           i = index;
         });
@@ -115,9 +141,14 @@ export default {
           ar.splice(i + 1, 0, dragObj);
         }
       }
-      this.gData = data;
-    },
+      gData.value = data;
+    };
+    return {
+      expandedKeys,
+      gData,
+      onDragEnter,
+      onDrop,
+    };
   },
-};
+});
 </script>
-```

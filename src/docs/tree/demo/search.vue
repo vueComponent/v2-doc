@@ -1,14 +1,21 @@
-<cn>
-#### 可搜索
+<docs>
+---
+order: 4
+title:
+  zh-CN: 可搜索
+  en-US: Searchable
+---
+
+## zh-CN
+
 可搜索的树。
-</cn>
 
-<us>
-#### Searchable
+## en-US
+
 Searchable Tree.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div>
     <a-input-search style="margin-bottom: 8px" placeholder="Search" @change="onChange" />
@@ -30,20 +37,26 @@ Searchable Tree.
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+interface TreeDataItem {
+  title: string;
+  key: string;
+  children?: TreeDataItem[];
+}
 const x = 3;
 const y = 2;
 const z = 1;
-const gData = [];
+const genData: TreeDataItem[] = [];
 
-const generateData = (_level, _preKey, _tns) => {
+const generateData = (_level: number, _preKey?: string, _tns?: TreeDataItem[]) => {
   const preKey = _preKey || '0';
-  const tns = _tns || gData;
+  const tns = _tns || genData;
 
   const children = [];
   for (let i = 0; i < x; i++) {
     const key = `${preKey}-${i}`;
-    tns.push({ title: key, key, scopedSlots: { title: 'title' } });
+    tns.push({ title: key, key });
     if (i < y) {
       children.push(key);
     }
@@ -59,20 +72,20 @@ const generateData = (_level, _preKey, _tns) => {
 };
 generateData(z);
 
-const dataList = [];
-const generateList = data => {
+const dataList: TreeDataItem[] = [];
+const generateList = (data: TreeDataItem[]) => {
   for (let i = 0; i < data.length; i++) {
     const node = data[i];
     const key = node.key;
-    dataList.push({ key, title: key });
+    dataList.push({ key, title: key as string });
     if (node.children) {
       generateList(node.children);
     }
   }
 };
-generateList(gData);
+generateList(genData);
 
-const getParentKey = (key, tree) => {
+const getParentKey = (key: string, tree: TreeDataItem[]): string | number | undefined => {
   let parentKey;
   for (let i = 0; i < tree.length; i++) {
     const node = tree[i];
@@ -86,37 +99,41 @@ const getParentKey = (key, tree) => {
   }
   return parentKey;
 };
-export default {
-  data() {
-    return {
-      expandedKeys: [],
-      searchValue: '',
-      autoExpandParent: true,
-      gData,
+console.log(genData);
+export default defineComponent({
+  setup() {
+    const expandedKeys = ref<string[]>([]);
+    const searchValue = ref<string>('');
+    const autoExpandParent = ref<boolean>(true);
+    const gData = ref<TreeDataItem[]>(genData);
+
+    const onExpand = (expanded: string[]) => {
+      expandedKeys.value = expanded;
+      autoExpandParent.value = false;
     };
-  },
-  methods: {
-    onExpand(expandedKeys) {
-      this.expandedKeys = expandedKeys;
-      this.autoExpandParent = false;
-    },
-    onChange(e) {
+
+    const onChange = (e: any) => {
       const value = e.target.value;
-      const expandedKeys = dataList
-        .map(item => {
+      const expanded = dataList
+        .map((item: TreeDataItem) => {
           if (item.title.indexOf(value) > -1) {
-            return getParentKey(item.key, gData);
+            return getParentKey(item.key, gData.value);
           }
           return null;
         })
         .filter((item, i, self) => item && self.indexOf(item) === i);
-      Object.assign(this, {
-        expandedKeys,
-        searchValue: value,
-        autoExpandParent: true,
-      });
-    },
+      expandedKeys.value = expanded as string[];
+      searchValue.value = value;
+      autoExpandParent.value = true;
+    };
+    return {
+      expandedKeys,
+      searchValue,
+      autoExpandParent,
+      gData,
+      onExpand,
+      onChange,
+    };
   },
-};
+});
 </script>
-```

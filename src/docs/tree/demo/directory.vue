@@ -1,14 +1,21 @@
-<cn>
-#### 目录
+<docs>
+---
+order: 7
+title:
+  zh-CN: 目录
+  en-US: Directory
+---
+
+## zh-CN
+
 内置的目录树，`multiple` 模式支持 `ctrl(Windows)` / `command(Mac)` 复选。
-</cn>
 
-<us>
-#### Directory
+## en-US
+
 Built-in directory tree. `multiple` support `ctrl(Windows)` / `command(Mac)` selection.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-directory-tree multiple default-expand-all @select="onSelect" @expand="onExpand">
     <a-tree-node key="0-0" title="parent 0">
@@ -21,16 +28,21 @@ Built-in directory tree. `multiple` support `ctrl(Windows)` / `command(Mac)` sel
     </a-tree-node>
   </a-directory-tree>
 </template>
-<script>
-export default {
-  methods: {
-    onSelect(keys, event) {
+<script lang="ts">
+import { ExpendEvent, SelectEvent } from 'ant-design-vue/lib/tree/Tree';
+import { defineComponent } from 'vue';
+export default defineComponent({
+  setup() {
+    const onSelect = (keys: string[], event: SelectEvent) => {
       console.log('Trigger Select', keys, event);
-    },
-    onExpand() {
-      console.log('Trigger Expand');
-    },
+    };
+    const onExpand = (keys: string[], event: ExpendEvent) => {
+      console.log('Expand', keys, event);
+    };
+    return {
+      onSelect,
+      onExpand,
+    };
   },
-};
+});
 </script>
-```
