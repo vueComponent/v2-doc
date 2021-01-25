@@ -1,19 +1,26 @@
-<cn>
-#### 列表
+<docs>
+---
+order: 5
+title:
+  zh-CN: 列表
+  en-US: List
+---
+
+## zh-CN
+
 在列表组件中使用加载占位符。
-</cn>
 
-<us>
-#### List
+## en-US
+
 Use skeleton in list component.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div>
     <a-switch :checked="!loading" @change="onChange" />
     <a-list item-layout="vertical" size="large" :data-source="listData">
-      <template #renderItem="{ item, index }">
+      <template #renderItem="{ item }">
         <a-list-item key="item.title">
           <template v-if="!loading" #actions>
             <span v-for="{ type, text } in actions" :key="type">
@@ -34,7 +41,7 @@ Use skeleton in list component.
               <template #title>
                 <a :href="item.href">{{ item.title }}</a>
               </template>
-              <template #avatar><a-avatar :src="item.avatar"/></template>
+              <template #avatar><a-avatar :src="item.avatar" /></template>
             </a-list-item-meta>
             {{ item.content }}
           </a-skeleton>
@@ -43,9 +50,17 @@ Use skeleton in list component.
     </a-list>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { StarOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons-vue';
-const listData = [];
+import { defineComponent, ref } from 'vue';
+interface DataItem {
+  href: string;
+  title: string;
+  avatar: string;
+  description: string;
+  content: string;
+}
+const listData: DataItem[] = [];
 for (let i = 0; i < 3; i++) {
   listData.push({
     href: 'https://www.antdv.com/',
@@ -57,33 +72,36 @@ for (let i = 0; i < 3; i++) {
       'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
   });
 }
-export default {
+export default defineComponent({
   components: {
     StarOutlined,
     LikeOutlined,
     MessageOutlined,
   },
-  data() {
+  setup() {
+    const loading = ref<boolean>(true);
+
+    const actions = [
+      { type: 'star-outlined', text: '156' },
+      { type: 'like-outlined', text: '156' },
+      { type: 'message-outlined', text: '2' },
+    ];
+
+    const onChange = (checked: boolean) => {
+      loading.value = !checked;
+    };
+
     return {
-      loading: true,
+      loading,
       listData,
-      actions: [
-        { type: 'star-outlined', text: '156' },
-        { type: 'like-outlined', text: '156' },
-        { type: 'message-outlined', text: '2' },
-      ],
+      actions,
+      onChange,
     };
   },
-  methods: {
-    onChange(checked) {
-      this.loading = !checked;
-    },
-  },
-};
+});
 </script>
-<style>
+<style scoped>
 .skeleton-demo {
   border: 1px solid #f4f4f4;
 }
 </style>
-```

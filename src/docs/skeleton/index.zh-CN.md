@@ -1,3 +1,18 @@
+---
+category: Components
+type: 反馈
+title: Skeleton
+subtitle: 代码演示
+cover: https://gw.alipayobjects.com/zos/alicdn/KpcciCJgv/Skeleton.svg
+---
+
+警告提示，展现需要关注的信息。
+
+## 何时使用
+
+- 当某个页面需要向用户显示警告的信息时。
+- 非浮层的静态展现形式，始终展现，不会自动消失，用户可以点击关闭。
+
 ## API
 
 ### Skeleton
@@ -14,8 +29,8 @@
 
 | 属性  | 说明                 | 类型                                          | 默认值 |
 | ----- | -------------------- | --------------------------------------------- | ------ |
-| size  | 设置头像占位图的大小 | number \| Enum{ 'large', 'small', 'default' } | -      |
-| shape | 指定头像的形状       | Enum{ 'circle', 'square' }                    | -      |
+| size  | 设置头像占位图的大小 | number \| `large` \| `small` \| `default` | -      |
+| shape | 指定头像的形状       | `circle` \| `square`                    | -      |
 
 ### SkeletonTitleProps
 

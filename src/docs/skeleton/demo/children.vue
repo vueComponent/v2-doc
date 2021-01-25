@@ -1,14 +1,21 @@
-<cn>
-#### 包含子组件
+<docs>
+---
+order: 4
+title:
+  zh-CN: 包含子组件
+  en-US: Contains sub component
+---
+
+## zh-CN
+
 加载占位图包含子组件。
-</cn>
 
-<us>
-#### Contains sub component
+## en-US
+
 Skeleton contains sub component.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div class="article">
     <a-skeleton :loading="loading">
@@ -21,29 +28,29 @@ Skeleton contains sub component.
         </p>
       </div>
     </a-skeleton>
-    <a-button :disabled="loading" @click="showSkeleton">
-      Show Skeleton
-    </a-button>
+    <a-button :disabled="loading" @click="showSkeleton">Show Skeleton</a-button>
   </div>
 </template>
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+  setup() {
+    const loading = ref<boolean>(false);
+
+    const showSkeleton = () => {
+      loading.value = true;
+      setTimeout(() => {
+        loading.value = false;
+      }, 3000);
+    };
     return {
-      loading: false,
+      loading,
+      showSkeleton,
     };
   },
-  methods: {
-    showSkeleton() {
-      this.loading = true;
-      setTimeout(() => {
-        this.loading = false;
-      }, 3000);
-    },
-  },
-};
+});
 </script>
-<style>
+<style scoped>
 .article h4 {
   margin-bottom: 16px;
 }
@@ -51,4 +58,3 @@ export default {
   margin-top: 16px;
 }
 </style>
-```

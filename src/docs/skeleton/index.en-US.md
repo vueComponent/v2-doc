@@ -1,3 +1,19 @@
+---
+category: Components
+type: Feedback
+title: Skeleton
+cover: https://gw.alipayobjects.com/zos/alicdn/KpcciCJgv/Skeleton.svg
+---
+
+Provide a placeholder while you wait for content to load, or to visualise content that doesn't exist yet.
+
+## When To Use
+
+- When a resource needs long time to load.
+- When the component contains lots of information, such as List or Card.
+- Only works when loading data for the first time.
+- Could be replaced by Spin in any situation, but can provide a better user experience.
+
 ## API
 
 ### Skeleton
@@ -10,12 +26,12 @@
 | paragraph | Show paragraph placeholder | boolean \| [SkeletonParagraphProps](#SkeletonParagraphProps) | true |
 | title | Show title placeholder | boolean \| [SkeletonTitleProps](#SkeletonTitleProps) | true |
 
-### SkeletonAvatarProps
+## SkeletonAvatarProps
 
 | Property | Description             | Type                                          | Default |
 | -------- | ----------------------- | --------------------------------------------- | ------- |
-| size     | Set the size of avatar  | number \| Enum{ 'large', 'small', 'default' } | -       |
-| shape    | Set the shape of avatar | Enum{ 'circle', 'square' }                    | -       |
+| size     | Set the size of avatar  | number \| `large` \| `small` \| `default` | -       |
+| shape    | Set the shape of avatar | `circle` \| `square`                    | -       |
 
 ### SkeletonTitleProps
 
