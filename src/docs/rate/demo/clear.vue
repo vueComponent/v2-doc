@@ -1,14 +1,20 @@
-<cn>
-#### 清除
+<docs>
+---
+order: 4
+title:
+  zh-CN: 清除
+  en-US: Clear star
+---
+
+## zh-CN
+
 支持允许或者禁用清除。
-</cn>
 
-<us>
-#### Clear star
+## en-US
+
 Support set allow to clear star when click again.
-</us>
 
-```vue
+</docs>
 <template>
   <div>
     <a-rate v-model:value="value1" />
@@ -18,14 +24,16 @@ Support set allow to clear star when click again.
     <span class="ant-rate-text">allowClear: false</span>
   </div>
 </template>
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+  setup() {
+    const value1 = ref<number>(3);
+    const value2 = ref<number>(3);
     return {
-      value1: 3,
-      value2: 3,
+      value1,
+      value2,
     };
   },
-};
+});
 </script>
-```

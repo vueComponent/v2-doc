@@ -1,57 +1,36 @@
+<template>
+  <demo-sort>
+    <basic />
+    <half />
+    <Text />
+    <disabled />
+    <clear />
+    <character />
+  </demo-sort>
+</template>
+
 <script>
-import Basic from './basic.md';
-import Half from './half.md';
-import Text from './text.md';
-import Disabled from './disabled.md';
-import Clear from './clear.md';
-import Character from './character.md';
+import Basic from './basic.vue';
+import Half from './half.vue';
+import Text from './text.vue';
+import Disabled from './disabled.vue';
+import Clear from './clear.vue';
+import Character from './character.vue';
+
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
+import { defineComponent } from 'vue';
 
-const md = {
-  cn: `# Rate
-
-  评分组件。
-
-  ## 何时使用
-
-  - 对评价进行展示。
-  - 对事物进行快速的评级操作。
-            ## 代码演示`,
-  us: `# Rate
-
-  Rate component.
-
-  # When To Use
-
-  - Show evaluation.
-  - A quick rating operation on something.
-  ## Examples
-  `,
-};
-export default {
-  category: 'Components',
-  subtitle: '评分',
-  type: 'Data Entry',
-  cols: 1,
-  title: 'Rate',
-  render() {
-    return (
-      <div>
-        <Md cn={md.cn} us={md.us} />
-        <demo-sort>
-          <Basic />
-          <Half />
-          <Text />
-          <Disabled />
-          <Clear />
-          <Character />
-        </demo-sort>
-        <api vSlots={{ cn: () => <CN /> }}>
-          <US />
-        </api>
-      </div>
-    );
+export default defineComponent({
+  CN,
+  US,
+  components: {
+    Basic,
+    Half,
+    Text,
+    Disabled,
+    Clear,
+    Character,
   },
-};
+});
 </script>

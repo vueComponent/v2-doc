@@ -1,3 +1,17 @@
+---
+category: Components
+type: Data Entry
+title: Rate
+cover: https://gw.alipayobjects.com/zos/alicdn/R5uiIWmxe/Rate.svg
+---
+
+Rate component.
+
+# When To Use
+
+- Show evaluation.
+- A quick rating operation on something.
+
 ## API
 
 | Property | Description | type | Default |
@@ -14,12 +28,12 @@
 ### events
 
 | Events Name | Description                        | Arguments               |
-| ----------- | ---------------------------------- | ----------------------- |
-| blur        | callback when component lose focus | Function()              | - |
-| change      | callback when select value         | Function(value: number) | - |
-| focus       | callback when component get focus  | Function()              | - |
-| hoverChange | callback when hover item           | Function(value: number) | - |
-| keydown     | callback when keydown on component | Function(event)         | - |
+| ----------- | ---------------------------------- | ----------------------- | --- |
+| blur        | callback when component lose focus | Function()              | -   |
+| change      | callback when select value         | Function(value: number) | -   |
+| focus       | callback when component get focus  | Function()              | -   |
+| hoverChange | callback when hover item           | Function(value: number) | -   |
+| keydown     | callback when keydown on component | Function(event)         | -   |
 
 ## Methods
 
