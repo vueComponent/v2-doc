@@ -1,3 +1,17 @@
+---
+category: Components
+type: 反馈
+title: Spin
+subtitle: 加载中
+cover: https://gw.alipayobjects.com/zos/alicdn/8emPa3fjl/Alert.svg
+---
+
+用于页面和区块的加载中状态。
+
+## 何时使用
+
+页面局部处于等待异步数据或正在渲染过程时，合适的加载动效会有效缓解用户的焦虑。
+
 ## API
 
 | 参数             | 说明                                         | 类型          | 默认值    |

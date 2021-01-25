@@ -1,14 +1,21 @@
-<cn>
-#### 容器
+<docs>
+---
+order: 2
+title:
+  zh-CN: 容器
+  en-US: Inside a container
+---
+
+## zh-CN
+
 放入一个容器中。
-</cn>
 
-<us>
-#### Inside a container
+## en-US
+
 Spin in a container.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div class="example">
     <a-spin />
@@ -24,4 +31,3 @@ Spin in a container.
   margin: 20px 0;
 }
 </style>
-```
