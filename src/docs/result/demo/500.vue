@@ -1,14 +1,21 @@
-<cn>
-#### 500
+<docs>
+---
+order: 5
+title:
+  zh-CN: 500
+  en-US: 500
+---
+
+## zh-CN
+
 服务器发生了错误。
-</cn>
 
-<us>
-#### 500
+## en-US
+
 The server is wrong.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-result status="500" title="500" sub-title="Sorry, the server is wrong.">
     <template #extra>
@@ -18,11 +25,3 @@ The server is wrong.
     </template>
   </a-result>
 </template>
-<script>
-export default {
-  data() {
-    return {};
-  },
-};
-</script>
-```

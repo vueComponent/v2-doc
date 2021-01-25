@@ -1,14 +1,21 @@
-<cn>
-#### Warning
+<docs>
+---
+order: 2
+title:
+  zh-CN: Warning
+  en-US: Warning
+---
+
+## zh-CN
+
 警告类型的结果。
-</cn>
 
-<us>
-#### Warning
+## en-US
+
 The result of the warning.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-result status="warning" title="There are some problems with your operation.">
     <template #extra>
@@ -19,10 +26,3 @@ The result of the warning.
   </a-result>
 </template>
 <script>
-export default {
-  data() {
-    return {};
-  },
-};
-</script>
-```

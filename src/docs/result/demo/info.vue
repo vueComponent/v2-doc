@@ -1,14 +1,21 @@
-<cn>
-#### Info
+<docs>
+---
+order: 1
+title:
+  zh-CN: Info
+  en-US: Info
+---
+
+## zh-CN
+
 展示处理结果。
-</cn>
 
-<us>
-#### Info
+## en-US
+
 Show processing results.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-result title="Your operation has been executed">
     <template #extra>
@@ -18,11 +25,3 @@ Show processing results.
     </template>
   </a-result>
 </template>
-<script>
-export default {
-  data() {
-    return {};
-  },
-};
-</script>
-```

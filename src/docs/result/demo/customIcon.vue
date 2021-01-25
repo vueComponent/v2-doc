@@ -1,35 +1,37 @@
-<cn>
-#### 自定义 icon
+<docs>
+---
+order: 7
+title:
+  zh-CN: 自定义 icon
+  en-US: Custom icon
+---
+
+## zh-CN
+
 自定义 icon。
-</cn>
 
-<us>
-#### Custom icon
+## en-US
+
 Custom icon.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-result title="Great, we have done all the operations!">
     <template #icon>
       <smile-twoTone />
     </template>
     <template #extra>
-      <a-button type="primary">
-        Next
-      </a-button>
+      <a-button type="primary">Next</a-button>
     </template>
   </a-result>
 </template>
-<script>
+<script lang="ts">
 import { SmileTwoTone } from '@ant-design/icons-vue';
-export default {
+import { defineComponent } from 'vue';
+export default defineComponent({
   components: {
     SmileTwoTone,
   },
-  data() {
-    return {};
-  },
-};
+});
 </script>
-```

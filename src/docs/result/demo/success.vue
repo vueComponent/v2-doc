@@ -1,14 +1,21 @@
-<cn>
-#### Success
+<docs>
+---
+order: 0
+title:
+  zh-CN: Success
+  en-US: Success
+---
+
+## zh-CN
+
 成功的结果。
-</cn>
 
-<us>
-#### Success
+## en-US
+
 Show successful results.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-result
     status="success"
@@ -25,11 +32,3 @@ Show successful results.
     </template>
   </a-result>
 </template>
-<script>
-export default {
-  data() {
-    return {};
-  },
-};
-</script>
-```

@@ -1,14 +1,21 @@
-<cn>
-#### 404
+<docs>
+---
+order: 4
+title:
+  zh-CN: 404
+  en-US: 404
+---
+
+## zh-CN
+
 此页面未找到。
-</cn>
 
-<us>
-#### 404
+## en-US
+
 The page you visited does not exist.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-result status="404" title="404" sub-title="Sorry, the page you visited does not exist.">
     <template #extra>
@@ -18,11 +25,3 @@ The page you visited does not exist.
     </template>
   </a-result>
 </template>
-<script>
-export default {
-  data() {
-    return {};
-  },
-};
-</script>
-```
