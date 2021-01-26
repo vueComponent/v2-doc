@@ -1,7 +1,6 @@
 <template>
   <demo-sort>
     <basic />
-    <basic-controlled />
     <draggable />
     <dynamic />
     <custom-icon />
@@ -14,7 +13,6 @@
 </template>
 <script lang="ts">
 import Basic from './basic.vue';
-import BasicControlled from './basic-controlled.vue';
 import Draggable from './draggable.vue';
 import Dynamic from './dynamic.vue';
 import Search from './search.vue';
@@ -32,7 +30,6 @@ export default defineComponent({
   US,
   components: {
     Basic,
-    BasicControlled,
     Draggable,
     Dynamic,
     Search,

@@ -17,7 +17,7 @@ cover: https://gw.alipayobjects.com/zos/alicdn/Xh-oWqg9k/Tree.svg
 ### Tree props
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | blockNode | 是否节点占据一行 | boolean | false |  |
 | treeData | treeNodes 数据，如果设置则不需要手动构造 TreeNode 节点（key 在整个树范围内唯一） | array\<{key, title, children, \[disabled, selectable]}> | -- |  |
 | replaceFields | 替换 treeNode 中 title,key,children 字段为 treeData 中对应的字段 | object | {children:'children', title:'title', key:'key' } |  |
@@ -25,11 +25,7 @@ cover: https://gw.alipayobjects.com/zos/alicdn/Xh-oWqg9k/Tree.svg
 | checkable | 节点前添加 Checkbox 复选框 | boolean | false |  |
 | checkedKeys(v-model) | （受控）选中复选框的树节点（注意：父子节点有关联，如果传入父节点 key，则子节点自动选中；相应当子节点 key 都传入，父节点也自动选中。当设置`checkable`和`checkStrictly`，它是一个有`checked`和`halfChecked`属性的对象，并且父子节点的选中与否不再关联 | string\[] \| number\[] \| {checked: string\[] \| number\[], halfChecked: string\[] \| number\[]} | \[] |  |
 | checkStrictly | checkable 状态下节点选择完全受控（父子节点选中状态不再关联） | boolean | false |  |
-| defaultCheckedKeys | 默认选中复选框的树节点 | string\[] \| number\[] | \[] |  |
-| defaultExpandAll | 默认展开所有树节点 | boolean | false |  |
-| defaultExpandedKeys | 默认展开指定的树节点 | string\[] \| number\[] | \[] |  |
-| defaultExpandParent | 默认展开父节点 | bool | true |  |
-| defaultSelectedKeys | 默认选中的树节点 | string\[] \| number\[] | \[] |  |
+| defaultExpandAll | 默认展开所有树节点, 如果是异步数据，需要在数据返回后再实例化，建议用 v-if="data.length"；当有 expandedKeys 时，defaultExpandAll 将失效 | boolean | false |  |
 | disabled | 将树禁用 | bool | false |  |
 | draggable | 设置节点可拖拽 | boolean | false |  |
 | expandedKeys(v-model) | （受控）展开指定的树节点 | string\[] \| number\[] | \[] |  |

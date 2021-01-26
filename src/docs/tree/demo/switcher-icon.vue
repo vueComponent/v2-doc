@@ -17,7 +17,7 @@ customize collapse/expand icon of tree node
 </docs>
 
 <template>
-  <a-tree showLine :defaultExpandedKeys="['0-0-0']" @select="onSelect">
+  <a-tree showLine v-model:expandedKeys="expandedKeys" v-model:selectedKeys="selectedKeys">
     <template #switcherIcon><down-outlined /></template>
     <a-tree-node title="parent 1" key="0-0">
       <a-tree-node title="parent 1-0" key="0-0-0">
@@ -37,18 +37,17 @@ customize collapse/expand icon of tree node
 </template>
 <script lang="ts">
 import { DownOutlined } from '@ant-design/icons-vue';
-import { SelectEvent } from 'ant-design-vue/lib/tree/Tree';
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 export default defineComponent({
   components: {
     DownOutlined,
   },
   setup() {
-    const onSelect = (selectedKeys: string[], info: SelectEvent) => {
-      console.log('selected', selectedKeys, info);
-    };
+    const expandedKeys = ref<string[]>(['0-0-0']);
+    const selectedKeys = ref<string[]>([]);
     return {
-      onSelect,
+      expandedKeys,
+      selectedKeys,
     };
   },
 });

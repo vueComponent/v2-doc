@@ -19,7 +19,7 @@ Drag treeNode to insert after the other treeNode or insert into the other parent
 <template>
   <a-tree
     class="draggable-tree"
-    :default-expanded-keys="expandedKeys"
+    v-model:expandedKeys="expandedKeys"
     draggable
     :tree-data="gData"
     @dragenter="onDragEnter"
@@ -30,6 +30,7 @@ Drag treeNode to insert after the other treeNode or insert into the other parent
 <script lang="ts">
 import { defineComponent, ref, VNode } from 'vue';
 
+// TODO 从组件库中导出
 interface TreeDataItem {
   title?: string;
   key?: string;
@@ -83,8 +84,8 @@ export default defineComponent({
     const gData = ref<TreeDataItem[]>(genData);
     const onDragEnter = (info: DragEnterEvent) => {
       console.log(info);
-      // expandedKeys 需要受控时设置
-      // this.expandedKeys = info.expandedKeys
+      // expandedKeys 需要展开时
+      // expandedKeys.value = info.expandedKeys
     };
 
     const onDrop = (info: DropEvent) => {

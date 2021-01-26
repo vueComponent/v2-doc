@@ -17,20 +17,26 @@ To load data asynchronously when click to expand a treeNode.
 </docs>
 
 <template>
-  <a-tree :load-data="onLoadData" :tree-data="treeData" />
+  <a-tree
+    :load-data="onLoadData"
+    :tree-data="treeData"
+    v-model:expandedKeys="expandedKeys"
+    v-model:selectedKeys="selectedKeys"
+  />
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+interface TreeDataItem {
+  title: string;
+  key: string;
+  isLeaf?: boolean;
+}
 export default defineComponent({
   setup() {
-    const treeData = ref<
-      Array<{
-        title: string;
-        key: string;
-        isLeaf?: boolean;
-      }>
-    >([
+    const expandedKeys = ref<string[]>([]);
+    const selectedKeys = ref<string[]>([]);
+    const treeData = ref<TreeDataItem[]>([
       { title: 'Expand to load', key: '0' },
       { title: 'Expand to load', key: '1' },
       { title: 'Tree Node', key: '2', isLeaf: true },
@@ -52,6 +58,8 @@ export default defineComponent({
       });
     };
     return {
+      expandedKeys,
+      selectedKeys,
       treeData,
       onLoadData,
     };

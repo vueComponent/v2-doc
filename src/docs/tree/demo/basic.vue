@@ -23,15 +23,12 @@ The most basic usage, tell you how to use checkable, selectable, disabled, defau
     v-model:expandedKeys="expandedKeys"
     v-model:selectedKeys="selectedKeys"
     v-model:checkedKeys="checkedKeys"
-    @select="onSelect"
-    @check="onCheck"
   >
     <template #title0010><span style="color: #1890ff">sss</span></template>
   </a-tree>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { SelectEvent, CheckEvent } from 'ant-design-vue/lib/tree/Tree';
+import { defineComponent, ref, watch } from 'vue';
 
 // TODO 组件库中导出
 interface TreeDataItem {
@@ -71,20 +68,21 @@ export default defineComponent({
     const expandedKeys = ref<string[]>(['0-0-0', '0-0-1']);
     const selectedKeys = ref<string[]>(['0-0-0', '0-0-1']);
     const checkedKeys = ref<string[]>(['0-0-0', '0-0-1']);
+    watch(expandedKeys, () => {
+      console.log('expandedKeys', expandedKeys);
+    });
+    watch(selectedKeys, () => {
+      console.log('selectedKeys', selectedKeys);
+    });
+    watch(checkedKeys, () => {
+      console.log('checkedKeys', checkedKeys);
+    });
 
-    const onSelect = (selectedKeys: string[], info: SelectEvent) => {
-      console.log('selected', selectedKeys, info);
-    };
-    const onCheck = (checkedKeys: string[], info: CheckEvent) => {
-      console.log('onCheck', checkedKeys, info);
-    };
     return {
       treeData,
       expandedKeys,
       selectedKeys,
       checkedKeys,
-      onSelect,
-      onCheck,
     };
   },
 });

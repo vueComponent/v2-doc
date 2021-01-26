@@ -17,7 +17,11 @@ Built-in directory tree. `multiple` support `ctrl(Windows)` / `command(Mac)` sel
 </docs>
 
 <template>
-  <a-directory-tree multiple default-expand-all @select="onSelect" @expand="onExpand">
+  <a-directory-tree
+    multiple
+    v-model:expandedKeys="expandedKeys"
+    v-model:selectedKeys="selectedKeys"
+  >
     <a-tree-node key="0-0" title="parent 0">
       <a-tree-node key="0-0-0" title="leaf 0-0" is-leaf />
       <a-tree-node key="0-0-1" title="leaf 0-1" is-leaf />
@@ -29,19 +33,14 @@ Built-in directory tree. `multiple` support `ctrl(Windows)` / `command(Mac)` sel
   </a-directory-tree>
 </template>
 <script lang="ts">
-import { ExpendEvent, SelectEvent } from 'ant-design-vue/lib/tree/Tree';
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
-    const onSelect = (keys: string[], event: SelectEvent) => {
-      console.log('Trigger Select', keys, event);
-    };
-    const onExpand = (keys: string[], event: ExpendEvent) => {
-      console.log('Expand', keys, event);
-    };
+    const expandedKeys = ref<string[]>(['0-0', '0-1']);
+    const selectedKeys = ref<string[]>([]);
     return {
-      onSelect,
-      onExpand,
+      expandedKeys,
+      selectedKeys,
     };
   },
 });

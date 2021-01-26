@@ -20,17 +20,14 @@ Replace the title,key and children fields in treeNode with the corresponding fie
   <a-tree
     checkable
     :tree-data="treeData"
-    :default-expanded-keys="['0-0-0', '0-0-1']"
-    :default-selected-keys="['0-0-0', '0-0-1']"
-    :default-checked-keys="['0-0-0', '0-0-1']"
+    v-model:expandedKeys="expandedKeys"
+    v-model:selectedKeys="selectedKeys"
+    v-model:checkedKeys="checkedKeys"
     :replace-fields="replaceFields"
-    @select="onSelect"
-    @check="onCheck"
   />
 </template>
 <script lang="ts">
-import { CheckEvent, SelectEvent } from 'ant-design-vue/lib/tree/Tree';
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, watch } from 'vue';
 interface TreeDataItem {
   name: string;
   key: string;
@@ -38,48 +35,55 @@ interface TreeDataItem {
   disableCheckbox?: boolean;
   child?: TreeDataItem[];
 }
-const treeData: TreeDataItem[] = [
-  {
-    name: 'parent 1',
-    key: '0-0',
-    child: [
-      {
-        name: '张晨成',
-        key: '0-0-0',
-        disabled: true,
-        child: [
-          { name: 'leaf', key: '0-0-0-0', disableCheckbox: true },
-          { name: 'leaf', key: '0-0-0-1' },
-        ],
-      },
-      {
-        name: 'parent 1-1',
-        key: '0-0-1',
-        child: [{ key: '0-0-1-0', name: 'zcvc' }],
-      },
-    ],
-  },
-];
 
 export default defineComponent({
   setup() {
+    const expandedKeys = ref<string[]>(['0-0-0', '0-0-1']);
+    const selectedKeys = ref<string[]>(['0-0-0', '0-0-1']);
+    const checkedKeys = ref<string[]>(['0-0-0', '0-0-1']);
+
     const replaceFields = {
       children: 'child',
       title: 'name',
     };
 
-    const onSelect = (keys: string[], info: SelectEvent) => {
-      console.log('Trigger Select', keys, event);
-    };
-
-    const onCheck = (keys: string[], info: CheckEvent) => {
-      console.log('onCheck', keys, info);
-    };
+    const treeData: TreeDataItem[] = [
+      {
+        name: 'parent 1',
+        key: '0-0',
+        child: [
+          {
+            name: '张晨成',
+            key: '0-0-0',
+            disabled: true,
+            child: [
+              { name: 'leaf', key: '0-0-0-0', disableCheckbox: true },
+              { name: 'leaf', key: '0-0-0-1' },
+            ],
+          },
+          {
+            name: 'parent 1-1',
+            key: '0-0-1',
+            child: [{ key: '0-0-1-0', name: 'zcvc' }],
+          },
+        ],
+      },
+    ];
+    watch(expandedKeys, () => {
+      console.log('expandedKeys', expandedKeys);
+    });
+    watch(selectedKeys, () => {
+      console.log('selectedKeys', selectedKeys);
+    });
+    watch(checkedKeys, () => {
+      console.log('checkedKeys', checkedKeys);
+    });
     return {
+      expandedKeys,
+      selectedKeys,
+      checkedKeys,
       replaceFields,
-      treeData,
-      onSelect,
-      onCheck,
+      treeData: ref(treeData),
     };
   },
 });

@@ -18,12 +18,11 @@ Searchable Tree.
 
 <template>
   <div>
-    <a-input-search style="margin-bottom: 8px" placeholder="Search" @change="onChange" />
+    <a-input-search v-model:value="searchValue" style="margin-bottom: 8px" placeholder="Search" />
     <a-tree
-      :expanded-keys="expandedKeys"
+      v-model:expandedKeys="expandedKeys"
       :auto-expand-parent="autoExpandParent"
       :tree-data="gData"
-      @expand="onExpand"
     >
       <template #title="{ title }">
         <span v-if="title.indexOf(searchValue) > -1">
@@ -38,7 +37,7 @@ Searchable Tree.
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, watch } from 'vue';
 interface TreeDataItem {
   title: string;
   key: string;
@@ -99,7 +98,6 @@ const getParentKey = (key: string, tree: TreeDataItem[]): string | number | unde
   }
   return parentKey;
 };
-console.log(genData);
 export default defineComponent({
   setup() {
     const expandedKeys = ref<string[]>([]);
@@ -107,13 +105,10 @@ export default defineComponent({
     const autoExpandParent = ref<boolean>(true);
     const gData = ref<TreeDataItem[]>(genData);
 
-    const onExpand = (expanded: string[]) => {
-      expandedKeys.value = expanded;
+    watch(expandedKeys, () => {
       autoExpandParent.value = false;
-    };
-
-    const onChange = (e: any) => {
-      const value = e.target.value;
+    });
+    watch(searchValue, value => {
       const expanded = dataList
         .map((item: TreeDataItem) => {
           if (item.title.indexOf(value) > -1) {
@@ -125,14 +120,12 @@ export default defineComponent({
       expandedKeys.value = expanded as string[];
       searchValue.value = value;
       autoExpandParent.value = true;
-    };
+    });
     return {
       expandedKeys,
       searchValue,
       autoExpandParent,
       gData,
-      onExpand,
-      onChange,
     };
   },
 });
