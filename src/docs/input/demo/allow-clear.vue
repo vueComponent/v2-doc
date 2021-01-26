@@ -17,20 +17,10 @@ Input type of password.
 </docs>
 <template>
   <div>
-    <a-input
-      v-model:value="value1"
-      placeholder="input with clear icon"
-      allow-clear
-      @change="onChange"
-    />
+    <a-input v-model:value="value1" placeholder="input with clear icon" allow-clear />
     <br />
     <br />
-    <a-textarea
-      v-model:value="value2"
-      placeholder="textarea with clear icon"
-      allow-clear
-      @change="onChange"
-    />
+    <a-textarea v-model:value="value2" placeholder="textarea with clear icon" allow-clear />
   </div>
 </template>
 <script lang="ts">
@@ -40,14 +30,9 @@ export default defineComponent({
     const value1 = ref<string>('');
     const value2 = ref<string>('');
 
-    const onChange = (e: Event) => {
-      console.log(e);
-    };
-
     return {
       value1,
       value2,
-      onChange,
     };
   },
 });

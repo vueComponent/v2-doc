@@ -22,7 +22,6 @@ Display value within it's situation with `formatter`, and we usually use `parser
       v-model:value="value1"
       :formatter="value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')"
       :parser="value => value.replace(/\$\s?|(,*)/g, '')"
-      @change="onChange"
     />
     <a-input-number
       v-model:value="value2"
@@ -30,7 +29,6 @@ Display value within it's situation with `formatter`, and we usually use `parser
       :max="100"
       :formatter="value => `${value}%`"
       :parser="value => value.replace('%', '')"
-      @change="onChange"
     />
   </div>
 </template>
@@ -41,14 +39,9 @@ export default defineComponent({
     const value1 = ref<number>(1000);
     const value2 = ref<number>(100);
 
-    const onChange = (value: number) => {
-      console.log('changed', value);
-    };
-
     return {
       value1,
       value2,
-      onChange,
     };
   },
 });

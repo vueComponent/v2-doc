@@ -18,9 +18,9 @@ There are three sizes available to a numeric input box. By default, the size is 
 
 <template>
   <div>
-    <a-input-number size="large" :min="1" :max="100000" v-model:value="value1" @change="onChange" />
-    <a-input-number :min="1" :max="100000" v-model:value="value2" @change="onChange" />
-    <a-input-number size="small" :min="1" :max="100000" v-model:value="value3" @change="onChange" />
+    <a-input-number size="large" :min="1" :max="100000" v-model:value="value1" />
+    <a-input-number :min="1" :max="100000" v-model:value="value2" />
+    <a-input-number size="small" :min="1" :max="100000" v-model:value="value3" />
   </div>
 </template>
 <script lang="ts">
@@ -31,15 +31,10 @@ export default defineComponent({
     const value2 = ref<number>(3);
     const value3 = ref<number>(3);
 
-    const onChange = (value: number) => {
-      console.log('changed', value);
-    };
-
     return {
       value1,
       value2,
       value3,
-      onChange,
     };
   },
 });

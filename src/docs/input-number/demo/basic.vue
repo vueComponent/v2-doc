@@ -18,7 +18,7 @@ Numeric-only input box.
 
 <template>
   <div>
-    <a-input-number id="inputNumber" v-model:value="value" :min="1" :max="10" @change="onChange" />
+    <a-input-number id="inputNumber" v-model:value="value" :min="1" :max="10" />
     当前值：{{ value }}
   </div>
 </template>
@@ -28,13 +28,8 @@ export default defineComponent({
   setup() {
     const value = ref<number>(3);
 
-    const onChange = (value: number) => {
-      console.log('changed', value);
-    };
-
     return {
       value,
-      onChange,
     };
   },
 });

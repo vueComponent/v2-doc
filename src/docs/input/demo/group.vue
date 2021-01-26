@@ -100,7 +100,6 @@ Note: You don't need `Col` to control the width in the `compact` mode.
         :data-source="dataSource"
         style="width: 200px"
         placeholder="Email"
-        @change="handleChange"
       />
     </a-input-group>
     <br />
@@ -119,7 +118,7 @@ Note: You don't need `Col` to control the width in the `compact` mode.
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, watch } from 'vue';
 
 const options = [
   {
@@ -177,12 +176,12 @@ export default defineComponent({
     const value18 = ref<string[]>([]);
     const dataSource = ref<string[]>([]);
 
-    const handleChange = (value: string) => {
+    watch(value16, val => {
       dataSource.value =
-        !value || value.indexOf('@') >= 0
+        !val || val.indexOf('@') >= 0
           ? []
-          : [`${value}@gmail.com`, `${value}@163.com`, `${value}@qq.com`];
-    };
+          : [`${val}@gmail.com`, `${val}@163.com`, `${val}@qq.com`];
+    });
 
     return {
       value1,
@@ -205,7 +204,6 @@ export default defineComponent({
       value18,
       options,
       dataSource,
-      handleChange,
     };
   },
 });

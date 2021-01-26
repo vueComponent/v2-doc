@@ -17,7 +17,7 @@ A numeric-only input box whose values can be increased or decreased using a deci
 </docs>
 
 <template>
-  <a-input-number v-model:value="value" :min="0" :max="10" :step="0.1" @change="onChange" />
+  <a-input-number v-model:value="value" :min="0" :max="10" :step="0.1" />
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
@@ -25,13 +25,8 @@ export default defineComponent({
   setup() {
     const value = ref<number>();
 
-    const onChange = (value: number) => {
-      console.log('changed', value);
-    };
-
     return {
       value,
-      onChange,
     };
   },
 });

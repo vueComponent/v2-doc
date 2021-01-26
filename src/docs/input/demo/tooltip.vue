@@ -24,21 +24,16 @@ You can use the Input in conjunction with [Tooltip](/components/tooltip/) compon
     </template>
 
     <a-input
-      :value="inputValue"
+      v-model:value="inputValue"
       placeholder="Input a number"
       :max-length="25"
       style="width: 120px"
-      @change="onChange"
       @blur="onBlur"
     />
   </a-tooltip>
 </template>
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue';
-
-interface ChangeEvent extends InputEvent {
-  target: HTMLInputElement | HTMLTextAreaElement;
-}
+import { computed, defineComponent, ref, watch } from 'vue';
 
 function formatNumber(value: string) {
   value += '';
@@ -67,12 +62,13 @@ export default defineComponent({
       return formatNumber(inputValue.value);
     });
 
-    const onChange = (e: ChangeEvent | { target: { value: string } }) => {
-      const { value } = e.target;
+    const format = (val: string, preVal: string) => {
       const reg = /^-?\d*(\.\d*)?$/;
 
-      if ((!isNaN(+value) && reg.test(value)) || value === '' || value === '-') {
-        inputValue.value = value;
+      if ((!isNaN(+val) && reg.test(val)) || val === '' || val === '-') {
+        inputValue.value = val;
+      } else {
+        inputValue.value = preVal;
       }
     };
 
@@ -82,13 +78,16 @@ export default defineComponent({
         inputValue.value.charAt(inputValue.value.length - 1) === '.' ||
         inputValue.value === '-'
       ) {
-        onChange({ target: { value: inputValue.value.slice(0, -1) } });
+        format(inputValue.value.slice(0, -1), inputValue.value);
       }
     };
 
+    watch(inputValue, (val, preVal) => {
+      format(val, preVal);
+    });
+
     return {
       inputValue,
-      onChange,
       onBlur,
       formatValue,
     };
