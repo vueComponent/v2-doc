@@ -5,6 +5,12 @@ title: Icon
 cover: https://gw.alipayobjects.com/zos/alicdn/rrwbSt3FQ/Icon.svg
 ---
 
+Semantic vector graphics. Before use icons, you need to install `@ant-design/icons-vue` package:
+
+```bash
+npm install --save @ant-design/icons-vue
+```
+
 ## API
 
 ### Common Icon

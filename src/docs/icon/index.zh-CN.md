@@ -6,9 +6,18 @@ subtitle: 图标
 cover: https://gw.alipayobjects.com/zos/alicdn/rrwbSt3FQ/Icon.svg
 ---
 
-## API
+语义化的矢量图形。使用图标组件，你需要安装 `@ant-design/icons-vue` 图标组件包：
 
-从 2.0 开始，ant-design-vue 不再内置 Icon 组件，请使用独立的包 `@ant-design/icons-vue`。
+```bash
+npm install --save @ant-design/icons-vue
+```
+
+## 设计师专属
+
+安装 [Kitchen Sketch 插件 💎](https://kitchen.alipay.com)，就可以一键拖拽使用 Ant Design 和 Iconfont 的海量图标，还可以关联自有项目。
+
+
+## API
 
 ### 通用图标
 
