@@ -23,7 +23,6 @@ Basic Usage, set datasource of autocomplete with `options` property.
     placeholder="input here"
     @select="onSelect"
     @search="onSearch"
-    @change="onChange"
   />
 </template>
 
@@ -51,9 +50,6 @@ export default defineComponent({
     const onSelect = (value: string) => {
       console.log('onSelect', value);
     };
-    const onChange = (value: string) => {
-      console.log('onChange', value);
-    };
     watch(value, () => {
       console.log('value', value.value);
     });
@@ -62,7 +58,6 @@ export default defineComponent({
       options,
       onSearch,
       onSelect,
-      onChange,
     };
   },
 });
