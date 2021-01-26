@@ -1,3 +1,17 @@
+---
+category: Components
+type: Data Entry
+title: Radio
+cover: https://gw.alipayobjects.com/zos/alicdn/8cYb5seNB/Radio.svg
+---
+
+Radio.
+
+## When To Use
+
+- Used to select a single state from multiple options.
+- The difference from Select is that Radio is visible to the user and can facilitate the comparison of choice, which means there shouldn't be too many of them.
+
 ## API
 
 ### Radio
