@@ -7,7 +7,7 @@
   >
     <a-menu-item v-if="showOverview" key="/components/overview">
       <router-link :to="getLocalizedPathname('/components/overview', isZhCN)">
-        {{ isZhCN ? '组件总览' : 'Components Overview' }}
+        {{ isZhCN ? '组件总览' : 'Components Overview' }} ({{ menus.length }})
       </router-link>
     </a-menu-item>
     <template v-for="m in dataSource">
