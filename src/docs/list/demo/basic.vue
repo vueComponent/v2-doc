@@ -1,17 +1,24 @@
-<cn>
-#### 基础列表
+<docs>
+---
+order: 0
+title:
+  zh-CN: 基本用法
+  en-US: Basic usage
+---
+
+## zh-CN
+
 基础列表。
-</cn>
 
-<us>
-#### Basic list
+## en-US
+
 Basic list.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-list item-layout="horizontal" :data-source="data">
-    <template #renderItem="{ item, index }">
+    <template #renderItem="{ item }">
       <a-list-item>
         <a-list-item-meta
           description="Ant Design, a design language for background applications, is refined by Ant UED Team"
@@ -27,8 +34,12 @@ Basic list.
     </template>
   </a-list>
 </template>
-<script>
-const data = [
+<script lang="ts">
+import { defineComponent } from 'vue';
+interface DataItem {
+  title: string;
+}
+const data: DataItem[] = [
   {
     title: 'Ant Design Title 1',
   },
@@ -42,13 +53,11 @@ const data = [
     title: 'Ant Design Title 4',
   },
 ];
-export default {
-  data() {
+export default defineComponent({
+  setup() {
     return {
       data,
     };
   },
-};
+});
 </script>
-<style></style>
-```

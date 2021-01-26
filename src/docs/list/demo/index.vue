@@ -1,52 +1,34 @@
-<script>
-import Basic from './basic';
-import Grid from './grid';
-import Loadmore from './loadmore';
-import Resposive from './resposive';
-import Simple from './simple';
-import Vertical from './vertical';
-
+<template>
+  <basic />
+  <simple />
+  <loadmore />
+  <vertical />
+  <grid />
+  <resposive />
+</template>
+<script lang="ts">
+import Basic from './basic.vue';
+import Simple from './simple.vue';
+import Loadmore from './loadmore.vue';
+import Vertical from './vertical.vue';
+import Grid from './grid.vue';
+import Resposive from './resposive.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
-
-const md = {
-  cn: `# 列表
-  通用列表。
-## 何时使用
-最基础的列表展示，可承载文字、列表、图片、段落，常用于后台数据展示页面。
-        ## 代码演示`,
-  us: `# List
-  Simple List.
-
-## When To Use
-
-A list can be used to display content related to a single subject. The content can consist of multiple elements of varying type and size.
-  ## Examples
-  `,
-};
-export default {
-  category: 'Components',
-  type: 'Data Display',
-  title: 'List',
-  subtitle: '列表',
-  cols: 1,
-  render() {
-    return (
-      <div>
-        <Md cn={md.cn} us={md.us} />
-        <demo-sort cols={1}>
-          <Basic />
-          <Grid />
-          <Loadmore />
-          <Resposive />
-          <Simple />
-          <Vertical />
-        </demo-sort>
-        <api vSlots={{ cn: () => <CN /> }}>
-          <US />
-        </api>
-      </div>
-    );
+import { defineComponent } from 'vue';
+export default defineComponent({
+  CN,
+  US,
+  components: {
+    Basic,
+    Simple,
+    Loadmore,
+    Vertical,
+    Grid,
+    Resposive,
   },
-};
+  setup() {
+    return {};
+  },
+});
 </script>

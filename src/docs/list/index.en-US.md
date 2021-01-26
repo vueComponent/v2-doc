@@ -1,3 +1,16 @@
+---
+category: Components
+type: Data Display
+title: List
+cover: https://gw.alipayobjects.com/zos/alicdn/5FrZKStG_/List.svg
+---
+
+Simple List.
+
+## When To Use
+
+A list can be used to display content related to a single subject. The content can consist of multiple elements of varying type and size.
+
 ## API
 
 ### List

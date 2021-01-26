@@ -1,14 +1,21 @@
-<cn>
-#### 加载更多
+<docs>
+---
+order: 2
+title:
+  zh-CN: 加载更多
+  en-US: Load more
+---
+
+## zh-CN
+
 可通过 `loadMore` 属性实现加载更多功能。
-</cn>
 
-<us>
-#### Load more
+## en-US
+
 Load more list with `loadMore` property.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-list
     class="demo-loadmore-list"
@@ -22,12 +29,10 @@ Load more list with `loadMore` property.
         :style="{ textAlign: 'center', marginTop: '12px', height: '32px', lineHeight: '32px' }"
       >
         <a-spin v-if="loadingMore" />
-        <a-button v-else @click="onLoadMore">
-          loading more
-        </a-button>
+        <a-button v-else @click="onLoadMore">loading more</a-button>
       </div>
     </template>
-    <template #renderItem="{ item, index }">
+    <template #renderItem="{ item }">
       <a-list-item>
         <template #actions>
           <a>edit</a>
@@ -48,54 +53,55 @@ Load more list with `loadMore` property.
     </template>
   </a-list>
 </template>
-<script>
-import reqwest from 'reqwest';
-
+<script lang="ts">
+import axios, { AxiosResponse } from 'axios';
+import { defineComponent, ref, onMounted, nextTick } from 'vue';
 const fakeDataUrl = 'https://randomuser.me/api/?results=5&inc=name,gender,email,nat&noinfo';
 
-export default {
-  data() {
-    return {
-      loading: true,
-      loadingMore: false,
-      showLoadingMore: true,
-      data: [],
-    };
-  },
-  mounted() {
-    this.getData(res => {
-      this.loading = false;
-      this.data = res.results;
-    });
-  },
-  methods: {
-    getData(callback) {
-      reqwest({
-        url: fakeDataUrl,
-        type: 'json',
-        method: 'get',
-        contentType: 'application/json',
-        success: res => {
-          callback(res);
-        },
+export default defineComponent({
+  setup() {
+    const loading = ref<boolean>(true);
+    const loadingMore = ref<boolean>(false);
+    const showLoadingMore = ref<boolean>(true);
+    const data = ref([]);
+
+    onMounted(() => {
+      getData((res: AxiosResponse) => {
+        loading.value = false;
+        data.value = res.data.results;
       });
-    },
-    onLoadMore() {
-      this.loadingMore = true;
-      this.getData(res => {
-        this.data = this.data.concat(res.results);
-        this.loadingMore = false;
-        this.$nextTick(() => {
+    });
+
+    const getData = async (callback: Function) => {
+      const res = await axios({
+        url: fakeDataUrl,
+        method: 'get',
+      });
+      callback(res);
+    };
+
+    const onLoadMore = () => {
+      loadingMore.value = true;
+      getData((res: AxiosResponse) => {
+        data.value = data.value.concat(res.data.results);
+        loadingMore.value = false;
+        nextTick(() => {
           window.dispatchEvent(new Event('resize'));
         });
       });
-    },
+    };
+    return {
+      loading,
+      loadingMore,
+      showLoadingMore,
+      data,
+      onLoadMore,
+    };
   },
-};
+});
 </script>
-<style>
+<style scoped>
 .demo-loadmore-list {
   min-height: 350px;
 }
 </style>
-```
