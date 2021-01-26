@@ -39,10 +39,10 @@ interface TreeDataItem {
   key: string;
   title?: string;
   slots?: Record<string, string>;
-  children?: TreeDataItem[]
+  children?: TreeDataItem[];
 }
 
-const treeData:TreeDataItem[] = [
+const treeData: TreeDataItem[] = [
   {
     title: 'Node1',
     value: '0-0',
@@ -70,15 +70,15 @@ const treeData:TreeDataItem[] = [
 ];
 export default defineComponent({
   setup() {
-    const value = ref<string>('')
+    const value = ref<string>();
 
     watch(value, () => {
-      console.log(value.value)
-    })
+      console.log(value.value);
+    });
     return {
       value,
-      treeData
-    }
-  }
+      treeData,
+    };
+  },
 });
 </script>

@@ -49,7 +49,7 @@ export default defineComponent({
     SmileOutlined,
   },
   setup() {
-    const value = ref<string>('');
+    const value = ref<string>();
 
     return {
       value,

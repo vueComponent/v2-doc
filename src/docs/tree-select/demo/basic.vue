@@ -44,7 +44,7 @@ The most basic usage.
 import { defineComponent, ref, watch } from 'vue';
 export default defineComponent({
   setup() {
-    const value = ref<string>('');
+    const value = ref<string>();
     watch(value, () => {
       console.log(value.value);
     });

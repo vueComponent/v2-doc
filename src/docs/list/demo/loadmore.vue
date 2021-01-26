@@ -72,7 +72,7 @@ export default defineComponent({
       });
     });
 
-    const getData = async (callback: Function) => {
+    const getData = async (callback: (r: AxiosResponse) => void) => {
       const res = await axios({
         url: fakeDataUrl,
         method: 'get',

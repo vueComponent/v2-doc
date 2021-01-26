@@ -41,18 +41,18 @@ interface TreeDataItem {
 
 export default defineComponent({
   setup() {
-    const value = ref<string>('');
+    const value = ref<string>();
     const treeData = ref<TreeDataItem[]>([
       { id: 1, pId: 0, value: '1', title: 'Expand to load' },
       { id: 2, pId: 0, value: '2', title: 'Expand to load' },
       { id: 3, pId: 0, value: '3', title: 'Tree Node', isLeaf: true },
     ]);
-    
+
     watch(value, () => {
       console.log(value.value);
     });
 
-    const genTreeNode = (parentId: number, isLeaf: boolean = false): TreeDataItem => {
+    const genTreeNode = (parentId: number, isLeaf = false): TreeDataItem => {
       const random = Math.random().toString(36).substring(2, 6);
       return {
         id: random,
