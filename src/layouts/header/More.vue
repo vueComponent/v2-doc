@@ -34,7 +34,7 @@ export default defineComponent({
     const downstyle = computed(() => (props.isRTL ? '-1px 2px 0 0' : '-1px 0 0 2px'));
     return {
       downstyle,
-      isZhCN: inject<GlobalConfig>(GLOBAL_CONFIG).isZhCN.value,
+      isZhCN: inject<GlobalConfig>(GLOBAL_CONFIG)!.isZhCN.value,
       getLocalizedPathname,
     };
   },

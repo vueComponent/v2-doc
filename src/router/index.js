@@ -11,7 +11,7 @@ const routes = [
     children: [
       {
         path: 'overview:lang(.*)',
-        component: () => import('../docs/avatar/demo/index.vue'),
+        component: () => import('../views/ComponentOverview.vue'),
       },
       ...demoRoutes,
     ],

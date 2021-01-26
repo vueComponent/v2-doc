@@ -64,9 +64,9 @@ export default defineComponent({
         .map(r => ({ ...r.meta, path: r.path.split(':lang')[0] }));
     });
 
-    const demos = ref([]);
+    const demos = ref<any[]>([]);
 
-    provide('addDemosInfo', info => {
+    provide('addDemosInfo', (info: any) => {
       demos.value.push(info);
     });
 
@@ -92,7 +92,7 @@ export default defineComponent({
     const matchCom = computed(() => {
       return route.matched[route.matched.length - 1]?.components?.default as any;
     });
-    const isZhCN = globalConfig.isZhCN;
+    const isZhCN = globalConfig!.isZhCN;
     const pageData = computed(() =>
       isDemo.value
         ? matchCom.value[isZhCN.value ? 'CN' : 'US']?.pageData
@@ -102,7 +102,7 @@ export default defineComponent({
       if (isDemo.value) {
         return [...demos.value, { title: 'API', href: '#API' }];
       } else {
-        return (pageData.value?.headers || []).filter(h => h.level === 2);
+        return (pageData.value?.headers || []).filter((h: Header) => h.level === 2);
       }
     });
 
@@ -113,7 +113,7 @@ export default defineComponent({
       };
     });
     return {
-      isMobile: globalConfig.isMobile,
+      isMobile: globalConfig!.isMobile,
       isZhCN,
       mainContainerClass,
       menus,

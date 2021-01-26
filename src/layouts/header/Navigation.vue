@@ -59,7 +59,7 @@ export default defineComponent({
   setup() {
     const globalConfig = inject<GlobalConfig>(GLOBAL_CONFIG);
     const menuMode = computed(() => {
-      return globalConfig.isMobile.value ? 'inline' : 'horizontal';
+      return globalConfig!.isMobile.value ? 'inline' : 'horizontal';
     });
     const route = useRoute();
     const activeMenuItem = ref('home');
@@ -82,8 +82,8 @@ export default defineComponent({
       { immediate: true },
     );
     return {
-      isMobile: globalConfig.isMobile,
-      isZhCN: globalConfig.isZhCN,
+      isMobile: globalConfig!.isMobile,
+      isZhCN: globalConfig!.isZhCN,
       getLocalizedPathname,
       menuMode,
       activeMenuItem,

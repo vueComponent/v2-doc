@@ -32,7 +32,7 @@
 import { GlobalConfig } from '@/App.vue';
 import { GLOBAL_CONFIG } from '@/SymbolKey';
 import { getLocalizedPathname } from '@/utils/util';
-import { computed, defineComponent, inject, onMounted, ref, watch } from 'vue';
+import { computed, defineComponent, inject, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import Logo from './Logo.vue';
 import Menu from './Menu.vue';
@@ -76,8 +76,8 @@ export default defineComponent({
         apiKey: '92003c1d1d07beef165b08446f4224a3',
         indexName: 'antdv',
         inputSelector: '#search-box input',
-        algoliaOptions: { facetFilters: [`tags:${globalConfig.isZhCN.value ? 'cn' : 'en'}`] },
-        transformData(hits) {
+        algoliaOptions: { facetFilters: [`tags:${globalConfig!.isZhCN.value ? 'cn' : 'en'}`] },
+        transformData(hits: any[]) {
           hits.forEach(hit => {
             hit.url = hit.url.replace('www.antdv.com', window.location.host);
             hit.url = hit.url.replace('https:', window.location.protocol);
@@ -93,9 +93,9 @@ export default defineComponent({
       });
     });
     return {
-      isZhCN: globalConfig.isZhCN,
-      isMobile: globalConfig.isMobile,
-      responsive: globalConfig.responsive,
+      isZhCN: globalConfig!.isZhCN,
+      isMobile: globalConfig!.isMobile,
+      responsive: globalConfig!.responsive,
       getLocalizedPathname,
       headerClassName: {
         clearfix: true,
