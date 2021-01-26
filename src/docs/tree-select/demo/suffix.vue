@@ -1,14 +1,21 @@
-<cn>
-#### 后缀图标
+<docs>
+---
+order: 4
+title:
+  zh-CN: 后缀图标
+  en-US: Suffix
+---
+
+## zh-CN
+
 最简单的用法。
-</cn>
 
-<us>
-#### Suffix
+## en-US
+
 The most basic usage.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-tree-select
     v-model:value="value"
@@ -34,17 +41,19 @@ The most basic usage.
   </a-tree-select>
 </template>
 
-<script>
+<script lang="ts">
 import { SmileOutlined } from '@ant-design/icons-vue';
-export default {
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
   components: {
     SmileOutlined,
   },
-  data() {
+  setup() {
+    const value = ref<string>('');
+
     return {
-      value: undefined,
+      value,
     };
   },
-};
+});
 </script>
-```

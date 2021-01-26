@@ -1,14 +1,21 @@
-<cn>
-#### 基本用法
+<docs>
+---
+order: 0
+title:
+  zh-CN: 基本用法
+  en-US: Basic usage
+---
+
+## zh-CN
+
 最简单的用法。
-</cn>
 
-<us>
-#### Basic
+## en-US
+
 The most basic usage.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-tree-select
     v-model:value="value"
@@ -33,14 +40,17 @@ The most basic usage.
   </a-tree-select>
 </template>
 
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref, watch } from 'vue';
+export default defineComponent({
+  setup() {
+    const value = ref<string>('');
+    watch(value, () => {
+      console.log(value.value);
+    });
     return {
-      treeExpandedKeys: [],
-      value: [],
+      value,
     };
   },
-};
+});
 </script>
-```

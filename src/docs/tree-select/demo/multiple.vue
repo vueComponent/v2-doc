@@ -1,14 +1,21 @@
-<cn>
-#### 多选
+<docs>
+---
+order: 1
+title:
+  zh-CN: 多选
+  en-US: Multiple Selection
+---
+
+## zh-CN
+
 多选的树选择。
-</cn>
 
-<us>
-#### Multiple Selection
+## en-US
+
 Multiple selection usage.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-tree-select
     show-search
@@ -19,8 +26,6 @@ Multiple selection usage.
     allow-clear
     multiple
     tree-default-expand-all
-    @search="onSearch"
-    @select="onSelect"
   >
     <a-tree-select-node key="0-1" value="parent 1" title="parent 1">
       <a-tree-select-node key="0-1-1" value="parent 1-0" title="parent 1-0">
@@ -36,24 +41,20 @@ Multiple selection usage.
   </a-tree-select>
 </template>
 
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref, watch } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const value = ref<string[]>([]);
+
+    watch(value, () => {
+      console.log('select', value.value);
+    });
+
     return {
-      value: undefined,
+      value,
     };
   },
-  methods: {
-    onChange(value) {
-      console.log(value);
-    },
-    onSearch() {
-      console.log(...arguments);
-    },
-    onSelect() {
-      console.log(...arguments);
-    },
-  },
-};
+});
 </script>
-```

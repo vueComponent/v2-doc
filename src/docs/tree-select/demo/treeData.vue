@@ -1,14 +1,21 @@
-<cn>
-#### 从数据直接生成
+<docs>
+---
+order: 2
+title:
+  zh-CN: 从数据直接生成
+  en-US: Generate form tree data
+---
+
+## zh-CN
+
 使用 `treeData` 把 JSON 数据直接生成树结构。
-</cn>
 
-<us>
-#### Generate form tree data
+## en-US
+
 The tree structure can be populated using `treeData` property. This is a quick and easy way to provide the tree content.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-tree-select
     v-model:value="value"
@@ -19,13 +26,23 @@ The tree structure can be populated using `treeData` property. This is a quick a
     tree-default-expand-all
   >
     <template #title="{ key, value }">
-      <span style="color: #08c" v-if="key === '0-0-1'"> Child Node1 {{ value }} </span>
+      <span style="color: #08c" v-if="key === '0-0-1'">Child Node1 {{ value }}</span>
     </template>
   </a-tree-select>
 </template>
 
-<script>
-const treeData = [
+<script lang="ts">
+import { defineComponent, ref, watch } from 'vue';
+
+interface TreeDataItem {
+  value: string;
+  key: string;
+  title?: string;
+  slots?: Record<string, string>;
+  children?: TreeDataItem[]
+}
+
+const treeData:TreeDataItem[] = [
   {
     title: 'Node1',
     value: '0-0',
@@ -35,7 +52,6 @@ const treeData = [
         value: '0-0-1',
         key: '0-0-1',
         slots: {
-          // custom title
           title: 'title',
         },
       },
@@ -52,18 +68,17 @@ const treeData = [
     key: '0-1',
   },
 ];
-export default {
-  data() {
+export default defineComponent({
+  setup() {
+    const value = ref<string>('')
+
+    watch(value, () => {
+      console.log(value.value)
+    })
     return {
-      value: undefined,
-      treeData,
-    };
-  },
-  watch: {
-    value(value) {
-      console.log(value);
-    },
-  },
-};
+      value,
+      treeData
+    }
+  }
+});
 </script>
-```

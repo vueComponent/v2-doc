@@ -1,3 +1,17 @@
+---
+category: Components
+type: 数据录入
+title: TreeSelect
+subtitle: 树选择
+cover: https://gw.alipayobjects.com/zos/alicdn/Ax4DA0njr/TreeSelect.svg
+---
+
+树型选择控件。
+
+## 何时使用
+
+类似 Select 的选择控件，可选择的数据结构是一个树形结构时，可以使用 TreeSelect，例如公司层级、学科系统、分类目录等等。
+
 ## API
 
 ### Tree props
@@ -60,7 +74,7 @@
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | selectable | 是否可选 | boolean | true |  |
-| checkable | 当树为 checkable 时，设置独立节点是否展示 Checkbox | boolean | - | 1.5.0 |
+| checkable | 当树为 checkable 时，设置独立节点是否展示 Checkbox | boolean | - |  |
 | disableCheckbox | 禁掉 checkbox | boolean | false |  |
 | disabled | 是否禁用 | boolean | false |  |
 | isLeaf | 是否是叶子节点 | boolean | false |  |

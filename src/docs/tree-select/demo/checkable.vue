@@ -1,14 +1,21 @@
-<cn>
-#### 可勾选
+<docs>
+---
+order: 3
+title:
+  zh-CN: 可勾选
+  en-US: Checkable
+---
+
+## zh-CN
+
 使用勾选框实现多选功能。
-</cn>
 
-<us>
-#### Checkable
+## en-US
+
 Multiple and checkable.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-tree-select
     v-model:value="value"
@@ -21,11 +28,20 @@ Multiple and checkable.
   />
 </template>
 
-<script>
+<script lang="ts">
 import { TreeSelect } from 'ant-design-vue';
+import { defineComponent, ref, watch } from 'vue';
 const SHOW_PARENT = TreeSelect.SHOW_PARENT;
 
-const treeData = [
+interface TreeDataItem {
+  value: string;
+  key: string;
+  title?: string;
+  disabled?: boolean;
+  children?: TreeDataItem[];
+}
+
+const treeData: TreeDataItem[] = [
   {
     title: 'Node1',
     value: '0-0',
@@ -62,14 +78,19 @@ const treeData = [
     ],
   },
 ];
-export default {
-  data() {
+export default defineComponent({
+  setup() {
+    const value = ref<string[]>(['0-0-0']);
+
+    watch(value, () => {
+      console.log(value.value);
+    });
+
     return {
-      value: ['0-0-0'],
+      value,
       treeData,
       SHOW_PARENT,
     };
   },
-};
+});
 </script>
-```
