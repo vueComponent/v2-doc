@@ -72,7 +72,6 @@ export default defineComponent({
         .sort((a, b) => a.order - b.order);
       return keys.length === 1 ? props.menus : newMenus;
     });
-    console.log(dataSource.value);
     return {
       getLocalizedPathname,
       dataSource,

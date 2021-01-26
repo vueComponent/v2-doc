@@ -13,7 +13,7 @@ export default {
   //   replacement: path.join(__dirname, './src'),
   // }],
   alias: {
-    moment: 'moment/dist/moment.js',
+    // moment: 'moment/dist/moment.js',
     '@': path.join(__dirname, './src'),
   },
   plugins: [
