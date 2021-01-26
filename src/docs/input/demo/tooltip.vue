@@ -36,6 +36,10 @@ You can use the Input in conjunction with [Tooltip](/components/tooltip/) compon
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue';
 
+interface ChangeEvent extends InputEvent {
+  target: HTMLInputElement | HTMLTextAreaElement;
+}
+
 function formatNumber(value: string) {
   value += '';
   const list = value.split('.');
@@ -63,11 +67,11 @@ export default defineComponent({
       return formatNumber(inputValue.value);
     });
 
-    const onChange = (e: Event) => {
+    const onChange = (e: ChangeEvent | { target: { value: string } }) => {
       const { value } = e.target;
-      const reg = /^-?[0-9]*(\.[0-9]*)?$/;
+      const reg = /^-?\d*(\.\d*)?$/;
 
-      if ((!isNaN(value) && reg.test(value)) || value === '' || value === '-') {
+      if ((!isNaN(+value) && reg.test(value)) || value === '' || value === '-') {
         inputValue.value = value;
       }
     };

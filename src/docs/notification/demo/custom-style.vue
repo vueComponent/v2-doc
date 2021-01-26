@@ -36,8 +36,8 @@ export default defineComponent({
       });
     };
     return {
-      openNotification
-    }
+      openNotification,
+    };
   },
 });
 </script>

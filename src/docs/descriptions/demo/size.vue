@@ -67,11 +67,13 @@ Custom sizes to fit in a variety of containers.
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+// TODO
+import { RadioChangeEvent } from 'ant-design-vue/es/radio/interface';
 
 export default defineComponent({
   setup() {
     const size = ref('default');
-    const onChange = (e: Event) => {
+    const onChange = (e: RadioChangeEvent) => {
       console.log('size checked', e.target.value);
       size.value = e.target.value;
     };

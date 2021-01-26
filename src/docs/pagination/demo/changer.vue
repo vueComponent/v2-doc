@@ -35,7 +35,7 @@ Change `pageSize`.
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue'
+import { defineComponent, ref, watch } from 'vue';
 
 export default defineComponent({
   setup() {
@@ -44,19 +44,19 @@ export default defineComponent({
     const current2 = ref(4);
     const onShowSizeChange = (current: number, pageSize: number) => {
       console.log(current, pageSize);
-    }
+    };
     watch(pageSize, () => {
       console.log('pageSize', pageSize.value);
-    })
+    });
     watch(current1, () => {
       console.log('current', current1.value);
-    })
+    });
     return {
       pageSize,
       current1,
       current2,
       onShowSizeChange,
     };
-  }
+  },
 });
 </script>

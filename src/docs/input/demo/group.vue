@@ -177,7 +177,7 @@ export default defineComponent({
     const value18 = ref<string[]>([]);
     const dataSource = ref<string[]>([]);
 
-    const handleChange = value => {
+    const handleChange = (value: string) => {
       dataSource.value =
         !value || value.indexOf('@') >= 0
           ? []

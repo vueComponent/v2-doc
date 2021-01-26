@@ -22,9 +22,9 @@ import Dynamic from './dynamic.vue';
 import CircleDynamic from './circle-dynamic.vue';
 import Format from './format.vue';
 import Dashboard from './dashboard.vue';
-import Segment from './segment.vue'
-import LineCap from './linecap.vue'
-import GradientLine from './gradient-line.vue'
+import Segment from './segment.vue';
+import LineCap from './linecap.vue';
+import GradientLine from './gradient-line.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
 import { defineComponent } from 'vue';

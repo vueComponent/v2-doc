@@ -54,7 +54,7 @@ Navigation steps.
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 
-export default {
+export default defineComponent({
   setup() {
     const current = ref<number>(0);
 
@@ -66,5 +66,5 @@ export default {
       },
     };
   },
-};
+});
 </script>

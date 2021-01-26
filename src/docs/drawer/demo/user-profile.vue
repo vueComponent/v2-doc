@@ -130,7 +130,7 @@ Use Drawer to quickly preview details of an object, such as those in a list.
 </template>
 <script lang="ts">
 import descriptionItem from './descriptionItem/index.vue';
-import { defineComponent, ref, reactive } from 'vue';
+import { defineComponent, ref } from 'vue';
 export default defineComponent({
   components: {
     descriptionItem,

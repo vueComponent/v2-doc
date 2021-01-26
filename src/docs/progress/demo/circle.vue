@@ -21,4 +21,3 @@ A circular progress bar.
   <a-progress type="circle" :percent="70" status="exception" />
   <a-progress type="circle" :percent="100" />
 </template>
-

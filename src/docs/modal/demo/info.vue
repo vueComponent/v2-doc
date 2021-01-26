@@ -36,7 +36,9 @@ export default defineComponent({
           h('p', 'some messages...some messages...'),
           h('p', 'some messages...some messages...'),
         ]),
-        onOk() {},
+        onOk() {
+          console.log('ok');
+        },
       });
     };
     const success = () => {

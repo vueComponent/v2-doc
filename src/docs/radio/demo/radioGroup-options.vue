@@ -17,16 +17,11 @@ Render radios by configuring `options`.
 </docs>
 <template>
   <div>
-    <a-radio-group :options="plainOptions" v-model:value="value1" @change="onChange1" />
+    <a-radio-group :options="plainOptions" v-model:value="value1" />
     <br />
-    <a-radio-group v-model:value="value2" :options="options" @change="onChange2" />
+    <a-radio-group v-model:value="value2" :options="options" />
     <br />
-    <a-radio-group
-      v-model:value="value3"
-      :options="optionsWithDisabled"
-      disabled
-      @change="onChange3"
-    />
+    <a-radio-group v-model:value="value3" :options="optionsWithDisabled" disabled />
   </div>
 </template>
 <script lang="ts">
@@ -48,18 +43,6 @@ export default defineComponent({
     const value2 = ref<string>('Apple');
     const value3 = ref<string>('Apple');
 
-    const onChange1 = (e: Event) => {
-      console.log('radio1 checked', e.target.value);
-    };
-
-    const onChange2 = (e: Event) => {
-      console.log('radio2 checked', e.target.value);
-    };
-
-    const onChange3 = (e: Event) => {
-      console.log('radio3 checked', e.target.value);
-    };
-
     return {
       plainOptions,
       options,
@@ -67,9 +50,6 @@ export default defineComponent({
       value1,
       value2,
       value3,
-      onChange1,
-      onChange2,
-      onChange3,
     };
   },
 });

@@ -17,9 +17,7 @@ Update content with unique key.
 </docs>
 
 <template>
-  <a-button type="primary" @click="openNotification">
-    Open the notification box
-  </a-button>
+  <a-button type="primary" @click="openNotification">Open the notification box</a-button>
 </template>
 <script lang="ts">
 import { notification } from 'ant-design-vue';
@@ -40,10 +38,10 @@ export default defineComponent({
           description: 'New description.',
         });
       }, 1000);
-    }
+    };
     return {
-      openNotification
-    }
-  }
+      openNotification,
+    };
+  },
 });
 </script>

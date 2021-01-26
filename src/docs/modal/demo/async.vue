@@ -42,7 +42,7 @@ export default defineComponent({
       visible.value = true;
     };
 
-    const handleOk = (e: MouseEvent) => {
+    const handleOk = () => {
       modalText.value = 'The modal will be closed after two seconds';
       confirmLoading.value = true;
       setTimeout(() => {

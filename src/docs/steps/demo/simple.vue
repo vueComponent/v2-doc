@@ -18,9 +18,7 @@ The most basic step bar.
   <a-steps :current="1">
     <a-step>
       <!-- <span slot="title">Finished</span> -->
-      <template #title>
-        Finished
-      </template>
+      <template #title>Finished</template>
       <template #description>
         <span>This is a description.</span>
       </template>

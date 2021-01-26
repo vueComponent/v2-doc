@@ -47,6 +47,7 @@
     "vuex": "^4.0.0-rc.2"
   },
   "devDependencies": {
+    "@types/lodash-es": "^4.17.4",
     "@types/compression": "^1.7.0",
     "@types/fs-extra": "^9.0.1",
     "@types/jest": "^26.0.15",

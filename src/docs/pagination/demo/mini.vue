@@ -26,4 +26,3 @@ Mini size pagination.
   margin-bottom: 24px;
 }
 </style>
-

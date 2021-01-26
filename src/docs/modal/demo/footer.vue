@@ -47,7 +47,7 @@ export default defineComponent({
       visible.value = true;
     };
 
-    const handleOk = (e: MouseEvent) => {
+    const handleOk = () => {
       loading.value = true;
       setTimeout(() => {
         loading.value = false;
@@ -55,7 +55,7 @@ export default defineComponent({
       }, 2000);
     };
 
-    const handleCancel = (e: MouseEvent) => {
+    const handleCancel = () => {
       visible.value = false;
     };
     return {

@@ -109,7 +109,7 @@ Use form in drawer with submit button.
         zIndex: 1,
       }"
     >
-      <a-button :style="{ marginRight: '8px' }" @click="onClose">Cancel</a-button>
+      <a-button style="margin-right: 8px" @click="onClose">Cancel</a-button>
       <a-button type="primary" @click="onClose">Submit</a-button>
     </div>
   </a-drawer>

@@ -29,7 +29,8 @@ export default defineComponent({
         .loading('Action in progress..', 2.5)
         .then(
           () => message.success('Loading finished', 2.5),
-          err => {},
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
+          () => {},
         )
         .then(() => message.info('Loading finished is finished', 2.5));
     };

@@ -8,16 +8,16 @@ title:
 
 ## zh-CN
 
-设置 `onChange` 后，Steps 变为可点击状态。
+设置 `v-model` 后，Steps 变为可点击状态。
 
 ## en-US
 
-Setting `onChange` makes Steps clickable.
+Setting `v-model` makes Steps clickable.
 </docs>
 
 <template>
   <div>
-    <a-steps :current="current" @change="onChange">
+    <a-steps v-model:current="current">
       <a-step title="Step 1" description="This is a description." />
       <a-step title="Step 2" description="This is a description." />
       <a-step title="Step 3" description="This is a description." />
@@ -36,13 +36,9 @@ import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
     const current = ref<number>(0);
-    const onChange = (value: number) => {
-      console.log('onChange:', value);
-      current.value = value;
-    }
+
     return {
       current,
-      onChange
     };
   },
 });

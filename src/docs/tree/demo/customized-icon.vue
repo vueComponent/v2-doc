@@ -42,7 +42,7 @@ interface TreeDataItem {
   title?: string;
   disabled?: boolean;
   disableCheckbox?: boolean;
-  slots?: any;
+  slots?: Record<string, string>;
   children?: TreeDataItem[];
 }
 const treeData: TreeDataItem[] = [

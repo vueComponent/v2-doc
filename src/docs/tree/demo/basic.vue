@@ -30,15 +30,16 @@ The most basic usage, tell you how to use checkable, selectable, disabled, defau
   </a-tree>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import { SelectEvent, CheckEvent } from 'ant-design-vue/lib/tree/Tree'
+import { defineComponent, ref } from 'vue';
+import { SelectEvent, CheckEvent } from 'ant-design-vue/lib/tree/Tree';
 
+// TODO 组件库中导出
 interface TreeDataItem {
   key?: string;
   title?: string;
   disabled?: boolean;
   disableCheckbox?: boolean;
-  slots?: any;
+  slots?: Record<string, string>;
   children?: TreeDataItem[];
 }
 
@@ -67,24 +68,24 @@ const treeData: TreeDataItem[] = [
 
 export default defineComponent({
   setup() {
-    const expandedKeys = ref<string[]>(['0-0-0', '0-0-1'])
-    const selectedKeys = ref<string[]>(['0-0-0', '0-0-1'])
-    const checkedKeys = ref<string[]>(['0-0-0', '0-0-1'])
-    
+    const expandedKeys = ref<string[]>(['0-0-0', '0-0-1']);
+    const selectedKeys = ref<string[]>(['0-0-0', '0-0-1']);
+    const checkedKeys = ref<string[]>(['0-0-0', '0-0-1']);
+
     const onSelect = (selectedKeys: string[], info: SelectEvent) => {
       console.log('selected', selectedKeys, info);
-    }
+    };
     const onCheck = (checkedKeys: string[], info: CheckEvent) => {
       console.log('onCheck', checkedKeys, info);
-    }
+    };
     return {
       treeData,
       expandedKeys,
       selectedKeys,
       checkedKeys,
       onSelect,
-      onCheck
-    }
-  }
+      onCheck,
+    };
+  },
 });
 </script>

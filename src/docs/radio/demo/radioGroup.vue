@@ -17,7 +17,7 @@ A group of radio components.
 </docs>
 <template>
   <div>
-    <a-radio-group v-model:value="value" @change="onChange">
+    <a-radio-group v-model:value="value">
       <a-radio :value="1">A</a-radio>
       <a-radio :value="2">B</a-radio>
       <a-radio :value="3">C</a-radio>
@@ -30,14 +30,8 @@ import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
     const value = ref<number>(1);
-
-    const onChange = (e: Event) => {
-      console.log('radio checked', e.target.value);
-    };
-
     return {
       value,
-      onChange,
     };
   },
 });

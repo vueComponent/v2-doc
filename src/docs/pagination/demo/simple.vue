@@ -22,7 +22,7 @@ import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   setup() {
-    const current = ref<number>(2)
+    const current = ref<number>(2);
     return {
       current,
     };

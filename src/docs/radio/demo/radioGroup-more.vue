@@ -16,13 +16,13 @@ Vertical RadioGroup, with more radios.
 
 </docs>
 <template>
-  <a-radio-group v-model:value="value" @change="onChange">
+  <a-radio-group v-model:value="value">
     <a-radio :style="radioStyle" :value="1">Option A</a-radio>
     <a-radio :style="radioStyle" :value="2">Option B</a-radio>
     <a-radio :style="radioStyle" :value="3">Option C</a-radio>
     <a-radio :style="radioStyle" :value="4">
       More...
-      <a-input v-if="value === 4" :style="{ width: 100, marginLeft: 10 }" />
+      <a-input v-if="value === 4" style="width: 100px; margin-left: 10px" />
     </a-radio>
   </a-radio-group>
 </template>
@@ -37,14 +37,9 @@ export default defineComponent({
       lineHeight: '30px',
     });
 
-    const onChange = (e: Event) => {
-      console.log('radio checked', e.target.value);
-    };
-
     return {
       value,
       radioStyle,
-      onChange,
     };
   },
 });

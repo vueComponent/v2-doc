@@ -33,18 +33,18 @@ import { message } from 'ant-design-vue';
 export default defineComponent({
   setup() {
     const confirm = (e: MouseEvent) => {
-      console.log(e)
+      console.log(e);
       message.success('Click on Yes');
-    }
+    };
 
     const cancel = (e: MouseEvent) => {
-      console.log(e)
-      message.error('Click on No')
-    }
+      console.log(e);
+      message.error('Click on No');
+    };
     return {
       confirm,
-      cancel
-    }
-  }
+      cancel,
+    };
+  },
 });
 </script>

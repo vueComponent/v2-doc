@@ -25,7 +25,7 @@ import Manual from './manual.vue';
 import Position from './position.vue';
 import ConfirmRouter from './confirm-router.vue';
 import ConfirmPromise from './confirm-promise.vue';
-import Width from './width.vue'
+import Width from './width.vue';
 import ButtonProps from './button-props.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';

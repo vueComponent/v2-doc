@@ -36,12 +36,13 @@ export default defineComponent({
             setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
           }).catch(() => console.log('Oops errors!'));
         },
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
         onCancel() {},
       });
     };
     return {
-      showConfirm
-    }
+      showConfirm,
+    };
   },
 });
 </script>

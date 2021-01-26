@@ -130,7 +130,7 @@ export default defineComponent({
         });
       } else {
         let ar: TreeDataItem[] = [];
-        let i: number = 0;
+        let i = 0;
         loop(data, dropKey, (item: TreeDataItem, index: number, arr: TreeDataItem[]) => {
           ar = arr;
           i = index;

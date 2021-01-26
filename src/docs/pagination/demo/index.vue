@@ -37,10 +37,10 @@ export default defineComponent({
     Simple,
     Mini,
     Total,
-    ItemRender
+    ItemRender,
   },
   setup() {
     return {};
   },
-})
+});
 </script>

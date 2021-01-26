@@ -18,7 +18,7 @@ The combination of radio button style.
 <template>
   <div>
     <div>
-      <a-radio-group v-model:value="value1" @change="onChange">
+      <a-radio-group v-model:value="value1">
         <a-radio-button value="a">Hangzhou</a-radio-button>
         <a-radio-button value="b">Shanghai</a-radio-button>
         <a-radio-button value="c">Beijing</a-radio-button>
@@ -26,7 +26,7 @@ The combination of radio button style.
       </a-radio-group>
     </div>
     <div :style="{ marginTop: '16px' }">
-      <a-radio-group v-model:value="value2" @change="onChange">
+      <a-radio-group v-model:value="value2">
         <a-radio-button value="a">Hangzhou</a-radio-button>
         <a-radio-button value="b" disabled>Shanghai</a-radio-button>
         <a-radio-button value="c">Beijing</a-radio-button>
@@ -34,7 +34,7 @@ The combination of radio button style.
       </a-radio-group>
     </div>
     <div :style="{ marginTop: '16px' }">
-      <a-radio-group disabled v-model:value="value3" @change="onChange">
+      <a-radio-group disabled v-model:value="value3">
         <a-radio-button value="a">Hangzhou</a-radio-button>
         <a-radio-button value="b">Shanghai</a-radio-button>
         <a-radio-button value="c">Beijing</a-radio-button>
@@ -51,15 +51,10 @@ export default defineComponent({
     const value2 = ref<string>('a');
     const value3 = ref<string>('a');
 
-    const onChange = (e: Event) => {
-      console.log(`checked = ${e.target.value}`);
-    };
-
     return {
       value1,
       value2,
       value3,
-      onChange,
     };
   },
 });

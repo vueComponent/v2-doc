@@ -42,7 +42,7 @@ export default defineComponent({
     const onShowSizeChange = (current: number, pageSize: number) => {
       console.log(pageSize);
       pageSizeRef.value = pageSize;
-    }
+    };
 
     return {
       pageSizeOptions,
@@ -51,7 +51,6 @@ export default defineComponent({
       total,
       onShowSizeChange,
     };
-  }
+  },
 });
 </script>
-
