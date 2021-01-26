@@ -5,12 +5,13 @@
     <prefix />
     <readonly />
     <placement />
+    <FormMentions />
   </demo-sort>
 </template>
 <script>
 import Basic from './basic.vue';
 import Async from './async.vue';
-// // import Form from './form.md';
+import FormMentions from './form.vue';
 import Prefix from './prefix.vue';
 import Readonly from './readonly.vue';
 import Placement from './placement.vue';
@@ -27,6 +28,7 @@ export default defineComponent({
     Prefix,
     Readonly,
     Placement,
+    FormMentions,
   },
 });
 </script>

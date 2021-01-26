@@ -33,6 +33,7 @@ export default {
       'ant-design-vue/es/vc-drawer/src',
       'ant-design-vue/es/_util/store',
       '@ant-design/icons-vue',
+      '@ant-design-vue/use',
       'lodash-es',
     ],
   },
