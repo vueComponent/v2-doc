@@ -36,7 +36,7 @@
 <script lang="ts">
 import { getLocalizedPathname } from '@/utils/util';
 import { computed, defineComponent } from 'vue';
-import { groupBy } from 'lodash-es';
+import { groupBy, sortBy } from 'lodash-es';
 import { useRoute } from 'vue-router';
 const typeOrder: any = {
   组件总览: { order: -1, en: 'Overview' },
@@ -66,7 +66,7 @@ export default defineComponent({
             title: key,
             order: typeOrder[key] && typeOrder[key].order,
             enTitle: typeOrder[key] && typeOrder[key].en,
-            children: group[key],
+            children: sortBy(group[key], 'title'),
           };
         })
         .sort((a, b) => a.order - b.order);
