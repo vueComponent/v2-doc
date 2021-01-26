@@ -7,7 +7,6 @@
     <search-input-loading />
     <size />
     <group />
-    <text-area />
     <addon />
     <tooltip />
     <allow-clear />
@@ -25,7 +24,7 @@ import SearchInput from './search-input.vue';
 import SearchInputLoading from './search-input-loading.vue';
 import Size from './size.vue';
 import Group from './group.vue';
-import TextArea from './textarea.vue';
+import TextareaResize from './textarea.vue';
 import AllowClear from './allow-clear.vue';
 import PasswordInput from './password-input.vue';
 import ShowCount from './show-count.vue';
@@ -46,7 +45,7 @@ export default defineComponent({
     SearchInputLoading,
     Size,
     Group,
-    TextArea,
+    TextareaResize,
     Addon,
     Tooltip,
     AllowClear,
