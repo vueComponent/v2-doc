@@ -1,3 +1,17 @@
+---
+category: Components
+type: Data Entry
+title: Transfer
+cover: https://gw.alipayobjects.com/zos/alicdn/QAXskNI4G/Transfer.svg
+---
+
+Alert component for feedback.
+
+## When To Use
+
+- When you need to show alert messages to users.
+- When you need a persistent static container which is closable by user actions.
+
 ## API
 
 | Property | Description | Type | Default | Version |
@@ -13,7 +27,7 @@
 | render | The function to generate the item shown on a column. Based on an record (element of the dataSource array), this function should return a element which is generated from that record. Also, it can return a plain object with `value` and `label`, `label` is a element and `value` is for title | Function(record) \| slot |  |  |
 | selectedKeys | A set of keys of selected items. | string\[] | \[] |  |
 | showSearch | If included, a search box is shown on each column. | boolean | false |  |
-| showSelectAll | Show select all checkbox on the header | boolean | true | 1.5.0 |
+| showSelectAll | Show select all checkbox on the header | boolean | true |  |
 | targetKeys | A set of keys of elements that are listed on the right column. | string\[] | \[] |  |
 | titles | A set of titles that are sorted from left to right. | string\[] | - |  |
 
@@ -35,7 +49,7 @@ Transfer accept `children` to customize render list, using follow props:
   "direction": String,
   "disabled": Boolean,
   "filteredItems": Array,
-  "selectedKeys": Array
+  "selectedKeys": Array,
   "onItemSelect": Function,
   "onItemSelectAll": Function
 }
@@ -43,12 +57,12 @@ Transfer accept `children` to customize render list, using follow props:
 
 | Property        | Description             | Type                                | Version |
 | --------------- | ----------------------- | ----------------------------------- | ------- |
-| direction       | List render direction   | 'left' \| 'right'                   | 1.5.0   |
-| disabled        | Disable list or not     | boolean                             | 1.5.0   |
-| filteredItems   | Filtered items          | TransferItem[]                      | 1.5.0   |
-| onItemSelect    | Select item             | (key: string, selected: boolean)    | 1.5.0   |
-| onItemSelectAll | Select a group of items | (keys: string[], selected: boolean) | 1.5.0   |
-| selectedKeys    | Selected items          | string[]                            | 1.5.0   |
+| direction       | List render direction   | 'left' \| 'right'                   |   |
+| disabled        | Disable list or not     | boolean                             |   |
+| filteredItems   | Filtered items          | TransferItem[]                      |   |
+| onItemSelect    | Select item             | (key: string, selected: boolean)    |   |
+| onItemSelectAll | Select a group of items | (keys: string[], selected: boolean) |   |
+| selectedKeys    | Selected items          | string[]                            |   |
 
 #### example
 
@@ -59,7 +73,7 @@ Transfer accept `children` to customize render list, using follow props:
       direction,
       filteredItems,
       selectedKeys,
-      disabled: listDisabled
+      disabled: listDisabled,
       onItemSelectAll,
       onItemSelect,
     }"

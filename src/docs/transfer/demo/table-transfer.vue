@@ -1,14 +1,21 @@
-<cn>
-#### 表格穿梭框
+<docs>
+---
+order: 4
+title:
+  zh-CN: 表格穿梭框
+  en-US: Table Transfer
+---
+
+## zh-CN
+
 使用 Table 组件作为自定义渲染列表。
-</cn>
 
-<us>
-#### Table Transfer
+## en-US
+
 Customize render list with Table component.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div>
     <a-transfer
@@ -16,9 +23,7 @@ Customize render list with Table component.
       :target-keys="targetKeys"
       :disabled="disabled"
       :show-search="showSearch"
-      :filter-option="
-        (inputValue, item) => item.title.indexOf(inputValue) !== -1
-      "
+      :filter-option="(inputValue, item) => item.title.indexOf(inputValue) !== -1"
       :show-select-all="false"
       @change="onChange"
     >
@@ -59,22 +64,28 @@ Customize render list with Table component.
     <a-switch
       un-checked-children="disabled"
       checked-children="disabled"
-      :checked="disabled"
+      v-model:checked="disabled"
       style="margin-top: 16px"
-      @change="triggerDisable"
     />
     <a-switch
       un-checked-children="showSearch"
       checked-children="showSearch"
-      :checked="showSearch"
+      v-model:checked="showSearch"
       style="margin-top: 16px"
-      @change="triggerShowSearch"
     />
   </div>
 </template>
-<script>
+<script lang="ts">
 import { difference } from 'lodash-es';
-const mockData = [];
+import { defineComponent, ref } from 'vue';
+interface MockData {
+  key: string;
+  title: string;
+  description: string;
+  disabled: boolean;
+}
+type tableColumn = Record<string, string>;
+const mockData: MockData[] = [];
 for (let i = 0; i < 20; i++) {
   mockData.push({
     key: i.toString(),
@@ -84,9 +95,7 @@ for (let i = 0; i < 20; i++) {
   });
 }
 
-const originTargetKeys = mockData
-  .filter((item) => +item.key % 3 > 1)
-  .map((item) => item.key);
+const originTargetKeys = mockData.filter(item => +item.key % 3 > 1).map(item => item.key);
 
 const leftTableColumns = [
   {
@@ -105,48 +114,53 @@ const rightTableColumns = [
   },
 ];
 
-export default {
-  data() {
-    return {
-      mockData,
-      targetKeys: originTargetKeys,
-      disabled: false,
-      showSearch: false,
-      leftColumns: leftTableColumns,
-      rightColumns: rightTableColumns,
+export default defineComponent({
+  setup() {
+    const targetKeys = ref<string[]>(originTargetKeys);
+    const disabled = ref<boolean>(false);
+    const showSearch = ref<boolean>(false);
+    const leftColumns = ref<tableColumn[]>(leftTableColumns);
+    const rightColumns = ref<tableColumn[]>(rightTableColumns);
+
+    const onChange = (nextTargetKeys: string[]) => {
+      targetKeys.value = nextTargetKeys;
     };
-  },
-  methods: {
-    onChange(nextTargetKeys) {
-      this.targetKeys = nextTargetKeys;
-    },
 
-    triggerDisable(disabled) {
-      this.disabled = disabled;
-    },
-
-    triggerShowSearch(showSearch) {
-      this.showSearch = showSearch;
-    },
-    getRowSelection({ disabled, selectedKeys, onItemSelectAll, onItemSelect }) {
+    const getRowSelection = ({
+      disabled,
+      selectedKeys,
+      onItemSelectAll,
+      onItemSelect,
+    }: Record<string, any>) => {
       return {
-        getCheckboxProps: (item) => ({ disabled: disabled || item.disabled }),
-        onSelectAll(selected, selectedRows) {
+        getCheckboxProps: (item: Record<string, string | boolean>) => ({
+          disabled: disabled || item.disabled,
+        }),
+        onSelectAll(selected: boolean, selectedRows: Record<string, string | boolean>[]) {
           const treeSelectedKeys = selectedRows
-            .filter((item) => !item.disabled)
+            .filter(item => !item.disabled)
             .map(({ key }) => key);
           const diffKeys = selected
             ? difference(treeSelectedKeys, selectedKeys)
             : difference(selectedKeys, treeSelectedKeys);
           onItemSelectAll(diffKeys, selected);
         },
-        onSelect({ key }, selected) {
+        onSelect({ key }: Record<string, string>, selected: boolean) {
           onItemSelect(key, selected);
         },
         selectedRowKeys: selectedKeys,
       };
-    },
+    };
+    return {
+      mockData,
+      targetKeys,
+      disabled,
+      showSearch,
+      leftColumns,
+      rightColumns,
+      onChange,
+      getRowSelection,
+    };
   },
-};
+});
 </script>
-```

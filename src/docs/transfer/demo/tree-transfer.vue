@@ -1,14 +1,21 @@
-<cn>
-#### 树穿梭框
+<docs>
+---
+order: 5
+title:
+  zh-CN: 树穿梭框
+  en-US: Tree Transfer
+---
+
+## zh-CN
+
 使用 Tree 组件作为自定义渲染列表。
-</cn>
 
-<us>
-#### Tree Transfer
+## en-US
+
 Customize render list with Tree component.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div>
     <a-transfer
@@ -43,8 +50,16 @@ Customize render list with Tree component.
     </a-transfer>
   </div>
 </template>
-<script>
-const treeData = [
+<script lang="ts">
+import { CheckEvent } from 'ant-design-vue/lib/tree/Tree';
+import { computed, defineComponent, ref } from 'vue';
+interface TreeDataItem {
+  key: string;
+  title: string;
+  disabled?: boolean;
+  children?: TreeDataItem[];
+}
+const tData: TreeDataItem[] = [
   { key: '0-0', title: '0-0' },
   {
     key: '0-1',
@@ -57,20 +72,20 @@ const treeData = [
   { key: '0-2', title: '0-3' },
 ];
 
-const transferDataSource = [];
-function flatten(list = []) {
+const transferDataSource: TreeDataItem[] = [];
+function flatten(list: TreeDataItem[] = []) {
   list.forEach(item => {
     transferDataSource.push(item);
     flatten(item.children);
   });
 }
-flatten(JSON.parse(JSON.stringify(treeData)));
+flatten(JSON.parse(JSON.stringify(tData)));
 
-function isChecked(selectedKeys, eventKey) {
+function isChecked(selectedKeys: string[], eventKey: string) {
   return selectedKeys.indexOf(eventKey) !== -1;
 }
 
-function handleTreeData(data, targetKeys = []) {
+function handleTreeData(data: TreeDataItem[], targetKeys: string[] = []): TreeDataItem[] {
   data.forEach(item => {
     item['disabled'] = targetKeys.includes(item.key);
     if (item.children) {
@@ -80,29 +95,37 @@ function handleTreeData(data, targetKeys = []) {
   return data;
 }
 
-export default {
-  data() {
-    return {
-      targetKeys: [],
-      dataSource: transferDataSource,
+export default defineComponent({
+  setup() {
+    const targetKeys = ref<string[]>([]);
+
+    const dataSource = ref<TreeDataItem[]>(transferDataSource);
+
+    const treeData = computed<TreeDataItem[]>(() => {
+      return handleTreeData(tData, targetKeys.value);
+    });
+
+    const onChange = (keys: string[]) => {
+      targetKeys.value = keys;
     };
-  },
-  computed: {
-    treeData() {
-      return handleTreeData(treeData, this.targetKeys);
-    },
-  },
-  methods: {
-    onChange(targetKeys) {
-      console.log('Target Keys:', targetKeys);
-      this.targetKeys = targetKeys;
-    },
-    onChecked(_, e, checkedKeys, onItemSelect) {
+    const onChecked = (
+      _: Record<string, string[]>,
+      e: CheckEvent,
+      checkedKeys: string[],
+      onItemSelect: (n: any, c: boolean) => void,
+    ) => {
       const { eventKey } = e.node;
       onItemSelect(eventKey, !isChecked(checkedKeys, eventKey));
-    },
+    };
+    return {
+      targetKeys,
+      dataSource,
+      treeData,
+      onChange,
+      onChecked,
+    };
   },
-};
+});
 </script>
 <style scoped>
 .tree-transfer .ant-transfer-list:first-child {
@@ -110,4 +133,3 @@ export default {
   flex: none;
 }
 </style>
-```

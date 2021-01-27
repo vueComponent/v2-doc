@@ -1,3 +1,18 @@
+---
+category: Components
+type: 数据录入
+title: Transfer
+subtitle: 穿梭框
+cover: https://gw.alipayobjects.com/zos/alicdn/QAXskNI4G/Transfer.svg
+---
+
+双栏穿梭选择框。
+
+## 何时使用
+
+- 需要在多个可选项中进行多选时。
+- 比起 Select 和 TreeSelect，穿梭框占据更大的空间，可以展示可选项的更多信息。
+
 ## API
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
@@ -13,7 +28,7 @@
 | render | 每行数据渲染函数，该函数的入参为 `dataSource` 中的项，返回值为 element。或者返回一个普通对象，其中 `label` 字段为 element，`value` 字段为 title | Function(record)\| slot |  |  |
 | selectedKeys | 设置哪些项应该被选中 | string\[] | \[] |  |
 | showSearch | 是否显示搜索框 | boolean | false |  |
-| showSelectAll | 是否展示全选勾选框 | boolean | true | 1.5.0 |
+| showSelectAll | 是否展示全选勾选框 | boolean | true |  |
 | targetKeys | 显示在右侧框数据的 key 集合 | string\[] | \[] |  |
 | titles | 标题集合，顺序从左至右 | string\[] | \['', ''] |  |
 
@@ -35,7 +50,7 @@ Transfer 支持接收 `children` 自定义渲染列表，并返回以下参数�
   "direction": String,
   "disabled": Boolean,
   "filteredItems": Array,
-  "selectedKeys": Array
+  "selectedKeys": Array,
   "onItemSelect": Function,
   "onItemSelectAll": Function
 }
@@ -43,12 +58,12 @@ Transfer 支持接收 `children` 自定义渲染列表，并返回以下参数�
 
 | 参数          | 说明           | 类型                                | 版本  |
 | ------------- | -------------- | ----------------------------------- | ----- |
-| direction     | 渲染列表的方向 | 'left' \| 'right'                   | 1.5.0 |
-| disabled      | 是否禁用列表   | boolean                             | 1.5.0 |
-| filteredItems | 过滤后的数据   | TransferItem[]                      | 1.5.0 |
-| selectedKeys  | 选中的条目     | string[]                            | 1.5.0 |
-| itemSelect    | 勾选条目       | (key: string, selected: boolean)    | 1.5.0 |
-| itemSelectAll | 勾选一组条目   | (keys: string[], selected: boolean) | 1.5.0 |
+| direction     | 渲染列表的方向 | 'left' \| 'right'                   |  |
+| disabled      | 是否禁用列表   | boolean                             |  |
+| filteredItems | 过滤后的数据   | TransferItem[]                      |  |
+| selectedKeys  | 选中的条目     | string[]                            |  |
+| itemSelect    | 勾选条目       | (key: string, selected: boolean)    |  |
+| itemSelectAll | 勾选一组条目   | (keys: string[], selected: boolean) |  |
 
 #### 参考示例
 
@@ -59,7 +74,7 @@ Transfer 支持接收 `children` 自定义渲染列表，并返回以下参数�
       direction,
       filteredItems,
       selectedKeys,
-      disabled: listDisabled
+      disabled: listDisabled,
       onItemSelectAll,
       onItemSelect,
     }"
