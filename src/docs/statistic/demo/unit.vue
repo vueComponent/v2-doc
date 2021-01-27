@@ -1,14 +1,21 @@
-<cn>
-#### 单位
+<docs>
+---
+order: 1
+title:
+  zh-CN: 单位
+  en-US: Unit
+---
+
+## zh-CN
+
 通过前缀和后缀添加单位。
-</cn>
 
-<us>
-#### Unit
+## en-US
+
 Add unit through `prefix` and `suffix`.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-row :gutter="16">
     <a-col :span="12">
@@ -21,18 +28,18 @@ Add unit through `prefix` and `suffix`.
     <a-col :span="12">
       <a-statistic title="Unmerged" :value="93" class="demo-class">
         <template #suffix>
-          <span> / 100</span>
+          <span>/ 100</span>
         </template>
       </a-statistic>
     </a-col>
   </a-row>
 </template>
-<script>
+<script lang="ts">
 import { LikeOutlined } from '@ant-design/icons-vue';
-export default {
+import { defineComponent } from 'vue';
+export default defineComponent({
   components: {
     LikeOutlined,
   },
-};
+});
 </script>
-```

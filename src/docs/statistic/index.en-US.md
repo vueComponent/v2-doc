@@ -1,3 +1,17 @@
+---
+category: Components
+type: Data Display
+title: Statistic
+cover: https://gw.alipayobjects.com/zos/antfincdn/rcBNhLBrKbE/Statistic.svg
+---
+
+Display statistic number.
+
+## When To Use
+
+- When want to highlight some data.
+- When want to display statistic data with description.
+
 ## API
 
 ### Statistic
@@ -28,5 +42,5 @@
 #### Statistic.Countdown Events
 
 | Events Name | Description            | Arguments  |
-| ----------- | ---------------------- | ---------- |
-| finish      | Trigger when time's up | () => void | - |
+| ----------- | ---------------------- | ---------- | --- |
+| finish      | Trigger when time's up | () => void | -   |

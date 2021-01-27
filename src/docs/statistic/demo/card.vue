@@ -1,16 +1,23 @@
-<cn>
-#### 在卡片中使用
+<docs>
+---
+order: 2
+title:
+  zh-CN: 在卡片中使用
+  en-US: In Card
+---
+
+## zh-CN
+
 在卡片中展示统计数值。
-</cn>
 
-<us>
-#### In Card
+## en-US
+
 Display statistic data in Card.
-</us>
 
-```vue
+</docs>
+
 <template>
-  <div style="background: #ECECEC; padding: 30px">
+  <div style="background: #ececec; padding: 30px">
     <a-row :gutter="16">
       <a-col :span="12">
         <a-card>
@@ -47,13 +54,13 @@ Display statistic data in Card.
     </a-row>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons-vue';
-export default {
+import { defineComponent } from 'vue';
+export default defineComponent({
   components: {
     ArrowUpOutlined,
     ArrowDownOutlined,
   },
-};
+});
 </script>
-```

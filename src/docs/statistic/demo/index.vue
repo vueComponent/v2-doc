@@ -1,45 +1,30 @@
-<script>
-import Basic from './basic';
-import Card from './card';
-import Unit from './unit';
-import Countdown from './countdown';
+<template>
+  <demo-sort>
+    <basic />
+    <unit />
+    <card />
+    <countdown />
+  </demo-sort>
+</template>
+<script lang="ts">
+import Basic from './basic.vue';
+import Unit from './unit.vue';
+import Card from './card.vue';
+import Countdown from './countdown.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
-
-const md = {
-  cn: `# Statistic 统计数值
-          展示统计数值。
-          ## 何时使用
-            - 当需要突出某个或某组数字时
-            - 当需要展示带描述的统计类数据时使用
-
-          ## 代码演示`,
-  us: `# Statistic
-          Statistics can be used to represent people or objects. It supports images, 'Icon's, or letters.
-          ## Examples
-          `,
-};
-export default {
-  category: 'Components',
-  subtitle: '统计数值',
-  type: 'Data Display',
-  zhType: '数据展示',
-  title: 'Statistic',
-  render() {
-    return (
-      <div>
-        <Md cn={md.cn} us={md.us} />
-        <demo-sort>
-          <Basic />
-          <Unit />
-          <Card />
-          <Countdown />
-        </demo-sort>
-        <api vSlots={{ cn: () => <CN /> }}>
-          <US />
-        </api>
-      </div>
-    );
+import { defineComponent } from 'vue';
+export default defineComponent({
+  CN,
+  US,
+  components: {
+    Basic,
+    Unit,
+    Card,
+    Countdown,
   },
-};
+  setup() {
+    return {};
+  },
+});
 </script>

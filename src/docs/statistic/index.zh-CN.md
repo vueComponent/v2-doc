@@ -1,3 +1,18 @@
+---
+category: Components
+type: 数据展示
+title: Statistic
+subtitle: 统计数值
+cover: https://gw.alipayobjects.com/zos/antfincdn/rcBNhLBrKbE/Statistic.svg
+---
+
+展示统计数值。
+
+## 何时使用
+
+- 当需要突出某个或某组数字时
+- 当需要展示带描述的统计类数据时使用
+
 ## API
 
 ### Statistic
