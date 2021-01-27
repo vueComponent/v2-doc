@@ -1,14 +1,21 @@
-<cn>
-#### 全局化配置
+<docs>
+---
+order: 4
+title:
+  zh-CN: 全局化配置
+  en-US: ConfigProvider
+---
+
+## zh-CN
+
 自定义全局组件的 Empty 样式。
-</cn>
 
-<us>
-#### ConfigProvider
+## en-US
+
 Use ConfigProvider set global Empty style.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-switch
     un-checked-children="default"
@@ -44,36 +51,27 @@ Use ConfigProvider set global Empty style.
     </div>
   </a-config-provider>
 </template>
-<script>
+<script lang="ts">
 import { SmileOutlined } from '@ant-design/icons-vue';
-export default {
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
   components: {
     SmileOutlined,
   },
-  data() {
+  setup() {
+    const customize = ref<boolean>(false);
+
     return {
-      customize: false,
+      customize,
       style: { width: '200px' },
-      columns: [
-        {
-          title: 'Name',
-          dataIndex: 'name',
-          key: 'name',
-        },
-        {
-          title: 'Age',
-          dataIndex: 'age',
-          key: 'age',
-        },
-      ],
+      columns: [{ title: 'Name' }, { title: 'Age' }],
     };
   },
-};
+});
 </script>
-<style>
+<style scoped>
 .code-box-demo .config-provider h3 {
   font-size: inherit;
   margin: 16px 0 8px 0;
 }
 </style>
-```

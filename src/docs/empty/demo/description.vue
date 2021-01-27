@@ -1,15 +1,21 @@
-<cn>
-#### 无描述
+<docs>
+---
+order: 1
+title:
+  zh-CN: 无描述
+  en-US: No description
+---
+
+## zh-CN
+
 无描述展示。
-</cn>
 
-<us>
-#### No description
+## en-US
+
 Simplest Usage with no description.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-empty :description="false" />
 </template>
-```

@@ -1,3 +1,17 @@
+---
+category: Components
+type: Data Display
+title: Empty
+cover: https://gw.alipayobjects.com/zos/alicdn/MNbKfLBVb/Empty.svg
+---
+
+Empty state placeholder.
+
+## When To Use
+
+- When there is no data provided, display for friendly tips.
+- User tutorial to create something in fresh new situation.
+
 ## API
 
 ```jsx
@@ -9,7 +23,7 @@
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
 | description | Customize description | string \| v-slot | - |  |
-| imageStyle | style of image | CSSProperties | - | 1.5.0 |
+| imageStyle | style of image | CSSProperties | - |  |
 | image | Customize image. Will tread as image url when string provided | string \| v-slot | false |  |
 
 ## Built-in images
