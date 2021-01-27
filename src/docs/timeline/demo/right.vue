@@ -1,32 +1,38 @@
-<cn>
-#### 自定义时间轴点
-基本的时间轴。
-</cn>
+<docs>
+---
+order: 5
+title:
+  zh-CN: 右侧时间轴点
+  en-US: Right alternate
+---
 
-<us>
-#### Custom
-Set a node as an icon or other custom element.
-</us>
+## zh-CN
 
-```vue
+时间轴点可以在内容的右边。
+
+## en-US
+
+Right alternate timeline.
+
+</docs>
+
 <template>
-  <a-timeline>
+  <a-timeline mode="right">
     <a-timeline-item>Create a services site 2015-09-01</a-timeline-item>
     <a-timeline-item>Solve initial network problems 2015-09-01</a-timeline-item>
-    <a-timeline-item color="red">
-      <template #dot><clock-circle-outlined style="font-size: 16px;"/></template>
+    <a-timeline-item>
+      <template #dot><clock-circle-outlined style="font-size: 16px" /></template>
       Technical testing 2015-09-01
     </a-timeline-item>
     <a-timeline-item>Network problems being solved 2015-09-01</a-timeline-item>
   </a-timeline>
 </template>
-<script>
+<script lang="ts">
 import { ClockCircleOutlined } from '@ant-design/icons-vue';
-
-export default {
+import { defineComponent } from 'vue';
+export default defineComponent({
   components: {
     ClockCircleOutlined,
   },
-};
+});
 </script>
-```

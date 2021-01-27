@@ -1,3 +1,18 @@
+---
+category: Components
+type: 数据展示
+title: Timeline
+subtitle: 时间轴
+cover: https://gw.alipayobjects.com/zos/antfincdn/vJmo00mmgR/Timeline.svg
+---
+
+垂直展示的时间流信息。
+
+## 何时使用
+
+- 当有一系列信息需按时间排列时，可正序和倒序。
+- 需要有一条时间轴进行视觉上的串联时。
+
 ## API
 
 ```html
@@ -28,4 +43,4 @@
 | -------- | ----------------------------------------------- | ----------------- | ------ | ----- |
 | color    | 指定圆圈颜色 `blue, red, green`，或自定义的色值 | string            | blue   |       |
 | dot      | 自定义时间轴点                                  | string\|slot      | -      |       |
-| position | 自定义节点位置                                  | `left` \| `right` | -      | 1.5.0 |
+| position | 自定义节点位置                                  | `left` \| `right` | -      |  |

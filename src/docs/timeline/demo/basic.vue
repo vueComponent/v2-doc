@@ -1,14 +1,21 @@
-<cn>
-#### 基本用法
+<docs>
+---
+order: 0
+title:
+  zh-CN: 基本用法
+  en-US: Basic usage
+---
+
+## zh-CN
+
 基本的时间轴。
-</cn>
 
-<us>
-#### Basic
+## en-US
+
 Basic timeline.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-timeline>
     <a-timeline-item>Create a services site 2015-09-01</a-timeline-item>
@@ -17,4 +24,3 @@ Basic timeline.
     <a-timeline-item>Network problems being solved 2015-09-01</a-timeline-item>
   </a-timeline>
 </template>
-```

@@ -1,3 +1,17 @@
+---
+category: Components
+type: Data Display
+title: Timeline
+cover: https://gw.alipayobjects.com/zos/antfincdn/vJmo00mmgR/Timeline.svg
+---
+
+Vertical display timeline.
+
+## When To Use
+
+- When a series of information needs to be ordered by time (ascending or descending).
+- When you need a timeline to make a visual connection.
+
 ## API
 
 ```html
@@ -28,4 +42,4 @@ Node of timeline
 | --- | --- | --- | --- | --- |
 | color | Set the circle's color to `blue`, `red`, `green` or other custom colors | string | `blue` |  |
 | dot | Customize timeline dot | string\|slot | - |  |
-| position | Customize node position | `left` \| `right` | - | 1.5.0 |
+| position | Customize node position | `left` \| `right` | - |  |
