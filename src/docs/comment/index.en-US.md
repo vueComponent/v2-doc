@@ -1,3 +1,16 @@
+---
+category: Components
+type: Data Display
+title: Comment
+cover: https://gw.alipayobjects.com/zos/alicdn/ILhxpGzBO/Comment.svg
+---
+
+A comment displays user feedback and discussion to website content.
+
+## When To Use
+
+Comments can be used to enable discussions on an entity such as a page, blog post, issue or other.
+
 ## API
 
 | Property | Description | Type | Default |

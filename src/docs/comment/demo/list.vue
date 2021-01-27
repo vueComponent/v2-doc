@@ -1,14 +1,21 @@
-<cn>
-#### 配合 List 组件
+<docs>
+---
+order: 1 
+title: 
+  zh-CN: 配合 List 组件 
+  en-US: Usage with list
+---
+
+## zh-CN
+
 配合 List 组件展现评论列表。
-</cn>
 
-<us>
-#### Usage with list
+## en-US
+
 Displaying a series of comments using the `antd` List Component.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-list
     class="comment-list"
@@ -16,11 +23,11 @@ Displaying a series of comments using the `antd` List Component.
     item-layout="horizontal"
     :data-source="data"
   >
-    <template #renderItem="{ item, index }">
+    <template #renderItem="{ item }">
       <a-list-item>
         <a-comment :author="item.author" :avatar="item.avatar">
           <template #actions>
-            <span v-for="action in item.actions">{{ action }}</span>
+            <span v-for="(action, index) in item.actions" :key="index">{{ action }}</span>
           </template>
           <template #content>
             <p>
@@ -37,10 +44,11 @@ Displaying a series of comments using the `antd` List Component.
     </template>
   </a-list>
 </template>
-<script>
+<script lang="ts">
 import moment from 'moment';
-export default {
-  data() {
+import { defineComponent } from 'vue';
+export default defineComponent({
+  setup() {
     return {
       data: [
         {
@@ -63,6 +71,5 @@ export default {
       moment,
     };
   },
-};
+});
 </script>
-```

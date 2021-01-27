@@ -1,47 +1,28 @@
-<script>
-import Basic from './basic';
-import Editor from './editor';
-import List from './list';
-import Nested from './nested';
+<template>
+  <basic />
+  <list />
+  <nested />
+  <editor />
+</template>
+<script lang="ts">
+import Basic from './basic.vue';
+import List from './list.vue';
+import Nested from './nested.vue';
+import Editor from './editor.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
-
-const md = {
-  cn: `# Comment评论
-对网站内容的反馈、评价和讨论。
-
-## 何时使用
-
-评论组件可用于对事物的讨论，例如页面、博客文章、问题等等。`,
-  us: `# Comment
-A comment displays user feedback and discussion to website content.
-
-## When To Use
-
-Comments can be used to enable discussions on an entity such as a page, blog post, issue or other.`,
-};
-export default {
-  category: 'Components',
-  type: 'Data Display',
-  zhType: '数据展示',
-  title: 'Comment',
-  subtitle: '评论',
-  cols: 1,
-  render() {
-    return (
-      <div>
-        <Md cn={md.cn} us={md.us} />
-        <demo-sort cols={1}>
-          <Basic />
-          <List />
-          <Nested />
-          <Editor />
-        </demo-sort>
-        <api vSlots={{ cn: () => <CN /> }}>
-          <US />
-        </api>
-      </div>
-    );
+import { defineComponent } from 'vue';
+export default defineComponent({
+  CN,
+  US,
+  components: {
+    Basic,
+    List,
+    Nested,
+    Editor,
   },
-};
+  setup() {
+    return {};
+  },
+});
 </script>

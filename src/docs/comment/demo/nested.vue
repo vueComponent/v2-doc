@@ -1,14 +1,21 @@
-<cn>
-#### 嵌套评论
+<docs>
+---
+order: 2 
+title: 
+  zh-CN: 嵌套评论 
+  en-US: Nested comments
+---
+
+## zh-CN
+
 评论可以嵌套。
-</cn>
 
-<us>
-#### Nested comments
+## en-US
+
 Comments can be nested.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-comment>
     <template #actions>
@@ -91,4 +98,3 @@ Comments can be nested.
     </a-comment>
   </a-comment>
 </template>
-```

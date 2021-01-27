@@ -1,14 +1,21 @@
-<cn>
-#### 基本评论
+<docs>
+---
+order: 0
+title:
+  zh-CN: 基本评论
+  en-US: Basic comment
+---
+
+## zh-CN
+
 一个基本的评论组件，带有作者、头像、时间和操作。
-</cn>
 
-<us>
-#### Basic comment
+## en-US
+
 A basic comment with author, avatar, time and actions.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-comment>
     <template #actions>
@@ -21,7 +28,7 @@ A basic comment with author, avatar, time and actions.
             <LikeOutlined @click="like" />
           </template>
         </a-tooltip>
-        <span style="padding-left: '8px';cursor: 'auto'">
+        <span style="padding-left: '8px'; cursor: 'auto'">
           {{ likes }}
         </span>
       </span>
@@ -34,7 +41,7 @@ A basic comment with author, avatar, time and actions.
             <DislikeOutlined @click="dislike" />
           </template>
         </a-tooltip>
-        <span style="padding-left: '8px';cursor: 'auto'">
+        <span style="padding-left: '8px'; cursor: 'auto'">
           {{ dislikes }}
         </span>
       </span>
@@ -61,37 +68,42 @@ A basic comment with author, avatar, time and actions.
     </template>
   </a-comment>
 </template>
-<script>
+<script lang="ts">
 import moment from 'moment';
 import { LikeFilled, LikeOutlined, DislikeFilled, DislikeOutlined } from '@ant-design/icons-vue';
-
-export default {
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
   components: {
     LikeFilled,
     LikeOutlined,
     DislikeFilled,
     DislikeOutlined,
   },
-  data() {
+  setup() {
+    const likes = ref<number>(0);
+    const dislikes = ref<number>(0);
+    const action = ref<string>();
+
+    const like = () => {
+      likes.value = 1;
+      dislikes.value = 0;
+      action.value = 'liked';
+    };
+
+    const dislike = () => {
+      likes.value = 0;
+      dislikes.value = 1;
+      action.value = 'disliked';
+    };
+
     return {
-      likes: 0,
-      dislikes: 0,
-      action: null,
+      likes,
+      dislikes,
+      action,
+      like,
+      dislike,
       moment,
     };
   },
-  methods: {
-    like() {
-      this.likes = 1;
-      this.dislikes = 0;
-      this.action = 'liked';
-    },
-    dislike() {
-      this.likes = 0;
-      this.dislikes = 1;
-      this.action = 'disliked';
-    },
-  },
-};
+});
 </script>
-```
