@@ -1,19 +1,28 @@
-<cn>
-#### 切换菜单类型
+<docs>
+---
+order: 5
+title:
+  zh-CN: 切换菜单类型
+  en-US: Switch the menu type
+---
+
+## zh-CN
+
 展示动态切换模式。
-</cn>
 
-<us>
-#### Switch the menu type
-Show the dynamic switching mode (between 'inline' and 'vertical').
-</us>
+## en-US
 
-```vue
+Show the dynamic switching mode (between `inline` and `vertical`).
+
+</docs>
+
 <template>
   <div>
-    <a-switch :default-checked="false" @change="changeMode" /> Change Mode
+    <a-switch @change="changeMode" />
+    Change Mode
     <span class="ant-divider" style="margin: 0 1em" />
-    <a-switch :default-checked="false" @change="changeTheme" /> Change Theme
+    <a-switch @change="changeTheme" />
+    Change Theme
     <br />
     <br />
     <a-menu
@@ -33,22 +42,24 @@ Show the dynamic switching mode (between 'inline' and 'vertical').
       </a-menu-item>
       <a-sub-menu key="sub1">
         <template #title>
-          <span><AppstoreOutlined /><span>Navigation Three</span></span>
+          <span>
+            <AppstoreOutlined />
+            <span>Navigation Three</span>
+          </span>
         </template>
         <a-menu-item key="3">Option 3</a-menu-item>
         <a-menu-item key="4">Option 4</a-menu-item>
         <a-sub-menu key="sub1-2" title="Submenu">
-          <a-menu-item key="5">
-            Option 5
-          </a-menu-item>
-          <a-menu-item key="6">
-            Option 6
-          </a-menu-item>
+          <a-menu-item key="5">Option 5</a-menu-item>
+          <a-menu-item key="6">Option 6</a-menu-item>
         </a-sub-menu>
       </a-sub-menu>
       <a-sub-menu key="sub2">
         <template #title>
-          <span><SettingOutlined /><span>Navigation Four</span></span>
+          <span>
+            <SettingOutlined />
+            <span>Navigation Four</span>
+          </span>
         </template>
         <a-menu-item key="7">Option 7</a-menu-item>
         <a-menu-item key="8">Option 8</a-menu-item>
@@ -58,36 +69,39 @@ Show the dynamic switching mode (between 'inline' and 'vertical').
     </a-menu>
   </div>
 </template>
-<script>
+<script lang="ts">
+import { defineComponent, reactive, toRefs } from 'vue';
 import {
   MailOutlined,
   CalendarOutlined,
   AppstoreOutlined,
   SettingOutlined,
 } from '@ant-design/icons-vue';
-export default {
+export default defineComponent({
+  setup() {
+    const state = reactive({
+      mode: 'inline',
+      theme: 'light',
+      selectedKeys: ['1'],
+      openKeys: ['sub1'],
+    });
+    const changeMode = (checked: boolean) => {
+      state.mode = checked ? 'vertical' : 'inline';
+    };
+    const changeTheme = (checked: boolean) => {
+      state.theme = checked ? 'dark' : 'light';
+    };
+    return {
+      ...toRefs(state),
+      changeMode,
+      changeTheme,
+    };
+  },
   components: {
     MailOutlined,
     CalendarOutlined,
     AppstoreOutlined,
     SettingOutlined,
   },
-  data() {
-    return {
-      mode: 'inline',
-      theme: 'light',
-      selectedKeys: ['1'],
-      openKeys: ['sub1'],
-    };
-  },
-  methods: {
-    changeMode(checked) {
-      this.mode = checked ? 'vertical' : 'inline';
-    },
-    changeTheme(checked) {
-      this.theme = checked ? 'dark' : 'light';
-    },
-  },
-};
+});
 </script>
-```

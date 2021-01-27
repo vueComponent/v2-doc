@@ -1,11 +1,27 @@
+---
+category: Components
+cols: 1
+type: Navigation
+title: Menu
+cover: https://gw.alipayobjects.com/zos/alicdn/3XZcjGpvK/Menu.svg
+---
+
+A versatile menu for navigation.
+
+## When To Use
+
+Navigation is an important part of any website, as a good navigation setup allows users to move around the site quickly and efficiently. Ant Design offers top and side navigation options. Top navigation provides all the categories and functions of the website. Side navigation provides the multi-level structure of the website.
+
+More layouts with navigation: [Layout](/components/layout).
+
 ## API
 
 ```html
 <template>
   <a-menu>
-    <a-menu-item>菜单项</a-menu-item>
-    <a-sub-menu title="子菜单">
-      <a-menu-item>子菜单项</a-menu-item>
+    <a-menu-item>Menu</a-menu-item>
+    <a-sub-menu title="SubMenu">
+      <a-menu-item>SubMenuItem</a-menu-item>
     </a-sub-menu>
   </a-menu>
 </template>

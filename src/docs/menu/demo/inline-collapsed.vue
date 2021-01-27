@@ -1,14 +1,25 @@
-<cn>
-#### 缩起内嵌菜单
+<docs>
+---
+order: 2
+title:
+  zh-CN: 缩起内嵌菜单
+  en-US: Collapsed inline menu
+---
+
+## zh-CN
+
 内嵌菜单可以被缩起/展开。
-</cn>
 
-<us>
-#### Collapsed inline menu
+你可以在 [Layout](/components/layout-cn/#components-layout-demo-side) 里查看侧边布局结合的完整示例。
+
+## en-US
+
 Inline menu could be collapsed.
-</us>
 
-```vue
+Here is [a complete demo](/components/layout/#components-layout-demo-side) with sider layout.
+
+</docs>
+
 <template>
   <div style="width: 256px">
     <a-button type="primary" @click="toggleCollapsed" style="margin-bottom: 16px">
@@ -16,11 +27,11 @@ Inline menu could be collapsed.
       <MenuFoldOutlined v-else />
     </a-button>
     <a-menu
-      v-model:openKeys="openKeys"
-      v-model:selectedKeys="selectedKeys"
       mode="inline"
       theme="dark"
       :inline-collapsed="collapsed"
+      v-model:openKeys="openKeys"
+      v-model:selectedKeys="selectedKeys"
     >
       <a-menu-item key="1">
         <PieChartOutlined />
@@ -36,7 +47,10 @@ Inline menu could be collapsed.
       </a-menu-item>
       <a-sub-menu key="sub1">
         <template #title>
-          <span><MailOutlined /><span>Navigation One</span></span>
+          <span>
+            <MailOutlined />
+            <span>Navigation One</span>
+          </span>
         </template>
         <a-menu-item key="5">Option 5</a-menu-item>
         <a-menu-item key="6">Option 6</a-menu-item>
@@ -45,24 +59,24 @@ Inline menu could be collapsed.
       </a-sub-menu>
       <a-sub-menu key="sub2">
         <template #title>
-          <span><AppstoreOutlined /><span>Navigation Two</span></span>
+          <span>
+            <AppstoreOutlined />
+            <span>Navigation Two</span>
+          </span>
         </template>
         <a-menu-item key="9">Option 9</a-menu-item>
         <a-menu-item key="10">Option 10</a-menu-item>
         <a-sub-menu key="sub3" title="Submenu">
-          <a-menu-item key="11">
-            Option 11
-          </a-menu-item>
-          <a-menu-item key="12">
-            Option 12
-          </a-menu-item>
+          <a-menu-item key="11">Option 11</a-menu-item>
+          <a-menu-item key="12">Option 12</a-menu-item>
         </a-sub-menu>
       </a-sub-menu>
     </a-menu>
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, reactive, toRefs, watch } from 'vue';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -72,7 +86,31 @@ import {
   InboxOutlined,
   AppstoreOutlined,
 } from '@ant-design/icons-vue';
-export default {
+export default defineComponent({
+  setup() {
+    const state = reactive({
+      collapsed: false,
+      selectedKeys: ['1'],
+      openKeys: ['sub1'],
+      preOpenKeys: ['sub1'],
+    });
+
+    watch(
+      () => state.openKeys,
+      (val, oldVal) => {
+        state.preOpenKeys = oldVal;
+      },
+    );
+    const toggleCollapsed = () => {
+      state.collapsed = !state.collapsed;
+      state.openKeys = state.collapsed ? [] : state.preOpenKeys;
+    };
+
+    return {
+      ...toRefs(state),
+      toggleCollapsed,
+    };
+  },
   components: {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
@@ -82,25 +120,5 @@ export default {
     InboxOutlined,
     AppstoreOutlined,
   },
-  data() {
-    return {
-      collapsed: false,
-      selectedKeys: ['1'],
-      openKeys: ['sub1'],
-      preOpenKeys: ['sub1'],
-    };
-  },
-  watch: {
-    openKeys(val, oldVal) {
-      this.preOpenKeys = oldVal;
-    },
-  },
-  methods: {
-    toggleCollapsed() {
-      this.collapsed = !this.collapsed;
-      this.openKeys = this.collapsed ? [] : this.preOpenKeys;
-    },
-  },
-};
+});
 </script>
-```

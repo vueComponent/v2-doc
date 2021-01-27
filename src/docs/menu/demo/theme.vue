@@ -1,20 +1,27 @@
-<cn>
-#### 主题
-内建了两套主题 `light|dark`，默认 `light`。
-</cn>
+<docs>
+---
+order: 4
+title:
+  zh-CN: 主题
+  en-US: Menu Themes
+---
 
-<us>
-#### Menu Themes
-There are two built-in themes: 'light' and 'dark'. The default value is 'light'.
-</us>
+## zh-CN
 
-```vue
+内建了两套主题 `light` 和 `dark`，默认 `light`。
+
+## en-US
+
+There are two built-in themes: `light` and `dark`. The default value is `light`.
+
+</docs>
+
 <template>
   <div>
     <a-switch
-      default-checked
-      checked-children="dark"
-      un-checked-children="light"
+      :checked="theme === 'dark'"
+      checked-children="Dark"
+      un-checked-children="Light"
       @change="changeTheme"
     />
     <br />
@@ -36,22 +43,24 @@ There are two built-in themes: 'light' and 'dark'. The default value is 'light'.
       </a-menu-item>
       <a-sub-menu key="sub1">
         <template #title>
-          <span><AppstoreOutlined /><span>Navigation Three</span></span>
+          <span>
+            <AppstoreOutlined />
+            <span>Navigation Three</span>
+          </span>
         </template>
         <a-menu-item key="3">Option 3</a-menu-item>
         <a-menu-item key="4">Option 4</a-menu-item>
         <a-sub-menu key="sub1-2" title="Submenu">
-          <a-menu-item key="5">
-            Option 5
-          </a-menu-item>
-          <a-menu-item key="6">
-            Option 6
-          </a-menu-item>
+          <a-menu-item key="5">Option 5</a-menu-item>
+          <a-menu-item key="6">Option 6</a-menu-item>
         </a-sub-menu>
       </a-sub-menu>
       <a-sub-menu key="sub2">
         <template #title>
-          <span><SettingOutlined /><span>Navigation Four</span></span>
+          <span>
+            <SettingOutlined />
+            <span>Navigation Four</span>
+          </span>
         </template>
         <a-menu-item key="7">Option 7</a-menu-item>
         <a-menu-item key="8">Option 8</a-menu-item>
@@ -61,32 +70,35 @@ There are two built-in themes: 'light' and 'dark'. The default value is 'light'.
     </a-menu>
   </div>
 </template>
-<script>
+<script lang="ts">
+import { defineComponent, reactive, toRefs } from 'vue';
 import {
   MailOutlined,
   CalendarOutlined,
   AppstoreOutlined,
   SettingOutlined,
 } from '@ant-design/icons-vue';
-export default {
+export default defineComponent({
+  setup() {
+    const state = reactive({
+      theme: 'dark',
+      selectedKeys: ['1'],
+      openKeys: ['sub1'],
+    });
+    const changeTheme = (checked: boolean) => {
+      state.theme = checked ? 'dark' : 'light';
+    };
+
+    return {
+      ...toRefs(state),
+      changeTheme,
+    };
+  },
   components: {
     MailOutlined,
     CalendarOutlined,
     AppstoreOutlined,
     SettingOutlined,
   },
-  data() {
-    return {
-      theme: 'dark',
-      selectedKeys: ['1'],
-      openKeys: ['sub1'],
-    };
-  },
-  methods: {
-    changeTheme(checked) {
-      this.theme = checked ? 'dark' : 'light';
-    },
-  },
-};
+});
 </script>
-```

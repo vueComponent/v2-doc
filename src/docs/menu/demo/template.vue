@@ -1,14 +1,19 @@
-<cn>
-#### 单文件递归菜单
+<docs>
+---
+order: 99
+title:
+  zh-CN: 单文件递归菜单
+  en-US: Single file recursive menu
+---
+
+## zh-CN
 使用单文件方式递归生成菜单。
-</cn>
 
-<us>
-#### Single file recursive menu
+## en-US
 Use the single file method to recursively generate menus.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div style="width: 256px">
     <a-button type="primary" @click="toggleCollapsed" style="margin-bottom: 16px">
@@ -36,8 +41,8 @@ Use the single file method to recursively generate menus.
     </a-menu>
   </div>
 </template>
-
-<script>
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -51,9 +56,12 @@ import { Menu } from 'ant-design-vue';
 
 // you can rewrite it to a single file component, if not, you should config vue alias to vue/dist/vue.esm-bundler.js
 const SubMenu = {
-  components: {
-    PieChartOutlined,
-    MailOutlined,
+  name: 'SubMenu',
+  props: {
+    menuInfo: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   template: `
     <a-sub-menu :key="menuInfo.key" v-bind="$attrs">
@@ -75,15 +83,41 @@ const SubMenu = {
       </template>
     </a-sub-menu>
   `,
-  name: 'SubMenu',
-  props: {
-    menuInfo: {
-      type: Object,
-      default: () => ({}),
-    },
+  components: {
+    PieChartOutlined,
+    MailOutlined,
   },
 };
-export default {
+const list = [
+  {
+    key: '1',
+    title: 'Option 1',
+  },
+  {
+    key: '2',
+    title: 'Navigation 2',
+    children: [
+      {
+        key: '2.1',
+        title: 'Navigation 3',
+        children: [{ key: '2.1.1', title: 'Option 2.1.1' }],
+      },
+    ],
+  },
+];
+export default defineComponent({
+  setup() {
+    const collapsed = ref<boolean>(false);
+
+    const toggleCollapsed = () => {
+      collapsed.value = !collapsed.value;
+    };
+    return {
+      list,
+      collapsed,
+      toggleCollapsed,
+    };
+  },
   components: {
     'sub-menu': SubMenu,
     MenuFoldOutlined,
@@ -94,33 +128,5 @@ export default {
     InboxOutlined,
     AppstoreOutlined,
   },
-  data() {
-    return {
-      collapsed: false,
-      list: [
-        {
-          key: '1',
-          title: 'Option 1',
-        },
-        {
-          key: '2',
-          title: 'Navigation 2',
-          children: [
-            {
-              key: '2.1',
-              title: 'Navigation 3',
-              children: [{ key: '2.1.1', title: 'Option 2.1.1' }],
-            },
-          ],
-        },
-      ],
-    };
-  },
-  methods: {
-    toggleCollapsed() {
-      this.collapsed = !this.collapsed;
-    },
-  },
-};
+});
 </script>
-```
