@@ -29,6 +29,8 @@ export default {
   optimizeDeps: {
     include: [
       'ant-design-vue/es/locale-provider/zh_CN',
+      'ant-design-vue/es/locale/en_US',
+      'ant-design-vue/es/locale/zh_CN',
       'ant-design-vue/es/locale-provider/default',
       'ant-design-vue/es/vc-drawer/src',
       'ant-design-vue/es/_util/store',

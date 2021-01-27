@@ -1,5 +1,7 @@
 <template>
-  <router-view />
+  <a-config-provider :locale="locale">
+    <router-view />
+  </a-config-provider>
 </template>
 
 <script lang="ts">
@@ -8,6 +10,10 @@ import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import useMediaQuery from './hooks/useMediaQuery';
 import { GLOBAL_CONFIG } from './SymbolKey';
+import enUS from 'ant-design-vue/es/locale/en_US';
+import zhCN from 'ant-design-vue/es/locale/zh_CN';
+import moment from 'moment';
+import 'moment/dist/locale/zh-cn';
 function isZhCN(name: string) {
   return /-cn\/?$/.test(name);
 }
@@ -45,8 +51,22 @@ export default defineComponent({
       },
       { immediate: true },
     );
+    watch(
+      globalConfig.isZhCN,
+      val => {
+        if (val) {
+          moment.locale(zhCN.locale);
+        } else {
+          moment.locale(enUS.locale);
+        }
+      },
+      { immediate: true },
+    );
+    const locale = computed(() => {
+      return globalConfig.isZhCN.value ? zhCN : enUS;
+    });
 
-    return { globalConfig };
+    return { globalConfig, locale };
   },
 });
 </script>

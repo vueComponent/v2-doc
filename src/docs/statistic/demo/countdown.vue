@@ -41,7 +41,7 @@ Countdown component.
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-export default {
+export default defineComponent({
   setup() {
     const onFinish = () => {
       console.log('finished!');
@@ -51,5 +51,5 @@ export default {
       onFinish,
     };
   },
-};
+});
 </script>

@@ -1,9 +1,11 @@
 <template>
-  <basic />
-  <simple />
-  <customize />
-  <config-provider />
-  <description />
+  <demo-sort :cols="1">
+    <basic />
+    <simple />
+    <customize />
+    <config-provider />
+    <description />
+  </demo-sort>
 </template>
 <script lang="ts">
 import Basic from './basic.vue';

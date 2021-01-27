@@ -20,8 +20,7 @@ Use ConfigProvider set global Empty style.
   <a-switch
     un-checked-children="default"
     checked-children="customize"
-    :checked="customize"
-    @change="val => (customize = val)"
+    v-model:checked="customize"
   />
   <a-divider />
   <a-config-provider>

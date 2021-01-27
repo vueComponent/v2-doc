@@ -28,7 +28,7 @@ A basic comment with author, avatar, time and actions.
             <LikeOutlined @click="like" />
           </template>
         </a-tooltip>
-        <span style="padding-left: '8px'; cursor: 'auto'">
+        <span style="padding-left: 8px; cursor: auto">
           {{ likes }}
         </span>
       </span>
@@ -41,7 +41,7 @@ A basic comment with author, avatar, time and actions.
             <DislikeOutlined @click="dislike" />
           </template>
         </a-tooltip>
-        <span style="padding-left: '8px'; cursor: 'auto'">
+        <span style="padding-left: 8px; cursor: auto">
           {{ dislikes }}
         </span>
       </span>
