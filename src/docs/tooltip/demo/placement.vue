@@ -1,14 +1,21 @@
-<cn>
-#### 位置
+<docs>
+---
+order: 1
+title:
+  zh-CN: 位置
+  en-US: Placement
+---
+
+## zh-CN
+
 位置有 12 个方向。
-</cn>
 
-<us>
-#### Placement
+## en-US
+
 There are 12 placement options available.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div id="components-a-tooltip-demo-placement">
     <div :style="{ marginLeft: `${buttonWidth}px`, whiteSpace: 'nowrap' }">
@@ -93,14 +100,15 @@ There are 12 placement options available.
     </div>
   </div>
 </template>
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent } from 'vue';
+export default defineComponent({
+  setup() {
     return {
       buttonWidth: 70,
     };
   },
-};
+});
 </script>
 <style scoped>
 #components-a-tooltip-demo-placement .ant-btn {
@@ -111,4 +119,3 @@ export default {
   margin-bottom: 8px;
 }
 </style>
-```

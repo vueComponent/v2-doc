@@ -1,14 +1,21 @@
-<cn>
-#### 基本
+<docs>
+---
+order: 0
+title:
+  zh-CN: 基本用法
+  en-US: Basic usage
+---
+
+## zh-CN
+
 最简单的用法。
-</cn>
 
-<us>
-#### Basic
+## en-US
+
 The simplest usage.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-tooltip>
     <template #title>
@@ -17,4 +24,3 @@ The simplest usage.
     Tooltip will show when mouse enter.
   </a-tooltip>
 </template>
-```

@@ -1,3 +1,18 @@
+---
+category: Components
+type: 数据展示
+title: Tooltip
+subtitle: 文字提示
+cover: https://gw.alipayobjects.com/zos/alicdn/Vyyeu8jq2/Tooltp.svg
+---
+
+警告提示，展现需要关注的信息。
+
+## 何时使用
+
+- 当某个页面需要向用户显示警告的信息时。
+- 非浮层的静态展现形式，始终展现，不会自动消失，用户可以点击关闭。
+
 ## API
 
 | 参数  | 说明     | 类型         | 默认值 |

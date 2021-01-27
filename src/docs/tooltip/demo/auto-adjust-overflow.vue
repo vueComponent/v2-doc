@@ -1,14 +1,21 @@
-<cn>
-#### 自动调整位置
-气泡框不可见时自动调整位置
-</cn>
+<docs>
+---
+order: 3
+title:
+  zh-CN: 自动调整位置
+  en-US: Adjust placement automatically
+---
 
-<us>
-#### Adjust placement automatically
-Adjust popup placement automatically when popup is invisible
-</us>
+## zh-CN
 
-```vue
+气泡框不可见时自动调整位置。
+
+## en-US
+
+Adjust popup placement automatically when popup is invisible.
+
+</docs>
+
 <template>
   <div :style="wrapStyles">
     <a-tooltip placement="left" title="Prompt Text" :get-popup-container="getPopupContainer">
@@ -25,24 +32,24 @@ Adjust popup placement automatically when popup is invisible
     </a-tooltip>
   </div>
 </template>
-<script>
-const wrapStyles = {
+<script lang="ts">
+import { defineComponent } from 'vue';
+const wrapStyles: Record<string, string> = {
   overflow: 'hidden',
   position: 'relative',
   padding: '24px',
   border: '1px solid #e9e9e9',
 };
-export default {
-  data() {
+export default defineComponent({
+  setup() {
+    const getPopupContainer = (trigger: HTMLElement) => {
+      return trigger.parentElement;
+    };
+
     return {
       wrapStyles,
+      getPopupContainer,
     };
   },
-  methods: {
-    getPopupContainer(trigger) {
-      return trigger.parentElement;
-    },
-  },
-};
+});
 </script>
-```
