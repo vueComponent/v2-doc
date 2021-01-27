@@ -18,7 +18,7 @@ Divider and disabled menu item.
 
 <template>
   <a-dropdown>
-    <a class="ant-dropdown-link" @click="e => e.preventDefault()">
+    <a class="ant-dropdown-link" @click.prevent>
       Hover me
       <DownOutlined />
     </a>

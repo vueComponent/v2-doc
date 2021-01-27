@@ -18,12 +18,12 @@ An event will be triggered when you click menu items, in which you can make diff
 
 <template>
   <a-dropdown>
-    <a class="ant-dropdown-link" @click="e => e.preventDefault()">
+    <a class="ant-dropdown-link" @click.prevent>
       Hover me, Click menu item
       <DownOutlined />
     </a>
     <template #overlay>
-      <a-menu @click="handleClick">
+      <a-menu @click="onClick">
         <a-menu-item key="1">1st menu item</a-menu-item>
         <a-menu-item key="2">2nd menu item</a-menu-item>
         <a-menu-item key="3">3rd menu item</a-menu-item>
