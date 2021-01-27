@@ -1,18 +1,26 @@
-<cn>
-#### 多级菜单
+<docs>
+---
+order: 6
+title:
+  zh-CN: 多级菜单
+  en-US: Cascading menu
+---
+
+## zh-CN
+
 传入的菜单里有多个层级。
-</cn>
 
-<us>
-#### Cascading menu
+## en-US
+
 The menu has multiple levels.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-dropdown>
     <a class="ant-dropdown-link" @click="e => e.preventDefault()">
-      Cascading menu <DownOutlined />
+      Cascading menu
+      <DownOutlined />
     </a>
     <template #overlay>
       <a-menu>
@@ -30,13 +38,12 @@ The menu has multiple levels.
     </template>
   </a-dropdown>
 </template>
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import { DownOutlined } from '@ant-design/icons-vue';
-
-export default {
+export default defineComponent({
   components: {
     DownOutlined,
   },
-};
+});
 </script>
-```

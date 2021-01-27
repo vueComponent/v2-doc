@@ -1,17 +1,26 @@
-<cn>
-#### 触发方式
+<docs>
+---
+order: 3
+title:
+  zh-CN: 触发方式
+  en-US: Trigger mode
+---
+
+## zh-CN
+
 默认是移入触发菜单，可以点击触发。
-</cn>
 
-<us>
-#### Trigger mode
+## en-US
+
 The default trigger mode is `hover`, you can change it to `click`.
-</us>
+</docs>
 
-```vue
 <template>
   <a-dropdown :trigger="['click']">
-    <a class="ant-dropdown-link" @click="e => e.preventDefault()"> Click me <DownOutlined /> </a>
+    <a class="ant-dropdown-link" @click="e => e.preventDefault()">
+      Click me
+      <DownOutlined />
+    </a>
     <template #overlay>
       <a-menu>
         <a-menu-item key="0">
@@ -21,20 +30,17 @@ The default trigger mode is `hover`, you can change it to `click`.
           <a href="http://www.taobao.com/">2nd menu item</a>
         </a-menu-item>
         <a-menu-divider />
-        <a-menu-item key="3">
-          3rd menu item
-        </a-menu-item>
+        <a-menu-item key="3">3rd menu item</a-menu-item>
       </a-menu>
     </template>
   </a-dropdown>
 </template>
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import { DownOutlined } from '@ant-design/icons-vue';
-
-export default {
+export default defineComponent({
   components: {
     DownOutlined,
   },
-};
+});
 </script>
-```

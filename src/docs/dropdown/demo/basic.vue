@@ -1,17 +1,27 @@
-<cn>
-#### 基本
+<docs>
+---
+order: 0
+title:
+  zh-CN: 基本
+  en-US: Basic Usage
+---
+
+## zh-CN
+
 最简单的下拉菜单。
-</cn>
 
-<us>
-#### Basic
+## en-US
+
 The most basic dropdown menu.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-dropdown>
-    <a class="ant-dropdown-link" @click="e => e.preventDefault()"> Hover me <DownOutlined /> </a>
+    <a class="ant-dropdown-link" @click="e => e.preventDefault()">
+      Hover me
+      <DownOutlined />
+    </a>
     <template #overlay>
       <a-menu>
         <a-menu-item>
@@ -27,13 +37,13 @@ The most basic dropdown menu.
     </template>
   </a-dropdown>
 </template>
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import { DownOutlined } from '@ant-design/icons-vue';
 
-export default {
+export default defineComponent({
   components: {
     DownOutlined,
   },
-};
+});
 </script>
-```

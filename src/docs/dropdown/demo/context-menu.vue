@@ -1,14 +1,21 @@
-<cn>
-#### 右键菜单
+<docs>
+---
+order: 8
+title:
+  zh-CN: 右键菜单
+  en-US: Context Menu
+---
+
+## zh-CN
+
 默认是移入触发菜单，可以点击鼠标右键触发。
-</cn>
 
-<us>
-#### Context Menu
-The default trigger mode is `hover`, you can change it to `contextmenu`.
-</us>
+## en-US
 
-```vue
+The default trigger mode is `hover`, you can change it to `contextMenu`.
+
+</docs>
+
 <template>
   <a-dropdown :trigger="['contextmenu']">
     <div
@@ -24,17 +31,10 @@ The default trigger mode is `hover`, you can change it to `contextmenu`.
     </div>
     <template #overlay>
       <a-menu>
-        <a-menu-item key="1">
-          1st menu item
-        </a-menu-item>
-        <a-menu-item key="2">
-          2nd menu item
-        </a-menu-item>
-        <a-menu-item key="3">
-          3rd menu item
-        </a-menu-item>
+        <a-menu-item key="1">1st menu item</a-menu-item>
+        <a-menu-item key="2">2nd menu item</a-menu-item>
+        <a-menu-item key="3">3rd menu item</a-menu-item>
       </a-menu>
     </template>
   </a-dropdown>
 </template>
-```
