@@ -1,14 +1,20 @@
-<cn>
-#### 位置
+<docs>
+---
+order: 2
+title:
+  zh-CN: 位置
+  en-US: Placement
+---
+
+## zh-CN
+
 位置有十二个方向。
-</cn>
 
-<us>
-#### Placement
+## en-US
+
 There are 12 `placement` options available.
-</us>
 
-```vue
+</docs>
 <template>
   <div id="components-popover-demo-placement">
     <div :style="{ marginLeft: `${buttonWidth}px`, whiteSpace: 'nowrap' }">
@@ -142,14 +148,15 @@ There are 12 `placement` options available.
   </div>
 </template>
 
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+  setup() {
     return {
-      buttonWidth: 70,
+      buttonWidth: ref<number>(70),
     };
   },
-};
+});
 </script>
 <style>
 #components-popover-demo-placement .ant-btn {
@@ -160,4 +167,3 @@ export default {
   margin-bottom: 8px;
 }
 </style>
-```

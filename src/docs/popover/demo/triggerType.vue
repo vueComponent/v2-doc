@@ -1,14 +1,20 @@
-<cn>
-#### 三种触发方式
+<docs>
+---
+order: 1
+title:
+  zh-CN: 三种触发方式
+  en-US: Three ways to trigger
+---
+
+## zh-CN
+
 鼠标移入、聚集、点击。
-</cn>
 
-<us>
-#### Three ways to trigger
+## en-US
+
 Mouse to click, focus and move in.
-</us>
 
-```vue
+</docs>
 <template>
   <div>
     <a-popover title="Title" trigger="hover">
@@ -16,28 +22,26 @@ Mouse to click, focus and move in.
         <p>Content</p>
         <p>Content</p>
       </template>
-      <a-button type="primary">
-        Hover me
-      </a-button>
+      <a-button>Hover me</a-button>
     </a-popover>
     <a-popover title="Title" trigger="focus">
       <template #content>
         <p>Content</p>
         <p>Content</p>
       </template>
-      <a-button type="primary">
-        Focus me
-      </a-button>
+      <a-button>Focus me</a-button>
     </a-popover>
     <a-popover title="Title" trigger="click">
       <template #content>
         <p>Content</p>
         <p>Content</p>
       </template>
-      <a-button type="primary">
-        Click me
-      </a-button>
+      <a-button>Click me</a-button>
     </a-popover>
   </div>
 </template>
-```
+<style>
+#components-popover-demo-triggerType .ant-btn {
+  margin-right: 8px;
+}
+</style>
