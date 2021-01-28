@@ -33,8 +33,8 @@ Alert component for feedback.
 
 ### events
 
-| Events Name | Description | Arguments |
-| --- | --- | --- |
+| Events Name | Description | Arguments | Version |
+| --- | --- | --- | --- |
 | change | A callback function that is executed when the transfer between columns is complete. | (targetKeys, direction, moveKeys): void |  |
 | scroll | A callback function which is executed when scroll options list | (direction, event): void |  |
 | search | A callback function which is executed when search field are changed | (direction: 'left'\|'right', value: string): void | - |
@@ -57,12 +57,12 @@ Transfer accept `children` to customize render list, using follow props:
 
 | Property        | Description             | Type                                | Version |
 | --------------- | ----------------------- | ----------------------------------- | ------- |
-| direction       | List render direction   | 'left' \| 'right'                   |   |
-| disabled        | Disable list or not     | boolean                             |   |
-| filteredItems   | Filtered items          | TransferItem[]                      |   |
-| onItemSelect    | Select item             | (key: string, selected: boolean)    |   |
-| onItemSelectAll | Select a group of items | (keys: string[], selected: boolean) |   |
-| selectedKeys    | Selected items          | string[]                            |   |
+| direction       | List render direction   | 'left' \| 'right'                   |         |
+| disabled        | Disable list or not     | boolean                             |         |
+| filteredItems   | Filtered items          | TransferItem[]                      |         |
+| onItemSelect    | Select item             | (key: string, selected: boolean)    |         |
+| onItemSelectAll | Select a group of items | (keys: string[], selected: boolean) |         |
+| selectedKeys    | Selected items          | string[]                            |         |
 
 #### example
 

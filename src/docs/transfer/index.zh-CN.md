@@ -34,8 +34,8 @@ cover: https://gw.alipayobjects.com/zos/alicdn/QAXskNI4G/Transfer.svg
 
 ### 事件
 
-| 事件名称 | 说明 | 回调参数 |
-| --- | --- | --- |
+| 事件名称 | 说明 | 回调参数 | 版本 |
+| --- | --- | --- | --- |
 | change | 选项在两栏之间转移时的回调函数 | (targetKeys, direction, moveKeys): void |  |
 | scroll | 选项列表滚动时的回调函数 | (direction, event): void |  |
 | search | 搜索框内容时改变时的回调函数 | (direction: 'left'\|'right', value: string): void | - |
@@ -56,14 +56,14 @@ Transfer 支持接收 `children` 自定义渲染列表，并返回以下参数�
 }
 ```
 
-| 参数          | 说明           | 类型                                | 版本  |
-| ------------- | -------------- | ----------------------------------- | ----- |
-| direction     | 渲染列表的方向 | 'left' \| 'right'                   |  |
-| disabled      | 是否禁用列表   | boolean                             |  |
-| filteredItems | 过滤后的数据   | TransferItem[]                      |  |
-| selectedKeys  | 选中的条目     | string[]                            |  |
-| itemSelect    | 勾选条目       | (key: string, selected: boolean)    |  |
-| itemSelectAll | 勾选一组条目   | (keys: string[], selected: boolean) |  |
+| 参数          | 说明           | 类型                                | 版本 |
+| ------------- | -------------- | ----------------------------------- | ---- |
+| direction     | 渲染列表的方向 | 'left' \| 'right'                   |      |
+| disabled      | 是否禁用列表   | boolean                             |      |
+| filteredItems | 过滤后的数据   | TransferItem[]                      |      |
+| selectedKeys  | 选中的条目     | string[]                            |      |
+| itemSelect    | 勾选条目       | (key: string, selected: boolean)    |      |
+| itemSelectAll | 勾选一组条目   | (keys: string[], selected: boolean) |      |
 
 #### 参考示例
 
