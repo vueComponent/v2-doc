@@ -64,12 +64,12 @@ export default defineComponent({
       hovered.value = false;
     };
 
-    const handleHoverChange = visible => {
+    const handleHoverChange = (visible: boolean) => {
       clicked.value = false;
       hovered.value = visible;
     };
 
-    const handleClickChange = visible => {
+    const handleClickChange = (visible: boolean) => {
       clicked.value = visible;
       hovered.value = false;
     };
