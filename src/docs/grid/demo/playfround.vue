@@ -1,19 +1,26 @@
-<cn>
-#### 栅格配置器
+<docs>
+---
+order: 10
+title:
+  zh-CN: 栅格配置器
+  en-US: Playground
+---
+
+## zh-CN
+
 可以简单配置几种等分栅格和间距。
-</cn>
 
-<us>
-#### Playground
+## en-US
+
 A simple playground for column count and gutter.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div id="components-grid-demo-playground">
-    <div style="margin-bottom:16px">
-      <span style="margin-right:6px">Horizontal Gutter (px): </span>
-      <div style="width:50%">
+    <div style="margin-bottom: 16px">
+      <span style="margin-right: 6px">Horizontal Gutter (px):</span>
+      <div style="width: 50%">
         <a-slider
           v-model:value="gutterKey"
           :min="0"
@@ -22,7 +29,7 @@ A simple playground for column count and gutter.
           :step="null"
         />
       </div>
-      <span style="margin-right: 6px">Vertical Gutter (px): </span>
+      <span style="margin-right: 6px">Vertical Gutter (px):</span>
       <div style="width: 50%">
         <a-slider
           v-model:value="vgutterKey"
@@ -32,8 +39,8 @@ A simple playground for column count and gutter.
           :step="null"
         />
       </div>
-      <span style="margin-right:6px">Column Count:</span>
-      <div style="width:50%">
+      <span style="margin-right: 6px">Column Count:</span>
+      <div style="width: 50%">
         <a-slider
           v-model:value="colCountKey"
           :min="0"
@@ -45,7 +52,7 @@ A simple playground for column count and gutter.
     </div>
     <a-row :gutter="[gutters[gutterKey], vgutters[vgutterKey]]">
       <a-col
-        v-for="(item, index) in colCounts[colCountKey]"
+        v-for="item in colCounts[colCountKey]"
         :key="item.toString()"
         :span="24 / colCounts[colCountKey]"
       >
@@ -54,45 +61,52 @@ A simple playground for column count and gutter.
     </a-row>
     <a-row :gutter="[gutters[gutterKey], vgutters[vgutterKey]]">
       <a-col
-        v-for="(item, index) in colCounts[colCountKey]"
+        v-for="item in colCounts[colCountKey]"
         :key="item.toString()"
         :span="24 / colCounts[colCountKey]"
       >
         <div>Column</div>
       </a-col>
     </a-row>
-    <pre v-text="rowColHtml" />
-    <pre v-text="rowColHtml" />
+    <pre
+      >{{ rowColHtml }}
+    </pre>
+    <pre
+      >{{ rowColHtml }}
+    </pre>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    const gutters = {};
-    const colCounts = {};
-    const vgutters = {};
-    [8, 16, 24, 32, 40, 48].forEach((value, i) => {
-      gutters[i] = value;
-    });
-    [8, 16, 24, 32, 40, 48].forEach((value, i) => {
-      vgutters[i] = value;
-    });
-    [2, 3, 4, 6, 8, 12].forEach((value, i) => {
-      colCounts[i] = value;
-    });
-    return {
+<script lang="ts">
+import { computed, defineComponent, reactive, toRefs } from 'vue';
+export default defineComponent({
+  setup() {
+    const state = reactive<{
+      gutterKey: number;
+      vgutterKey: number;
+      colCountKey: number;
+      gutters: { [key: number]: number };
+      colCounts: { [key: number]: number };
+      vgutters: { [key: number]: number };
+    }>({
       gutterKey: 1,
       vgutterKey: 1,
       colCountKey: 2,
-      colCounts,
-      gutters,
-      vgutters,
-    };
-  },
-  computed: {
-    rowColHtml() {
-      const colCount = this.colCounts[this.colCountKey];
-      const getter = [this.gutters[this.gutterKey], this.vgutters[this.vgutterKey]];
+      gutters: {},
+      colCounts: {},
+      vgutters: {},
+    });
+    [8, 16, 24, 32, 40, 48].forEach((value: number, i: number) => {
+      state.gutters[i] = value;
+    });
+    [8, 16, 24, 32, 40, 48].forEach((value, i) => {
+      state.vgutters[i] = value;
+    });
+    [2, 3, 4, 6, 8, 12].forEach((value, i) => {
+      state.colCounts[i] = value;
+    });
+    const rowColHtml = computed(() => {
+      const colCount = state.colCounts[state.colCountKey];
+      const getter = [state.gutters[state.gutterKey], state.vgutters[state.vgutterKey]];
       let colCode = '<a-row :gutter="[' + getter + ']">\n';
       for (let i = 0; i < colCount; i++) {
         const spanNum = 24 / colCount;
@@ -100,16 +114,20 @@ export default {
       }
       colCode += '</a-row>';
       return colCode;
-    },
+    });
+    return {
+      rowColHtml,
+      ...toRefs(state),
+    };
   },
-};
+});
 </script>
 <style scoped>
-#components-grid-demo-playground [class~='ant-col'] {
+#components-grid-demo-playground ::v-deep(.ant-col) {
   background: transparent;
   border: 0;
 }
-#components-grid-demo-playground [class~='ant-col'] > div {
+#components-grid-demo-playground ::v-deep(.ant-col) > div {
   background: #00a0e9;
   height: 120px;
   line-height: 120px;
@@ -122,4 +140,3 @@ export default {
   padding: 8px 16px;
 }
 </style>
-```
