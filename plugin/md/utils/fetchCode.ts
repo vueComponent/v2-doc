@@ -1,3 +1,4 @@
+import cheerio from 'cheerio';
 const scriptRE = /<script[^>]*>([\s\S]*)<\/script>/;
 const scriptContentRE = /(?<=<script[^>]*>)([\s\S]*)(?=<\/script>)/;
 const templateRE = /<template[^>]*>([\s\S]*)<\/template>/;
@@ -12,6 +13,15 @@ const reObj = {
 };
 
 export default function fetchCode(src: string, type: string): string {
+  if (type === 'template') {
+    const $ = cheerio.load(src, {
+      decodeEntities: false,
+      xmlMode: true,
+    });
+    return `<template>
+  ${$(type).html().trim()}
+</template>`;
+  }
   const matches = src.match(reObj[type]);
   return matches ? matches[0] : '';
 }

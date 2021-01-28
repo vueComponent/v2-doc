@@ -15,6 +15,7 @@ export default {
   alias: {
     // moment: 'moment/dist/moment.js',
     '@': path.join(__dirname, './src'),
+    vue: 'vue/dist/vue.esm-bundler.js',
   },
   plugins: [
     vueJsx({
