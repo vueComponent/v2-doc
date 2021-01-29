@@ -1,18 +1,23 @@
-<cn>
-#### 基本用法
-简单的checkbox
-</cn>
+<docs>
+---
+order: 0
+title:
+  zh-CN: 基本用法
+  en-US: Basic
+---
 
-<us>
-#### Basic
+## zh-CN
+
+简单的 checkbox
+
+## en-US
+
 Basic usage of checkbox
-</us>
 
-```vue
+</docs>
+
 <template>
-  <a-checkbox v-model:checked="checked" @change="onChange">
-    Checkbox
-  </a-checkbox>
+  <a-checkbox v-model:checked="checked" @change="onChange">Checkbox</a-checkbox>
 </template>
 <script>
 export default {
@@ -28,4 +33,3 @@ export default {
   },
 };
 </script>
-```

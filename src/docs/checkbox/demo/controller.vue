@@ -1,14 +1,21 @@
-<cn>
-#### 受控的checkbox
+<docs>
+---
+order: 2
+title:
+  zh-CN: 受控的 checkbox
+  en-US: Controlled Checkbox
+---
+
+## zh-CN
+
 联动checkbox
-</cn>
 
-<us>
-#### Controlled Checkbox
+## en-US
+
 Communicated with other components
-</us>
 
-```vue
+</docs>
+
 <template>
   <p :style="{ marginBottom: '20px' }">
     <a-checkbox v-model:checked="checked" :disabled="disabled">
@@ -48,4 +55,3 @@ export default {
   },
 };
 </script>
-```

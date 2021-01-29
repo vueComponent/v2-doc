@@ -1,53 +1,54 @@
-<script>
-import Basic from './basic';
-import CheckAll from './check-all';
-import Controller from './controller';
-import Disabled from './disabled';
-import Group from './group';
-import Layout from './layout';
-import CN from './../index.zh-CN';
-import US from './../index.en-US';
+<template>
+  <demo-sort>
+    <basic />
+    <check-all />
+    <controller />
+    <disabled />
+    <group />
+    <layout />
+  </demo-sort>
+</template>
+<script lang="ts">
+import Basic from './basic.vue';
+import CheckAll from './check-all.vue';
+import Controller from './controller.vue';
+import Disabled from './disabled.vue';
+import Group from './group.vue';
+import Layout from './layout.vue';
+import CN from '../index.zh-CN.md';
+import US from '../index.en-US.md';
+import { defineComponent } from 'vue';
 
-const md = {
-  cn: `# Checkbox多选框
-           多选框
-         ## 何时使用
-         - 在一组可选项中进行多项选择时；
-         - 单独使用可以表示两种状态之间的切换，和 switch 类似。区别在于切换 switch 会直接触发状态改变，而 checkbox 一般用于状态标记，需要和提交操作配合。
-         ## 代码演示
-        `,
-  us: `# Checkbox
-           Checkbox component
-         ## When to use
-         - Used for selecting multiple values from several options.
-         - If you use only one checkbox, it is the same as using Switch to toggle between two states. The difference is that Switch will trigger the state change directly, but Checkbox just marks the state as changed and this needs to be submitted.
-         ## Examples
-        `,
-};
-
-export default {
-  category: 'Components',
-  subtitle: '多选框',
-  type: 'Data Entry',
-  zhType: '数据录入',
-  title: 'Checkbox',
-  render() {
-    return (
-      <div>
-        <Md cn={md.cn} us={md.us} />
-        <demo-sort>
-          <Basic />
-          <CheckAll />
-          <Disabled />
-          <Controller />
-          <Group />
-          <Layout />
-        </demo-sort>
-        <api vSlots={{ cn: () => <CN /> }}>
-          <US />
-        </api>
-      </div>
-    );
+export default defineComponent({
+  CN,
+  US,
+  components: {
+    Basic,
+    CheckAll,
+    Controller,
+    Disabled,
+    Group,
+    Layout,
   },
-};
+  setup() {
+    return {};
+  },
+});
 </script>
+<style>
+[id^='components-button-demo-'] .ant-btn {
+  margin-right: 8px;
+  margin-bottom: 12px;
+}
+[id^='components-button-demo-'] .ant-btn-rtl {
+  margin-right: 0;
+  margin-left: 8px;
+}
+[id^='components-button-demo-'] .ant-btn-group > .ant-btn,
+[id^='components-button-demo-'] .ant-btn-group > span > .ant-btn {
+  margin-right: 0;
+}
+[data-theme='dark'] .site-button-ghost-wrapper {
+  background: rgba(255, 255, 255, 0.2);
+}
+</style>

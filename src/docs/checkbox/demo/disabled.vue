@@ -1,14 +1,21 @@
-<cn>
-#### 不可用
+<docs>
+---
+order: 3
+title:
+  zh-CN: 不可用
+  en-US: Disabled
+---
+
+## zh-CN
+
 checkbox 不可用
-</cn>
 
-<us>
-#### Disabled
+## en-US
+
 Disabled checkbox
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-checkbox v-model:checked="checked1" disabled />
   <br />
@@ -24,4 +31,3 @@ export default {
   },
 };
 </script>
-```

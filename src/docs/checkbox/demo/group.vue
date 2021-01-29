@@ -1,14 +1,21 @@
-<cn>
-#### Checkbox组
-方便的从数组生成checkbox
-</cn>
+<docs>
+---
+order: 4
+title:
+  zh-CN: Checkbox 组
+  en-US: Checkbox group
+---
 
-<us>
-#### Checkbox group
+## zh-CN
+
+方便的从数组生成 checkbox
+
+## en-US
+
 Generate a group of checkboxes from an array
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-checkbox-group v-model:value="value1" name="checkboxgroup" :options="plainOptions" />
   <br />
@@ -48,4 +55,3 @@ export default {
   },
 };
 </script>
-```
