@@ -1,14 +1,20 @@
-<cn>
-#### 自定义尺寸
+<docs>
+---
+order: 3
+title:
+  zh-CN: 自定义尺寸
+  en-US: Customize Size
+---
+
+## zh-CN
+
 自定义间距大小。
-</cn>
 
-<us>
-#### Customize Size
+## en-US
+
 Custom spacing size.
-</us>
+</docs>
 
-```vue
 <template>
   <div>
     <a-slider v-model:value="size" />
@@ -31,4 +37,3 @@ export default {
   },
 };
 </script>
-```

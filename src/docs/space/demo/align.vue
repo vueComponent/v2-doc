@@ -1,14 +1,21 @@
-<cn>
-#### 对齐
+<docs>
+---
+order: 3
+title:
+  zh-CN: 对齐
+  en-US: Align
+---
+
+## zh-CN
+
 设置对齐模式。
-</cn>
 
-<us>
-#### Align
+## en-US
+
 Config item align.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div class="space-align-container">
     <div class="space-align-block">
@@ -63,4 +70,3 @@ export default {};
   background: rgba(150, 150, 150, 0.2);
 }
 </style>
-```

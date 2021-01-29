@@ -1,3 +1,18 @@
+---
+category: Components
+subtitle: 多选框
+type: 数据录入
+title: Checkbox
+cover: https://gw.alipayobjects.com/zos/alicdn/8nbVbHEm_/CheckBox.svg
+---
+
+多选框。
+
+## 何时使用
+
+- 在一组可选项中进行多项选择时；
+- 单独使用可以表示两种状态之间的切换，和 `switch` 类似。区别在于切换 `switch` 会直接触发状态改变，而 `checkbox` 一般用于状态标记，需要和提交操作配合。
+
 ## API
 
 ### 属性
@@ -14,8 +29,8 @@
 #### 事件
 
 | 事件名称 | 说明           | 回调参数          | 版本 |
-| -------- | -------------- | ----------------- | ---- |
-| change   | 变化时回调函数 | Function(e:Event) | -    |  |
+| -------- | -------------- | ----------------- | ---- | --- |
+| change   | 变化时回调函数 | Function(e:Event) | -    |     |
 
 #### Checkbox Group
 
@@ -29,8 +44,8 @@
 #### 事件
 
 | 事件名称 | 说明           | 回调参数               | 版本 |
-| -------- | -------------- | ---------------------- | ---- |
-| change   | 变化时回调函数 | Function(checkedValue) | -    |  |
+| -------- | -------------- | ---------------------- | ---- | --- |
+| change   | 变化时回调函数 | Function(checkedValue) | -    |     |
 
 ### 方法
 
