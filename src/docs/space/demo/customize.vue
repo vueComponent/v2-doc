@@ -28,12 +28,14 @@ Custom spacing size.
     </a-space>
   </div>
 </template>
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  setup() {
     return {
-      size: 8,
+      size: ref(8),
     };
   },
-};
+});
 </script>

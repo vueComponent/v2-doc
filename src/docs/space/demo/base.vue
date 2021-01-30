@@ -32,12 +32,13 @@ Crowded components horizontal spacing.
     </a-popconfirm>
   </a-space>
 </template>
-<script>
+<script lang="ts">
 import { UploadOutlined } from '@ant-design/icons-vue';
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
   components: {
     UploadOutlined,
   },
-};
+});
 </script>

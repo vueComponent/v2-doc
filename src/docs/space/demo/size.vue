@@ -37,11 +37,12 @@ Set the size to `large` and `middle` by setting size to large and middle respect
   </div>
 </template>
 <script>
-export default {
-  data() {
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+  setup() {
     return {
-      size: 'small',
+      size: ref('small'),
     };
   },
-};
+});
 </script>

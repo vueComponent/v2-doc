@@ -48,14 +48,16 @@ Config item align.
     </div>
   </div>
 </template>
-<script>
-export default {};
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({});
 </script>
 
 <style scoped>
 .space-align-container {
   display: flex;
-  align-item: flex-start;
+  align-items: flex-start;
   flex-wrap: wrap;
 }
 .space-align-block {
