@@ -1,6 +1,7 @@
 <docs>
 ---
 order: 7
+iframe: 360
 title:
   zh-CN: 固定侧边栏
   en-US: Fixed Sider
@@ -16,7 +17,7 @@ When dealing with long content, a fixed sider can provide a better user experien
 
 </docs>
 <template>
-  <a-layout id="components-layout-demo-fixed-sider">
+  <a-layout>
     <a-layout-sider :style="{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0 }">
       <div class="logo" />
       <a-menu theme="dark" mode="inline" v-model:selectedKeys="selectedKeys">
@@ -197,5 +198,12 @@ export default defineComponent({
   height: 32px;
   background: rgba(255, 255, 255, 0.2);
   margin: 16px;
+}
+.site-layout .site-layout-background {
+  background: #fff;
+}
+
+[data-theme='dark'] .site-layout .site-layout-background {
+  background: #141414;
 }
 </style>

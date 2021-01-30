@@ -18,7 +18,7 @@ Layout.Sider supports responsive layout.
 
 </docs>
 <template>
-  <a-layout id="components-layout-demo-responsive">
+  <a-layout>
     <a-layout-sider
       breakpoint="lg"
       collapsed-width="0"
@@ -50,7 +50,7 @@ Layout.Sider supports responsive layout.
       <a-layout-content :style="{ margin: '24px 16px 0' }">
         <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">content</div>
       </a-layout-content>
-      <a-layout-footer style="textalign: center">
+      <a-layout-footer style="text-align: center">
         Ant Design ©2018 Created by Ant UED
       </a-layout-footer>
     </a-layout>
@@ -88,5 +88,17 @@ export default defineComponent({
   height: 32px;
   background: rgba(255, 255, 255, 0.2);
   margin: 16px;
+}
+
+.site-layout-sub-header-background {
+  background: #fff;
+}
+
+.site-layout-background {
+  background: #fff;
+}
+
+[data-theme='dark'] .site-layout-sub-header-background {
+  background: #141414;
 }
 </style>

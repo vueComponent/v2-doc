@@ -20,7 +20,7 @@ Top-bottom structure is conform with the top-bottom viewing habit, it's a classi
 
 </docs>
 <template>
-  <a-layout id="components-layout-demo-top" class="layout">
+  <a-layout class="layout">
     <a-layout-header>
       <div class="logo" />
       <a-menu
@@ -58,11 +58,24 @@ export default defineComponent({
 });
 </script>
 <style>
+.site-layout-content {
+  min-height: 280px;
+  padding: 24px;
+  background: #fff;
+}
 #components-layout-demo-top .logo {
+  float: left;
   width: 120px;
   height: 31px;
-  background: rgba(255, 255, 255, 0.2);
   margin: 16px 24px 16px 0;
-  float: left;
+  background: rgba(255, 255, 255, 0.3);
+}
+.ant-row-rtl #components-layout-demo-top .logo {
+  float: right;
+  margin: 16px 0 16px 24px;
+}
+
+[data-theme='dark'] .site-layout-content {
+  background: #141414;
 }
 </style>

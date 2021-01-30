@@ -1,6 +1,7 @@
 <docs>
 ---
 order: 8
+iframe: 360
 title:
   zh-CN: 固定头部
   en-US: Fixed Header
@@ -16,7 +17,7 @@ Fixed Header is generally used to fix the top navigation to facilitate page swit
 
 </docs>
 <template>
-  <a-layout id="components-layout-demo-fixed">
+  <a-layout>
     <a-layout-header :style="{ position: 'fixed', zIndex: 1, width: '100%' }">
       <div class="logo" />
       <a-menu
@@ -60,5 +61,12 @@ export default defineComponent({
   background: rgba(255, 255, 255, 0.2);
   margin: 16px 24px 16px 0;
   float: left;
+}
+.site-layout .site-layout-background {
+  background: #fff;
+}
+
+[data-theme='dark'] .site-layout .site-layout-background {
+  background: #141414;
 }
 </style>

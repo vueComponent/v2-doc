@@ -1,4 +1,5 @@
 import Layout from '../layouts/index.vue';
+import Iframe from '../layouts/Iframe.vue';
 // import Iframe from '../components/iframe.jsx';
 import demoRoutes from './demoRoutes';
 // import otherRoutes from './otherRoutes';
@@ -16,17 +17,28 @@ const routes = [
       ...demoRoutes,
     ],
   },
-  // {
-  //   path: '/iframe',
-  //   component: Iframe,
-  //   children: demoRoutes.map(item => ({
-  //     ...item,
-  //     props: route => {
-  //       const hash = route.hash.replace('#', '');
-  //       return { iframeName: hash };
-  //     },
-  //   })),
-  // },
+  {
+    path: '/iframe',
+    component: Iframe,
+    children: [
+      {
+        path: 'layout:lang(.*)',
+        meta: {
+          category: 'Components',
+          subtitle: '布局',
+          type: '布局',
+          cols: 1,
+          title: 'Layout',
+          cover: 'https://gw.alipayobjects.com/zos/alicdn/hzEndUVEx/Layout.svg',
+        },
+        props: route => {
+          const hash = route.hash.replace('#', '');
+          return { iframeName: hash };
+        },
+        component: () => import('../docs/layout/demo/index.vue'),
+      },
+    ],
+  },
   {
     path: '/docs',
     component: Layout,

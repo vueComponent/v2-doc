@@ -16,7 +16,7 @@ Both the top navigation and the sidebar, commonly used in documentation site.
 
 </docs>
 <template>
-  <a-layout id="components-layout-demo-top-side">
+  <a-layout>
     <a-layout-header class="header">
       <div class="logo" />
       <a-menu
@@ -114,10 +114,19 @@ export default defineComponent({
 
 <style>
 #components-layout-demo-top-side .logo {
+  float: left;
   width: 120px;
   height: 31px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px 28px 16px 0;
-  float: left;
+  margin: 16px 24px 16px 0;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.ant-row-rtl #components-layout-demo-top-side .logo {
+  float: right;
+  margin: 16px 0 16px 24px;
+}
+
+.site-layout-background {
+  background: #fff;
 }
 </style>

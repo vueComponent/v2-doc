@@ -16,7 +16,7 @@ If you want to use a customized trigger, you can hide the default one by setting
 
 </docs>
 <template>
-  <a-layout id="components-layout-demo-custom-trigger">
+  <a-layout>
     <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
       <div class="logo" />
       <a-menu theme="dark" mode="inline" v-model:selectedKeys="selectedKeys">
@@ -91,7 +91,11 @@ export default defineComponent({
 
 #components-layout-demo-custom-trigger .logo {
   height: 32px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3);
   margin: 16px;
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
 }
 </style>

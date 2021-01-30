@@ -1,7 +1,17 @@
 <template>
-  <section class="code-box" :id="sectionId">
+  <template v-if="inIframe">
+    <div :id="sectionId"><slot /></div>
+  </template>
+  <section v-else class="code-box" :id="sectionId">
     <section class="code-box-demo">
-      <slot />
+      <template v-if="iframeDemo[iframeDemoKey]">
+        <div class="browser-mockup with-url">
+          <iframe :src="iframeDemo[iframeDemoKey]" :height="iframeHeight" />
+        </div>
+      </template>
+      <template v-else>
+        <slot />
+      </template>
     </section>
     <section class="code-box-meta markdown">
       <div class="code-box-title">
@@ -76,7 +86,6 @@ import { CheckOutlined, SnippetsOutlined } from '@ant-design/icons-vue';
 export default defineComponent({
   props: {
     jsfiddle: Object,
-    isIframe: Boolean,
   },
   setup(props) {
     const codeExpand = ref(false);
@@ -91,11 +100,17 @@ export default defineComponent({
         .join('-')
         .replace('.vue', '')}`;
     });
-    const addDemosInfo: any = inject('addDemosInfo');
+    const inIframe = inject('inIframe', false);
+    const iframeHeight = computed(() => props.jsfiddle?.iframe);
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    const addDemosInfo: any = inject('addDemosInfo', () => {});
 
     const globalConfig = inject<GlobalConfig>(GLOBAL_CONFIG) as any;
     const title = computed(
       () => props.jsfiddle?.title[globalConfig.isZhCN.value ? 'zh-CN' : 'en-US'],
+    );
+    const iframeDemoKey = computed(() =>
+      props.jsfiddle?.title['en-US'].split(' ').join('-').toLowerCase(),
     );
     const onCopyTooltipVisibleChange = (visible: boolean) => {
       if (visible) {
@@ -120,6 +135,7 @@ export default defineComponent({
         'highlight-wrapper-expand': codeExpand.value,
       };
     });
+    const iframeDemo = inject('iframeDemo', {});
     onMounted(() => {
       addDemosInfo({
         href: `#${sectionId.value}`,
@@ -127,6 +143,10 @@ export default defineComponent({
       });
     });
     return {
+      iframeDemo,
+      iframeDemoKey,
+      iframeHeight,
+      inIframe,
       theme: 'light',
       type,
       isZhCN: globalConfig.isZhCN,
