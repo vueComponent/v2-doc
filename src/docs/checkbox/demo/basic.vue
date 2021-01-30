@@ -20,10 +20,11 @@ Basic usage of checkbox
   <a-checkbox v-model:checked="checked" @change="onChange">Checkbox</a-checkbox>
 </template>
 <script>
-export default {
-  data() {
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+  setup() {
     return {
-      checked: false,
+      checked: ref(false),
     };
   },
   methods: {
@@ -31,5 +32,5 @@ export default {
       console.log(`checked = ${e.target.checked}`);
     },
   },
-};
+});
 </script>

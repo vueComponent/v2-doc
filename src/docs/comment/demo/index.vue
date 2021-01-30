@@ -1,8 +1,10 @@
 <template>
-  <basic />
-  <list />
-  <nested />
-  <editor />
+  <demo-sort>
+    <basic />
+    <list />
+    <nested />
+    <editor />
+  </demo-sort>
 </template>
 <script lang="ts">
 import Basic from './basic.vue';

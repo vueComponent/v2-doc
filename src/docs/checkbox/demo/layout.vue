@@ -38,11 +38,12 @@ We can use Checkbox and Grid Checkbox.group, to implement complex layout
   </a-checkbox-group>
 </template>
 <script>
-export default {
-  data() {
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+  setup() {
     return {
-      value: [],
+      value: ref([]),
     };
   },
-};
+});
 </script>

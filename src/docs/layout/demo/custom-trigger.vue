@@ -1,14 +1,20 @@
-<cn>
-#### 自定义触发器
+<docs>
+---
+order: 5
+title:
+  zh-CN: 自定义触发器
+  en-US: Custom trigger
+---
+
+## zh-CN
+
 要使用自定义触发器，可以设置 `:trigger="null"` 来隐藏默认设定。
-</cn>
 
-<us>
-#### Custom trigger
+## en-US
+
 If you want to use a customized trigger, you can hide the default one by setting `:trigger="null"`.
-</us>
 
-```vue
+</docs>
 <template>
   <a-layout id="components-layout-demo-custom-trigger">
     <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
@@ -45,7 +51,7 @@ If you want to use a customized trigger, you can hide the default one by setting
     </a-layout>
   </a-layout>
 </template>
-<script>
+<script lang="ts">
 import {
   UserOutlined,
   VideoCameraOutlined,
@@ -53,8 +59,8 @@ import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
 } from '@ant-design/icons-vue';
-
-export default {
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
   components: {
     UserOutlined,
     VideoCameraOutlined,
@@ -62,13 +68,13 @@ export default {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
   },
-  data() {
+  setup() {
     return {
-      selectedKeys: ['1'],
-      collapsed: false,
+      selectedKeys: ref<string[]>(['1']),
+      collapsed: ref<boolean>(false),
     };
   },
-};
+});
 </script>
 <style>
 #components-layout-demo-custom-trigger .trigger {
@@ -89,4 +95,3 @@ export default {
   margin: 16px;
 }
 </style>
-```

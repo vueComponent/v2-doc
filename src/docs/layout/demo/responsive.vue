@@ -1,16 +1,22 @@
-<cn>
-#### 响应式布局
+<docs>
+---
+order: 6
+title:
+  zh-CN: 响应式布局
+  en-US: Responsive
+---
+
+## zh-CN
+
 Layout.Sider 支持响应式布局。
 > 说明：配置 `breakpoint` 属性即生效，视窗宽度小于 `breakpoint` 时 Sider 缩小为 `collapsedWidth` 宽度，若将 `collapsedWidth` 设置为零，会出现特殊 trigger。
-</cn>
 
-<us>
-#### Responsive
+## en-US
+
 Layout.Sider supports responsive layout.
 > Note: You can get a responsive layout by setting `breakpoint`, the Sider will collapse to the width of `collapsedWidth` when window width is below the `breakpoint`. And a special trigger will appear if the `collapsedWidth` is set to `0`.
-</us>
 
-```vue
+</docs>
 <template>
   <a-layout id="components-layout-demo-responsive">
     <a-layout-sider
@@ -42,39 +48,39 @@ Layout.Sider supports responsive layout.
     <a-layout>
       <a-layout-header :style="{ background: '#fff', padding: 0 }" />
       <a-layout-content :style="{ margin: '24px 16px 0' }">
-        <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
-          content
-        </div>
+        <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">content</div>
       </a-layout-content>
-      <a-layout-footer style="textAlign: center">
+      <a-layout-footer style="textalign: center">
         Ant Design ©2018 Created by Ant UED
       </a-layout-footer>
     </a-layout>
   </a-layout>
 </template>
-<script>
+<script lang="ts">
 import { UserOutlined, VideoCameraOutlined, UploadOutlined } from '@ant-design/icons-vue';
-
-export default {
-  data() {
-    return {
-      selectedKeys: ['4'],
-    };
-  },
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
   components: {
     UserOutlined,
     VideoCameraOutlined,
     UploadOutlined,
   },
-  methods: {
-    onCollapse(collapsed, type) {
+  setup() {
+    const onCollapse = (collapsed: boolean, type: string) => {
       console.log(collapsed, type);
-    },
-    onBreakpoint(broken) {
+    };
+
+    const onBreakpoint = (broken: boolean) => {
       console.log(broken);
-    },
+    };
+
+    return {
+      selectedKeys: ref<string[]>(['4']),
+      onCollapse,
+      onBreakpoint,
+    };
   },
-};
+});
 </script>
 
 <style>
@@ -84,4 +90,3 @@ export default {
   margin: 16px;
 }
 </style>
-```
