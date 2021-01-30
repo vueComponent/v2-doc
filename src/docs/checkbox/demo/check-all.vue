@@ -30,27 +30,33 @@ The `indeterminate` property can help you to achieve a 'check all' effect.
   <a-checkbox-group v-model:value="checkedList" :options="plainOptions" @change="onChange" />
 </template>
 <script>
+import { defineComponent, reactive, toRefs } from 'vue';
 const plainOptions = ['Apple', 'Pear', 'Orange'];
-export default {
-  data() {
-    return {
-      checkedList: ['Apple', 'Orange'],
-      indeterminate: true,
+export default defineComponent({
+  setup() {
+    const state = reactive({
+      indeterminate: false,
       checkAll: false,
-      plainOptions,
+      checkedList: ['Apple', 'Orange'],
+    });
+    const onChange = checkedList => {
+      state.indeterminate = !!checkedList.length && checkedList.length < plainOptions.length;
+      state.checkAll = checkedList.length === plainOptions.length;
     };
-  },
-  methods: {
-    onChange(checkedList) {
-      this.indeterminate = !!checkedList.length && checkedList.length < plainOptions.length;
-      this.checkAll = checkedList.length === plainOptions.length;
-    },
-    onCheckAllChange(e) {
-      Object.assign(this, {
+
+    const onCheckAllChange = e => {
+      Object.assign(state, {
         checkedList: e.target.checked ? plainOptions : [],
         indeterminate: false,
       });
-    },
+    };
+
+    return {
+      ...toRefs(state),
+      onChange,
+      plainOptions,
+      onCheckAllChange,
+    };
   },
-};
+});
 </script>

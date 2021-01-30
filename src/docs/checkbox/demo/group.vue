@@ -30,6 +30,8 @@ Generate a group of checkboxes from an array
   </a-checkbox-group>
 </template>
 <script>
+import { defineComponent, reactive, toRefs } from 'vue';
+
 const plainOptions = ['Apple', 'Pear', 'Orange'];
 const options = [
   { label: 'Apple', value: 'Apple' },
@@ -41,17 +43,21 @@ const optionsWithDisabled = [
   { label: 'Pear', value: 'Pear' },
   { label: 'Orange', value: 'Orange', disabled: false },
 ];
-export default {
+export default defineComponent({
   data() {
-    return {
-      plainOptions,
-      options,
-      optionsWithDisabled,
+    const state = reactive({
       value1: [],
       value2: ['Apple'],
       value3: ['Pear'],
       value4: ['Apple'],
+    });
+
+    return {
+      plainOptions,
+      options,
+      optionsWithDisabled,
+      ...toRefs(state),
     };
   },
-};
+});
 </script>

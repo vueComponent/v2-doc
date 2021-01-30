@@ -32,11 +32,25 @@ Communicated with other components
   </p>
 </template>
 <script>
-export default {
-  data() {
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+  setup() {
+    const checked = ref(false);
+    const disabled = ref(false);
+
+    const toggleChecked = () => {
+      checked.value = !checked.value;
+    };
+
+    const toggleDisable = () => {
+      disabled.value = !disabled.value;
+    };
+
     return {
-      checked: true,
-      disabled: false,
+      checked,
+      disabled,
+      toggleChecked,
+      toggleDisable,
     };
   },
   computed: {
@@ -45,13 +59,5 @@ export default {
       return `${checked ? 'Checked' : 'Unchecked'}-${disabled ? 'Disabled' : 'Enabled'}`;
     },
   },
-  methods: {
-    toggleChecked() {
-      this.checked = !this.checked;
-    },
-    toggleDisable() {
-      this.disabled = !this.disabled;
-    },
-  },
-};
+});
 </script>
