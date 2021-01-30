@@ -4,14 +4,14 @@
     <a-row>
       <template v-if="isMobile">
         <a-drawer key="Mobile-menu" wrapperClassName="drawer-wrapper">
-          <Menu :menus="menus" :activeMenuItem="activeMenuItem" :isZhCN="isZhCN" />
+          <Menu :menus="dataSource" :activeMenuItem="activeMenuItem" :isZhCN="isZhCN" />
         </a-drawer>
       </template>
       <template v-else>
         <a-col :xxl="4" :xl="5" :lg="6" :md="6" :sm="24" :xs="24" class="main-menu">
           <a-affix>
             <section class="main-menu-inner">
-              <Menu :menus="menus" :activeMenuItem="activeMenuItem" :isZhCN="isZhCN" />
+              <Menu :menus="dataSource" :activeMenuItem="activeMenuItem" :isZhCN="isZhCN" />
             </section>
           </a-affix>
         </a-col>
@@ -43,26 +43,19 @@
 import { GlobalConfig } from '@/App.vue';
 import { GLOBAL_CONFIG } from '@/SymbolKey';
 import { defineComponent, inject, computed, ref, provide, watch } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 import Header from './header/index.vue';
 import Footer from './Footer.vue';
 import Menu from './Menu.vue';
 import PrevAndNext from './PrevAndNext.vue';
 import Demo from './Demo.vue';
+import useMenus from '@/hooks/useMenus';
 export default defineComponent({
   name: 'Layout',
   setup() {
     const route = useRoute();
-    const router = useRouter();
-    const routes = router.getRoutes();
     const globalConfig = inject<GlobalConfig>(GLOBAL_CONFIG);
-    const menus = computed(() => {
-      const path = route.path;
-      const category = path.split('/')[1];
-      return routes
-        .filter(r => r.meta && r.meta.category && r.meta.category.toLowerCase() === category)
-        .map(r => ({ ...r.meta, path: r.path.split(':lang')[0] }));
-    });
+    const { menus, activeMenuItem, currentMenuIndex, dataSource } = useMenus();
 
     const demos = ref<any[]>([]);
 
@@ -78,13 +71,6 @@ export default defineComponent({
         demos.value.length = 0;
       },
     );
-
-    const activeMenuItem = computed(() => {
-      return route.path.split('-cn')[0];
-    });
-    const currentMenuIndex = computed(() => {
-      return menus.value.findIndex(m => m.path === activeMenuItem.value);
-    });
 
     const isDemo = computed(() => {
       return (
@@ -125,6 +111,7 @@ export default defineComponent({
       isDemo,
       matchCom,
       pageData,
+      dataSource,
     };
   },
   components: {

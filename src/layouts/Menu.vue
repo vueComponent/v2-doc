@@ -7,10 +7,10 @@
   >
     <a-menu-item v-if="showOverview" key="/components/overview">
       <router-link :to="getLocalizedPathname('/components/overview', isZhCN)">
-        {{ isZhCN ? '组件总览' : 'Components Overview' }} ({{ menus.length }})
+        {{ isZhCN ? '组件总览' : 'Components Overview' }}
       </router-link>
     </a-menu-item>
-    <template v-for="m in dataSource">
+    <template v-for="m in menus">
       <template v-if="m.children">
         <a-menu-item-group :key="m.order" :title="isZhCN ? m.title : m.enTitle">
           <template v-for="n in m.children">
@@ -36,45 +36,17 @@
 <script lang="ts">
 import { getLocalizedPathname } from '@/utils/util';
 import { computed, defineComponent } from 'vue';
-import { groupBy, sortBy } from 'lodash-es';
 import { useRoute } from 'vue-router';
-const typeOrder: any = {
-  组件总览: { order: -1, en: 'Overview' },
-  通用: { order: 0, en: 'General' },
-  布局: { order: 1, en: 'Layout' },
-  导航: { order: 2, en: 'Navigation' },
-  数据录入: { order: 3, en: 'Data Entry' },
-  数据展示: { order: 4, en: 'Data Display' },
-  反馈: { order: 5, en: 'Feedback' },
-  其他: { order: 6, en: 'Other' },
-  废弃: { order: 7, en: 'Deprecated' },
-};
 export default defineComponent({
   name: 'Menu',
   props: ['menus', 'isZhCN', 'activeMenuItem'],
-  setup(props) {
+  setup() {
     const route = useRoute();
     const showOverview = computed(() => {
       return route.path.indexOf('/components') === 0;
     });
-    const dataSource = computed(() => {
-      const group = groupBy(props.menus, m => m.type || m.category);
-      const keys: string[] = Object.keys(group);
-      const newMenus = keys
-        .map(key => {
-          return {
-            title: key,
-            order: typeOrder[key] && typeOrder[key].order,
-            enTitle: typeOrder[key] && typeOrder[key].en,
-            children: sortBy(group[key], 'title'),
-          };
-        })
-        .sort((a, b) => a.order - b.order);
-      return keys.length === 1 ? props.menus : newMenus;
-    });
     return {
       getLocalizedPathname,
-      dataSource,
       showOverview,
     };
   },
