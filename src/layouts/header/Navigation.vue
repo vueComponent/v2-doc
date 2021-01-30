@@ -67,7 +67,6 @@ export default defineComponent({
       () => route.path,
       pathname => {
         const modules = pathname.split('/');
-        console.log(modules);
         if (pathname === 'changelog' || pathname === 'changelog-cn') {
           activeMenuItem.value = 'docs/vue';
         } else if (pathname === '/docs/resources' || pathname === '/docs/resources-cn') {

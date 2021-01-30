@@ -21,7 +21,7 @@ Disabled checkbox
   <br />
   <a-checkbox v-model:checked="checked2" disabled />
 </template>
-<script>
+<script lang="ts">
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {

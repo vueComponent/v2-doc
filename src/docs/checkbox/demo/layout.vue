@@ -37,7 +37,7 @@ We can use Checkbox and Grid Checkbox.group, to implement complex layout
     </a-row>
   </a-checkbox-group>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {

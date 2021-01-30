@@ -29,7 +29,7 @@ Generate a group of checkboxes from an array
     </template>
   </a-checkbox-group>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue';
 
 const plainOptions = ['Apple', 'Pear', 'Orange'];

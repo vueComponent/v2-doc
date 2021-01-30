@@ -17,20 +17,15 @@ Basic usage of checkbox
 </docs>
 
 <template>
-  <a-checkbox v-model:checked="checked" @change="onChange">Checkbox</a-checkbox>
+  <a-checkbox v-model:checked="checked">Checkbox</a-checkbox>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
     return {
       checked: ref(false),
     };
-  },
-  methods: {
-    onChange(e) {
-      console.log(`checked = ${e.target.checked}`);
-    },
   },
 });
 </script>

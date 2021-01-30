@@ -31,8 +31,8 @@ Communicated with other components
     </a-button>
   </p>
 </template>
-<script>
-import { defineComponent, ref } from 'vue';
+<script lang="ts">
+import { computed, defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
     const checked = ref(false);
@@ -46,18 +46,19 @@ export default defineComponent({
       disabled.value = !disabled.value;
     };
 
+    const label = computed(() => {
+      return `${checked.value ? 'Checked' : 'Unchecked'}-${
+        disabled.value ? 'Disabled' : 'Enabled'
+      }`;
+    });
+
     return {
+      label,
       checked,
       disabled,
       toggleChecked,
       toggleDisable,
     };
-  },
-  computed: {
-    label() {
-      const { checked, disabled } = this;
-      return `${checked ? 'Checked' : 'Unchecked'}-${disabled ? 'Disabled' : 'Enabled'}`;
-    },
   },
 });
 </script>
