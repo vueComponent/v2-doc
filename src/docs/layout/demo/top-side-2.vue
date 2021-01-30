@@ -1,14 +1,20 @@
-<cn>
-#### 顶部-侧边布局-通栏
+<docs>
+---
+order: 2
+title:
+  zh-CN: 顶部-侧边布局-通栏
+  en-US: Header Sider 2
+---
+
+## zh-CN
+
 同样拥有顶部导航及侧边栏，区别是两边未留边距，多用于应用型的网站。
-</cn>
 
-<us>
-#### Header Sider 2
+## en-US
+
 Both the top navigation and the sidebar, commonly used in application site.
-</us>
 
-```vue
+</docs>
 <template>
   <a-layout id="components-layout-demo-top-side-2">
     <a-layout-header class="header">
@@ -19,15 +25,9 @@ Both the top navigation and the sidebar, commonly used in application site.
         v-model:selectedKeys="selectedKeys1"
         :style="{ lineHeight: '64px' }"
       >
-        <a-menu-item key="1">
-          nav 1
-        </a-menu-item>
-        <a-menu-item key="2">
-          nav 2
-        </a-menu-item>
-        <a-menu-item key="3">
-          nav 3
-        </a-menu-item>
+        <a-menu-item key="1">nav 1</a-menu-item>
+        <a-menu-item key="2">nav 2</a-menu-item>
+        <a-menu-item key="3">nav 3</a-menu-item>
       </a-menu>
     </a-layout-header>
     <a-layout>
@@ -40,7 +40,10 @@ Both the top navigation and the sidebar, commonly used in application site.
         >
           <a-sub-menu key="sub1">
             <template #title>
-              <span><user-outlined />subnav 1</span>
+              <span>
+                <user-outlined />
+                subnav 1
+              </span>
             </template>
             <a-menu-item key="1">option1</a-menu-item>
             <a-menu-item key="2">option2</a-menu-item>
@@ -49,7 +52,10 @@ Both the top navigation and the sidebar, commonly used in application site.
           </a-sub-menu>
           <a-sub-menu key="sub2">
             <template #title>
-              <span><laptop-outlined />subnav 2</span>
+              <span>
+                <laptop-outlined />
+                subnav 2
+              </span>
             </template>
             <a-menu-item key="5">option5</a-menu-item>
             <a-menu-item key="6">option6</a-menu-item>
@@ -58,7 +64,10 @@ Both the top navigation and the sidebar, commonly used in application site.
           </a-sub-menu>
           <a-sub-menu key="sub3">
             <template #title>
-              <span><notification-outlined />subnav 3</span>
+              <span>
+                <notification-outlined />
+                subnav 3
+              </span>
             </template>
             <a-menu-item key="9">option9</a-menu-item>
             <a-menu-item key="10">option10</a-menu-item>
@@ -82,24 +91,24 @@ Both the top navigation and the sidebar, commonly used in application site.
     </a-layout>
   </a-layout>
 </template>
-<script>
+<script lang="ts">
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons-vue';
-
-export default {
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
   components: {
     UserOutlined,
     LaptopOutlined,
     NotificationOutlined,
   },
-  data() {
+  setup() {
     return {
-      selectedKeys1: ['2'],
-      selectedKeys2: ['1'],
-      collapsed: false,
-      openKeys: ['sub1'],
+      selectedKeys1: ref<string[]>(['2']),
+      selectedKeys2: ref<string[]>(['1']),
+      collapsed: ref<boolean>(false),
+      openKeys: ref<string[]>(['sub1']),
     };
   },
-};
+});
 </script>
 
 <style>
@@ -111,4 +120,3 @@ export default {
   float: left;
 }
 </style>
-```

@@ -1,14 +1,20 @@
-<cn>
-#### 顶部-侧边布局
+<docs>
+---
+order: 3
+title:
+  zh-CN: 顶部-侧边布局
+  en-US: Header-Sider
+---
+
+## zh-CN
+
 拥有顶部导航及侧边栏的页面，多用于展示类网站。
-</cn>
 
-<us>
-#### Header-Sider
+## en-US
+
 Both the top navigation and the sidebar, commonly used in documentation site.
-</us>
 
-```vue
+</docs>
 <template>
   <a-layout id="components-layout-demo-top-side">
     <a-layout-header class="header">
@@ -19,15 +25,9 @@ Both the top navigation and the sidebar, commonly used in documentation site.
         v-model:selectedKeys="selectedKeys1"
         :style="{ lineHeight: '64px' }"
       >
-        <a-menu-item key="1">
-          nav 1
-        </a-menu-item>
-        <a-menu-item key="2">
-          nav 2
-        </a-menu-item>
-        <a-menu-item key="3">
-          nav 3
-        </a-menu-item>
+        <a-menu-item key="1">nav 1</a-menu-item>
+        <a-menu-item key="2">nav 2</a-menu-item>
+        <a-menu-item key="3">nav 3</a-menu-item>
       </a-menu>
     </a-layout-header>
     <a-layout-content style="padding: 0 50px">
@@ -46,7 +46,10 @@ Both the top navigation and the sidebar, commonly used in documentation site.
           >
             <a-sub-menu key="sub1">
               <template #title>
-                <span><user-outlined />subnav 1</span>
+                <span>
+                  <user-outlined />
+                  subnav 1
+                </span>
               </template>
               <a-menu-item key="1">option1</a-menu-item>
               <a-menu-item key="2">option2</a-menu-item>
@@ -55,7 +58,10 @@ Both the top navigation and the sidebar, commonly used in documentation site.
             </a-sub-menu>
             <a-sub-menu key="sub2">
               <template #title>
-                <span><laptop-outlined />subnav 2</span>
+                <span>
+                  <laptop-outlined />
+                  subnav 2
+                </span>
               </template>
               <a-menu-item key="5">option5</a-menu-item>
               <a-menu-item key="6">option6</a-menu-item>
@@ -64,7 +70,10 @@ Both the top navigation and the sidebar, commonly used in documentation site.
             </a-sub-menu>
             <a-sub-menu key="sub3">
               <template #title>
-                <span><notification-outlined />subnav 3</span>
+                <span>
+                  <notification-outlined />
+                  subnav 3
+                </span>
               </template>
               <a-menu-item key="9">option9</a-menu-item>
               <a-menu-item key="10">option10</a-menu-item>
@@ -84,23 +93,23 @@ Both the top navigation and the sidebar, commonly used in documentation site.
   </a-layout>
 </template>
 
-<script>
+<script lang="ts">
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons-vue';
-
-export default {
-  data() {
-    return {
-      selectedKeys1: ['2'],
-      selectedKeys2: ['1'],
-      openKeys: ['sub1'],
-    };
-  },
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
   components: {
     UserOutlined,
     LaptopOutlined,
     NotificationOutlined,
   },
-};
+  setup() {
+    return {
+      selectedKeys1: ref<string[]>(['2']),
+      selectedKeys2: ref<string[]>(['1']),
+      openKeys: ref<string[]>(['sub1']),
+    };
+  },
+});
 </script>
 
 <style>
@@ -112,4 +121,3 @@ export default {
   float: left;
 }
 </style>
-```

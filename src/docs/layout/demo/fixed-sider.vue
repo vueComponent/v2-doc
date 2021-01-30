@@ -1,14 +1,20 @@
-<cn>
-#### 固定侧边栏
+<docs>
+---
+order: 7
+title:
+  zh-CN: 固定侧边栏
+  en-US: Fixed Sider
+---
+
+## zh-CN
+
 当内容较长时，使用固定侧边栏可以提供更好的体验。
-</cn>
 
-<us>
-#### Fixed Sider
+## en-US
+
 When dealing with long content, a fixed sider can provide a better user experience.
-</us>
 
-```vue
+</docs>
 <template>
   <a-layout id="components-layout-demo-fixed-sider">
     <a-layout-sider :style="{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0 }">
@@ -55,15 +61,97 @@ When dealing with long content, a fixed sider can provide a better user experien
           ...
           <br />
           Really
-          <br />...<br />...<br />...<br />
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
           long
-          <br />...<br />...<br />...<br />...<br />...<br />...
-          <br />...<br />...<br />...<br />...<br />...<br />...
-          <br />...<br />...<br />...<br />...<br />...<br />...
-          <br />...<br />...<br />...<br />...<br />...<br />...
-          <br />...<br />...<br />...<br />...<br />...<br />...
-          <br />...<br />...<br />...<br />...<br />...<br />...
-          <br />...<br />...<br />...<br />...<br />...<br />
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
+          ...
+          <br />
           content
         </div>
       </a-layout-content>
@@ -73,7 +161,7 @@ When dealing with long content, a fixed sider can provide a better user experien
     </a-layout>
   </a-layout>
 </template>
-<script>
+<script lang="ts">
 import {
   UserOutlined,
   VideoCameraOutlined,
@@ -84,11 +172,11 @@ import {
   TeamOutlined,
   ShopOutlined,
 } from '@ant-design/icons-vue';
-
-export default {
-  data() {
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+  setup() {
     return {
-      selectedKeys: ['4'],
+      selectedKeys: ref<string[]>(['4']),
     };
   },
   components: {
@@ -101,7 +189,7 @@ export default {
     TeamOutlined,
     ShopOutlined,
   },
-};
+});
 </script>
 
 <style>
@@ -111,4 +199,3 @@ export default {
   margin: 16px;
 }
 </style>
-```

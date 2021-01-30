@@ -1,14 +1,20 @@
-<cn>
-#### 基本结构
+<docs>
+---
+order: 0
+title:
+  zh-CN: 基本结构
+  en-US: Basic Structure
+---
+
+## zh-CN
+
 典型的页面布局。
-</cn>
 
-<us>
-#### Basic Structure
+## en-US
+
 Classic page layouts.
-</us>
 
-```vue
+</docs>
 <template>
   <div id="components-layout-demo-basic">
     <a-layout>
@@ -76,4 +82,3 @@ Classic page layouts.
   margin: 0;
 }
 </style>
-```
