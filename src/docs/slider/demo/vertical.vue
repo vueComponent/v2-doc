@@ -17,13 +17,13 @@ The vertical Slider.
 
 <template>
   <div style="height: 300px">
-    <div style="display: inline-block;height: 300px;marginLeft: 70px">
+    <div style="display: inline-block; height: 300px; marginleft: 70px">
       <a-slider vertical v-model:value="value1" />
     </div>
-    <div style="display: inline-block;height: 300px;marginLeft: 70px">
+    <div style="display: inline-block; height: 300px; marginleft: 70px">
       <a-slider vertical range :step="10" v-model:value="value2" />
     </div>
-    <div style="display: inline-block;height: 300px;marginLeft: 70px">
+    <div style="display: inline-block; height: 300px; marginleft: 70px">
       <a-slider vertical range :marks="marks" v-model:value="value3" />
     </div>
   </div>
@@ -33,9 +33,9 @@ import { defineComponent, ref, createVNode } from 'vue';
 export default defineComponent({
   setup() {
     const value1 = ref<number>(30);
-    const value2 = ref<[]<number>>([20, 50]);
-    const value3 = ref<[]<number>>([26, 37]);
-    const marks = ref<any>({
+    const value2 = ref<number[]>([20, 50]);
+    const value3 = ref<number[]>([26, 37]);
+    const marks = ref<Record<number, any>>({
       0: '0°C',
       26: '26°C',
       37: '37°C',

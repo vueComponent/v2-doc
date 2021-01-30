@@ -27,13 +27,13 @@ import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
     const disabled = ref<boolean>(false);
-    const formatter = (value) => {
+    const formatter = (value: number) => {
       return `${value}%`;
-    }
+    };
 
     return {
       disabled,
-      formatter
+      formatter,
     };
   },
 });

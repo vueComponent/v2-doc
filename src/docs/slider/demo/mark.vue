@@ -37,11 +37,11 @@ import { defineComponent, createVNode, ref } from 'vue';
 export default defineComponent({
   setup() {
     const value1 = ref<number>(37);
-    const value2 = ref<[]<number>>([26, 37]);
+    const value2 = ref<number[]>([26, 37]);
     const value3 = ref<number>(37);
     const value4 = ref<number>(37);
     const value5 = ref<number>(37);
-    const marks = ref<any>({
+    const marks = ref<Record<number, any>>({
       0: '0°C',
       26: '26°C',
       37: '37°C',
@@ -53,14 +53,6 @@ export default defineComponent({
       },
     });
 
-    const onChange = (value) => {
-      console.log('change: ', value);
-    }
-
-    const onAfterChange = (value) => {
-      console.log('afterChange: ', value);
-    }
-
     return {
       value1,
       value2,
@@ -68,8 +60,6 @@ export default defineComponent({
       value4,
       value5,
       marks,
-      onChange,
-      onAfterChange
     };
   },
 });

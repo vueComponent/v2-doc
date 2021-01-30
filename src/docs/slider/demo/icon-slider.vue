@@ -18,7 +18,6 @@ You can add an icon beside the slider to make it meaningful.
 <template>
   <div class="icon-wrapper">
     <frown-outlined :style="{ color: preColor }" />
-    <a-slider :min="0" :max="20" @change="handleChange" :value="sliderValue" />
     <a-slider :min="0" :max="20" v-model:value="sliderValue" />
     <smile-outlined :style="{ color: nextColor }" />
   </div>
@@ -37,18 +36,14 @@ export default defineComponent({
     const max = ref<number>(20);
 
     const preColor = computed(() => {
-      const mid = ((max.value - min.value) / 2).toFixed(5);
+      const mid = +((max.value - min.value) / 2).toFixed(5);
       return sliderValue.value >= mid ? '' : 'rgba(0, 0, 0, .45)';
     });
 
     const nextColor = computed(() => {
-      const mid = ((max.value - min.value) / 2).toFixed(5);
+      const mid = +((max.value - min.value) / 2).toFixed(5);
       return sliderValue.value >= mid ? 'rgba(0, 0, 0, .45)' : '';
     });
-
-    const handleChange = (value) => {
-      sliderValue.value = value;
-    }
 
     return {
       sliderValue,
@@ -56,7 +51,6 @@ export default defineComponent({
       max,
       preColor,
       nextColor,
-      handleChange
     };
   },
 });
