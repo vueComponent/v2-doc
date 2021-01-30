@@ -1,54 +1,45 @@
-<script>
-import Basic from './basic.md';
-import InputNumber from './input-number.md';
-import IconSlider from './icon-slider.md';
-import TipFormatter from './tip-formatter.md';
-import Event from './event.md';
-import Mark from './mark.md';
-import Vertical from './vertical.md';
-import ShowTooltip from './show-tooltip.md';
-import Reverse from './reverse';
+<template>
+  <demo-sort>
+      <Basic />
+      <InputNumber />
+      <IconSlider />
+      <TipFormatter />
+      <Event />
+      <Mark />
+      <Vertical />
+      <ShowTooltip />
+      <Reverse />
+    </demo-sort>
+</template>
+<script lang="ts">
+import Basic from './basic.vue';
+import InputNumber from './input-number.vue';
+import IconSlider from './icon-slider.vue';
+import TipFormatter from './tip-formatter.vue';
+import Event from './event.vue';
+import Mark from './mark.vue';
+import Vertical from './vertical.vue';
+import ShowTooltip from './show-tooltip.vue';
+import Reverse from './reverse.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
 
-const md = {
-  cn: `# Slider 滑动输入条
-  滑动型输入器，展示当前值和可选范围。
-  ## 何时使用
-  当用户需要在数值区间/自定义区间内进行选择时，可为连续或离散值。
-            ## 代码演示`,
-  us: `# Slider
-  A Slider component for displaying current value and intervals in range.
-  # When To Use
-  To input a value in a range.
-  ## Examples
-  `,
-};
 export default {
-  category: 'Components',
-  subtitle: '滑动输入条',
-  type: 'Data Entry',
-  title: 'Slider',
-  render() {
-    return (
-      <div>
-        <Md cn={md.cn} us={md.us} />
-        <demo-sort>
-          <Basic />
-          <InputNumber />
-          <IconSlider />
-          <TipFormatter />
-          <Event />
-          <Mark />
-          <Vertical />
-          <ShowTooltip />
-          <Reverse />
-        </demo-sort>
-        <api vSlots={{ cn: () => <CN /> }}>
-          <US />
-        </api>
-      </div>
-    );
+  CN,
+  US,
+  components: {
+    Basic,
+    InputNumber,
+    IconSlider,
+    TipFormatter,
+    Event,
+    Mark,
+    Vertical,
+    ShowTooltip,
+    Reverse,
+  },
+  setup() {
+    return {};
   },
 };
 </script>

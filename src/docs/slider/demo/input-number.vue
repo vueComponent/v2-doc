@@ -1,14 +1,20 @@
-<cn>
-#### 带输入框的滑块
-和 [数字输入框](/components/input-number-cn/) 组件保持同步。
-</cn>
+<docs>
+---
+order: 1
+title:
+  zh-CN: 带输入框的滑块
+  en-US: Slider with InputNumber
+---
 
-<us>
-#### Slider with InputNumber
+## zh-CN
+
+和 [数字输入框](/components/input-number/) 组件保持同步。
+
+## en-US
+
 Synchronize with [InputNumber](/components/input-number/) component.
-</us>
+</docs>
 
-```vue
 <template>
   <div>
     <a-row>
@@ -35,19 +41,21 @@ Synchronize with [InputNumber](/components/input-number/) component.
     </a-row>
   </div>
 </template>
-<script>
-export default {
-  data() {
+<script lang='ts'>
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+  setup() {
+    const inputValue = ref<number>(0);
+    const inputValue1 = ref<number>(1);
     return {
-      inputValue: 0,
-      inputValue1: 1,
+      inputValue,
+      inputValue1,
     };
   },
-};
+});
 </script>
 <style scoped>
 .code-box-demo .ant-slider {
   margin-bottom: 16px;
 }
 </style>
-```

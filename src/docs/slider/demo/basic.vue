@@ -1,14 +1,20 @@
-<cn>
-#### 基本
+<docs>
+---
+order: 0
+title:
+  zh-CN: 基本
+  en-US: Basic
+---
+
+## zh-CN
+
 基本滑动条。当 `range` 为 `true` 时，渲染为双滑块。当 `disabled` 为 `true` 时，滑块处于不可用状态。
-</cn>
 
-<us>
-#### Basic
+## en-US
+
 Basic slider. When `range` is `true`, display as dual thumb mode. When `disable` is `true`, the slider will not be interactable.
-</us>
+</docs>
 
-```vue
 <template>
   <div>
     <a-slider id="test" v-model:value="value1" :disabled="disabled" />
@@ -16,20 +22,25 @@ Basic slider. When `range` is `true`, display as dual thumb mode. When `disable`
     Disabled: <a-switch size="small" v-model:checked="disabled" />
   </div>
 </template>
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const value1 = ref<number>(0);
+    const value2 = ref<[]<number>>([20,50]);
+    const disabled = ref<boolean>(false);
+
     return {
-      value1: 30,
-      value2: [20, 50],
-      disabled: false,
+      value1,
+      value2,
+      disabled,
     };
   },
-};
+});
 </script>
 <style scoped>
 .code-box-demo .ant-slider {
   margin-bottom: 16px;
 }
 </style>
-```

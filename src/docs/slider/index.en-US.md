@@ -1,3 +1,16 @@
+---
+category: Components
+type: Data Entry
+title: Slider
+cover: https://gw.alipayobjects.com/zos/alicdn/HZ3meFc6W/Silder.svg
+---
+
+A Slider component for displaying current value and intervals in range.
+
+## When To Use
+
+To input a value in a range.
+
 ## API
 
 | Property | Description | Type | Default | Version |
