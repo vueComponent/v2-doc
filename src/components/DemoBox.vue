@@ -84,7 +84,7 @@ export default defineComponent({
     const copyTooltipVisible = ref(false);
     const copied = ref(false);
     const sectionId = computed(() => {
-      const relativePath = props.jsfiddle.relativePath || '';
+      const relativePath = props.jsfiddle?.relativePath || '';
       return `components-${relativePath
         .split('/docs/')[1]
         .split('/')
@@ -93,11 +93,11 @@ export default defineComponent({
     });
     const addDemosInfo: any = inject('addDemosInfo');
 
-    const globalConfig = inject<GlobalConfig>(GLOBAL_CONFIG);
+    const globalConfig = inject<GlobalConfig>(GLOBAL_CONFIG) as any;
     const title = computed(
       () => props.jsfiddle?.title[globalConfig.isZhCN.value ? 'zh-CN' : 'en-US'],
     );
-    const onCopyTooltipVisibleChange = visible => {
+    const onCopyTooltipVisibleChange = (visible: boolean) => {
       if (visible) {
         copyTooltipVisible.value = visible;
         copied.value = false;
@@ -140,8 +140,8 @@ export default defineComponent({
       handleCodeCopied,
       handleChangeType,
       highlightClass,
-      sourceCode: decodeURIComponent(escape(window.atob(props.jsfiddle.sourceCode))),
-      jsSourceCode: decodeURIComponent(escape(window.atob(props.jsfiddle.jsSourceCode))),
+      sourceCode: decodeURIComponent(escape(window.atob(props.jsfiddle?.sourceCode))),
+      jsSourceCode: decodeURIComponent(escape(window.atob(props.jsfiddle?.jsSourceCode))),
     };
   },
   components: {

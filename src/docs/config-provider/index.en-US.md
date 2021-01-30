@@ -1,3 +1,13 @@
+---
+category: Components
+type: Other
+cols: 1
+title: ConfigProvider
+cover: https://gw.alipayobjects.com/zos/alicdn/kegYxl1wj/ConfigProvider.svg
+---
+
+`ConfigProvider` provides a uniform configuration support for components.
+
 ## Usage
 
 This component provides a configuration to all Vue components underneath itself via the [provide / inject](https://vuejs.org/v2/api/#provide-inject), In the render tree all components will have access to the provided config.

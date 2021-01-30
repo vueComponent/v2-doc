@@ -1,3 +1,14 @@
+---
+category: Components
+subtitle: 全局化配置
+cols: 1
+type: 其他
+title: ConfigProvider
+cover: https://gw.alipayobjects.com/zos/alicdn/kegYxl1wj/ConfigProvider.svg
+---
+
+为组件提供统一的全局化配置。
+
 ## 使用
 
 ConfigProvider 使用 Vue 的 [provide / inject](https://vuejs.org/v2/api/#provide-inject) 特性，只需在应用外围包裹一次即可全局生效。

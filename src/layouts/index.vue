@@ -67,7 +67,9 @@ export default defineComponent({
     const demos = ref<any[]>([]);
 
     provide('addDemosInfo', (info: any) => {
-      demos.value.push(info);
+      if (!demos.value.find(d => d.href === info.href)) {
+        demos.value.push(info);
+      }
     });
 
     watch(

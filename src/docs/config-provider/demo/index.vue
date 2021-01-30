@@ -1,33 +1,19 @@
+<template>
+  <demo-sort :cols="1">
+    <Locale />
+  </demo-sort>
+</template>
+
 <script>
-import Locale from './locale.md';
+import Locale from './locale.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
-
-const md = {
-  cn: `# ConfigProvider 全局化配置
-为组件提供统一的全局化配置。`,
-  us: `# ConfigProvider
-\`ConfigProvider\` provides a uniform configuration support for components.
-`,
-};
-export default {
-  category: 'Components',
-  subtitle: '全局化配置',
-  cols: 1,
-  type: '其他',
-  title: 'ConfigProvider',
-  render() {
-    return (
-      <div>
-        <Md cn={md.cn} us={md.us} />
-        <demo-sort cols={1}>
-          <Locale />
-        </demo-sort>
-        <api vSlots={{ cn: () => <CN /> }}>
-          <US />
-        </api>
-      </div>
-    );
+import { defineComponent } from 'vue';
+export default defineComponent({
+  CN,
+  US,
+  components: {
+    Locale,
   },
-};
+});
 </script>
