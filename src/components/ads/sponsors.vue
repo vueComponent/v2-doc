@@ -1,5 +1,5 @@
 <template>
-  <div class="snd-ad">
+  <div class="snd-ad" style="padding-left: 40px">
     <div class="sponsorsWrap">
       <span v-if="!isCN" class="sponsorsTitle">
         {{ isCN ? '赞助商' : 'Sponsors' }}
@@ -14,13 +14,12 @@
           <a href="https://datayi.cn/w/Y9J3M2vR" target="_blank">
             <img height="66" src="https://qn.antdv.com/kaikeba_ssr.jpeg" alt="kaikeba" />
           </a>
-          <span style="position: absolute; top: 0px; right: 10px">广告</span>
         </li>
-        <!-- <li class="sponsorsItem">
+        <li class="sponsorsItem" style="padding: 10px 0">
           <a-button type="primary" ghost style="font-size: 12px" @click="handleClick">
             {{ isCN ? '成为赞助商' : 'Become a Sponsor' }}
           </a-button>
-        </li> -->
+        </li>
       </ul>
     </div>
     <a-modal v-model:visible="visible" title="成为赞助商" @ok="visible = false">

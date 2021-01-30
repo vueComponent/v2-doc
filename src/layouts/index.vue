@@ -11,6 +11,7 @@
         <a-col :xxl="4" :xl="5" :lg="6" :md="6" :sm="24" :xs="24" class="main-menu">
           <a-affix>
             <section class="main-menu-inner">
+              <Sponsors :isCN="isZhCN" />
               <Menu :menus="dataSource" :activeMenuItem="activeMenuItem" :isZhCN="isZhCN" />
             </section>
           </a-affix>
@@ -18,6 +19,7 @@
       </template>
       <a-col :xxl="20" :xl="19" :lg="18" :md="18" :sm="24" :xs="24">
         <section :class="mainContainerClass">
+          <TopAd :isCN="isZhCN" />
           <Demo v-if="isDemo" :pageData="pageData" :isZhCN="isZhCN">
             <component :is="matchCom" />
           </Demo>
@@ -37,6 +39,7 @@
         <Footer />
       </a-col>
     </a-row>
+    <RightBottomAd :isCN="isZhCN" :isMobile="isMobile" />
   </div>
 </template>
 <script lang="ts">
@@ -50,6 +53,10 @@ import Menu from './Menu.vue';
 import PrevAndNext from './PrevAndNext.vue';
 import Demo from './Demo.vue';
 import useMenus from '@/hooks/useMenus';
+import TopAd from '../components/ads/top_ad.vue';
+import Sponsors from '../components/ads/sponsors.vue';
+import RightBottomAd from '../components/ads/right_bottom_ad.vue';
+
 export default defineComponent({
   name: 'Layout',
   setup() {
@@ -115,6 +122,9 @@ export default defineComponent({
     };
   },
   components: {
+    TopAd,
+    Sponsors,
+    RightBottomAd,
     Demo,
     Header,
     Footer,

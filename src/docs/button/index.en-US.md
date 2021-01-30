@@ -11,7 +11,7 @@ To trigger an operation.
 
 A button means an operation (or a series of operations). Clicking a button will trigger corresponding business logic.
 
-In Ant Design we provide 5 types of button.
+In Ant Design Vue we provide 5 types of button.
 
 - Primary button: indicate the main action, one primary button at most in one section.
 - Default button: indicate a series of actions without priority.

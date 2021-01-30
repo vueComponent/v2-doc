@@ -11,15 +11,24 @@
       <h2>{{ $t('app.component.examples') }}</h2>
     </section>
     <slot />
+    <GoogleAds v-if="showAd" :key="`goo-${route.path}`" />
     <section class="markdown api-container" v-html="api"></section>
   </article>
 </template>
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
+import { useRoute } from 'vue-router';
+import GoogleAds from '../components/ads/GoogleAds.vue';
+
+const showAd = location.host.indexOf('antdv.com') > -1;
 export default defineComponent({
   name: 'Demo',
   props: ['pageData', 'isZhCN'],
+  components: {
+    GoogleAds,
+  },
   setup(props) {
+    const route = useRoute();
     const frontmatter = computed(() => props?.pageData?.frontmatter || {});
     const docHtml = computed(() => {
       return props?.pageData?.html || '';
@@ -33,7 +42,7 @@ export default defineComponent({
       ${docHtml.value.split('<h2 id="api">API</h2>')[1]}
       `;
     });
-    return { frontmatter, description, api };
+    return { frontmatter, description, api, route, showAd };
   },
 });
 </script>
