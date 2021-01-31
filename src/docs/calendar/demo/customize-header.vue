@@ -1,14 +1,21 @@
-<cn>
-#### 自定义头部
+<docs>
+---
+order: 4
+title: 
+  zh-CN: 自定义头部
+  en-US: Customize Header
+---
+
+## zh-CN
+
 自定义日历头部内容。
-</cn>
 
-<us>
-#### Customize Header
+## en-uS
+
 Customize Calendar header content.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div style="width: 300px; border: 1px solid #d9d9d9; border-radius: 4px">
     <a-calendar v-model:value="value" :fullscreen="false" @panelChange="onPanelChange">
@@ -69,18 +76,19 @@ Customize Calendar header content.
     </a-calendar>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      value: '',
-    };
-  },
-  methods: {
-    onPanelChange(value, mode) {
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+import { Moment } from 'moment';
+
+export default defineComponent({
+  setup() {
+    const value = ref<Moment>();
+
+    const onPanelChange = (value: Moment, mode: string) => {
       console.log(value, mode);
-    },
-    getMonths(value) {
+    };
+
+    const getMonths = (value: Moment) => {
       const current = value.clone();
       const localeData = value.localeData();
       const months = [];
@@ -89,16 +97,23 @@ export default {
         months.push(localeData.monthsShort(current));
       }
       return months;
-    },
-    getYears(value) {
+    };
+
+    const getYears = (value: Moment) => {
       const year = value.year();
       const years = [];
       for (let i = year - 10; i < year + 10; i += 1) {
         years.push(i);
       }
       return years;
-    },
+    };
+
+    return {
+      value,
+      onPanelChange,
+      getMonths,
+      getYears,
+    };
   },
-};
+});
 </script>
-```

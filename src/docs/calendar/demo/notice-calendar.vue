@@ -1,14 +1,21 @@
-<cn>
-#### 通知事项日历
+<docs>
+---
+order: 2
+title: 
+  zh-CN: 通知事项日历
+  en-US: Notice Calendar
+---
+
+## zh-CN
+
 一个复杂的应用示例，用 `dateCellRender` 和 `monthCellRender` 函数来自定义需要渲染的数据。
-</cn>
 
-<us>
-#### Notice Calendar
+## en-US
+
 This component can be rendered by using `dateCellRender` and `monthCellRender` with the data you need.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-calendar v-model:value="value">
     <template #dateCellRender="{ current: value }">
@@ -26,15 +33,15 @@ This component can be rendered by using `dateCellRender` and `monthCellRender` w
     </template>
   </a-calendar>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      value: '',
-    };
-  },
-  methods: {
-    getListData(value) {
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+import { Moment } from 'moment';
+
+export default defineComponent({
+  setup() {
+    const value = ref<Moment>();
+
+    const getListData = (value: Moment) => {
       let listData;
       switch (value.date()) {
         case 8:
@@ -63,15 +70,21 @@ export default {
         default:
       }
       return listData || [];
-    },
+    };
 
-    getMonthData(value) {
+    const getMonthData = (value: Moment) => {
       if (value.month() === 8) {
         return 1394;
       }
-    },
+    };
+
+    return {
+      value,
+      getListData,
+      getMonthData,
+    };
   },
-};
+});
 </script>
 <style scoped>
 .events {
@@ -94,4 +107,3 @@ export default {
   font-size: 28px;
 }
 </style>
-```

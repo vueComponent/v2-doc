@@ -1,3 +1,16 @@
+---
+category: Components
+type: Data Display
+title: Calendar
+cover: https://gw.alipayobjects.com/zos/antfincdn/dPQmLq08DI/Calendar.svg
+---
+
+Container for displaying data in calendar form.
+
+## When To Use
+
+When data is in the form of dates, such as schedules, timetables, prices calendar, lunar calendar. This component also supports Year/Month switch.
+
 ## API
 
 **Note:** Part of the Calendar's locale is read from `value`. So, please set the locale of `moment` correctly.
@@ -31,7 +44,7 @@ customize the progress dot by setting a scoped slot
 ### events
 
 | Events Name | Description | Arguments | Version |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | panelChange | Callback for when panel changes | function(date: moment \| string, mode: string) | - |  |
 | select | Callback for when a date is selected | function(date: moment \| string） | - |  |
 | change | Callback for when value change | function(date: moment \| string） | - |  |

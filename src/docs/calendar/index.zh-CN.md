@@ -1,3 +1,17 @@
+---
+category: Components
+type: 数据展示
+title: Calendar
+subtitle: 日历
+cover: https://gw.alipayobjects.com/zos/antfincdn/dPQmLq08DI/Calendar.svg
+---
+
+按照日历形式展示数据的容器。
+
+## 何时使用
+
+当数据是日期或按照日期划分时，例如日程、课表、价格日历等，农历等。目前支持年/月切换。
+
 ## API
 
 **注意：**Calendar 部分 locale 是从 value 中读取，所以请先正确设置 moment 的 locale。
@@ -28,7 +42,7 @@
 ### 事件
 
 | 事件名称 | 说明 | 回调参数 |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | panelChange | 日期面板变化回调 | function(date: moment \| string, mode: string) | 无 |
 | select | 点击选择日期回调 | function(date: moment \| string） | 无 |
 | change | 日期变化时的回调, 面板变化有可能导致日期变化 | function(date: moment \| string） | 无 |
