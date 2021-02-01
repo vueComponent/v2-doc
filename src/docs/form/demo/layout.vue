@@ -1,27 +1,27 @@
-<cn>
-#### 表单布局
+<docs>
+---
+order: 5
+title:
+  zh-CN: 表单布局
+  en-US: Form Layout
+---
+
+## zh-CN
+
 表单有三种布局。
-</cn>
 
-<us>
-#### Form Layout
+## en-US
+
 There are three layout for form: `horizontal`, `vertical`, `inline`.
-</us>
+</docs>
 
-```vue
 <template>
   <a-form :layout="form.layout" :model="form" v-bind="formItemLayout">
     <a-form-item label="Form Layout">
       <a-radio-group v-model:value="form.layout">
-        <a-radio-button value="horizontal">
-          Horizontal
-        </a-radio-button>
-        <a-radio-button value="vertical">
-          Vertical
-        </a-radio-button>
-        <a-radio-button value="inline">
-          Inline
-        </a-radio-button>
+        <a-radio-button value="horizontal">Horizontal</a-radio-button>
+        <a-radio-button value="vertical">Vertical</a-radio-button>
+        <a-radio-button value="inline">Inline</a-radio-button>
       </a-radio-group>
     </a-form-item>
     <a-form-item label="Field A">
@@ -31,9 +31,7 @@ There are three layout for form: `horizontal`, `vertical`, `inline`.
       <a-input v-model:value="form.fieldB" placeholder="input placeholder" />
     </a-form-item>
     <a-form-item :wrapper-col="buttonItemLayout.wrapperCol">
-      <a-button type="primary">
-        Submit
-      </a-button>
+      <a-button type="primary">Submit</a-button>
     </a-form-item>
   </a-form>
 </template>
@@ -69,4 +67,3 @@ export default {
   },
 };
 </script>
-```

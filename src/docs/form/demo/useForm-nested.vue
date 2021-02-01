@@ -1,14 +1,20 @@
-<cn>
-#### useForm 嵌套表单
+<docs>
+---
+order: 9
+title:
+  zh-CN: useForm 嵌套表单
+  en-US: useForm for nested Form
+---
+
+## zh-CN
+
 集成 [@ant-design-vue/use](https://github.com/vueComponent/use) 更加灵活的使用表单组件。使用点字符串拼接进行嵌套数据校验。
-</cn>
 
-<us>
-#### useForm for nested Form
+## en-US
+
 Integration [@ant-design-vue/use](https://github.com/vueComponent/use) use form components. Use dot string splicing for nested data verification.
-</us>
+</docs>
 
-```vue
 <template>
   <a-form :label-col="labelCol" :wrapper-col="wrapperCol">
     <a-form-item label="Activity name" v-bind="validateInfos.name">
@@ -18,12 +24,8 @@ Integration [@ant-design-vue/use](https://github.com/vueComponent/use) use form 
       <a-input v-model:value="modelRef.sub.name" />
     </a-form-item>
     <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
-      <a-button type="primary" @click="onSubmit">
-        Create
-      </a-button>
-      <a-button style="margin-left: 10px;" @click="reset">
-        Reset
-      </a-button>
+      <a-button type="primary" @click="onSubmit">Create</a-button>
+      <a-button style="margin-left: 10px" @click="reset">Reset</a-button>
     </a-form-item>
   </a-form>
 </template>
@@ -79,4 +81,3 @@ export default {
   },
 };
 </script>
-```

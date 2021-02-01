@@ -1,14 +1,19 @@
-<cn>
-#### 动态增减表单项
+<docs>
+---
+order: 3
+title:
+  zh-CN: 动态增减表单项
+  en-US: Dynamic Form Item
+---
+
+## zh-CN
+
 动态增加、减少表单项。
-</cn>
 
-<us>
-#### Dynamic Form Item
+## en-US
+
 Add or remove form items dynamically.
-</us>
-
-```vue
+</docs>
 <template>
   <a-form
     ref="dynamicValidateForm"
@@ -41,16 +46,15 @@ Add or remove form items dynamically.
     </a-form-item>
     <a-form-item v-bind="formItemLayoutWithOutLabel">
       <a-button type="dashed" style="width: 60%" @click="addDomain">
-        <PlusOutlined /> Add field
+        <PlusOutlined />
+        Add field
       </a-button>
     </a-form-item>
     <a-form-item v-bind="formItemLayoutWithOutLabel">
       <a-button type="primary" html-type="submit" @click="submitForm('dynamicValidateForm')">
         Submit
       </a-button>
-      <a-button style="margin-left: 10px" @click="resetForm('dynamicValidateForm')">
-        Reset
-      </a-button>
+      <a-button style="margin-left: 10px" @click="resetForm('dynamicValidateForm')">Reset</a-button>
     </a-form-item>
   </a-form>
 </template>
@@ -133,4 +137,3 @@ export default {
   opacity: 0.5;
 }
 </style>
-```

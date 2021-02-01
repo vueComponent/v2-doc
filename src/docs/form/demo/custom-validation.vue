@@ -1,17 +1,23 @@
-<cn>
-#### 自定义校验规则
+<docs>
+---
+order: 1
+title:
+  zh-CN: 自定义校验规则
+  en-US: Custom validation rules
+---
+
+## zh-CN
+
 这个例子中展示了如何使用自定义验证规则来完成密码的二次验证。本例还使用 `has-feedback` 属性为输入框添加了表示校验结果的反馈图标。
 自定义校验 callback 必须被调用。 更多高级用法可参考 [async-validator](https://github.com/yiminghe/async-validator)
-</cn>
 
-<us>
-#### Custom validation rules
+## en-US
+
 This example shows how to customize your own validation rules to finish a two-factor password verification.
 You can use `has-feedback` to reflect validation result as an icon.
 Custom validate callback function must be called. See more advanced usage at [async-validator](https://github.com/yiminghe/async-validator).
-</us>
+</docs>
 
-```vue
 <template>
   <a-form
     name="custom-validation"
@@ -32,12 +38,8 @@ Custom validate callback function must be called. See more advanced usage at [as
       <a-input-number v-model:value="ruleForm.age" />
     </a-form-item>
     <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
-      <a-button type="primary" html-type="submit">
-        Submit
-      </a-button>
-      <a-button style="margin-left: 10px" @click="resetForm">
-        Reset
-      </a-button>
+      <a-button type="primary" html-type="submit">Submit</a-button>
+      <a-button style="margin-left: 10px" @click="resetForm">Reset</a-button>
     </a-form-item>
   </a-form>
 </template>
@@ -107,4 +109,3 @@ export default {
   },
 };
 </script>
-```

@@ -1,3 +1,32 @@
+---
+category: Components
+subtitle: 表单
+type: 数据录入
+cols: 1
+title: Form
+cover: https://gw.alipayobjects.com/zos/alicdn/ORmcdeaoO/Form.svg
+---
+
+高性能表单控件，自带数据域管理。包含数据录入、校验以及对应样式。
+集成 [@ant-design-vue/use](https://github.com/vueComponent/use) 更加灵活的使用表单组件。
+
+## 何时使用
+
+- 用于创建一个实体或收集信息。
+- 需要对输入的数据类型进行校验时。
+
+## 表单
+
+我们为 `form` 提供了以下三种排列方式：
+
+- 水平排列：标签和表单控件水平排列；（默认）
+- 垂直排列：标签和表单控件上下垂直排列；
+- 行内排列：表单项水平行内排列。
+
+## 表单域
+
+表单一定会包含表单域，表单域可以是输入控件，标准表单域，标签，下拉菜单，文本域等。
+
 ## API
 
 ### Form

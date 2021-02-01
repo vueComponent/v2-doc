@@ -1,15 +1,19 @@
-<cn>
-#### 典型表单
-在 `Form` 组件中，每一个表单域由一个 `FormItem` 组件构成，表单域中可以放置各种类型的表单控件，比如输入框、选择器、开关、单选框、多选框等。
-</cn>
+<docs>
+---
+order: 0
+title:
+  zh-CN: 基本使用
+  en-US: Basic Usage
+---
 
-<us>
-#### Basic form
-It includes all kinds of input items, such as `input`, `select`, `radio` and `checkbox`.
-In each `form` component, you need a `form-item` field to be the container of your input item.
-</us>
+## zh-CN
 
-```vue
+基本的表单数据域控制展示，包含布局、初始化、验证、提交。
+
+## en-US
+
+Basic Form data control. Includes layout, initial values, validation and submit.
+</docs>
 <template>
   <a-form :model="form" :label-col="labelCol" :wrapper-col="wrapperCol">
     <a-form-item label="Activity name">
@@ -17,12 +21,8 @@ In each `form` component, you need a `form-item` field to be the container of yo
     </a-form-item>
     <a-form-item label="Activity zone">
       <a-select v-model:value="form.region" placeholder="please select your zone">
-        <a-select-option value="shanghai">
-          Zone one
-        </a-select-option>
-        <a-select-option value="beijing">
-          Zone two
-        </a-select-option>
+        <a-select-option value="shanghai">Zone one</a-select-option>
+        <a-select-option value="beijing">Zone two</a-select-option>
       </a-select>
     </a-form-item>
     <a-form-item label="Activity time">
@@ -31,7 +31,7 @@ In each `form` component, you need a `form-item` field to be the container of yo
         show-time
         type="date"
         placeholder="Pick a date"
-        style="width: 100%;"
+        style="width: 100%"
       />
     </a-form-item>
     <a-form-item label="Instant delivery">
@@ -39,37 +39,23 @@ In each `form` component, you need a `form-item` field to be the container of yo
     </a-form-item>
     <a-form-item label="Activity type">
       <a-checkbox-group v-model:value="form.type">
-        <a-checkbox value="1" name="type">
-          Online
-        </a-checkbox>
-        <a-checkbox value="2" name="type">
-          Promotion
-        </a-checkbox>
-        <a-checkbox value="3" name="type">
-          Offline
-        </a-checkbox>
+        <a-checkbox value="1" name="type">Online</a-checkbox>
+        <a-checkbox value="2" name="type">Promotion</a-checkbox>
+        <a-checkbox value="3" name="type">Offline</a-checkbox>
       </a-checkbox-group>
     </a-form-item>
     <a-form-item label="Resources">
       <a-radio-group v-model:value="form.resource">
-        <a-radio value="1">
-          Sponsor
-        </a-radio>
-        <a-radio value="2">
-          Venue
-        </a-radio>
+        <a-radio value="1">Sponsor</a-radio>
+        <a-radio value="2">Venue</a-radio>
       </a-radio-group>
     </a-form-item>
     <a-form-item label="Activity form">
       <a-input v-model:value="form.desc" type="textarea" />
     </a-form-item>
     <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
-      <a-button type="primary" @click="onSubmit">
-        Create
-      </a-button>
-      <a-button style="margin-left: 10px;">
-        Cancel
-      </a-button>
+      <a-button type="primary" @click="onSubmit">Create</a-button>
+      <a-button style="margin-left: 10px">Cancel</a-button>
     </a-form-item>
   </a-form>
 </template>
@@ -97,4 +83,3 @@ export default {
   },
 };
 </script>
-```

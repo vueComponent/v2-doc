@@ -1,14 +1,20 @@
-<cn>
-#### 表单验证
+<docs>
+---
+order: 6
+title:
+  zh-CN: 表单验证
+  en-US: Validation
+---
+
+## zh-CN
+
 Form 组件提供了表单验证的功能，只需要通过 `rules` 属性传入约定的验证规则，并将 `FormItem` 的 `prop` 属性设置为需校验的字段名即可。校验规则参见 [async-validator](https://github.com/yiminghe/async-validator)
-</cn>
 
-<us>
-#### Validation
+## en-US
+
 Just add the `rules` attribute for `Form` component, pass validation rules, and set `prop` attribute for `FormItem` as a specific key that needs to be validated. See more information at [async-validator](https://github.com/yiminghe/async-validator).
-</us>
+</docs>
 
-```vue
 <template>
   <a-form
     ref="ruleForm"
@@ -22,12 +28,8 @@ Just add the `rules` attribute for `Form` component, pass validation rules, and 
     </a-form-item>
     <a-form-item label="Activity zone" name="region">
       <a-select v-model:value="form.region" placeholder="please select your zone">
-        <a-select-option value="shanghai">
-          Zone one
-        </a-select-option>
-        <a-select-option value="beijing">
-          Zone two
-        </a-select-option>
+        <a-select-option value="shanghai">Zone one</a-select-option>
+        <a-select-option value="beijing">Zone two</a-select-option>
       </a-select>
     </a-form-item>
     <a-form-item label="Activity time" required name="date1">
@@ -36,7 +38,7 @@ Just add the `rules` attribute for `Form` component, pass validation rules, and 
         show-time
         type="date"
         placeholder="Pick a date"
-        style="width: 100%;"
+        style="width: 100%"
       />
     </a-form-item>
     <a-form-item label="Instant delivery" name="delivery">
@@ -44,37 +46,23 @@ Just add the `rules` attribute for `Form` component, pass validation rules, and 
     </a-form-item>
     <a-form-item label="Activity type" name="type">
       <a-checkbox-group v-model:value="form.type">
-        <a-checkbox value="1" name="type">
-          Online
-        </a-checkbox>
-        <a-checkbox value="2" name="type">
-          Promotion
-        </a-checkbox>
-        <a-checkbox value="3" name="type">
-          Offline
-        </a-checkbox>
+        <a-checkbox value="1" name="type">Online</a-checkbox>
+        <a-checkbox value="2" name="type">Promotion</a-checkbox>
+        <a-checkbox value="3" name="type">Offline</a-checkbox>
       </a-checkbox-group>
     </a-form-item>
     <a-form-item label="Resources" name="resource">
       <a-radio-group v-model:value="form.resource">
-        <a-radio value="1">
-          Sponsor
-        </a-radio>
-        <a-radio value="2">
-          Venue
-        </a-radio>
+        <a-radio value="1">Sponsor</a-radio>
+        <a-radio value="2">Venue</a-radio>
       </a-radio-group>
     </a-form-item>
     <a-form-item label="Activity form" name="desc">
       <a-textarea v-model:value="form.desc" />
     </a-form-item>
     <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
-      <a-button type="primary" @click="onSubmit">
-        Create
-      </a-button>
-      <a-button style="margin-left: 10px;" @click="resetForm">
-        Reset
-      </a-button>
+      <a-button type="primary" @click="onSubmit">Create</a-button>
+      <a-button style="margin-left: 10px" @click="resetForm">Reset</a-button>
     </a-form-item>
   </a-form>
 </template>
@@ -135,4 +123,3 @@ export default {
   },
 };
 </script>
-```

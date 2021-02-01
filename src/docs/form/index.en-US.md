@@ -1,3 +1,32 @@
+---
+category: Components
+type: Data Entry
+cols: 1
+title: Form
+cover: https://gw.alipayobjects.com/zos/alicdn/ORmcdeaoO/Form.svg
+---
+
+High performance Form component with data scope management. Including data collection, verification, and styles.
+Integration [@ant-design-vue/use](https://github.com/vueComponent/use) use form components.
+
+## When to use
+
+- When you need to create an instance or collect information.
+- When you need to validate fields in certain rules.
+
+## Form Component
+
+You can align the controls of a `form` using the `layout` prop：
+
+- `horizontal`：to horizontally align the `label`s and controls of the fields. (Default)
+- `vertical`：to vertically align the `label`s and controls of the fields.
+- `inline`：to render form fields in one line.
+
+## Form Item Component
+
+A form consists of one or more form fields whose type includes input, textarea, checkbox, radio, select, tag, and more. A form field is defined using `<a-form-item />`.
+
+
 ## API
 
 ### Form
