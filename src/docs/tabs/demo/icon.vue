@@ -1,14 +1,21 @@
-<cn>
-#### 图标
+<docs>
+---
+order: 2
+title:
+  zh-CN: 图标
+  en-US: Icon
+---
+
+## zh-CN
+
 有图标的标签。
-</cn>
 
-<us>
-#### Icon
+## en-US
+
 The Tab with Icon.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-tabs>
     <a-tab-pane key="1">
@@ -31,13 +38,13 @@ The Tab with Icon.
     </a-tab-pane>
   </a-tabs>
 </template>
-<script>
+<script lang="ts">
 import { AppleOutlined, AndroidOutlined } from '@ant-design/icons-vue';
-export default {
+import { defineComponent } from 'vue';
+export default defineComponent({
   components: {
     AppleOutlined,
     AndroidOutlined,
   },
-};
+});
 </script>
-```

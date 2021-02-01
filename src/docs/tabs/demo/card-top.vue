@@ -1,14 +1,20 @@
-<cn>
-#### 卡片式页签容器
+<docs>
+---
+order: 9
+title:
+  zh-CN: 卡片式页签容器
+  en-US: Container of card type Tab
+---
+
+## zh-CN
+
 用于容器顶部，需要一点额外的样式覆盖。
-</cn>
 
-<us>
-#### Container of card type Tab
+## en-US
 Should be used at the top of container, needs to override styles.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div class="card-container">
     <a-tabs type="card">
@@ -30,17 +36,19 @@ Should be used at the top of container, needs to override styles.
     </a-tabs>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {};
-  },
-  methods: {
-    callback(key) {
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const callback = (key: string) => {
       console.log(key);
-    },
+    };
+    return {
+      callback,
+    };
   },
-};
+});
 </script>
 <style>
 .card-container {
@@ -72,4 +80,3 @@ export default {
   background: #fff;
 }
 </style>
-```
