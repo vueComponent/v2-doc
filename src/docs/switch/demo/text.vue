@@ -1,14 +1,21 @@
-<cn>
-#### 文字和图标
+<docs>
+---
+order: 2
+title:
+  zh-CN: 文字和图标
+  en-US: Text & icon
+---
+
+## zh-CN
+
 带有文字和图标。
-</cn>
 
-<us>
-#### Text & icon
+## en-US
+
 With text and icon.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div>
     <a-switch checked-children="开" un-checked-children="关" v-model:checked="checked1" />
@@ -21,21 +28,22 @@ With text and icon.
     </a-switch>
   </div>
 </template>
-<script>
+<script lang="ts">
+import { defineComponent, reactive, toRefs } from 'vue';
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons-vue';
-
-export default {
-  data() {
-    return {
+export default defineComponent({
+  setup() {
+    const state = reactive({
       checked1: true,
       checked2: false,
       checked3: false,
-    };
+    });
+    return { ...toRefs(state) };
   },
+
   components: {
     CheckOutlined,
     CloseOutlined,
   },
-};
+});
 </script>
-```

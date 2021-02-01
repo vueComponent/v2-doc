@@ -1,14 +1,20 @@
-<cn>
-#### 加载中
+<docs>
+---
+order: 4
+title:
+  zh-CN: 加载中
+  en-US: Loading
+---
+
+## zh-CN
+
 标识开关操作仍在执行中。
-</cn>
 
-<us>
-#### Loading
+## en-US
+
 Mark a pending state of switch.
-</us>
 
-```vue
+</docs>
 <template>
   <div>
     <a-switch loading v-model:checked="checked1" />
@@ -16,14 +22,16 @@ Mark a pending state of switch.
     <a-switch size="small" loading v-model:checked="checked2" />
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
+
+<script lang="ts">
+import { defineComponent, reactive, toRefs } from 'vue';
+export default defineComponent({
+  setup() {
+    const state = reactive({
       checked1: true,
       checked2: false,
-    };
+    });
+    return { ...toRefs(state) };
   },
-};
+});
 </script>
-```
