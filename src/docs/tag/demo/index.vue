@@ -1,66 +1,45 @@
-<script>
-import Basic from './basic';
-import Checkable from './checkable';
-import Colorful from './colorful';
-import Control from './control';
-import HotTags from './hot-tags';
-import Controlled from './controlled';
-import Icon from './icon';
-import Status from './status';
+<template>
+  <demo-sort>
+    <Basic />
+    <Checkable />
+    <Colorful />
+    <Control />
+    <Controlled />
+    <HotTags />
+    <Icon />
+    <Status />
+  </demo-sort>
+</template>
+
+<script lang="ts">
+import Basic from './basic.vue';
+import Checkable from './checkable.vue';
+import Colorful from './colorful.vue';
+import Control from './control.vue';
+import Controlled from './controlled.vue';
+import HotTags from './hot-tags.vue';
+import Icon from './icon.vue';
+import Status from './status.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
+import { defineComponent } from 'vue';
 
-const md = {
-  cn: `# 标签 Tag
-
-    进行标记和分类的小标签。
-
-## 何时使用
-
-- 用于标记事物的属性和维度。
-- 进行分类。
-
-    ## 代码演示`,
-  us: `# Tag
-
-    Tag for categorizing or markup.
-
-## When To Use
-
-- It can be used to tag by dimension or property.
-
-- When categorizing.
-    ## Examples `,
-};
-export default {
+export default defineComponent({
   category: 'Components',
-  subtitle: '标签',
+  subtitle: '标签页',
   type: 'Data Display',
-  title: 'Tag',
-  render() {
-    return (
-      <div id="components-tag-demo">
-        <Md cn={md.cn} us={md.us} />
-        <demo-sort>
-          <Basic />
-          <Checkable />
-          <Colorful />
-          <Control />
-          <HotTags />
-          <Controlled />
-          <Icon />
-          <Status />
-        </demo-sort>
-        <api vSlots={{ cn: () => <CN /> }}>
-          <US />
-        </api>
-      </div>
-    );
+  title: 'Tabs',
+  CN,
+  US,
+  components: {
+    Basic,
+    Checkable,
+    Colorful,
+    Control,
+    Controlled,
+    HotTags,
+    Icon,
+    Status,
   },
-};
+});
 </script>
-<style>
-#components-tag-demo .ant-tag {
-  margin-bottom: 8px;
-}
-</style>

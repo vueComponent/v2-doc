@@ -1,12 +1,21 @@
-<cn>
-#### 预设状态的标签
+<docs>
+---
+order: 7
+title:
+  zh-CN: 预设状态的标签
+  en-US: Status Tag
+---
+
+## zh-CN
+
 预设五种状态颜色，可以通过设置 `color` 为 `success`、 `processing`、`error`、`default`、`warning` 来代表不同的状态。</cn>
 
-<us>
-#### Status Tag
+## en-US
+
 We preset five different colors, you can set color property such as `success`,`processing`,`error`,`default` and `warning` to indicate specific status.</us>
 
-```vue
+</docs>
+
 <template>
   <a-divider orientation="left">Without icon</a-divider>
   <div>
@@ -57,6 +66,7 @@ We preset five different colors, you can set color property such as `success`,`p
   </div>
 </template>
 <script>
+import { defineComponent } from 'vue';
 import {
   CheckCircleOutlined,
   SyncOutlined,
@@ -66,7 +76,7 @@ import {
   MinusCircleOutlined,
 } from '@ant-design/icons-vue';
 
-export default {
+export default defineComponent({
   components: {
     CheckCircleOutlined,
     SyncOutlined,
@@ -75,6 +85,5 @@ export default {
     ClockCircleOutlined,
     MinusCircleOutlined,
   },
-};
+});
 </script>
-```
