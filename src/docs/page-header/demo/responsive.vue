@@ -1,16 +1,24 @@
-<cn>
-#### 响应式
+<docs>
+---
+order: 6
+iframe: 228
+title:
+  zh-CN: 响应式
+  en-US: responsive
+---
+
+## zh-CN
+
 在不同大小的屏幕下，应该有不同的表现
-</cn>
 
-<us>
-#### responsive
+## en-US
+
 Under different screen sizes, there should be different performance
-</us>
 
-```vue
+</docs>
+
 <template>
-  <div>
+  <div class="components-page-header-demo-responsive">
     <a-page-header
       style="border: 1px solid rgb(235, 237, 240)"
       title="Title"
@@ -18,15 +26,9 @@ Under different screen sizes, there should be different performance
       @back="() => $router.go(-1)"
     >
       <template #extra>
-        <a-button key="3">
-          Operation
-        </a-button>
-        <a-button key="2">
-          Operation
-        </a-button>
-        <a-button key="1" type="primary">
-          Primary
-        </a-button>
+        <a-button key="3">Operation</a-button>
+        <a-button key="2">Operation</a-button>
+        <a-button key="1" type="primary">Primary</a-button>
       </template>
       <template #footer>
         <a-tabs default-active-key="1">
@@ -37,18 +39,12 @@ Under different screen sizes, there should be different performance
       <div class="content">
         <div class="main">
           <a-descriptions size="small" :column="2">
-            <a-descriptions-item label="Created">
-              Lili Qu
-            </a-descriptions-item>
+            <a-descriptions-item label="Created">Lili Qu</a-descriptions-item>
             <a-descriptions-item label="Association">
               <a>421421</a>
             </a-descriptions-item>
-            <a-descriptions-item label="Creation Time">
-              2017-01-10
-            </a-descriptions-item>
-            <a-descriptions-item label="Effective Time">
-              2017-10-10
-            </a-descriptions-item>
+            <a-descriptions-item label="Creation Time">2017-01-10</a-descriptions-item>
+            <a-descriptions-item label="Effective Time">2017-10-10</a-descriptions-item>
             <a-descriptions-item label="Remarks">
               Gonghu Road, Xihu District, Hangzhou, Zhejiang, China
             </a-descriptions-item>
@@ -77,7 +73,7 @@ Under different screen sizes, there should be different performance
   </div>
 </template>
 <style>
-tr:last-child td {
+.components-page-header-demo-responsive tr:last-child td {
   padding-bottom: 0;
 }
 #components-page-header-demo-responsive .content {
@@ -104,4 +100,3 @@ tr:last-child td {
   }
 }
 </style>
-```
