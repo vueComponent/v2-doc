@@ -38,6 +38,7 @@ export default {
       '@ant-design/icons-vue',
       '@ant-design-vue/use',
       'lodash-es',
+      'moment/dist/locale/zh-cn'
     ],
   },
   css: {
