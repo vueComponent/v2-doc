@@ -53,9 +53,9 @@ import Menu from './Menu.vue';
 import PrevAndNext from './PrevAndNext.vue';
 import Demo from './Demo.vue';
 import useMenus from '@/hooks/useMenus';
-import TopAd from '../components/ads/top_ad.vue';
-import Sponsors from '../components/ads/sponsors.vue';
-import RightBottomAd from '../components/ads/right_bottom_ad.vue';
+import TopAd from '../components/rice/top_rice.vue';
+import Sponsors from '../components/rice/sponsors.vue';
+import RightBottomAd from '../components/rice/right_bottom_rice.vue';
 
 export default defineComponent({
   name: 'Layout',
