@@ -1,29 +1,42 @@
-<cn>
-#### 已上传的文件列表
+<docs>
+---
+order: 2
+title:
+  zh-CN: 已上传的文件列表
+  en-US: Default Files
+---
+
+## zh-CN
+
 使用 `defaultFileList` 设置已上传的内容。
-</cn>
 
-<us>
-#### Default Files
+## en-US
+
 Use `defaultFileList` for uploaded files when page init.
-</us>
+</docs>
 
-```vue
 <template>
-  <a-upload action="https://www.mocky.io/v2/5cc8019d300000980a055e76" v-model:fileList="fileList">
-    <a-button> <upload-outlined /> Upload </a-button>
+  <a-upload action="https://www.mocky.io/v2/5cc8019d300000980a055e76" v-model:file-list="fileList">
+    <a-button> <upload-outlined></upload-outlined> Upload </a-button>
   </a-upload>
 </template>
-<script>
+<script lang="ts">
 import { UploadOutlined } from '@ant-design/icons-vue';
+import { defineComponent, ref } from 'vue';
 
-export default {
+interface FileItem {
+  uid: string;
+  name?: string;
+  status?: string;
+  response?: string;
+  url?: string;
+}
+export default defineComponent({
   components: {
     UploadOutlined,
   },
-  data() {
-    return {
-      fileList: [
+  setup() {
+    const fileList = ref<[]<FileItem>>([
         {
           uid: '1',
           name: 'xxx.png',
@@ -43,17 +56,18 @@ export default {
           status: 'error',
           response: 'Server Error 500', // custom error message to show
           url: 'http://www.baidu.com/zzz.png',
-        },
-      ],
-    };
-  },
-  methods: {
-    handleChange({ file, fileList }) {
+        }
+      ])
+
+    const handleChange = ({ file, fileList }) => {
       if (file.status !== 'uploading') {
         console.log(file, fileList);
       }
-    },
-  },
-};
+    }
+    return {
+      fileList,
+      handleChange,
+    };
+  }
+});
 </script>
-```

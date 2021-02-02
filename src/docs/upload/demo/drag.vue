@@ -1,15 +1,24 @@
-<cn>
-#### 拖拽上传
+<docs>
+---
+order: 5
+title:
+  zh-CN: 拖拽上传
+  en-US: Drag and Drop
+---
+
+## zh-CN
+
 把文件拖入指定区域，完成上传，同样支持点击上传。
+
 设置 `multiple` 后，在 `IE10+` 可以一次上传多个文件。
-</cn>
 
-<us>
-#### Drag and Drop
-Classic mode. File selection dialog pops up when upload button is clicked.
-</us>
+## en-US
 
-```vue
+You can drag files to a specific area, to upload. Alternatively, you can also upload by selecting.
+
+We can upload serveral files at once in modern browsers by giving the input the `multiple` attribute.
+</docs>
+
 <template>
   <a-upload-dragger
     name="file"
@@ -18,7 +27,7 @@ Classic mode. File selection dialog pops up when upload button is clicked.
     @change="handleChange"
   >
     <p class="ant-upload-drag-icon">
-      <inbox-outlined />
+      <inbox-outlined></inbox-outlined>
     </p>
     <p class="ant-upload-text">
       Click or drag file to this area to upload
@@ -29,18 +38,17 @@ Classic mode. File selection dialog pops up when upload button is clicked.
     </p>
   </a-upload-dragger>
 </template>
-<script>
+<script lang="ts">
 import { InboxOutlined } from '@ant-design/icons-vue';
 import { message } from 'ant-design-vue';
-export default {
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
   components: {
     InboxOutlined,
   },
-  data() {
-    return {};
-  },
-  methods: {
-    handleChange(info) {
+  setup() {
+    const handleChange = (info) => {
       const status = info.file.status;
       if (status !== 'uploading') {
         console.log(info.file, info.fileList);
@@ -50,8 +58,8 @@ export default {
       } else if (status === 'error') {
         message.error(`${info.file.name} file upload failed.`);
       }
-    },
+    }
+    return {};
   },
-};
+});
 </script>
-```

@@ -1,14 +1,20 @@
-<cn>
-#### 点击上传
+<docs>
+---
+order: 0
+title:
+  zh-CN: 点击上传
+  en-US: Upload by clicking
+---
+
+## zh-CN
+
 经典款式，用户点击按钮弹出文件选择框。
-</cn>
 
-<us>
-#### Upload by clicking
+## en-US
+
 Classic mode. File selection dialog pops up when upload button is clicked.
-</us>
+</docs>
 
-```vue
 <template>
   <a-upload
     v-model:fileList="fileList"
@@ -18,26 +24,20 @@ Classic mode. File selection dialog pops up when upload button is clicked.
     :headers="headers"
     @change="handleChange"
   >
-    <a-button> <upload-outlined /> Click to Upload </a-button>
+    <a-button> <upload-outlined ></upload-outlined> Click to Upload </a-button>
   </a-upload>
 </template>
-<script>
+<script lang="ts">
 import { message } from 'ant-design-vue';
 import { UploadOutlined } from '@ant-design/icons-vue';
-export default {
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
   components: {
     UploadOutlined,
   },
-  data() {
-    return {
-      fileList: [],
-      headers: {
-        authorization: 'authorization-text',
-      },
-    };
-  },
-  methods: {
-    handleChange(info) {
+  setup() {
+    const handleChange = (info) => {
       if (info.file.status !== 'uploading') {
         console.log(info.file, info.fileList);
       }
@@ -46,8 +46,16 @@ export default {
       } else if (info.file.status === 'error') {
         message.error(`${info.file.name} file upload failed.`);
       }
-    },
+    }
+
+    const fileList = ref([])
+    return {
+      fileList,
+      headers: {
+        authorization: 'authorization-text',
+      },
+      handleChange,
+    };
   },
-};
+});
 </script>
-```

@@ -1,14 +1,20 @@
-<cn>
-#### 照片墙
+<docs>
+---
+order: 3
+title:
+  zh-CN: 照片墙
+  en-US: Pictures Wall
+---
+
+## zh-CN
+
 用户可以上传图片并在列表中显示缩略图。当上传照片数到达限制后，上传按钮消失。
-</cn>
 
-<us>
-#### Pictures Wall
+## en-US
+
 After users upload picture, the thumbnail will be shown in list. The upload button will disappear when count meets limitation.
-</us>
+</docs>
 
-```vue
 <template>
   <div class="clearfix">
     <a-upload
@@ -28,8 +34,9 @@ After users upload picture, the thumbnail will be shown in list. The upload butt
     </a-modal>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { PlusOutlined } from '@ant-design/icons-vue';
+import { defineComponent, ref } from 'vue';
 
 function getBase64(file) {
   return new Promise((resolve, reject) => {
@@ -39,15 +46,24 @@ function getBase64(file) {
     reader.onerror = error => reject(error);
   });
 }
-export default {
+
+interface FileItem {
+  uid: string;
+  name?: string;
+  status?: string;
+  response?: string;
+  url?: string;
+}
+
+export default defineComponent({
   components: {
     PlusOutlined,
   },
-  data() {
-    return {
-      previewVisible: false,
-      previewImage: '',
-      fileList: [
+  setup() {
+    const previewVisible = ref<boolean>(false);
+    const previewImage = ref<string>('');
+
+    const fileList = ref<[]<FileItem>>([
         {
           uid: '-1',
           name: 'image.png',
@@ -77,25 +93,32 @@ export default {
           name: 'image.png',
           status: 'error',
         },
-      ],
-    };
-  },
-  methods: {
-    handleCancel() {
-      this.previewVisible = false;
-    },
-    async handlePreview(file) {
+      ])
+
+    const handleCancel = () => {
+      previewVisible.value = false;
+    }
+    const handlePreview = async (file) => {
       if (!file.url && !file.preview) {
         file.preview = await getBase64(file.originFileObj);
       }
-      this.previewImage = file.url || file.preview;
-      this.previewVisible = true;
-    },
-    handleChange({ fileList }) {
+      previewImage.value = file.url || file.preview;
+      previewVisible.value = true;
+    }
+    const handleChange = ({ fileList }) => {
       this.fileList = fileList;
-    },
+    }
+
+    return {
+      previewVisible,
+      previewImage,
+      fileList,
+      handleCancel,
+      handlePreview,
+      handleChange
+    };
   },
-};
+});
 </script>
 <style>
 /* you can make up upload button and sample style by using stylesheets */
@@ -109,4 +132,3 @@ export default {
   color: #666;
 }
 </style>
-```

@@ -1,46 +1,60 @@
-<cn>
-#### 图片列表样式
+<docs>
+---
+order: 6
+title:
+  zh-CN: 图片列表样式
+  en-US: Pictures with list style
+---
+
+## zh-CN
+
 上传文件为图片，可展示本地缩略图。`IE8/9` 不支持浏览器本地缩略图展示（[Ref](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL)），可以写 `thumbUrl` 属性来代替。
-</cn>
 
-<us>
-#### Pictures with list style
+## en-US
+
 If uploaded file is a picture, the thumbnail can be shown. `IE8/9` do not support local thumbnail show. Please use `thumbUrl` instead.
-</us>
+</docs>
 
-```vue
 <template>
   <div>
     <a-upload
       action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
       list-type="picture"
-      v-model:fileList="fileList"
+      v-model:file-list="fileList"
     >
-      <a-button> <upload-outlined /> upload </a-button>
+      <a-button> <upload-outlined></upload-outlined> upload </a-button>
     </a-upload>
     <br />
     <br />
     <a-upload
       action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
       list-type="picture"
-      v-model:fileList="fileList"
+      v-model:file-list="fileList"
       class="upload-list-inline"
     >
-      <a-button> <upload-outlined /> upload </a-button>
+      <a-button> <upload-outlined ></upload-outlined> upload </a-button>
     </a-upload>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { UploadOutlined } from '@ant-design/icons-vue';
+import { defineComponent, ref } from 'vue';
 
-export default {
+interface FileItem {
+  uid: string;
+  name?: string;
+  status?: string;
+  response?: string;
+  url?: string;
+}
+
+export default defineComponent({
   components: {
     UploadOutlined,
   },
-  data() {
-    return {
-      fileList: [
+  setup() {
+    const fileList = ref<[]<FileItem>>([
         {
           uid: '-1',
           name: 'xxx.png',
@@ -55,10 +69,12 @@ export default {
           url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
           thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
         },
-      ],
+      ])
+    return {
+      fileList,
     };
   },
-};
+});
 </script>
 <style scoped>
 /* tile uploaded pictures */
@@ -74,4 +90,3 @@ export default {
   animation-name: uploadAnimateInlineOut;
 }
 </style>
-```

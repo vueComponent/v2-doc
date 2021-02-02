@@ -1,16 +1,24 @@
-<cn>
-#### 用户头像
+<docs>
+---
+order: 1
+title:
+  zh-CN: 用户头像
+  en-US: Avatar
+---
+
+## zh-CN
+
 点击上传用户头像，并使用 `beforeUpload` 限制用户上传的图片格式和大小。
-`beforeUpload` 的返回值可以是一个 Promise 以支持异步处理，如服务端校验等
-</cn>
 
-<us>
-#### Avatar
+> `beforeUpload` 的返回值可以是一个 Promise 以支持异步处理，如服务端校验等：[示例](http://react-component.github.io/upload/examples/beforeUpload.html)。
+
+## en-US
+
 Click to upload user's avatar, and validate size and format of picture with `beforeUpload`.
-The return value of function `beforeUpload` can be a Promise to check asynchronously.
-</us>
 
-```vue
+> The return value of function `beforeUpload` can be a Promise to check asynchronously. [demo](http://react-component.github.io/upload/examples/beforeUpload.html)
+</docs>
+
 <template>
   <a-upload
     v-model:fileList="fileList"
@@ -24,51 +32,49 @@ The return value of function `beforeUpload` can be a Promise to check asynchrono
   >
     <img v-if="imageUrl" :src="imageUrl" alt="avatar" />
     <div v-else>
-      <!-- todo -->
-      <loading-outlined v-if="loading" />
-      <plus-outlined v-else />
+      <loading-outlined v-if="loading" ></loading-outlined>
+      <plus-outlined v-else ></plus-outlined>
       <div class="ant-upload-text">Upload</div>
     </div>
   </a-upload>
 </template>
-<script>
+<script lang="ts">
 import { PlusOutlined, LoadingOutlined } from '@ant-design/icons-vue';
 import { message } from 'ant-design-vue';
+import { defineComponent, ref } from 'vue';
 function getBase64(img, callback) {
   const reader = new FileReader();
   reader.addEventListener('load', () => callback(reader.result));
   reader.readAsDataURL(img);
 }
-export default {
+export default defineComponent({
   components: {
     LoadingOutlined,
     PlusOutlined,
   },
-  data() {
-    return {
-      fileList: [],
-      loading: false,
-      imageUrl: '',
-    };
-  },
-  methods: {
-    handleChange(info) {
+  setup() {
+    const fileList = ref([]);
+    const loading = ref<boolean>(false);
+    const imageUrl = ref<string>('');
+
+    const handleChange = (info) => {
       if (info.file.status === 'uploading') {
-        this.loading = true;
+        loading.value = true;
         return;
       }
       if (info.file.status === 'done') {
         // Get this url from response in real world.
-        getBase64(info.file.originFileObj, imageUrl => {
-          this.imageUrl = imageUrl;
-          this.loading = false;
+        getBase64(info.file.originFileObj, base64Url => {
+          imageUrl.value = base64Url;
+          loading.value = false;
         });
       }
       if (info.file.status === 'error') {
-        this.loading = false;
+        loading.value = false;
       }
-    },
-    beforeUpload(file) {
+    }
+
+    const beforeUpload = (file) => {
       const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
       if (!isJpgOrPng) {
         message.error('You can only upload JPG file!');
@@ -78,9 +84,17 @@ export default {
         message.error('Image must smaller than 2MB!');
       }
       return isJpgOrPng && isLt2M;
-    },
-  },
-};
+    }
+
+    return {
+      fileList,
+      loading,
+      imageUrl,
+      handleChange,
+      beforeUpload
+    }
+  }
+});
 </script>
 <style>
 .avatar-uploader > .ant-upload {
@@ -97,4 +111,3 @@ export default {
   color: #666;
 }
 </style>
-```

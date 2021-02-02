@@ -1,33 +1,40 @@
-<cn>
-#### 上传前转换文件
-使用 `transformFile` 转换上传的文件（例如添加水印）。
-</cn>
+<docs>
+---
+order: 10
+title:
+  zh-CN: 上传前转换文件
+  en-US: Transform file before request
+---
 
-<us>
-#### Transform file before request
-Use `transformFile` for transform file before request such as add a watermark.
-</us>
+## zh-CN
 
-```vue
+使用 `beforeUpload` 转换上传的文件（例如添加水印）。
+
+## en-US
+
+Use `beforeUpload` for transform file before request such as add a watermark.
+</docs>
+
 <template>
   <div>
     <a-upload
       action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
       :transform-file="transformFile"
     >
-      <a-button> <upload-outlined /> Upload </a-button>
+      <a-button> <upload-outlined></upload-outlined> Upload </a-button>
     </a-upload>
   </div>
 </template>
 <script>
 import { UploadOutlined } from '@ant-design/icons-vue';
+import { defineComponent, ref } from 'vue';
 
-export default {
+export default defineComponent({
   components: {
     UploadOutlined,
   },
-  methods: {
-    transformFile(file) {
+  setup() {
+    const transformFile = (file) => {
       return new Promise(resolve => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
@@ -45,8 +52,11 @@ export default {
           };
         };
       });
-    },
-  },
-};
+    }
+    return {
+      transformFile
+    }
+  }
+});
 </script>
-```
+

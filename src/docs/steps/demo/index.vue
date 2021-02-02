@@ -29,7 +29,7 @@ import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
 import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
   CN,
   US,
   components: {
@@ -48,5 +48,5 @@ export default {
   setup() {
     return {};
   },
-};
+});
 </script>

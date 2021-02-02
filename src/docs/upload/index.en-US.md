@@ -1,3 +1,20 @@
+---
+category: Components
+type: Data Entry
+title: Upload
+cover: https://gw.alipayobjects.com/zos/alicdn/QaeBt_ZMg/Upload.svg
+---
+
+Upload file by selecting or dragging.
+
+## When To Use
+
+Uploading is the process of publishing information (web pages, text, pictures, video, etc.) to a remote server via a web page or upload tool.
+
+- When you need to upload one or more files.
+- When you need to show the process of uploading.
+- When you need to upload files by dragging and dropping.
+
 ## API
 
 | Property | Description | Type | Default | Version |
