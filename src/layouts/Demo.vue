@@ -18,7 +18,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import { useRoute } from 'vue-router';
-import GoogleAds from '../components/ads/GoogleAds.vue';
+import GoogleAds from '../components/rice/GoogleAds.vue';
 
 const showAd = location.host.indexOf('antdv.com') > -1;
 export default defineComponent({
