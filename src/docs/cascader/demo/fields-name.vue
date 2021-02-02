@@ -1,14 +1,20 @@
-<cn>
-#### 自定义字段名
+<docs>
+---
+order: 10
+title:
+  zh-CN: 自定义字段名
+  en-US: Custom Field Names
+---
+
+## zh-CN
+
 自定义字段名。
-</cn>
 
-<us>
-#### Custom Field Names
-Custom Field Names.
-</us>
+## en-US
 
-```vue
+Custom Field Names
+
+</docs>
 <template>
   <a-cascader
     v-model:value="value"
@@ -18,7 +24,8 @@ Custom Field Names.
     @change="onChange"
   />
 </template>
-<script>
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
 const options = [
   {
     code: 'zhejiang',
@@ -53,18 +60,17 @@ const options = [
     ],
   },
 ];
-export default {
-  data() {
+export default defineComponent({
+  setup() {
+    const onChange = (value: string[]) => {
+      console.log(value);
+    };
+
     return {
-      value: [],
+      value: ref<string[]>([]),
       options,
+      onChange,
     };
   },
-  methods: {
-    onChange(value) {
-      console.log(value);
-    },
-  },
-};
+});
 </script>
-```
