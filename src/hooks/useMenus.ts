@@ -24,8 +24,15 @@ const useMenus = (): {
   const menus = computed(() => {
     const path = route.path;
     const category = path.split('/')[1];
+    const pattern = /^\/iframe/;
     return routes
-      .filter(r => r.meta && r.meta.category && r.meta.category.toLowerCase() === category)
+      .filter(
+        r =>
+          r.meta &&
+          r.meta.category &&
+          r.meta.category.toLowerCase() === category &&
+          !pattern.test(r.path),
+      )
       .map(r => ({ ...r.meta, path: r.path.split(':lang')[0] }));
   });
   const activeMenuItem = computed(() => {
