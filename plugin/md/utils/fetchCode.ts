@@ -16,7 +16,8 @@ export default function fetchCode(src: string, type: string): string {
   if (type === 'template') {
     const $ = cheerio.load(src, {
       decodeEntities: false,
-      xmlMode: true,
+      xmlMode: false,
+      _useHtmlParser2: true,
     });
     return `<template>
   ${$(type).html().trim()}
