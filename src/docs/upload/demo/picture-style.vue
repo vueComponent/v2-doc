@@ -22,7 +22,10 @@ If uploaded file is a picture, the thumbnail can be shown. `IE8/9` do not suppor
       list-type="picture"
       v-model:file-list="fileList"
     >
-      <a-button> <upload-outlined></upload-outlined> upload </a-button>
+      <a-button>
+        <upload-outlined></upload-outlined>
+        upload
+      </a-button>
     </a-upload>
     <br />
     <br />
@@ -32,7 +35,10 @@ If uploaded file is a picture, the thumbnail can be shown. `IE8/9` do not suppor
       v-model:file-list="fileList"
       class="upload-list-inline"
     >
-      <a-button> <upload-outlined ></upload-outlined> upload </a-button>
+      <a-button>
+        <upload-outlined></upload-outlined>
+        upload
+      </a-button>
     </a-upload>
   </div>
 </template>
@@ -47,6 +53,7 @@ interface FileItem {
   status?: string;
   response?: string;
   url?: string;
+  thumbUrl?: string;
 }
 
 export default defineComponent({
@@ -54,22 +61,22 @@ export default defineComponent({
     UploadOutlined,
   },
   setup() {
-    const fileList = ref<[]<FileItem>>([
-        {
-          uid: '-1',
-          name: 'xxx.png',
-          status: 'done',
-          url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-          thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-        },
-        {
-          uid: '-2',
-          name: 'yyy.png',
-          status: 'done',
-          url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-          thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-        },
-      ])
+    const fileList = ref<FileItem[]>([
+      {
+        uid: '-1',
+        name: 'xxx.png',
+        status: 'done',
+        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+        thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+      },
+      {
+        uid: '-2',
+        name: 'yyy.png',
+        status: 'done',
+        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+        thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+      },
+    ]);
     return {
       fileList,
     };

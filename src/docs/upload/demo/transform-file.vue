@@ -20,12 +20,16 @@ Use `beforeUpload` for transform file before request such as add a watermark.
     <a-upload
       action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
       :transform-file="transformFile"
+      v-model:file-list="fileList"
     >
-      <a-button> <upload-outlined></upload-outlined> Upload </a-button>
+      <a-button>
+        <upload-outlined></upload-outlined>
+        Upload
+      </a-button>
     </a-upload>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { UploadOutlined } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
 
@@ -34,16 +38,16 @@ export default defineComponent({
     UploadOutlined,
   },
   setup() {
-    const transformFile = (file) => {
+    const transformFile = (file: any) => {
       return new Promise(resolve => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => {
           const canvas = document.createElement('canvas');
-          const img = document.createElement('img');
-          img.src = reader.result;
+          const img: HTMLImageElement = document.createElement('img');
+          img.src = reader.result as string;
           img.onload = () => {
-            const ctx = canvas.getContext('2d');
+            const ctx: CanvasRenderingContext2D = canvas.getContext('2d')!;
             ctx.drawImage(img, 0, 0);
             ctx.fillStyle = 'red';
             ctx.textBaseline = 'middle';
@@ -52,11 +56,11 @@ export default defineComponent({
           };
         };
       });
-    }
+    };
     return {
-      transformFile
-    }
-  }
+      transformFile,
+      fileList: ref([]),
+    };
+  },
 });
 </script>
-

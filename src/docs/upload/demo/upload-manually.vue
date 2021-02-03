@@ -17,8 +17,16 @@ Upload files manually after `beforeUpload` returns `false`.
 
 <template>
   <div class="clearfix">
-    <a-upload :file-list="fileList" :remove="handleRemove" :before-upload="beforeUpload">
-      <a-button> <upload-outlined></upload-outlined> Select File </a-button>
+    <a-upload
+      :file-list="fileList"
+      :remove="handleRemove"
+      :before-upload="beforeUpload"
+      v-model:file-list="fileList"
+    >
+      <a-button>
+        <upload-outlined></upload-outlined>
+        Select File
+      </a-button>
     </a-upload>
     <a-button
       type="primary"
@@ -42,24 +50,24 @@ export default defineComponent({
     UploadOutlined,
   },
   setup() {
-    const fileList = ref([]);
+    const fileList = ref<any>([]);
     const uploading = ref<boolean>(false);
 
-    const handleRemove = (file) => {
+    const handleRemove = (file: any) => {
       const index = fileList.value.indexOf(file);
       const newFileList = fileList.value.slice();
       newFileList.splice(index, 1);
       fileList.value = newFileList;
-    }
+    };
 
-    const beforeUpload = (file) => {
-      fileList.value = [...fileList.value, file];
+    const beforeUpload = (file: any) => {
+      fileList.value.push(file);
       return false;
-    }
+    };
 
     const handleUpload = () => {
       const formData = new FormData();
-      fileList.value.forEach(file => {
+      fileList.value.forEach((file: any) => {
         formData.append('files[]', file);
       });
       uploading.value = true;
@@ -68,15 +76,17 @@ export default defineComponent({
       request('https://www.mocky.io/v2/5cc8019d300000980a055e76', {
         method: 'post',
         data: formData,
-      }).then(() => {
-        fileList.value = [];
-        uploading.value = false;
-        message.success('upload successfully.');
-      }).catch(() => {
-        uploading.value = false;
-        message.error('upload failed.');
-      });
-    }
+      })
+        .then(() => {
+          fileList.value = [];
+          uploading.value = false;
+          message.success('upload successfully.');
+        })
+        .catch(() => {
+          uploading.value = false;
+          message.error('upload failed.');
+        });
+    };
 
     return {
       fileList,
@@ -85,6 +95,6 @@ export default defineComponent({
       beforeUpload,
       handleUpload,
     };
-  }
+  },
 });
 </script>

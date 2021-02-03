@@ -43,7 +43,7 @@ export default defineComponent({
     UploadManually,
     Directory,
     PreviewFile,
-    TransformFile
+    TransformFile,
   },
   setup() {
     return {};

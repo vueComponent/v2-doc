@@ -30,7 +30,10 @@ You can gain full control over filelist by configuring `fileList`. You can accom
     :file-list="fileList"
     @change="handleChange"
   >
-    <a-button> <upload-outlined ></upload-outlined> Upload </a-button>
+    <a-button>
+      <upload-outlined></upload-outlined>
+      Upload
+    </a-button>
   </a-upload>
 </template>
 <script lang="ts">
@@ -50,13 +53,15 @@ export default defineComponent({
     UploadOutlined,
   },
   setup() {
-    const fileList = ref<[]<FileItem>>([{
-      uid: '-1',
-      name: 'xxx.png',
-      status: 'done',
-      url: 'http://www.baidu.com/xxx.png',
-    }]);
-    const handleChange = (info) => {
+    const fileList = ref<FileItem[]>([
+      {
+        uid: '-1',
+        name: 'xxx.png',
+        status: 'done',
+        url: 'http://www.baidu.com/xxx.png',
+      },
+    ]);
+    const handleChange = (info: any) => {
       let resFileList = [...info.fileList];
 
       // 1. Limit the number of uploaded files
@@ -73,10 +78,11 @@ export default defineComponent({
       });
 
       fileList.value = resFileList;
-    }
+    };
     return {
       fileList,
+      handleChange,
     };
-  }
+  },
 });
 </script>

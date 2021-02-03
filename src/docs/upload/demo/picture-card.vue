@@ -20,9 +20,8 @@ After users upload picture, the thumbnail will be shown in list. The upload butt
     <a-upload
       action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
       list-type="picture-card"
-      :file-list="fileList"
+      v-model:file-list="fileList"
       @preview="handlePreview"
-      @change="handleChange"
     >
       <div v-if="fileList.length < 8">
         <plus-outlined />
@@ -38,7 +37,7 @@ After users upload picture, the thumbnail will be shown in list. The upload butt
 import { PlusOutlined } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
 
-function getBase64(file) {
+function getBase64(file: any) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -52,6 +51,7 @@ interface FileItem {
   name?: string;
   status?: string;
   response?: string;
+  percent?: number;
   url?: string;
 }
 
@@ -63,51 +63,55 @@ export default defineComponent({
     const previewVisible = ref<boolean>(false);
     const previewImage = ref<string>('');
 
-    const fileList = ref<[]<FileItem>>([
-        {
-          uid: '-1',
-          name: 'image.png',
-          status: 'done',
-          url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-        },
-        {
-          uid: '-2',
-          name: 'image.png',
-          status: 'done',
-          url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-        },
-        {
-          uid: '-3',
-          name: 'image.png',
-          status: 'done',
-          url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-        },
-        {
-          uid: '-4',
-          name: 'image.png',
-          status: 'done',
-          url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-        },
-        {
-          uid: '-5',
-          name: 'image.png',
-          status: 'error',
-        },
-      ])
+    const fileList = ref<FileItem[]>([
+      {
+        uid: '-1',
+        name: 'image.png',
+        status: 'done',
+        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+      },
+      {
+        uid: '-2',
+        name: 'image.png',
+        status: 'done',
+        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+      },
+      {
+        uid: '-3',
+        name: 'image.png',
+        status: 'done',
+        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+      },
+      {
+        uid: '-4',
+        name: 'image.png',
+        status: 'done',
+        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+      },
+      {
+        uid: '-xxx',
+        percent: 50,
+        name: 'image.png',
+        status: 'uploading',
+        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+      },
+      {
+        uid: '-5',
+        name: 'image.png',
+        status: 'error',
+      },
+    ]);
 
     const handleCancel = () => {
       previewVisible.value = false;
-    }
-    const handlePreview = async (file) => {
+    };
+    const handlePreview = async (file: any) => {
       if (!file.url && !file.preview) {
         file.preview = await getBase64(file.originFileObj);
       }
       previewImage.value = file.url || file.preview;
       previewVisible.value = true;
-    }
-    const handleChange = ({ fileList }) => {
-      this.fileList = fileList;
-    }
+    };
 
     return {
       previewVisible,
@@ -115,7 +119,6 @@ export default defineComponent({
       fileList,
       handleCancel,
       handlePreview,
-      handleChange
     };
   },
 });

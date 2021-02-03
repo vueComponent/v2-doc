@@ -56,7 +56,7 @@ cover: https://gw.alipayobjects.com/zos/alicdn/QaeBt_ZMg/Upload.svg
 
 文件状态改变的回调，返回为：
 
-```js
+```jsx
 {
   file: { /* ... */ },
   fileList: [ /* ... */ ],
@@ -66,7 +66,7 @@ cover: https://gw.alipayobjects.com/zos/alicdn/QaeBt_ZMg/Upload.svg
 
 1. `file` 当前操作的文件对象。
 
-   ```js
+   ```jsx
    {
       uid: 'uid',      // 文件唯一标识，建议设置为负数，防止和内部产生的 id 冲突
       name: 'xx.png',   // 文件名

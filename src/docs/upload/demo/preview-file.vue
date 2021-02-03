@@ -21,12 +21,16 @@ Customize local preview. Can handle with non-image format files such as video.
       list-type="picture"
       action="//jsonplaceholder.typicode.com/posts/"
       :preview-file="previewFile"
+      v-model:file-list="fileList"
     >
-      <a-button> <upload-outlined ></upload-outlined> Upload </a-button>
+      <a-button>
+        <upload-outlined></upload-outlined>
+        Upload
+      </a-button>
     </a-upload>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { UploadOutlined } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
 
@@ -35,7 +39,7 @@ export default defineComponent({
     UploadOutlined,
   },
   setup() {
-     const previewFile = (file) => {
+    const previewFile = (file: any): Promise<Response> => {
       console.log('Your upload file:', file);
       // Your process logic. Here we just mock to the same file
       return fetch('https://next.json-generator.com/api/json/get/4ytyBoLK8', {
@@ -44,10 +48,11 @@ export default defineComponent({
       })
         .then(res => res.json())
         .then(({ thumbnail }) => thumbnail);
-    }
+    };
     return {
-      previewFile
-    }
-  }
+      previewFile,
+      fileList: ref([]),
+    };
+  },
 });
 </script>

@@ -32,8 +32,8 @@ Click to upload user's avatar, and validate size and format of picture with `bef
   >
     <img v-if="imageUrl" :src="imageUrl" alt="avatar" />
     <div v-else>
-      <loading-outlined v-if="loading" ></loading-outlined>
-      <plus-outlined v-else ></plus-outlined>
+      <loading-outlined v-if="loading"></loading-outlined>
+      <plus-outlined v-else></plus-outlined>
       <div class="ant-upload-text">Upload</div>
     </div>
   </a-upload>
@@ -42,9 +42,10 @@ Click to upload user's avatar, and validate size and format of picture with `bef
 import { PlusOutlined, LoadingOutlined } from '@ant-design/icons-vue';
 import { message } from 'ant-design-vue';
 import { defineComponent, ref } from 'vue';
-function getBase64(img, callback) {
+
+function getBase64(img: any, callback: (base64Url: string) => void) {
   const reader = new FileReader();
-  reader.addEventListener('load', () => callback(reader.result));
+  reader.addEventListener('load', () => callback(reader.result as string));
   reader.readAsDataURL(img);
 }
 export default defineComponent({
@@ -57,7 +58,7 @@ export default defineComponent({
     const loading = ref<boolean>(false);
     const imageUrl = ref<string>('');
 
-    const handleChange = (info) => {
+    const handleChange = (info: any) => {
       if (info.file.status === 'uploading') {
         loading.value = true;
         return;
@@ -71,10 +72,11 @@ export default defineComponent({
       }
       if (info.file.status === 'error') {
         loading.value = false;
+        message.error('upload error');
       }
-    }
+    };
 
-    const beforeUpload = (file) => {
+    const beforeUpload = (file: any) => {
       const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
       if (!isJpgOrPng) {
         message.error('You can only upload JPG file!');
@@ -84,16 +86,16 @@ export default defineComponent({
         message.error('Image must smaller than 2MB!');
       }
       return isJpgOrPng && isLt2M;
-    }
+    };
 
     return {
       fileList,
       loading,
       imageUrl,
       handleChange,
-      beforeUpload
-    }
-  }
+      beforeUpload,
+    };
+  },
 });
 </script>
 <style>
