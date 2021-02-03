@@ -1,14 +1,21 @@
-<cn>
-#### 基本
+<docs>
+---
+order: 0
+title:
+  zh-CN: 基本用法
+  en-US: Basic Usage
+---
+
+## zh-CN
+
 最简单的用法，在浮层中可以选择或者输入日期。
-</cn>
 
-<us>
-#### Basic
+## en-US
+
 Basic use case. Users can select or input a date in panel.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-date-picker v-model:value="value1" @change="onChange" />
   <br />
@@ -18,21 +25,22 @@ Basic use case. Users can select or input a date in panel.
   <br />
   <a-week-picker v-model:value="value4" placeholder="Select week" @change="onChange" />
 </template>
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+import { Moment } from 'moment';
+export default defineComponent({
+  setup() {
+    const onChange = (date: Moment, dateString: string) => {
+      console.log(date, dateString);
+    };
+
     return {
-      value1: null,
-      value2: null,
-      value3: [],
-      value4: null,
+      value1: ref<Moment>(),
+      value2: ref<Moment>(),
+      value3: ref<Moment[]>([]),
+      value4: ref<Moment>(),
+      onChange,
     };
   },
-  methods: {
-    onChange(date, dateString) {
-      console.log(date, dateString);
-    },
-  },
-};
+});
 </script>
-```

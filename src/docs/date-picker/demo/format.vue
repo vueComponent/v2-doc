@@ -1,14 +1,21 @@
-<cn>
-#### 日期格式
+<docs>
+---
+order: 1
+title:
+  zh-CN: 日期格式
+  en-US: Date Format
+---
+
+## zh-CN
+
 使用 `format` 属性，可以自定义日期显示格式。
-</cn>
 
-<us>
-#### Date Format
+## en-US
+
 We can set the date format by `format`.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-date-picker :default-value="moment('2015/01/01', dateFormat)" :format="dateFormat" />
   <br />
@@ -24,19 +31,17 @@ We can set the date format by `format`.
     :format="dateFormat"
   />
 </template>
-<script>
+<script lang="ts">
 import moment from 'moment';
-export default {
-  data() {
+import { defineComponent } from 'vue';
+export default defineComponent({
+  setup() {
     return {
       dateFormat: 'YYYY/MM/DD',
       monthFormat: 'YYYY/MM',
       dateFormatList: ['DD/MM/YYYY', 'DD/MM/YY'],
+      moment,
     };
   },
-  methods: {
-    moment,
-  },
-};
+});
 </script>
-```

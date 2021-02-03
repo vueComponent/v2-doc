@@ -1,14 +1,21 @@
-<cn>
-#### 不可选择日期和时间
+<docs>
+---
+order: 4
+title:
+  zh-CN: 不可选择日期和时间
+  en-US: Disabled Date & Time
+---
+
+## zh-CN
+
 可用 `disabledDate` 和 `disabledTime` 分别禁止选择部分日期和时间，其中 `disabledTime` 需要和 `showTime` 一起使用。
-</cn>
 
-<us>
-#### Disabled Date & Time
+## en-US
+
 Disabled part of dates and time by `disabledDate` and `disabledTime` respectively, and `disabledTime` only works with `showTime`.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-date-picker
     format="YYYY-MM-DD HH:mm:ss"
@@ -29,47 +36,55 @@ Disabled part of dates and time by `disabledDate` and `disabledTime` respectivel
     format="YYYY-MM-DD HH:mm:ss"
   />
 </template>
-<script>
-import moment from 'moment';
-export default {
-  methods: {
-    moment,
-    range(start, end) {
+<script lang="ts">
+import moment, { Moment } from 'moment';
+import { defineComponent } from 'vue';
+export default defineComponent({
+  setup() {
+    const range = (start: number, end: number) => {
       const result = [];
+
       for (let i = start; i < end; i++) {
         result.push(i);
       }
-      return result;
-    },
 
-    disabledDate(current) {
+      return result;
+    };
+
+    const disabledDate = (current: Moment) => {
       // Can not select days before today and today
       return current && current < moment().endOf('day');
-    },
+    };
 
-    disabledDateTime() {
+    const disabledDateTime = () => {
       return {
-        disabledHours: () => this.range(0, 24).splice(4, 20),
-        disabledMinutes: () => this.range(30, 60),
+        disabledHours: () => range(0, 24).splice(4, 20),
+        disabledMinutes: () => range(30, 60),
         disabledSeconds: () => [55, 56],
       };
-    },
+    };
 
-    disabledRangeTime(_, type) {
+    const disabledRangeTime = (_: Moment[], type: 'start' | 'end') => {
       if (type === 'start') {
         return {
-          disabledHours: () => this.range(0, 60).splice(4, 20),
-          disabledMinutes: () => this.range(30, 60),
+          disabledHours: () => range(0, 60).splice(4, 20),
+          disabledMinutes: () => range(30, 60),
           disabledSeconds: () => [55, 56],
         };
       }
       return {
-        disabledHours: () => this.range(0, 60).splice(20, 4),
-        disabledMinutes: () => this.range(0, 31),
+        disabledHours: () => range(0, 60).splice(20, 4),
+        disabledMinutes: () => range(0, 31),
         disabledSeconds: () => [55, 56],
       };
-    },
+    };
+
+    return {
+      moment,
+      disabledDate,
+      disabledDateTime,
+      disabledRangeTime,
+    };
   },
-};
+});
 </script>
-```
