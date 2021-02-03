@@ -1,15 +1,21 @@
-<cn>
-#### 步长选项
+<docs>
+---
+order: 5
+title:
+  zh-CN: 步长选项
+  en-US: Interval option
+---
+
+## zh-CN
+
 可以使用 `hourStep` `minuteStep` `secondStep` 按步长展示可选的时分秒。
-</cn>
 
-<us>
-#### interval option
+## en-US
+
 Show stepped options by `hourStep` `minuteStep` `secondStep`.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-time-picker :minute-step="15" :second-step="10" />
 </template>
-```

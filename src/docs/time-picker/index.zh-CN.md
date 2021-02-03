@@ -1,3 +1,17 @@
+---
+category: Components
+type: 数据录入
+title: TimePicker
+subtitle: 时间选择框
+cover: https://gw.alipayobjects.com/zos/alicdn/h04Zsl98I/TimePicker.svg
+---
+
+输入或选择时间的控件。
+
+## 何时使用
+
+当用户需要输入一个时间，可以点击标准输入框，弹出时间面板进行选择。
+
 ## API
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |

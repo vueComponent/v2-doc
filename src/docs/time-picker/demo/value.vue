@@ -1,14 +1,21 @@
-<cn>
-#### 受控组件
+<docs>
+---
+order: 8
+title:
+  zh-CN: 受控组件
+  en-US: Under Control
+---
+
+## zh-CN
+
 value 和 onChange 需要配合使用。也可以直接使用v-model。
-</cn>
 
-<us>
-#### Under Control
+## en-US
+
 `value` and `@change` should be used together or use v-model.
-</us>
 
-```vue
+</docs>
+
 <template>
   <div>
     <p>use value and @change</p>
@@ -23,21 +30,24 @@ value 和 onChange 需要配合使用。也可以直接使用v-model。
     <a-time-picker :value="value2" />
   </div>
 </template>
-<script>
-import moment from 'moment';
-export default {
-  data() {
+<script lang="ts">
+import moment, { Moment } from 'moment';
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const value = ref<Moment>();
+
+    const onChange = (time: Moment) => {
+      console.log(time);
+      value.value = time;
+    };
+
     return {
-      value: null,
-      value2: moment(),
+      value,
+      value2: ref(moment()),
+      onChange,
     };
   },
-  methods: {
-    onChange(time) {
-      console.log(time);
-      this.value = time;
-    },
-  },
-};
+});
 </script>
-```

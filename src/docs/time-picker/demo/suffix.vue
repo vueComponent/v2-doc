@@ -1,33 +1,43 @@
-<cn>
-#### 后缀图标
+<docs>
+---
+order: 7
+title:
+  zh-CN: 后缀图标
+  en-US: Suffix
+---
+
+## zh-CN
+
 点击 TimePicker，然后可以在浮层中选择或者输入某一时间。
-</cn>
 
-<us>
-#### Suffix
+## en-US
+
 Click `TimePicker`, and then we could select or input a time in panel.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-time-picker @change="onChange" :defaultOpenValue="moment('00:00:00', 'HH:mm:ss')">
     <template #suffixIcon><smile-outlined /></template>
   </a-time-picker>
 </template>
-<script>
-import moment from 'moment';
+<script lang="ts">
+import moment, { Moment } from 'moment';
 import { SmileOutlined } from '@ant-design/icons-vue';
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
   components: {
     SmileOutlined,
   },
-  methods: {
-    moment,
-    onChange(time, timeString) {
+  setup() {
+    const onChange = (time: Moment | string, timeString: string) => {
       console.log(time, timeString);
-    },
+    };
+    return {
+      moment,
+      onChange,
+    };
   },
-};
+});
 </script>
-```
