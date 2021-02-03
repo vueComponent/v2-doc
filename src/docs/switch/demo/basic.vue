@@ -17,21 +17,15 @@ The most basic usage.
 </docs>
 
 <template>
-  <a-switch v-model:checked="checked" @change="onChange" />
+  <a-switch v-model:checked="checked" />
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
     const checked = ref<boolean>(false);
-
-    const onChange = (checked: boolean) => {
-      console.log(`a-switch to ${checked}`);
-    };
-
     return {
       checked,
-      onChange,
     };
   },
 });

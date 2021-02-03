@@ -21,7 +21,6 @@ Custom suffix icon
     style="margin-top: 1rem"
     :options="options"
     placeholder="Please select"
-    @change="onChange"
   >
     <template #suffixIcon><smile-outlined class="test" /></template>
   </a-cascader>
@@ -37,7 +36,12 @@ Custom suffix icon
 <script lang="ts">
 import { SmileOutlined } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
-const options = [
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+}
+const options: Option[] = [
   {
     value: 'zhejiang',
     label: 'Zhejiang',
@@ -76,15 +80,10 @@ export default defineComponent({
     SmileOutlined,
   },
   setup() {
-    const onChange = (value: string[]) => {
-      console.log(value);
-    };
-
     return {
       value1: ref<string[]>([]),
       value2: ref<string[]>([]),
       options,
-      onChange,
     };
   },
 });

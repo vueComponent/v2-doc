@@ -1,7 +1,6 @@
 <template>
   <demo-sort>
     <basic />
-    <default-value />
     <custom-trigger />
     <hover />
     <disabled-option />
@@ -19,7 +18,6 @@ import Basic from './basic.vue';
 import ChangeOnSelect from './change-on-select.vue';
 import CustomRender from './custom-render.vue';
 import CustomTrigger from './custom-trigger.vue';
-import DefaultValue from './default-value.vue';
 import DisabledOption from './disabled-option.vue';
 import Hover from './hover.vue';
 import Lazy from './lazy.vue';
@@ -39,7 +37,6 @@ export default defineComponent({
     ChangeOnSelect,
     CustomRender,
     CustomTrigger,
-    DefaultValue,
     DisabledOption,
     Hover,
     Lazy,

@@ -16,11 +16,16 @@ Allow only select parent options.
 
 </docs>
 <template>
-  <a-cascader v-model:value="value" :options="options" change-on-select @change="onChange" />
+  <a-cascader v-model:value="value" :options="options" change-on-select />
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-const options = [
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+}
+const options: Option[] = [
   {
     value: 'zhejiang',
     label: 'Zhejiang',
@@ -56,14 +61,9 @@ const options = [
 ];
 export default defineComponent({
   setup() {
-    const onChange = (value: string[]) => {
-      console.log(value);
-    };
-
     return {
       value: ref<string[]>([]),
       options,
-      onChange,
     };
   },
 });

@@ -21,12 +21,18 @@ Custom Field Names
     :field-names="{ label: 'name', value: 'code', children: 'items' }"
     :options="options"
     placeholder="Please select"
-    @change="onChange"
   />
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-const options = [
+interface Option {
+  code: string;
+  name: string;
+  disabled?: boolean;
+  items?: Option[];
+  [key: string]: any;
+}
+const options: Option[] = [
   {
     code: 'zhejiang',
     name: 'Zhejiang',
@@ -62,14 +68,9 @@ const options = [
 ];
 export default defineComponent({
   setup() {
-    const onChange = (value: string[]) => {
-      console.log(value);
-    };
-
     return {
       value: ref<string[]>([]),
       options,
-      onChange,
     };
   },
 });

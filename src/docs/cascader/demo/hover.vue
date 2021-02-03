@@ -22,12 +22,16 @@ Hover to expand sub menu, click to select option.
     :display-render="displayRender"
     expand-trigger="hover"
     placeholder="Please select"
-    @change="onChange"
   />
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-const options = [
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+}
+const options: Option[] = [
   {
     value: 'zhejiang',
     label: 'Zhejiang',
@@ -63,10 +67,6 @@ const options = [
 ];
 export default defineComponent({
   setup() {
-    const onChange = (value: string[]) => {
-      console.log(value);
-    };
-
     const displayRender = ({ labels }: { labels: string[] }) => {
       return labels[labels.length - 1];
     };
@@ -74,7 +74,6 @@ export default defineComponent({
     return {
       value: ref<string[]>([]),
       options,
-      onChange,
       displayRender,
     };
   },

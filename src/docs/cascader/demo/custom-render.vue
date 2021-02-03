@@ -33,7 +33,14 @@ For instance, add an external link after the selected value.
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-const options = [
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+  code?: number;
+  [key: string]: any;
+}
+const options: Option[] = [
   {
     value: 'zhejiang',
     label: 'Zhejiang',
@@ -71,7 +78,7 @@ const options = [
 ];
 export default defineComponent({
   setup() {
-    const handleAreaClick = (e: Event, label: string, option) => {
+    const handleAreaClick = (e: Event, label: string, option: Option) => {
       e.stopPropagation();
       console.log('clicked', label, option);
     };

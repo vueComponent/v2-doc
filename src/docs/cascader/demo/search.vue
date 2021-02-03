@@ -23,14 +23,14 @@ Search and select options directly.
     :options="options"
     :show-search="{ filter }"
     placeholder="Please select"
-    @change="onChange"
   />
 </template>
 <script lang="ts">
-import { defineComponent, ref, VNode } from 'vue';
+import { defineComponent, ref } from 'vue';
 interface Option {
-  value: string | number;
-  label: VNode;
+  value: string;
+  label: string;
+  disabled?: boolean;
   children?: Option[];
 }
 const options: Option[] = [
@@ -74,10 +74,6 @@ const options: Option[] = [
 ];
 export default defineComponent({
   setup() {
-    const onChange = (value: string[], selectedOptions: Option[]) => {
-      console.log(value, selectedOptions);
-    };
-
     const filter = (inputValue: string, path: Option[]) => {
       return path.some(option => option.label.toLowerCase().indexOf(inputValue.toLowerCase()) > -1);
     };
@@ -85,7 +81,6 @@ export default defineComponent({
     return {
       value: ref<string[]>([]),
       options,
-      onChange,
       filter,
     };
   },

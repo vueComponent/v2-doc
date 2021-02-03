@@ -16,11 +16,19 @@ Disable option by specifying the `disabled` property in `options`.
 
 </docs>
 <template>
-  <a-cascader v-model:value="value" :options="options" @change="onChange" />
+  <a-cascader v-model:value="value" :options="options" />
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-const options = [
+interface Option {
+  value: string;
+  label: string;
+  disabled?: boolean;
+  children?: Option[];
+  code?: number;
+  [key: string]: any;
+}
+const options: Option[] = [
   {
     value: 'zhejiang',
     label: 'Zhejiang',
@@ -57,14 +65,9 @@ const options = [
 ];
 export default defineComponent({
   setup() {
-    const onChange = (value: string[]) => {
-      console.log(value);
-    };
-
     return {
       value: ref<string[]>([]),
       options,
-      onChange,
     };
   },
 });

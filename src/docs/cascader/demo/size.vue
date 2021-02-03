@@ -16,19 +16,24 @@ Cascade selection box of different sizes.
 
 </docs>
 <template>
-  <a-cascader v-model:value="value" size="large" :options="options" @change="onChange" />
+  <a-cascader v-model:value="value" size="large" :options="options" />
   <br />
   <br />
-  <a-cascader v-model:value="value" :options="options" @change="onChange" />
+  <a-cascader v-model:value="value" :options="options" />
   <br />
   <br />
-  <a-cascader v-model:value="value" size="small" :options="options" @change="onChange" />
+  <a-cascader v-model:value="value" size="small" :options="options" />
   <br />
   <br />
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-const options = [
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+}
+const options: Option[] = [
   {
     value: 'zhejiang',
     label: 'Zhejiang',
@@ -64,14 +69,9 @@ const options = [
 ];
 export default defineComponent({
   setup() {
-    const onChange = (value: string[]) => {
-      console.log(value);
-    };
-
     return {
       value: ref<string[]>([]),
       options,
-      onChange,
     };
   },
 });

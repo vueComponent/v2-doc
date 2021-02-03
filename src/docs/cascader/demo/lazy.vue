@@ -24,14 +24,13 @@ Load options lazily with `loadData`.
     :load-data="loadData"
     placeholder="Please select"
     change-on-select
-    @change="onChange"
   />
 </template>
 <script lang="ts">
-import { defineComponent, ref, VNode } from 'vue';
+import { defineComponent, ref } from 'vue';
 interface Option {
-  value: string | number;
-  label: VNode;
+  value: string;
+  label: string;
   loading?: boolean;
   isLeaf?: boolean;
   children?: Option[];
@@ -50,10 +49,6 @@ export default defineComponent({
         isLeaf: false,
       },
     ]);
-
-    const onChange = (value: string[]) => {
-      console.log(value);
-    };
 
     const loadData = (selectedOptions: Option[]) => {
       const targetOption = selectedOptions[selectedOptions.length - 1];
@@ -79,7 +74,6 @@ export default defineComponent({
     return {
       value: ref<string[]>([]),
       options,
-      onChange,
       loadData,
     };
   },

@@ -24,12 +24,13 @@ Separate trigger button and result.
   </span>
 </template>
 <script lang="ts">
-import { defineComponent, ref, VNode } from 'vue';
+import { defineComponent, ref } from 'vue';
 interface Option {
-  value: string | number;
-  label?: VNode;
-  disabled?: boolean;
+  value: string;
+  label: string;
   children?: Option[];
+  code?: number;
+  [key: string]: any;
 }
 const options: Option[] = [
   {
