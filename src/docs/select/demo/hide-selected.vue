@@ -1,14 +1,21 @@
-<cn>
-#### 隐藏已选择选项
+<docs>
+---
+order: 12
+title:
+  zh-CN: 隐藏已选择选项
+  en-US: Hide Already Selected
+---
+
+## zh-CN
+
 隐藏下拉列表中已选择的选项。
-</cn>
 
-<us>
-#### Hide Already Selected
+## en-US
+
 Hide already selected options in the dropdown.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-select
     mode="multiple"
@@ -22,18 +29,19 @@ Hide already selected options in the dropdown.
   </a-select>
 </template>
 <script>
+import { computed, defineComponent, ref } from 'vue';
+
 const OPTIONS = ['Apples', 'Nails', 'Bananas', 'Helicopters'];
-export default {
-  data() {
+export default defineComponent({
+  setup() {
+    const selectedItems = ref([]);
+
+    const filteredOptions = computed(() => OPTIONS.filter(o => !selectedItems.value.includes(o)));
+
     return {
-      selectedItems: [],
+      selectedItems,
+      filteredOptions,
     };
   },
-  computed: {
-    filteredOptions() {
-      return OPTIONS.filter(o => !this.selectedItems.includes(o));
-    },
-  },
-};
+});
 </script>
-```

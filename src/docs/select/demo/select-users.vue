@@ -1,14 +1,21 @@
-<cn>
-#### 搜索用户
+<docs>
+---
+order: 10
+title:
+  zh-CN: 搜索用户
+  en-US: Search and Select Users
+---
+
+## zh-CN
+
 一个带有远程搜索，节流控制，请求时序控制，加载状态的多选示例。
-</cn>
 
-<us>
-#### Search and Select Users
+## en-US
+
 A complete multiple select sample with remote search, debounce fetch, ajax callback order flow, and loading state.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-select
     mode="multiple"
@@ -29,47 +36,50 @@ A complete multiple select sample with remote search, debounce fetch, ajax callb
   </a-select>
 </template>
 <script>
+import { defineComponent, reactive, toRefs, watch } from 'vue';
 import { debounce } from 'lodash-es';
 
-export default {
-  data() {
-    this.lastFetchId = 0;
-    this.fetchUser = debounce(this.fetchUser, 800);
-    return {
+export default defineComponent({
+  setup() {
+    let lastFetchId = 0;
+
+    const state = reactive({
       data: [],
       value: [],
       fetching: false,
-    };
-  },
-  watch: {
-    value() {
-      this.data = [];
-      this.fetching = false;
-    },
-  },
-  methods: {
-    fetchUser(value) {
+    });
+
+    const fetchUser = debounce(value => {
       console.log('fetching user', value);
-      this.lastFetchId += 1;
-      const fetchId = this.lastFetchId;
-      this.data = [];
-      this.fetching = true;
+      lastFetchId += 1;
+      const fetchId = lastFetchId;
+      state.data = [];
+      state.fetching = true;
       fetch('https://randomuser.me/api/?results=5')
-        .then((response) => response.json())
-        .then((body) => {
-          if (fetchId !== this.lastFetchId) {
+        .then(response => response.json())
+        .then(body => {
+          if (fetchId !== lastFetchId) {
             // for fetch callback order
             return;
           }
-          const data = body.results.map((user) => ({
+          const data = body.results.map(user => ({
             text: `${user.name.first} ${user.name.last}`,
             value: user.login.username,
           }));
-          this.data = data;
-          this.fetching = false;
+          state.data = data;
+          state.fetching = false;
         });
-    },
+    }, 800);
+
+    watch(state.value, () => {
+      state.data = [];
+      state.fetching = false;
+    });
+
+    return {
+      ...toRefs(state),
+      fetchUser,
+    };
   },
-};
+});
 </script>
-```

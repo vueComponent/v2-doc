@@ -1,28 +1,33 @@
-<cn>
-#### 大数据
+<docs>
+---
+order: 15
+title:
+  zh-CN: 大数据
+  en-US: Big Data
+---
+
+## zh-CN
+
 Select 使用了虚拟滚动技术，因而获得了比 1.x 更好的性能
-</cn>
 
-<us>
-#### Big Data
+## en-US
+
 Select use virtual scroll which get better performance than 1.x
-</us>
 
-```vue
+</docs>
+
 <template>
-  <div>
-    <h2>{{ options.length }} Items</h2>
-    <a-select
-      v-model:value="value"
-      mode="multiple"
-      style="width: 100%"
-      placeholder="Please select"
-      :options="options"
-    />
-  </div>
+  <h2>{{ options.length }} Items</h2>
+  <a-select
+    v-model:value="value"
+    mode="multiple"
+    style="width: 100%"
+    placeholder="Please select"
+    :options="options"
+  />
 </template>
 <script>
-import { reactive } from 'vue';
+import { defineComponent, reactive } from 'vue';
 const options = [];
 for (let i = 0; i < 10000; i++) {
   const value = `${i.toString(36)}${i}`;
@@ -31,7 +36,7 @@ for (let i = 0; i < 10000; i++) {
     disabled: i === 10,
   });
 }
-export default {
+export default defineComponent({
   setup() {
     const state = reactive({
       options,
@@ -39,6 +44,5 @@ export default {
     });
     return state;
   },
-};
+});
 </script>
-```

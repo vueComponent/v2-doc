@@ -1,14 +1,21 @@
-<cn>
-#### 多选
+<docs>
+---
+order: 5
+title:
+  zh-CN: 多选
+  en-US: Multiple selection
+---
+
+## zh-CN
+
 多选，从已有条目中选择（scroll the menu）
-</cn>
 
-<us>
-#### multiple selection
+## en-US
+
 Multiple selection, selecting from existing items (scroll the menu).
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-select
     mode="multiple"
@@ -23,17 +30,16 @@ Multiple selection, selecting from existing items (scroll the menu).
   </a-select>
 </template>
 <script>
-export default {
-  data() {
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+  setup() {
+    const handleChange = value => {
+      console.log(`selected ${value}`);
+    };
     return {
-      value: ['a1', 'b2'],
+      handleChange,
+      value: ref(['a1', 'b2']),
     };
   },
-  methods: {
-    handleChange(value) {
-      console.log(`selected ${value}`);
-    },
-  },
-};
+});
 </script>
-```

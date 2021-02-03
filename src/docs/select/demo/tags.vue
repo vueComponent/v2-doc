@@ -1,14 +1,21 @@
-<cn>
-#### 标签
+<docs>
+---
+order: 2
+title:
+  zh-CN: 标签
+  en-US: Tags
+---
+
+## zh-CN
+
 tags select，随意输入的内容（scroll the menu）
-</cn>
 
-<us>
-#### Tags
+## en-US
+
 Select with tags, transform input to tag (scroll the menu)
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-select
     v-model:value="value"
@@ -23,17 +30,16 @@ Select with tags, transform input to tag (scroll the menu)
   </a-select>
 </template>
 <script>
-export default {
-  data() {
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+  setup() {
+    const handleChange = value => {
+      console.log(`selected ${value}`);
+    };
     return {
-      value: [],
+      value: ref([]),
+      handleChange,
     };
   },
-  methods: {
-    handleChange(value) {
-      console.log(`selected ${value}`);
-    },
-  },
-};
+});
 </script>
-```

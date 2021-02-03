@@ -1,14 +1,21 @@
-<cn>
-#### 搜索框
+<docs>
+---
+order: 8
+title:
+  zh-CN: 搜索框
+  en-US: Search Box
+---
+
+## zh-CN
+
 搜索和远程数据结合。
-</cn>
 
-<us>
-#### Search Box
+## en-US
+
 Search with remote data.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-select
     show-search
@@ -30,6 +37,7 @@ Search with remote data.
 <script>
 import jsonp from 'fetch-jsonp';
 import querystring from 'querystring';
+import { defineComponent, ref } from 'vue';
 
 let timeout;
 let currentValue;
@@ -65,23 +73,26 @@ function fetch(value, callback) {
 
   timeout = setTimeout(fake, 300);
 }
-export default {
-  data() {
+
+export default defineComponent({
+  setup() {
+    const data = ref([]);
+    const value = ref(undefined);
+
+    const handleSearch = value => {
+      fetch(value, d => (data.value = d));
+    };
+    const handleChange = val => {
+      console.log(val);
+      value.value = val;
+      fetch(value, d => (data.value = d));
+    };
     return {
-      data: [],
-      value: undefined,
+      handleSearch,
+      handleChange,
+      data,
+      value,
     };
   },
-  methods: {
-    handleSearch(value) {
-      fetch(value, data => (this.data = data));
-    },
-    handleChange(value) {
-      console.log(value);
-      this.value = value;
-      fetch(value, data => (this.data = data));
-    },
-  },
-};
+});
 </script>
-```

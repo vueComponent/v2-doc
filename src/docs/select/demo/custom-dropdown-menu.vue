@@ -1,25 +1,33 @@
-<cn>
-#### 扩展菜单
+<docs>
+---
+order: 13
+title:
+  zh-CN: 扩展菜单
+  en-US: Custom dropdown
+---
+
+## zh-CN
+
 使用 `dropdownRender` 对下拉菜单进行自由扩展。
-</cn>
 
-<us>
-#### Custom dropdown
+## en-US
+
 Customize the dropdown menu via `dropdownRender`.
-</us>
 
-```vue
+</docs>
+
 <template>
   <a-select v-model:value="value" style="width: 120px">
     <template #dropdownRender="{ menuNode: menu }">
       <v-nodes :vnodes="menu" />
-      <a-divider style="margin: 4px 0;" />
+      <a-divider style="margin: 4px 0" />
       <div
-        style="padding: 4px 8px; cursor: pointer;"
+        style="padding: 4px 8px; cursor: pointer"
         @mousedown="e => e.preventDefault()"
         @click="addItem"
       >
-        <plus-outlined /> Add item
+        <plus-outlined />
+        Add item
       </div>
     </template>
     <a-select-option v-for="item in items" :key="item" :value="item">
@@ -29,22 +37,29 @@ Customize the dropdown menu via `dropdownRender`.
 </template>
 <script>
 import { PlusOutlined } from '@ant-design/icons-vue';
+import { defineComponent, ref } from 'vue';
 
 let index = 0;
-export default {
+export default defineComponent({
+  setup() {
+    const items = ref(['jack', 'lucy']);
+    const value = ref('lucy');
+
+    const addItem = () => {
+      console.log('addItem');
+      items.value.push(`New item ${index++}`);
+    };
+    return {
+      items,
+      value,
+      addItem,
+    };
+  },
   components: {
     PlusOutlined,
     VNodes: (_, { attrs }) => {
       return attrs.vnodes;
     },
   },
-  data: () => ({ items: ['jack', 'lucy'], value: 'lucy' }),
-  methods: {
-    addItem() {
-      console.log('addItem');
-      this.items.push(`New item ${index++}`);
-    },
-  },
-};
+});
 </script>
-```

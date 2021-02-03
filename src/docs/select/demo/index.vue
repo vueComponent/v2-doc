@@ -1,76 +1,72 @@
+<template>
+  <demo-sort>
+    <Basic />
+    <Size />
+    <Tags />
+    <AutomaticTokenization />
+    <LabelInValue />
+    <Multiple />
+    <Coordinate />
+    <Optgroup />
+    <SearchBox />
+    <Search />
+    <SelectUsers />
+    <Suffix />
+    <HideSelected />
+    <CustomDropdownMenu />
+    <OptionLabelProp />
+    <BigData />
+  </demo-sort>
+</template>
 <script>
-import Basic from './basic';
-import Size from './size';
-import Tags from './tags';
-import AutomaticTokenization from './automatic-tokenization';
-import LabelInValue from './label-in-value';
-import Multiple from './multiple';
-import Coordinate from './coordinate';
-import Optgroup from './optgroup';
-import SearchBox from './search-box';
-import Search from './search';
-import SelectUsers from './select-users';
-import Suffix from './suffix';
-import HideSelected from './hide-selected';
-import CustomDropdownMenu from './custom-dropdown-menu';
-import OptionLabelProp from './option-label-prop';
-import BigData from './big-data';
-
+import Basic from './basic.vue';
+import Size from './size.vue';
+import Tags from './tags.vue';
+import AutomaticTokenization from './automatic-tokenization.vue';
+import LabelInValue from './label-in-value.vue';
+import Multiple from './multiple.vue';
+import Coordinate from './coordinate.vue';
+import Optgroup from './optgroup.vue';
+import SearchBox from './search-box.vue';
+import Search from './search.vue';
+import SelectUsers from './select-users.vue';
+import Suffix from './suffix.vue';
+import HideSelected from './hide-selected.vue';
+import CustomDropdownMenu from './custom-dropdown-menu.vue';
+import OptionLabelProp from './option-label-prop.vue';
+import BigData from './big-data.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
-const md = {
-  cn: `# Select 选择器
-          下拉选择器。
-          ## 何时使用
-          - 弹出一个下拉菜单给用户选择操作，用于代替原生的选择器，或者需要一个更优雅的多选器时。
-          - 当选项少时（少于 5 项），建议直接将选项平铺，使用 [Radio](/ant-design/components/radio-cn/) 是更好的选择。
-
-          ## 代码演示`,
-  us: `# Select
-        Select component to select value from options.
-        ## When To Use
-        - A dropdown menu for displaying choices - an elegant alternative to the native \`<select>\` element.
-        - Utilizing [Radio](/ant-design/components/radio/) is recommended when there are fewer total options (less than 5).
-        ## Examples `,
-};
-export default {
-  category: 'Components',
-  subtitle: '选择器',
-  type: 'Data Entry',
-  title: 'Select',
-  render() {
-    return (
-      <div id="components-select-demo">
-        <Md cn={md.cn} us={md.us} />
-        <demo-sort>
-          <Basic />
-          <Size />
-          <Tags />
-          <AutomaticTokenization />
-          <LabelInValue />
-          <Multiple />
-          <Coordinate />
-          <Optgroup />
-          <SearchBox />
-          <Search />
-          <SelectUsers />
-          <Suffix />
-          <HideSelected />
-          <CustomDropdownMenu />
-          <OptionLabelProp />
-          <BigData />
-        </demo-sort>
-        <api vSlots={{ cn: () => <CN /> }}>
-          <US />
-        </api>
-      </div>
-    );
+import { defineComponent } from 'vue';
+export default defineComponent({
+  CN,
+  US,
+  components: {
+    Basic,
+    Size,
+    Tags,
+    AutomaticTokenization,
+    LabelInValue,
+    Multiple,
+    Coordinate,
+    Optgroup,
+    SearchBox,
+    Search,
+    SelectUsers,
+    Suffix,
+    HideSelected,
+    CustomDropdownMenu,
+    OptionLabelProp,
+    BigData,
   },
-};
+  setup() {
+    return {};
+  },
+});
 </script>
+
 <style>
 #components-select-demo .ant-select {
   margin: 0 8px 10px 0;
 }
 </style>
->
