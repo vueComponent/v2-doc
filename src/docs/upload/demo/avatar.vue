@@ -32,8 +32,8 @@ Click to upload user's avatar, and validate size and format of picture with `bef
   >
     <img v-if="imageUrl" :src="imageUrl" alt="avatar" />
     <div v-else>
-      <loading-outlined v-if="loading" ></loading-outlined>
-      <plus-outlined v-else ></plus-outlined>
+      <loading-outlined v-if="loading"></loading-outlined>
+      <plus-outlined v-else></plus-outlined>
       <div class="ant-upload-text">Upload</div>
     </div>
   </a-upload>
@@ -59,9 +59,9 @@ interface FileInfo {
   fileList: FileItem[]
 }
 
-function getBase64(img: Blob, callback: Function) {
+function getBase64(img: Blob, callback: (base64Url: string) => void) {
   const reader = new FileReader();
-  reader.addEventListener('load', () => callback(reader.result));
+  reader.addEventListener('load', () => callback(reader.result as string));
   reader.readAsDataURL(img);
 }
 export default defineComponent({
@@ -88,8 +88,9 @@ export default defineComponent({
       }
       if (info.file.status === 'error') {
         loading.value = false;
+        message.error('upload error');
       }
-    }
+    };
 
     const beforeUpload = (file: FileItem) => {
       const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
@@ -101,16 +102,16 @@ export default defineComponent({
         message.error('Image must smaller than 2MB!');
       }
       return isJpgOrPng && isLt2M;
-    }
+    };
 
     return {
       fileList,
       loading,
       imageUrl,
       handleChange,
-      beforeUpload
-    }
-  }
+      beforeUpload,
+    };
+  },
 });
 </script>
 <style>

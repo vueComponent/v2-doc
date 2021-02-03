@@ -17,8 +17,16 @@ Upload files manually after `beforeUpload` returns `false`.
 
 <template>
   <div class="clearfix">
-    <a-upload :file-list="fileList" :remove="handleRemove" :before-upload="beforeUpload">
-      <a-button> <upload-outlined></upload-outlined> Select File </a-button>
+    <a-upload
+      :file-list="fileList"
+      :remove="handleRemove"
+      :before-upload="beforeUpload"
+      v-model:file-list="fileList"
+    >
+      <a-button>
+        <upload-outlined></upload-outlined>
+        Select File
+      </a-button>
     </a-upload>
     <a-button
       type="primary"
@@ -63,12 +71,12 @@ export default defineComponent({
       const newFileList = fileList.value.slice();
       newFileList.splice(index, 1);
       fileList.value = newFileList;
-    }
+    };
 
     const beforeUpload = (file: FileItem) => {
       fileList.value = [...fileList.value, file];
       return false;
-    }
+    };
 
     const handleUpload = () => {
       const formData = new FormData();
@@ -81,15 +89,17 @@ export default defineComponent({
       request('https://www.mocky.io/v2/5cc8019d300000980a055e76', {
         method: 'post',
         data: formData,
-      }).then(() => {
-        fileList.value = [];
-        uploading.value = false;
-        message.success('upload successfully.');
-      }).catch(() => {
-        uploading.value = false;
-        message.error('upload failed.');
-      });
-    }
+      })
+        .then(() => {
+          fileList.value = [];
+          uploading.value = false;
+          message.success('upload successfully.');
+        })
+        .catch(() => {
+          uploading.value = false;
+          message.error('upload failed.');
+        });
+    };
 
     return {
       fileList,
@@ -98,6 +108,6 @@ export default defineComponent({
       beforeUpload,
       handleUpload,
     };
-  }
+  },
 });
 </script>

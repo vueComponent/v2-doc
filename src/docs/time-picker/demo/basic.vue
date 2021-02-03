@@ -1,6 +1,6 @@
 <docs>
 ---
-order: 2
+order: 0
 title:
   zh-CN: 基本
   en-US: Basic
@@ -17,26 +17,27 @@ Click `TimePicker`, and then we could select or input a time in panel.
 </docs>
 
 <template>
-  <a-time-picker
-    v-model:value="value"
-    :default-open-value="moment('00:00:00', 'HH:mm:ss')"
-    @change="onChange"
-  />
+  <a-time-picker v-model:value="value" />
+  <a-time-picker v-model:value="strValue" valueFormat="HH:mm:ss" />
 </template>
 <script lang="ts">
 import moment, { Moment } from 'moment';
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, watch } from 'vue';
 export default defineComponent({
   setup() {
-    const value = ref<Moment>();
+    const value = ref<Moment>(moment('08:00:00', 'HH:mm:ss'));
+    const strValue = ref<string>('09:00:00');
 
-    const onChange = (time: Moment | string, timeString: string) => {
-      console.log(time, timeString);
-    };
+    watch(value, () => {
+      console.log(value.value);
+    });
+    watch(strValue, () => {
+      console.log(strValue.value);
+    });
     return {
       value,
+      strValue,
       moment,
-      onChange,
     };
   },
 });

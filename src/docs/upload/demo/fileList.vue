@@ -30,7 +30,10 @@ You can gain full control over filelist by configuring `fileList`. You can accom
     :file-list="fileList"
     @change="handleChange"
   >
-    <a-button> <upload-outlined ></upload-outlined> Upload </a-button>
+    <a-button>
+      <upload-outlined></upload-outlined>
+      Upload
+    </a-button>
   </a-upload>
 </template>
 <script lang="ts">
@@ -78,11 +81,11 @@ export default defineComponent({
       });
 
       fileList.value = resFileList;
-    }
+    };
     return {
       fileList,
-      handleChange
+      handleChange,
     };
-  }
+  },
 });
 </script>

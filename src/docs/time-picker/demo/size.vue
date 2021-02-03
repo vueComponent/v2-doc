@@ -33,7 +33,6 @@ export default defineComponent({
       value1: ref(moment('12:08:23', 'HH:mm')),
       value2: ref(moment('12:08:23', 'HH:mm')),
       value3: ref(moment('12:08:23', 'HH:mm')),
-      moment,
     };
   },
 });

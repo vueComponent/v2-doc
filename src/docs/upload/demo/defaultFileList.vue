@@ -17,7 +17,10 @@ Use `defaultFileList` for uploaded files when page init.
 
 <template>
   <a-upload action="https://www.mocky.io/v2/5cc8019d300000980a055e76" v-model:file-list="fileList">
-    <a-button> <upload-outlined></upload-outlined> Upload </a-button>
+    <a-button>
+      <upload-outlined></upload-outlined>
+      Upload
+    </a-button>
   </a-upload>
 </template>
 <script lang="ts">
@@ -68,11 +71,11 @@ export default defineComponent({
       if (file.status !== 'uploading') {
         console.log(file, fileList);
       }
-    }
+    };
     return {
       fileList,
       handleChange,
     };
-  }
+  },
 });
 </script>

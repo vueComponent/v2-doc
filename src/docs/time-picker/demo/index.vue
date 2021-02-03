@@ -1,13 +1,12 @@
 <template>
   <demo-sort>
+    <Basic />
     <Hours />
     <Addon />
-    <Basic />
     <Disabled />
     <HideColumn />
     <IntervalOptions />
     <Size />
-    <Value />
     <Suffix />
   </demo-sort>
 </template>
@@ -20,7 +19,6 @@ import Disabled from './disabled.vue';
 import HideColumn from './hide-column.vue';
 import IntervalOptions from './interval-options.vue';
 import Size from './size.vue';
-import Value from './value.vue';
 import Suffix from './suffix.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
@@ -36,7 +34,6 @@ export default {
     HideColumn,
     IntervalOptions,
     Size,
-    Value,
     Suffix,
   },
 };

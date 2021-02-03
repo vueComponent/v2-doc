@@ -1,6 +1,6 @@
 <docs>
 ---
-order: 0
+order: 2
 title:
   zh-CN: 12 小时制
   en-US: 12 hours
@@ -18,22 +18,18 @@ TimePicker of 12 hours format, with default format `h:mm:ss a`.
 
 <template>
   <div>
-    <a-time-picker use12-hours @change="onChange" />
-    <a-time-picker use12-hours format="h:mm:ss A" @change="onChange" />
-    <a-time-picker use12-hours format="h:mm a" @change="onChange" />
+    <a-time-picker v-model:value="value" use12-hours />
+    <a-time-picker v-model:value="value" use12-hours format="h:mm:ss A" />
+    <a-time-picker v-model:value="value" use12-hours format="h:mm a" />
   </div>
 </template>
 <script lang="ts">
 import { Moment } from 'moment';
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
-    const onChange = (time: Moment | string, timeString: string) => {
-      console.log(time, timeString);
-    };
-
     return {
-      onChange,
+      value: ref<Moment | undefined>(undefined),
     };
   },
 });

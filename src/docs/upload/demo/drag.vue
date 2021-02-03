@@ -21,6 +21,7 @@ We can upload serveral files at once in modern browsers by giving the input the 
 
 <template>
   <a-upload-dragger
+    v-model:fileList="fileList"
     name="file"
     :multiple="true"
     action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
@@ -29,9 +30,7 @@ We can upload serveral files at once in modern browsers by giving the input the 
     <p class="ant-upload-drag-icon">
       <inbox-outlined></inbox-outlined>
     </p>
-    <p class="ant-upload-text">
-      Click or drag file to this area to upload
-    </p>
+    <p class="ant-upload-text">Click or drag file to this area to upload</p>
     <p class="ant-upload-hint">
       Support for a single or bulk upload. Strictly prohibit from uploading company data or other
       band files
@@ -71,9 +70,10 @@ export default defineComponent({
       } else if (status === 'error') {
         message.error(`${info.file.name} file upload failed.`);
       }
-    }
+    };
     return {
-      handleChange
+      handleChange,
+      fileList: ref([]),
     };
   },
 });

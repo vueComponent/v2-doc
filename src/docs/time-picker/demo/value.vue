@@ -1,6 +1,7 @@
 <docs>
 ---
 order: 8
+debugger: true
 title:
   zh-CN: 受控组件
   en-US: Under Control

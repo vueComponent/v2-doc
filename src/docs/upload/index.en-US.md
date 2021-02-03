@@ -55,7 +55,7 @@ Uploading is the process of publishing information (web pages, text, pictures, v
 
 When uploading state change, it returns:
 
-```js
+```jsx
 {
   file: { /* ... */ },
   fileList: [ /* ... */ ],
@@ -65,7 +65,7 @@ When uploading state change, it returns:
 
 1. `file` File object for the current operation.
 
-   ```js
+   ```jsx
    {
       uid: 'uid',   // unique identifier, negative is recommend, to prevent interference with internal generated id
       name: 'xx.png',   // file name

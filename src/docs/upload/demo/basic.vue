@@ -24,7 +24,10 @@ Classic mode. File selection dialog pops up when upload button is clicked.
     :headers="headers"
     @change="handleChange"
   >
-    <a-button> <upload-outlined ></upload-outlined> Click to Upload </a-button>
+    <a-button>
+      <upload-outlined></upload-outlined>
+      Click to Upload
+    </a-button>
   </a-upload>
 </template>
 <script lang="ts">
@@ -59,9 +62,9 @@ export default defineComponent({
       } else if (info.file.status === 'error') {
         message.error(`${info.file.name} file upload failed.`);
       }
-    }
+    };
 
-    const fileList = ref([])
+    const fileList = ref([]);
     return {
       fileList,
       headers: {
