@@ -29,6 +29,7 @@ title:
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
+    // or use watch
     const handleChange = (checked: boolean) => {
       console.log(checked);
     };

@@ -18,13 +18,13 @@ Generating a set of Tags by array, you can add and remove dynamically.
 
 <template>
   <div>
-    <template v-for="(tag, index) in tags">
-      <a-tooltip :key="index" v-if="tag.length > 20" :title="tag">
+    <template v-for="(tag, index) in tags" :key="index">
+      <a-tooltip v-if="tag.length > 20" :title="tag">
         <a-tag :key="tag" :closable="index !== 0" @close="handleClose(tag)">
           {{ `${tag.slice(0, 20)}...` }}
         </a-tag>
       </a-tooltip>
-      <a-tag v-else :key="index" :closable="index !== 0" @close="handleClose(tag)">
+      <a-tag v-else :closable="index !== 0" @close="handleClose(tag)">
         {{ tag }}
       </a-tag>
     </template>
@@ -38,13 +38,13 @@ Generating a set of Tags by array, you can add and remove dynamically.
       @blur="handleInputConfirm"
       @keyup.enter="handleInputConfirm"
     />
-    <a-tag v-else @click="showInput" style="background: #fff; borderstyle: dashed">
+    <a-tag v-else @click="showInput" style="background: #fff; border-style: dashed">
       <plus-outlined />
       New Tag
     </a-tag>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent, ref, reactive, toRefs, nextTick } from 'vue';
 import { PlusOutlined } from '@ant-design/icons-vue';
 
@@ -53,14 +53,14 @@ export default defineComponent({
     PlusOutlined,
   },
   setup() {
-    const inputRef = ref(null);
+    const inputRef = ref();
     const state = reactive({
       tags: ['Unremovable', 'Tag 2', 'Tag 3Tag 3Tag 3Tag 3Tag 3Tag 3Tag 3'],
       inputVisible: false,
       inputValue: '',
     });
 
-    const handleClose = removedTag => {
+    const handleClose = (removedTag: string) => {
       const tags = state.tags.filter(tag => tag !== removedTag);
       console.log(tags);
       state.tags = tags;

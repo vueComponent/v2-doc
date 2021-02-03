@@ -25,10 +25,6 @@ import US from '../index.en-US.md';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  category: 'Components',
-  subtitle: '标签页',
-  type: 'Data Display',
-  title: 'Tabs',
   CN,
   US,
   components: {

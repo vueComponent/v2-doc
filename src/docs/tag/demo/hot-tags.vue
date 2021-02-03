@@ -29,16 +29,16 @@ Select your favourite topics.
     </template>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue';
 export default defineComponent({
   setup() {
     const state = reactive({
       tags: ['Movies', 'Books', 'Music', 'Sports'],
-      selectedTags: [],
+      selectedTags: [] as string[],
     });
 
-    const handleChange = (tag, checked) => {
+    const handleChange = (tag: string, checked: boolean) => {
       const { selectedTags } = state;
       const nextSelectedTags = checked
         ? [...selectedTags, tag]

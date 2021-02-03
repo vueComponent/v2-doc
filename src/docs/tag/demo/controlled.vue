@@ -23,7 +23,7 @@ By using the `visible` prop, you can control the close state of Tag.
     <a-button size="small" @click="visible = !visible">Toggle</a-button>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {

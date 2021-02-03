@@ -43,7 +43,7 @@ If you want specific control over the positioning and placement of the `Icon`, t
     LinkedIn
   </a-tag>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import {
   TwitterOutlined,
