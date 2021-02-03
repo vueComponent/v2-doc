@@ -17,15 +17,16 @@ Added custom rendering function, in the default `slot`, you can set any componen
 </docs>
 
 <template>
-  <a-date-picker v-model:value="time1" placeholder="Select Time" @change="onChange" @ok="onOk">
-    <span>{{ time1 ? time1.toString() : 'SelectTime' }}</span>
-  </a-date-picker>
-  <br />
-  <a-range-picker v-model:value="time2">
-    <span>
-      {{ time2 ? time2.toString() : '请选择' }}
-    </span>
-  </a-range-picker>
+  <a-space direction="vertical">
+    <a-date-picker v-model:value="time1" placeholder="Select Time" @ok="onOk">
+      <span>{{ time1 ? time1.toString() : 'SelectTime' }}</span>
+    </a-date-picker>
+    <a-range-picker v-model:value="time2">
+      <span>
+        {{ time2 ? time2.toString() : '请选择' }}
+      </span>
+    </a-range-picker>
+  </a-space>
 </template>
 <script lang="ts">
 import moment, { Moment } from 'moment';
@@ -34,11 +35,6 @@ export default defineComponent({
   setup() {
     const time1 = ref<Moment>();
     const time2 = ref<Moment>();
-
-    const onChange = (value: Moment, dateString: string) => {
-      console.log('Selected Time: ', value);
-      console.log('Formatted Selected Time: ', dateString);
-    };
 
     const onOk = (value: Moment) => {
       console.log('onOk: ', value);
@@ -52,7 +48,6 @@ export default defineComponent({
       time1,
       time2,
       moment,
-      onChange,
       onOk,
       clearTime,
     };

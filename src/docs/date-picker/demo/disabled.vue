@@ -17,11 +17,11 @@ A disabled state of the `DatePicker`.
 </docs>
 
 <template>
-  <a-date-picker v-model:value="value1" />
-  <br />
-  <a-month-picker v-model:value="value2" disabled />
-  <br />
-  <a-range-picker v-model:value="value3" disabled />
+  <a-space direction="vertical">
+    <a-date-picker v-model:value="value1" />
+    <a-month-picker v-model:value="value2" disabled />
+    <a-range-picker v-model:value="value3" disabled />
+  </a-space>
 </template>
 <script lang="ts">
 import moment from 'moment';

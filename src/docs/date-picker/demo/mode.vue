@@ -17,21 +17,22 @@ Determing which panel to show with `mode` and `onPanelChange`.
 </docs>
 
 <template>
-  <a-date-picker
-    :mode="mode1"
-    show-time
-    @openChange="handleOpenChange1"
-    @panelChange="handlePanelChange1"
-  />
-  <br />
-  <a-range-picker
-    :placeholder="['Start month', 'End month']"
-    format="YYYY-MM"
-    :value="value"
-    :mode="mode2"
-    @panelChange="handlePanelChange2"
-    @change="handleChange"
-  />
+  <a-space direction="vertical">
+    <a-date-picker
+      :mode="mode1"
+      show-time
+      @openChange="handleOpenChange1"
+      @panelChange="handlePanelChange1"
+    />
+    <a-range-picker
+      :placeholder="['Start month', 'End month']"
+      format="YYYY-MM"
+      :value="value"
+      :mode="mode2"
+      @panelChange="handlePanelChange2"
+      @change="handleChange"
+    />
+  </a-space>
 </template>
 <script lang="ts">
 import { Moment } from 'moment';
@@ -52,7 +53,7 @@ export default defineComponent({
       value.value = val;
     };
 
-    const handlePanelChange1 = (val: Moment[], mode: string[]) => {
+    const handlePanelChange1 = (val: Moment[], mode: string) => {
       mode1.value = mode;
     };
 

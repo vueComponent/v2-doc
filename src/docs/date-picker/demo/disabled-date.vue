@@ -17,28 +17,35 @@ Disabled part of dates and time by `disabledDate` and `disabledTime` respectivel
 </docs>
 
 <template>
-  <a-date-picker
-    format="YYYY-MM-DD HH:mm:ss"
-    :disabled-date="disabledDate"
-    :disabled-time="disabledDateTime"
-    :show-time="{ defaultValue: moment('00:00:00', 'HH:mm:ss') }"
-  />
-  <br />
-  <a-month-picker :disabled-date="disabledDate" placeholder="Select month" />
-  <br />
-  <a-range-picker
-    :disabled-date="disabledDate"
-    :disabled-time="disabledRangeTime"
-    :show-time="{
-      hideDisabledOptions: true,
-      defaultValue: [moment('00:00:00', 'HH:mm:ss'), moment('11:59:59', 'HH:mm:ss')],
-    }"
-    format="YYYY-MM-DD HH:mm:ss"
-  />
+  <a-space direction="vertical">
+    <a-date-picker
+      v-model:value="value1"
+      format="YYYY-MM-DD HH:mm:ss"
+      :disabled-date="disabledDate"
+      :disabled-time="disabledDateTime"
+      :show-time="{ defaultValue: moment('00:00:00', 'HH:mm:ss') }"
+    />
+    <a-month-picker
+      v-model:value="value2"
+      :disabled-date="disabledDate"
+      placeholder="Select month"
+    />
+    <a-range-picker
+      style="width: 400px"
+      v-model:value="value3"
+      :disabled-date="disabledDate"
+      :disabled-time="disabledRangeTime"
+      :show-time="{
+        hideDisabledOptions: true,
+        defaultValue: [moment('00:00:00', 'HH:mm:ss'), moment('11:59:59', 'HH:mm:ss')],
+      }"
+      format="YYYY-MM-DD HH:mm:ss"
+    />
+  </a-space>
 </template>
 <script lang="ts">
 import moment, { Moment } from 'moment';
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
     const range = (start: number, end: number) => {
@@ -81,6 +88,9 @@ export default defineComponent({
 
     return {
       moment,
+      value1: ref<Moment>(),
+      value2: ref<Moment>(),
+      value3: ref<Moment[]>([]),
       disabledDate,
       disabledDateTime,
       disabledRangeTime,

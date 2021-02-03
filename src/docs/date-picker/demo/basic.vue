@@ -17,29 +17,23 @@ Basic use case. Users can select or input a date in panel.
 </docs>
 
 <template>
-  <a-date-picker v-model:value="value1" @change="onChange" />
-  <br />
-  <a-month-picker v-model:value="value2" placeholder="Select month" @change="onChange" />
-  <br />
-  <a-range-picker v-model:value="value3" @change="onChange" />
-  <br />
-  <a-week-picker v-model:value="value4" placeholder="Select week" @change="onChange" />
+  <a-space direction="vertical">
+    <a-date-picker v-model:value="value1" />
+    <a-month-picker v-model:value="value2" placeholder="Select month" />
+    <a-range-picker v-model:value="value3" />
+    <a-week-picker v-model:value="value4" placeholder="Select week" />
+  </a-space>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { Moment } from 'moment';
 export default defineComponent({
   setup() {
-    const onChange = (date: Moment, dateString: string) => {
-      console.log(date, dateString);
-    };
-
     return {
       value1: ref<Moment>(),
       value2: ref<Moment>(),
       value3: ref<Moment[]>([]),
       value4: ref<Moment>(),
-      onChange,
     };
   },
 });

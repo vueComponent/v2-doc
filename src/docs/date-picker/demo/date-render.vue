@@ -17,27 +17,29 @@ We can customize the rendering of date cells in the calendar by providing a `dat
 </docs>
 
 <template>
-  <a-date-picker v-model:value="value1">
-    <template #dateRender="{ current, today }">
-      <div class="ant-calendar-date" :style="getCurrentStyle(current, today)">
-        {{ current.date() }}
-      </div>
-    </template>
-  </a-date-picker>
-  <a-range-picker v-model:value="value2">
-    <template #dateRender="{ current }">
-      <div class="ant-calendar-date" :style="getCurrentStyle(current)">
-        {{ current.date() }}
-      </div>
-    </template>
-  </a-range-picker>
-  <a-week-picker v-model:value="value3">
-    <template #dateRender="{ current }">
-      <div class="ant-calendar-date" :style="getCurrentStyle(current)">
-        {{ current.date() }}
-      </div>
-    </template>
-  </a-week-picker>
+  <a-space direction="vertical">
+    <a-date-picker v-model:value="value1">
+      <template #dateRender="{ current, today }">
+        <div class="ant-calendar-date" :style="getCurrentStyle(current, today)">
+          {{ current.date() }}
+        </div>
+      </template>
+    </a-date-picker>
+    <a-range-picker v-model:value="value2">
+      <template #dateRender="{ current }">
+        <div class="ant-calendar-date" :style="getCurrentStyle(current)">
+          {{ current.date() }}
+        </div>
+      </template>
+    </a-range-picker>
+    <a-week-picker v-model:value="value3">
+      <template #dateRender="{ current }">
+        <div class="ant-calendar-date" :style="getCurrentStyle(current)">
+          {{ current.date() }}
+        </div>
+      </template>
+    </a-week-picker>
+  </a-space>
 </template>
 <script lang="ts">
 import { Moment } from 'moment';

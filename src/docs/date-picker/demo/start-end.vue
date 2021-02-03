@@ -21,30 +21,32 @@ When `RangePicker` does not satisfied your requirements, try to implement simila
 </docs>
 
 <template>
-  <a-date-picker
-    v-model:value="startValue"
-    :disabled-date="disabledStartDate"
-    show-time
-    format="YYYY-MM-DD HH:mm:ss"
-    placeholder="Start"
-    @openChange="handleStartOpenChange"
-  />
-  <a-date-picker
-    v-model:value="endValue"
-    :disabled-date="disabledEndDate"
-    show-time
-    format="YYYY-MM-DD HH:mm:ss"
-    placeholder="End"
-    :open="endOpen"
-    @openChange="handleEndOpenChange"
-  />
+  <a-space direction="vertical">
+    <a-date-picker
+      v-model:value="startValue"
+      :disabled-date="disabledStartDate"
+      show-time
+      format="YYYY-MM-DD HH:mm:ss"
+      placeholder="Start"
+      @openChange="handleStartOpenChange"
+    />
+    <a-date-picker
+      v-model:value="endValue"
+      :disabled-date="disabledEndDate"
+      show-time
+      format="YYYY-MM-DD HH:mm:ss"
+      placeholder="End"
+      :open="endOpen"
+      @openChange="handleEndOpenChange"
+    />
+  </a-space>
 </template>
 <script lang="ts">
 import { Moment } from 'moment';
 import { defineComponent, ref, watch } from 'vue';
 export default defineComponent({
   setup() {
-    const startValue = ref<Moment>();
+    const startValue = ref<Moment | undefined>();
     const endValue = ref<Moment>();
     const endOpen = ref<boolean>(false);
 
@@ -74,12 +76,12 @@ export default defineComponent({
       endOpen.value = open;
     };
 
-    watch(startValue, (val: Moment) => {
-      console.log('startValue', val);
+    watch(startValue, () => {
+      console.log('startValue', startValue.value);
     });
 
-    watch(endValue, (val: Moment) => {
-      console.log('endValue', val);
+    watch(endValue, () => {
+      console.log('endValue', endValue.value);
     });
 
     return {

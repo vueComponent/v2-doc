@@ -17,33 +17,26 @@ We can set presetted ranges to RangePicker to improve user experience.
 </docs>
 
 <template>
-  <a-range-picker
-    :ranges="{ Today: [moment(), moment()], 'This Month': [moment(), moment().endOf('month')] }"
-    @change="onChange"
-  />
-  <br />
-  <a-range-picker
-    :ranges="{ Today: [moment(), moment()], 'This Month': [moment(), moment().endOf('month')] }"
-    show-time
-    format="YYYY/MM/DD HH:mm:ss"
-    @change="onChange"
-  />
+  <a-space direction="vertical">
+    <a-range-picker v-model:value="value1" :ranges="ranges" />
+    <a-range-picker
+      style="width: 400px"
+      v-model:value="value2"
+      :ranges="ranges"
+      show-time
+      format="YYYY/MM/DD HH:mm:ss"
+    />
+  </a-space>
 </template>
 <script lang="ts">
 import moment, { Moment } from 'moment';
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
-    const onChange = (dates: Moment[], dateStrings: string[]) => {
-      console.log('From: ', dates[0], ', to: ', dates[1]);
-      console.log('From: ', dateStrings[0], ', to: ', dateStrings[1]);
-    };
-
     return {
-      dateFormat: 'YYYY/MM/DD',
-      monthFormat: 'YYYY/MM',
-      moment,
-      onChange,
+      value1: ref<Moment[]>([]),
+      value2: ref<Moment[]>([]),
+      ranges: { Today: [moment(), moment()], 'This Month': [moment(), moment().endOf('month')] },
     };
   },
 });

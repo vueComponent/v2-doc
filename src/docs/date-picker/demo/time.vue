@@ -17,15 +17,16 @@ This property provide an additional time selection. When `showTime` is an Object
 </docs>
 
 <template>
-  <a-date-picker show-time placeholder="Select Time" @change="onChange" @ok="onOk" />
-  <br />
-  <a-range-picker
-    :show-time="{ format: 'HH:mm' }"
-    format="YYYY-MM-DD HH:mm"
-    :placeholder="['Start Time', 'End Time']"
-    @change="onChange"
-    @ok="onOk"
-  />
+  <a-space direction="vertical">
+    <a-date-picker show-time placeholder="Select Time" @change="onChange" @ok="onOk" />
+    <a-range-picker
+      :show-time="{ format: 'HH:mm' }"
+      format="YYYY-MM-DD HH:mm"
+      :placeholder="['Start Time', 'End Time']"
+      @change="onChange"
+      @ok="onOk"
+    />
+  </a-space>
 </template>
 <script lang="ts">
 import { Moment } from 'moment';
