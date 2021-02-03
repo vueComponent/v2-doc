@@ -32,12 +32,25 @@ import { message } from 'ant-design-vue';
 import { UploadOutlined } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
 
+interface FileItem {
+  uid: string;
+  name?: string;
+  status?: string;
+  response?: string;
+  url?: string;
+}
+
+interface FileInfo {
+  file: FileItem,
+  fileList: FileItem[]
+}
+
 export default defineComponent({
   components: {
     UploadOutlined,
   },
   setup() {
-    const handleChange = (info) => {
+    const handleChange = (info: FileInfo) => {
       if (info.file.status !== 'uploading') {
         console.log(info.file, info.fileList);
       }

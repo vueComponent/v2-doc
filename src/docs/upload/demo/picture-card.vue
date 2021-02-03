@@ -38,7 +38,7 @@ After users upload picture, the thumbnail will be shown in list. The upload butt
 import { PlusOutlined } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
 
-function getBase64(file) {
+function getBase64(file: File) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -53,6 +53,13 @@ interface FileItem {
   status?: string;
   response?: string;
   url?: string;
+  preview?:  string,
+  originFileObj?: any
+}
+
+interface FileInfo {
+  file: FileItem,
+  fileList: FileItem[]
 }
 
 export default defineComponent({
@@ -61,9 +68,9 @@ export default defineComponent({
   },
   setup() {
     const previewVisible = ref<boolean>(false);
-    const previewImage = ref<string>('');
+    const previewImage = ref<string|undefined>('');
 
-    const fileList = ref<[]<FileItem>>([
+    const fileList = ref<FileItem[]>([
         {
           uid: '-1',
           name: 'image.png',
@@ -98,15 +105,15 @@ export default defineComponent({
     const handleCancel = () => {
       previewVisible.value = false;
     }
-    const handlePreview = async (file) => {
+    const handlePreview = async (file: FileItem) => {
       if (!file.url && !file.preview) {
-        file.preview = await getBase64(file.originFileObj);
+        file.preview = await getBase64(file.originFileObj) as string;
       }
       previewImage.value = file.url || file.preview;
       previewVisible.value = true;
     }
-    const handleChange = ({ fileList }) => {
-      this.fileList = fileList;
+    const handleChange = ({ fileList: newFileList }: FileInfo) => {
+      fileList.value = newFileList;
     }
 
     return {

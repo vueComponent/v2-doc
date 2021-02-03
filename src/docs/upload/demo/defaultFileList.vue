@@ -31,12 +31,17 @@ interface FileItem {
   response?: string;
   url?: string;
 }
+interface FileInfo {
+  file: FileItem,
+  fileList: FileItem[]
+}
+
 export default defineComponent({
   components: {
     UploadOutlined,
   },
   setup() {
-    const fileList = ref<[]<FileItem>>([
+    const fileList = ref<FileItem[]>([
         {
           uid: '1',
           name: 'xxx.png',
@@ -59,7 +64,7 @@ export default defineComponent({
         }
       ])
 
-    const handleChange = ({ file, fileList }) => {
+    const handleChange = ({ file, fileList }: FileInfo) => {
       if (file.status !== 'uploading') {
         console.log(file, fileList);
       }

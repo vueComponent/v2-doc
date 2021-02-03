@@ -37,29 +37,42 @@ import { UploadOutlined } from '@ant-design/icons-vue';
 import { message } from 'ant-design-vue';
 import { defineComponent, ref } from 'vue';
 
+
+interface FileItem {
+  uid: string;
+  name?: string;
+  status?: string;
+  response?: string;
+  url?: string;
+  preview?:  string,
+  originFileObj?: any,
+  file: string | Blob
+}
+
+
 export default defineComponent({
   components: {
     UploadOutlined,
   },
   setup() {
-    const fileList = ref([]);
+    const fileList = ref<FileItem[]>([]);
     const uploading = ref<boolean>(false);
 
-    const handleRemove = (file) => {
+    const handleRemove = (file: FileItem) => {
       const index = fileList.value.indexOf(file);
       const newFileList = fileList.value.slice();
       newFileList.splice(index, 1);
       fileList.value = newFileList;
     }
 
-    const beforeUpload = (file) => {
+    const beforeUpload = (file: FileItem) => {
       fileList.value = [...fileList.value, file];
       return false;
     }
 
     const handleUpload = () => {
       const formData = new FormData();
-      fileList.value.forEach(file => {
+      fileList.value.forEach(({file}: FileItem) => {
         formData.append('files[]', file);
       });
       uploading.value = true;

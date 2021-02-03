@@ -29,7 +29,7 @@ If uploaded file is a picture, the thumbnail can be shown. `IE8/9` do not suppor
     <a-upload
       action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
       list-type="picture"
-      v-model:file-list="fileList"
+      v-model:file-list="fileList1"
       class="upload-list-inline"
     >
       <a-button> <upload-outlined ></upload-outlined> upload </a-button>
@@ -47,6 +47,7 @@ interface FileItem {
   status?: string;
   response?: string;
   url?: string;
+  thumbUrl?: string
 }
 
 export default defineComponent({
@@ -54,7 +55,23 @@ export default defineComponent({
     UploadOutlined,
   },
   setup() {
-    const fileList = ref<[]<FileItem>>([
+    const fileList = ref<FileItem[]>([
+        {
+          uid: '-1',
+          name: 'xxx.png',
+          status: 'done',
+          url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+          thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+        },
+        {
+          uid: '-2',
+          name: 'yyy.png',
+          status: 'done',
+          url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+          thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+        },
+      ])
+    const fileList1 = ref<FileItem[]>([
         {
           uid: '-1',
           name: 'xxx.png',
@@ -72,6 +89,7 @@ export default defineComponent({
       ])
     return {
       fileList,
+      fileList1
     };
   },
 });

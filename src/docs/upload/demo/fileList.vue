@@ -41,8 +41,13 @@ interface FileItem {
   uid: string;
   name?: string;
   status?: string;
-  response?: string;
-  url?: string;
+  response?: Response;
+  url: string;
+}
+
+interface FileInfo {
+  file: FileItem,
+  fileList: FileItem[]
 }
 
 export default defineComponent({
@@ -50,13 +55,13 @@ export default defineComponent({
     UploadOutlined,
   },
   setup() {
-    const fileList = ref<[]<FileItem>>([{
+    const fileList = ref<FileItem[]>([{
       uid: '-1',
       name: 'xxx.png',
       status: 'done',
       url: 'http://www.baidu.com/xxx.png',
     }]);
-    const handleChange = (info) => {
+    const handleChange = (info: FileInfo) => {
       let resFileList = [...info.fileList];
 
       // 1. Limit the number of uploaded files
@@ -76,6 +81,7 @@ export default defineComponent({
     }
     return {
       fileList,
+      handleChange
     };
   }
 });
