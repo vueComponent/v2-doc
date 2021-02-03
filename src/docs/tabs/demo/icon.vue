@@ -17,7 +17,7 @@ The Tab with Icon.
 </docs>
 
 <template>
-  <a-tabs>
+  <a-tabs v-model:activeKey="activeKey">
     <a-tab-pane key="1">
       <template #tab>
         <span>
@@ -40,8 +40,13 @@ The Tab with Icon.
 </template>
 <script lang="ts">
 import { AppleOutlined, AndroidOutlined } from '@ant-design/icons-vue';
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 export default defineComponent({
+  setup() {
+    return {
+      activeKey: ref('1'),
+    };
+  },
   components: {
     AppleOutlined,
     AndroidOutlined,

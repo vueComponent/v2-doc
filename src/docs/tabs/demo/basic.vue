@@ -17,7 +17,7 @@ Default activate first tab.
 
 <template>
   <div>
-    <a-tabs @change="callback">
+    <a-tabs v-model:activeKey="activeKey">
       <a-tab-pane key="1" tab="Tab 1">Content of Tab Pane 1</a-tab-pane>
       <a-tab-pane key="2" tab="Tab 2" force-render>Content of Tab Pane 2</a-tab-pane>
       <a-tab-pane key="3" tab="Tab 3">Content of Tab Pane 3</a-tab-pane>
@@ -25,16 +25,12 @@ Default activate first tab.
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   setup() {
-    const callback = (key: string) => {
-      console.log(key);
-    };
-
     return {
-      callback,
+      activeKey: ref('1'),
     };
   },
 });

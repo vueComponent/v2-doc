@@ -11,6 +11,7 @@
     <EditableCard />
     <CardTop />
     <CustomAddTrigger />
+    <CustomTabBar />
   </demo-sort>
 </template>
 
@@ -26,7 +27,7 @@ import Icon from './icon.vue';
 import Position from './position.vue';
 import Size from './size.vue';
 import Slide from './slide.vue';
-// import CustomTabBar from './custom-tab-bar';
+import CustomTabBar from './custom-tab-bar.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
 import { defineComponent } from 'vue';
@@ -50,6 +51,7 @@ export default defineComponent({
     Position,
     Size,
     Slide,
+    CustomTabBar,
   },
 });
 </script>

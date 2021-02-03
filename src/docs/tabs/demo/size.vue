@@ -22,7 +22,7 @@ Large size tabs are usally used in page header, and small size could be used in 
       <a-radio-button value="default">Default</a-radio-button>
       <a-radio-button value="large">Large</a-radio-button>
     </a-radio-group>
-    <a-tabs :size="size">
+    <a-tabs v-model:activeKey="activeKey" :size="size">
       <a-tab-pane key="1" tab="Tab 1">Content of tab 1</a-tab-pane>
       <a-tab-pane key="2" tab="Tab 2">Content of tab 2</a-tab-pane>
       <a-tab-pane key="3" tab="Tab 3">Content of tab 3</a-tab-pane>
@@ -35,9 +35,10 @@ import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
     const size = ref('small');
-
+    const activeKey = ref('1');
     return {
       size,
+      activeKey,
     };
   },
 });

@@ -17,7 +17,7 @@ Should be used at the top of container, needs to override styles.
 
 <template>
   <div class="card-container">
-    <a-tabs type="card">
+    <a-tabs v-model:activeKey="activeKey" type="card">
       <a-tab-pane key="1" tab="Tab Title 1">
         <p>Content of Tab Pane 1</p>
         <p>Content of Tab Pane 1</p>
@@ -37,15 +37,12 @@ Should be used at the top of container, needs to override styles.
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   setup() {
-    const callback = (key: string) => {
-      console.log(key);
-    };
     return {
-      callback,
+      activeKey: ref(1),
     };
   },
 });

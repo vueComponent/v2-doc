@@ -27,6 +27,7 @@ In order to fit in more tabs, they can slide left and right (or up and down).
       :style="{ height: '200px' }"
       @prevClick="callback"
       @nextClick="callback"
+      v-model:activeKey="activeKey"
     >
       <a-tab-pane v-for="i in 30" :key="i" :tab="`Tab-${i}`">Content of tab {{ i }}</a-tab-pane>
     </a-tabs>
@@ -38,13 +39,14 @@ import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
     const mode = ref('top');
+    const activeKey = ref('1');
     const callback = (val: string) => {
       console.log(val);
     };
-
     return {
       mode,
       callback,
+      activeKey,
     };
   },
 });

@@ -40,10 +40,6 @@ export default defineComponent({
     const activeKey = ref(panes.value[0].key);
     const newTabIndex = ref(0);
 
-    const callback = (key: string) => {
-      console.log(key);
-    };
-
     const add = () => {
       activeKey.value = `newTab${newTabIndex.value++}`;
       panes.value.push({
@@ -54,7 +50,7 @@ export default defineComponent({
     };
 
     const remove = (targetKey: string) => {
-      let lastIndex: number;
+      let lastIndex = 0;
       panes.value.forEach((pane, i) => {
         if (pane.key === targetKey) {
           lastIndex = i - 1;
@@ -70,18 +66,13 @@ export default defineComponent({
       }
     };
 
-    const onEdit = (targetKey: string, action: string) => {
-      if (action === 'add') {
-        add(targetKey);
-      } else {
-        remove(targetKey);
-      }
+    const onEdit = (targetKey: string) => {
+      remove(targetKey);
     };
 
     return {
       panes,
       activeKey,
-      callback,
       onEdit,
       add,
     };

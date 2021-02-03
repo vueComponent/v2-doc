@@ -9,11 +9,11 @@ title:
 ## zh-CN
 
 只有卡片样式的页签支持新增和关闭选项。
-使用 `closable={false}` 禁止关闭。
+使用 `:closable="false"` 禁止关闭。
 
 ## en-US
 Only card type Tabs support adding & closable.
-+Use `closable={false}` to disable close.
++Use `:closable="false"` to disable close.
 
 </docs>
 
@@ -49,7 +49,7 @@ export default defineComponent({
     };
 
     const remove = (targetKey: string) => {
-      let lastIndex: number;
+      let lastIndex = 0;
       panes.value.forEach((pane, i) => {
         if (pane.key === targetKey) {
           lastIndex = i - 1;
@@ -65,12 +65,11 @@ export default defineComponent({
       }
     };
 
-    const onEdit = (targetKey: string, action: string) => {
-      console.log(targetKey, action);
+    const onEdit = (targetKey: string | MouseEvent, action: string) => {
       if (action === 'add') {
-        add(targetKey);
+        add();
       } else {
-        remove(targetKey);
+        remove(targetKey as string);
       }
     };
 
