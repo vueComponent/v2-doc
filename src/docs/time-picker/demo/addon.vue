@@ -18,12 +18,12 @@ Render addon contents to timepicker panel's bottom.
 
 <template>
   <div>
-    <a-time-picker :open="open" @openChange="handleOpenChange">
+    <a-time-picker v-model:value="value" v-model:open="open" @openChange="handleOpenChange">
       <template #addon="{ prefixCls }">
         <a-button size="small" type="primary" @click="handleClose">Ok {{ prefixCls }}</a-button>
       </template>
     </a-time-picker>
-    <a-time-picker v-model:open="open2">
+    <a-time-picker v-model:value="value" v-model:open="open2">
       <template #addon>
         <a-button size="small" type="primary" @click="handleClose">Ok</a-button>
       </template>
@@ -31,12 +31,14 @@ Render addon contents to timepicker panel's bottom.
   </div>
 </template>
 <script lang="ts">
+import { Moment } from 'moment';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   setup() {
     const open = ref(false);
     const open2 = ref(false);
+    const value = ref<Moment>();
 
     const handleOpenChange = (openStatus: boolean) => {
       console.log('open', openStatus);
@@ -49,6 +51,7 @@ export default defineComponent({
     };
 
     return {
+      value,
       open,
       open2,
       handleOpenChange,
