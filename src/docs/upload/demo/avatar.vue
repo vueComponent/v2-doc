@@ -21,7 +21,7 @@ Click to upload user's avatar, and validate size and format of picture with `bef
 
 <template>
   <a-upload
-    v-model:fileList="fileList"
+    v-model:file-list="fileList"
     name="avatar"
     list-type="picture-card"
     class="avatar-uploader"
