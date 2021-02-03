@@ -39,15 +39,15 @@ export default defineComponent({
     UploadOutlined,
   },
   setup() {
-    const previewFile = (file: any): Promise<Response> => {
+    const previewFile = async (file: any): Promise<Response> => {
       console.log('Your upload file:', file);
       // Your process logic. Here we just mock to the same file
-      return fetch('https://next.json-generator.com/api/json/get/4ytyBoLK8', {
+      const res = await fetch('https://next.json-generator.com/api/json/get/4ytyBoLK8', {
         method: 'POST',
         body: file,
-      })
-        .then(res => res.json())
-        .then(({ thumbnail }) => thumbnail);
+      });
+      const { thumbnail } = await res.json();
+      return thumbnail;
     };
     return {
       previewFile,

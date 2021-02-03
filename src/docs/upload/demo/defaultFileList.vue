@@ -35,8 +35,8 @@ interface FileItem {
   url?: string;
 }
 interface FileInfo {
-  file: FileItem,
-  fileList: FileItem[]
+  file: FileItem;
+  fileList: FileItem[];
 }
 
 export default defineComponent({
@@ -45,27 +45,27 @@ export default defineComponent({
   },
   setup() {
     const fileList = ref<FileItem[]>([
-        {
-          uid: '1',
-          name: 'xxx.png',
-          status: 'done',
-          response: 'Server Error 500', // custom error message to show
-          url: 'http://www.baidu.com/xxx.png',
-        },
-        {
-          uid: '2',
-          name: 'yyy.png',
-          status: 'done',
-          url: 'http://www.baidu.com/yyy.png',
-        },
-        {
-          uid: '3',
-          name: 'zzz.png',
-          status: 'error',
-          response: 'Server Error 500', // custom error message to show
-          url: 'http://www.baidu.com/zzz.png',
-        }
-      ])
+      {
+        uid: '1',
+        name: 'xxx.png',
+        status: 'done',
+        response: 'Server Error 500', // custom error message to show
+        url: 'http://www.baidu.com/xxx.png',
+      },
+      {
+        uid: '2',
+        name: 'yyy.png',
+        status: 'done',
+        url: 'http://www.baidu.com/yyy.png',
+      },
+      {
+        uid: '3',
+        name: 'zzz.png',
+        status: 'error',
+        response: 'Server Error 500', // custom error message to show
+        url: 'http://www.baidu.com/zzz.png',
+      },
+    ]);
 
     const handleChange = ({ file, fileList }: FileInfo) => {
       if (file.status !== 'uploading') {

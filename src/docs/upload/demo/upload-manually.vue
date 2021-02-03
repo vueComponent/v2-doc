@@ -45,18 +45,16 @@ import { UploadOutlined } from '@ant-design/icons-vue';
 import { message } from 'ant-design-vue';
 import { defineComponent, ref } from 'vue';
 
-
 interface FileItem {
   uid: string;
   name?: string;
   status?: string;
   response?: string;
   url?: string;
-  preview?:  string,
-  originFileObj?: any,
-  file: string | Blob
+  preview?: string;
+  originFileObj?: any;
+  file: string | Blob;
 }
-
 
 export default defineComponent({
   components: {
@@ -80,7 +78,7 @@ export default defineComponent({
 
     const handleUpload = () => {
       const formData = new FormData();
-      fileList.value.forEach(({file}: FileItem) => {
+      fileList.value.forEach(({ file }: FileItem) => {
         formData.append('files[]', file);
       });
       uploading.value = true;

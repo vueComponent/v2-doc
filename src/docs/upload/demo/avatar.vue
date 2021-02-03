@@ -49,14 +49,14 @@ interface FileItem {
   status?: string;
   response?: string;
   url?: string;
-  type?: string,
-  size: number,
-  originFileObj: any
+  type?: string;
+  size: number;
+  originFileObj: any;
 }
 
 interface FileInfo {
-  file: FileItem,
-  fileList: FileItem[]
+  file: FileItem;
+  fileList: FileItem[];
 }
 
 function getBase64(img: Blob, callback: (base64Url: string) => void) {

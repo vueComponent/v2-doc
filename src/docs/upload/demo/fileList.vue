@@ -49,8 +49,8 @@ interface FileItem {
 }
 
 interface FileInfo {
-  file: FileItem,
-  fileList: FileItem[]
+  file: FileItem;
+  fileList: FileItem[];
 }
 
 export default defineComponent({
@@ -58,12 +58,14 @@ export default defineComponent({
     UploadOutlined,
   },
   setup() {
-    const fileList = ref<FileItem[]>([{
-      uid: '-1',
-      name: 'xxx.png',
-      status: 'done',
-      url: 'http://www.baidu.com/xxx.png',
-    }]);
+    const fileList = ref<FileItem[]>([
+      {
+        uid: '-1',
+        name: 'xxx.png',
+        status: 'done',
+        url: 'http://www.baidu.com/xxx.png',
+      },
+    ]);
     const handleChange = (info: FileInfo) => {
       let resFileList = [...info.fileList];
 

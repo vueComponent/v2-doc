@@ -51,8 +51,8 @@ interface FileItem {
 }
 
 interface FileInfo {
-  file: FileItem,
-  fileList: FileItem[]
+  file: FileItem;
+  fileList: FileItem[];
 }
 
 export default defineComponent({
