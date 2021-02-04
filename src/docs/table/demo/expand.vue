@@ -1,16 +1,24 @@
-<cn>
-#### 可展开
-当表格内容较多不能一次性完全展示时。
-</cn>
+<docs>
+---
+order: 8
+title:
+  en-US: Expandable Row
+  zh-CN: 可展开
+---
 
-<us>
-#### Expandable Row
+## zh-CN
+
+当表格内容较多不能一次性完全展示时。
+
+## en-US
+
 When there's too much information to show and the table can't display all at once.
-</us>
+
+</docs>
 
 <template>
   <a-table :columns="columns" :data-source="data">
-    <template #action="{ text }">
+    <template>
       <a>Delete</a>
     </template>
     <template #expandedRowRender="{ record }">
@@ -21,6 +29,7 @@ When there's too much information to show and the table can't display all at onc
   </a-table>
 </template>
 <script lang="ts">
+import { defineComponent } from 'vue';
 const columns = [
   { title: 'Name', dataIndex: 'name', key: 'name' },
   { title: 'Age', dataIndex: 'age', key: 'age' },
@@ -52,12 +61,12 @@ const data = [
   },
 ];
 
-export default {
-  data() {
+export default defineComponent({
+  setup() {
     return {
       data,
       columns,
     };
   },
-};
+});
 </script>
