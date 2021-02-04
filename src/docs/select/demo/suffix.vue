@@ -29,13 +29,13 @@ Basic Usage
     <a-select-option value="lucy">Lucy</a-select-option>
   </a-select>
 </template>
-<script>
+<script lang="ts">
 import { SmileOutlined, MehOutlined } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   setup() {
-    const handleChange = value => {
+    const handleChange = (value: string) => {
       console.log(`selected ${value}`);
     };
 

@@ -42,7 +42,7 @@ Spacified the prop name of Option which will be rendered in select box.
     </a-select-option>
   </a-select>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent, ref, watch } from 'vue';
 
 export default defineComponent({

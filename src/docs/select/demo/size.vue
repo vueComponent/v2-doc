@@ -55,7 +55,7 @@ The height of the input field for the select defaults to 32px. If size is set to
     </a-select-option>
   </a-select>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {

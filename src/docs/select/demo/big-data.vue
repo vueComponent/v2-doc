@@ -26,9 +26,9 @@ Select use virtual scroll which get better performance than 1.x
     :options="options"
   />
 </template>
-<script>
+<script lang="ts">
 import { defineComponent, reactive } from 'vue';
-const options = [];
+const options: { value: string; disabled: boolean }[] = [];
 for (let i = 0; i < 10000; i++) {
   const value = `${i.toString(36)}${i}`;
   options.push({

@@ -29,11 +29,11 @@ Select with tags, transform input to tag (scroll the menu)
     </a-select-option>
   </a-select>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
-    const handleChange = value => {
+    const handleChange = (value: string) => {
       console.log(`selected ${value}`);
     };
     return {

@@ -29,17 +29,17 @@ Try to copy `Lucy,Jack` to the input. Only available in tags and multiple mode.
     </a-select-option>
   </a-select>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
-    const handleChange = value => {
+    const handleChange = (value: string) => {
       console.log(`selected ${value}`);
     };
 
     return {
       handleChange,
-      value: ref([]),
+      value: ref<string[]>([]),
     };
   },
 });

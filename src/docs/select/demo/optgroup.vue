@@ -34,12 +34,12 @@ Using `OptGroup` to group the options.
     </a-select-opt-group>
   </a-select>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { UserOutlined } from '@ant-design/icons-vue';
 export default defineComponent({
   setup() {
-    const handleChange = value => {
+    const handleChange = (value: string) => {
       console.log(`selected ${value}`);
     };
 

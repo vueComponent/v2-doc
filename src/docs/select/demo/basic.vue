@@ -36,7 +36,7 @@ Basic Usage
     <a-select-option value="lucy">Lucy</a-select-option>
   </a-select>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
@@ -44,7 +44,7 @@ export default defineComponent({
       console.log('focus');
     };
 
-    const handleChange = value => {
+    const handleChange = (value: string) => {
       console.log(`selected ${value}`);
     };
 

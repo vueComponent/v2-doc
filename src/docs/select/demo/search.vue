@@ -33,11 +33,11 @@ Search the options while expanded.
     <a-select-option value="tom">Tom</a-select-option>
   </a-select>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
-    const handleChange = value => {
+    const handleChange = (value: string) => {
       console.log(`selected ${value}`);
     };
     const handleBlur = () => {
@@ -46,11 +46,11 @@ export default defineComponent({
     const handleFocus = () => {
       console.log('focus');
     };
-    const filterOption = (input, option) => {
+    const filterOption = (input: string, option: any) => {
       return option.props.value.toLowerCase().indexOf(input.toLowerCase()) >= 0;
     };
     return {
-      value: ref(undefined),
+      value: ref<string | undefined>(undefined),
       filterOption,
       handleBlur,
       handleFocus,

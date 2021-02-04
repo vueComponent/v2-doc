@@ -35,7 +35,7 @@ Customize the dropdown menu via `dropdownRender`.
     </a-select-option>
   </a-select>
 </template>
-<script>
+<script lang="ts">
 import { PlusOutlined } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
 

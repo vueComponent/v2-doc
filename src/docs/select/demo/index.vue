@@ -18,7 +18,7 @@
     <BigData />
   </demo-sort>
 </template>
-<script>
+<script lang="ts">
 import Basic from './basic.vue';
 import Size from './size.vue';
 import Tags from './tags.vue';

@@ -17,32 +17,30 @@ Generating a set of Tags by array, you can add and remove dynamically.
 </docs>
 
 <template>
-  <div>
-    <template v-for="(tag, index) in tags" :key="index">
-      <a-tooltip v-if="tag.length > 20" :title="tag">
-        <a-tag :key="tag" :closable="index !== 0" @close="handleClose(tag)">
-          {{ `${tag.slice(0, 20)}...` }}
-        </a-tag>
-      </a-tooltip>
-      <a-tag v-else :closable="index !== 0" @close="handleClose(tag)">
-        {{ tag }}
+  <template v-for="(tag, index) in tags" :key="index">
+    <a-tooltip v-if="tag.length > 20" :title="tag">
+      <a-tag :key="tag" :closable="index !== 0" @close="handleClose(tag)">
+        {{ `${tag.slice(0, 20)}...` }}
       </a-tag>
-    </template>
-    <a-input
-      v-if="inputVisible"
-      ref="inputRef"
-      type="text"
-      size="small"
-      :style="{ width: '78px' }"
-      v-model:value="inputValue"
-      @blur="handleInputConfirm"
-      @keyup.enter="handleInputConfirm"
-    />
-    <a-tag v-else @click="showInput" style="background: #fff; border-style: dashed">
-      <plus-outlined />
-      New Tag
+    </a-tooltip>
+    <a-tag v-else :closable="index !== 0" @close="handleClose(tag)">
+      {{ tag }}
     </a-tag>
-  </div>
+  </template>
+  <a-input
+    v-if="inputVisible"
+    ref="inputRef"
+    type="text"
+    size="small"
+    :style="{ width: '78px' }"
+    v-model:value="inputValue"
+    @blur="handleInputConfirm"
+    @keyup.enter="handleInputConfirm"
+  />
+  <a-tag v-else @click="showInput" style="background: #fff; border-style: dashed">
+    <plus-outlined />
+    New Tag
+  </a-tag>
 </template>
 <script lang="ts">
 import { defineComponent, ref, reactive, toRefs, nextTick } from 'vue';

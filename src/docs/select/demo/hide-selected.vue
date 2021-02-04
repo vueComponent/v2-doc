@@ -28,13 +28,13 @@ Hide already selected options in the dropdown.
     </a-select-option>
   </a-select>
 </template>
-<script>
+<script lang="ts">
 import { computed, defineComponent, ref } from 'vue';
 
 const OPTIONS = ['Apples', 'Nails', 'Bananas', 'Helicopters'];
 export default defineComponent({
   setup() {
-    const selectedItems = ref([]);
+    const selectedItems = ref<string[]>([]);
 
     const filteredOptions = computed(() => OPTIONS.filter(o => !selectedItems.value.includes(o)));
 

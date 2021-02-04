@@ -24,15 +24,21 @@ The label of the selected item will be packed as an object for passing to the on
     <a-select-option value="lucy">Lucy (101)</a-select-option>
   </a-select>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent, ref } from 'vue';
+
+interface Value {
+  key?: string;
+  label?: string;
+}
+
 export default defineComponent({
   setup() {
-    const handleChange = value => {
+    const handleChange = (value: Value) => {
       console.log(value); // { key: "lucy", label: "Lucy (101)" }
     };
     return {
-      value: ref({ key: 'lucy' }),
+      value: ref<Value>({ key: 'lucy' }),
       handleChange,
     };
   },
