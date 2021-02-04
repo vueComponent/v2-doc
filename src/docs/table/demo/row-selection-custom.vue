@@ -1,17 +1,35 @@
-<cn>
-#### 自定义选择项
-通过 `rowSelection.selections` 自定义选择项，默认不显示下拉选项，设为 `true` 时显示默认选择项。
-</cn>
+<docs>
+---
+order: 4
+title:
+  en-US: Custom selection
+  zh-CN: 自定义选择项
+---
 
-<us>
-#### Custom selection
+## zh-CN
+通过 `rowSelection.selections` 自定义选择项，默认不显示下拉选项，设为 `true` 时显示默认选择项。
+
+## en-US
 Use `rowSelection.selections` custom selections, default no select dropdown, show default selections via setting to `true`.
-</us>
+
+</docs>
 
 <template>
   <a-table :row-selection="rowSelection" :columns="columns" :data-source="data" />
 </template>
 <script lang="ts">
+import { defineComponent, computed, ref, unref } from 'vue';
+import { ColumnProps } from 'ant-design-vue/es/table/interface';
+
+type Key = ColumnProps['key'];
+
+interface DataType {
+  key: Key;
+  name: string;
+  age: number;
+  address: string;
+}
+
 const columns = [
   {
     title: 'Name',
@@ -27,7 +45,7 @@ const columns = [
   },
 ];
 
-const data = [];
+const data: DataType[] = [];
 for (let i = 0; i < 46; i++) {
   data.push({
     key: i,
@@ -37,33 +55,32 @@ for (let i = 0; i < 46; i++) {
   });
 }
 
-export default {
-  data() {
-    return {
-      data,
-      columns,
-      selectedRowKeys: [], // Check here to configure the default column
+export default defineComponent({
+  setup() {
+    const selectedRowKeys = ref<Key[]>([]); // Check here to configure the default column
+
+    const onSelectChange = (changableRowKeys: Key[]) => {
+      console.log('selectedRowKeys changed: ', changableRowKeys);
+      selectedRowKeys.value = changableRowKeys;
     };
-  },
-  computed: {
-    rowSelection() {
-      const { selectedRowKeys } = this;
+
+    const rowSelection = computed(() => {
       return {
-        selectedRowKeys,
-        onChange: this.onSelectChange,
+        selectedRowKeys: unref(selectedRowKeys),
+        onChange: onSelectChange,
         hideDefaultSelections: true,
         selections: [
           {
             key: 'all-data',
             text: 'Select All Data',
             onSelect: () => {
-              this.selectedRowKeys = [...Array(46).keys()]; // 0...45
+              selectedRowKeys.value = [...Array(46).keys()]; // 0...45
             },
           },
           {
             key: 'odd',
             text: 'Select Odd Row',
-            onSelect: changableRowKeys => {
+            onSelect: (changableRowKeys: Key[]) => {
               let newSelectedRowKeys = [];
               newSelectedRowKeys = changableRowKeys.filter((key, index) => {
                 if (index % 2 !== 0) {
@@ -71,13 +88,13 @@ export default {
                 }
                 return true;
               });
-              this.selectedRowKeys = newSelectedRowKeys;
+              selectedRowKeys.value = newSelectedRowKeys;
             },
           },
           {
             key: 'even',
             text: 'Select Even Row',
-            onSelect: changableRowKeys => {
+            onSelect: (changableRowKeys: Key[]) => {
               let newSelectedRowKeys = [];
               newSelectedRowKeys = changableRowKeys.filter((key, index) => {
                 if (index % 2 !== 0) {
@@ -85,18 +102,18 @@ export default {
                 }
                 return false;
               });
-              this.selectedRowKeys = newSelectedRowKeys;
+              selectedRowKeys.value = newSelectedRowKeys;
             },
           },
         ],
       };
-    },
+    });
+    return {
+      data,
+      columns,
+      selectedRowKeys,
+      rowSelection,
+    };
   },
-  methods: {
-    onSelectChange(selectedRowKeys) {
-      console.log('selectedRowKeys changed: ', selectedRowKeys);
-      this.selectedRowKeys = selectedRowKeys;
-    },
-  },
-};
+});
 </script>

@@ -1,14 +1,20 @@
-<cn>
-#### 可选择
-第一列是联动的选择框。
-> 默认点击 checkbox 触发选择行为
-</cn>
+<docs>
+---
+order: 2
+title:
+  en-US: selection
+  zh-CN: 可选择
+---
 
-<us>
-#### selection
-Rows can be selectable by making first column as a selectable column.
-> selection happens when clicking checkbox defaultly.
-</us>
+## zh-CN
+第一列是联动的选择框。  
+默认点击 checkbox 触发选择行为，需要 `点击行` 触发可参考例子：https://codesandbox.io/s/row-selection-on-click-tr58v
+
+## en-US
+Rows can be selectable by making first column as a selectable column.  
+selection happens when clicking checkbox defaultly. You can see https://codesandbox.io/s/row-selection-on-click-tr58v if you need row-click selection behavior.
+
+</docs>
 
 <template>
   <a-table :row-selection="rowSelection" :columns="columns" :data-source="data">
@@ -18,6 +24,18 @@ Rows can be selectable by making first column as a selectable column.
   </a-table>
 </template>
 <script lang="ts">
+import { computed, defineComponent } from 'vue';
+import { ColumnProps } from 'ant-design-vue/es/table/interface';
+
+type Key = ColumnProps['key'];
+
+interface DataType {
+  key: Key;
+  name: string;
+  age: number;
+  address: string;
+}
+
 const columns = [
   {
     title: 'Name',
@@ -33,7 +51,7 @@ const columns = [
     dataIndex: 'address',
   },
 ];
-const data = [
+const data: DataType[] = [
   {
     key: '1',
     name: 'John Brown',
@@ -60,25 +78,25 @@ const data = [
   },
 ];
 
-export default {
-  data() {
-    return {
-      data,
-      columns,
-    };
-  },
-  computed: {
-    rowSelection() {
+export default defineComponent({
+  setup() {
+    const rowSelection = computed(() => {
       return {
-        onChange: (selectedRowKeys, selectedRows) => {
+        onChange: (selectedRowKeys: Key[], selectedRows: DataType[]) => {
           console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
         },
-        getCheckboxProps: record => ({
+        getCheckboxProps: (record: DataType) => ({
           disabled: record.name === 'Disabled User', // Column configuration not to be checked
           name: record.name,
         }),
       };
-    },
+    });
+
+    return {
+      data,
+      columns,
+      rowSelection,
+    };
   },
-};
+});
 </script>

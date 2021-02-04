@@ -1,14 +1,22 @@
-<cn>
-#### template 风格的 API
+<docs>
+---
+order: 99
+title:
+  en-US: template style API
+  zh-CN: template 风格的 API
+---
+
+## zh-CN
+
 使用 template 风格的 API
 > 这个只是一个描述 `columns` 的语法糖，所以你不能用其他组件去包裹 `Column` 和 `ColumnGroup`。
-</cn>
 
-<us>
-#### template style API
+## en-US
+
 Using template style API
 > Since this is just a syntax sugar for the prop `columns`, so that you can't compose `Column` and `ColumnGroup` with other Components.
-</us>
+
+</docs>
 
 <template>
   <a-table :data-source="data">
@@ -29,7 +37,7 @@ Using template style API
       </template>
     </a-table-column>
     <a-table-column key="action" title="Action">
-      <template #default="{ text, record }">
+      <template #default="{ record }">
         <span>
           <a>Action 一 {{ record.firstName }}</a>
           <a-divider type="vertical" />
@@ -40,6 +48,7 @@ Using template style API
   </a-table>
 </template>
 <script lang="ts">
+import { defineComponent } from 'vue';
 const data = [
   {
     key: '1',
@@ -67,11 +76,11 @@ const data = [
   },
 ];
 
-export default {
-  data() {
+export default defineComponent({
+  setup() {
     return {
       data,
     };
   },
-};
+});
 </script>

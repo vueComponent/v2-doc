@@ -1,12 +1,20 @@
-<cn>
-#### 选择和操作
-选择后进行操作，完成后清空选择，通过 `rowSelection.selectedRowKeys` 来控制选中项。
-</cn>
+<docs>
+---
+order: 3
+title:
+  en-US: Selection and operation
+  zh-CN: 选择和操作
+---
 
-<us>
-#### Selection and operation
+## zh-CN
+
+选择后进行操作，完成后清空选择，通过 `rowSelection.selectedRowKeys` 来控制选中项。
+
+## en-US
+
 To perform operations and clear selections after selecting some rows, use `rowSelection.selectedRowKeys` to control selected rows.
-</us>
+
+</docs>
 
 <template>
   <div>
@@ -28,6 +36,18 @@ To perform operations and clear selections after selecting some rows, use `rowSe
   </div>
 </template>
 <script lang="ts">
+import { computed, defineComponent, reactive, toRefs } from 'vue';
+import { ColumnProps } from 'ant-design-vue/es/table/interface';
+
+type Key = ColumnProps['key'];
+
+interface DataType {
+  key: Key;
+  name: string;
+  age: number;
+  address: string;
+}
+
 const columns = [
   {
     title: 'Name',
@@ -43,7 +63,7 @@ const columns = [
   },
 ];
 
-const data = [];
+const data: DataType[] = [];
 for (let i = 0; i < 46; i++) {
   data.push({
     key: i,
@@ -53,33 +73,40 @@ for (let i = 0; i < 46; i++) {
   });
 }
 
-export default {
-  data() {
+export default defineComponent({
+  setup() {
+    const state = reactive<{
+      selectedRowKeys: Key[];
+      loading: boolean;
+    }>({
+      selectedRowKeys: [], // Check here to configure the default column
+      loading: false,
+    });
+    const hasSelected = computed(() => state.selectedRowKeys.length > 0);
+
+    const start = () => {
+      state.loading = true;
+      // ajax request after empty completing
+      setTimeout(() => {
+        state.loading = false;
+        state.selectedRowKeys = [];
+      }, 1000);
+    };
+    const onSelectChange = (selectedRowKeys: Key[]) => {
+      console.log('selectedRowKeys changed: ', selectedRowKeys);
+      state.selectedRowKeys = selectedRowKeys;
+    };
+
     return {
       data,
       columns,
-      selectedRowKeys: [], // Check here to configure the default column
-      loading: false,
+      hasSelected,
+      ...toRefs(state),
+
+      // func
+      start,
+      onSelectChange,
     };
   },
-  computed: {
-    hasSelected() {
-      return this.selectedRowKeys.length > 0;
-    },
-  },
-  methods: {
-    start() {
-      this.loading = true;
-      // ajax request after empty completing
-      setTimeout(() => {
-        this.loading = false;
-        this.selectedRowKeys = [];
-      }, 1000);
-    },
-    onSelectChange(selectedRowKeys) {
-      console.log('selectedRowKeys changed: ', selectedRowKeys);
-      this.selectedRowKeys = selectedRowKeys;
-    },
-  },
-};
+});
 </script>

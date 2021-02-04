@@ -1,12 +1,19 @@
-<cn>
-#### 紧凑型
-两种紧凑型的列表，小型列表只用于对话框内。
-</cn>
+<docs>
+---
+order: 98
+title:
+  en-US: size
+  zh-CN: 紧凑型
+---
 
-<us>
-#### size
+## zh-CN
+两种紧凑型的列表，小型列表只用于对话框内。
+
+## en-US
+
 There are two compacted table sizes: `middle` and `small`. The `small` size is used in Modals only.
-</us>
+
+</docs>
 
 <template>
   <div id="components-table-demo-size">
@@ -17,19 +24,11 @@ There are two compacted table sizes: `middle` and `small`. The `small` size is u
   </div>
 </template>
 <script lang="ts">
+import { defineComponent } from 'vue';
 const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-  },
+  { title: 'Name', dataIndex: 'name' },
+  { title: 'Age', dataIndex: 'age' },
+  { title: 'Address', dataIndex: 'address' },
 ];
 const data = [
   {
@@ -52,14 +51,14 @@ const data = [
   },
 ];
 
-export default {
-  data() {
+export default defineComponent({
+  setup() {
     return {
       data,
       columns,
     };
   },
-};
+});
 </script>
 <style>
 #components-table-demo-size h4 {

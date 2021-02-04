@@ -1,14 +1,22 @@
-<cn>
-#### 单元格自动省略
+<docs>
+---
+order: 28
+title:
+  en-US: ellipsis column
+  zh-CN: 单元格自动省略
+---
+
+## zh-CN
+
 设置 `column.ellipsis` 可以让单元格内容根据宽度自动省略。
 > 列头缩略暂不支持和排序筛选一起使用。
-</cn>
 
-<us>
-#### ellipsis column
-Ellipsize cell content via setting `column.ellipsis`.
-> Cannot ellipsize table header with sorters and filters for now.
-</us>
+## en-US
+
+Ellipsis cell content via setting `column.ellipsis`.
+> Cannot ellipsis table header with sorters and filters for now.
+
+</docs>
 
 <template>
   <a-table :columns="columns" :data-source="data">
@@ -18,6 +26,7 @@ Ellipsize cell content via setting `column.ellipsis`.
   </a-table>
 </template>
 <script lang="ts">
+import { defineComponent } from 'vue';
 const columns = [
   {
     title: 'Name',
@@ -81,12 +90,12 @@ const data = [
   },
 ];
 
-export default {
-  data() {
+export default defineComponent({
+  setup() {
     return {
       data,
       columns,
     };
   },
-};
+});
 </script>
