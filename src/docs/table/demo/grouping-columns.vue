@@ -1,12 +1,20 @@
-<cn>
-#### 表头分组
-`columns[n]` 可以内嵌 `children`，以渲染分组表头。
-</cn>
+<docs>
+---
+order: 13
+title:
+  zh-CN: 表头分组
+  en-US: Grouping table head
+---
 
-<us>
-#### Grouping table head
+## zh-CN
+
+`columns[n]` 可以内嵌 `children`，以渲染分组表头。
+
+## en-US
+
 Group table head with `columns[n].children`.
-</us>
+
+</docs>
 
 <template>
   <a-table
@@ -18,6 +26,18 @@ Group table head with `columns[n].children`.
   />
 </template>
 <script lang="ts">
+import { defineComponent } from 'vue';
+type TableDataType = {
+  key: number;
+  name: string;
+  age: number;
+  street: string;
+  building: string;
+  number: number;
+  companyAddress: string;
+  companyName: string;
+  gender: string;
+};
 const columns = [
   {
     title: 'Name',
@@ -35,7 +55,7 @@ const columns = [
         value: 'John',
       },
     ],
-    onFilter: (value, record) => record.name.indexOf(value) === 0,
+    onFilter: (value: string, record: TableDataType) => record.name.indexOf(value) === 0,
   },
   {
     title: 'Other',
@@ -45,7 +65,7 @@ const columns = [
         dataIndex: 'age',
         key: 'age',
         width: 200,
-        sorter: (a, b) => a.age - b.age,
+        sorter: (a: TableDataType, b: TableDataType) => a.age - b.age,
       },
       {
         title: 'Address',
@@ -101,28 +121,23 @@ const columns = [
     fixed: 'right',
   },
 ];
-
-const data = [];
-for (let i = 0; i < 100; i++) {
-  data.push({
-    key: i,
-    name: 'John Brown',
-    age: i + 1,
-    street: 'Lake Park',
-    building: 'C',
-    number: 2035,
-    companyAddress: 'Lake Street 42',
-    companyName: 'SoftLake Co',
-    gender: 'M',
-  });
-}
-
-export default {
-  data() {
+const data = [...Array(100)].map((_, i) => ({
+  key: i,
+  name: 'John Brown',
+  age: i + 1,
+  street: 'Lake Park',
+  building: 'C',
+  number: 2035,
+  companyAddress: 'Lake Street 42',
+  companyName: 'SoftLake Co',
+  gender: 'M',
+}));
+export default defineComponent({
+  setup() {
     return {
       data,
       columns,
     };
   },
-};
+});
 </script>

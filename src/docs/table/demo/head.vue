@@ -1,26 +1,71 @@
-<cn>
-#### 筛选和排序
+<docs>
+---
+order: 14
+title:
+  zh-CN: 筛选和排序
+  en-US: Filter and sorter
+---
+
+## zh-CN
+
 对某一列数据进行筛选，使用列的 `filters` 属性来指定需要筛选菜单的列，`onFilter` 用于筛选当前数据，`filterMultiple` 用于指定多选和单选。
 对某一列数据进行排序，通过指定列的 `sorter` 函数即可启动排序按钮。`sorter: function(rowA, rowB) { ... }`， rowA、rowB 为比较的两个行数据。
 `sortDirections: ['ascend' | 'descend']`改变每列可用的排序方式，切换排序时按数组内容依次切换，设置在 table props 上时对所有列生效。
 使用 `defaultSortOrder` 属性，设置列的默认排序顺序。
-</cn>
 
-<us>
-#### Filter and sorter
+## en-US
+
 Use `filters` to generate filter menu in columns, `onFilter` to determine filtered result, and `filterMultiple` to indicate whether it's multiple or single selection.
 Uses `defaultFilteredValue` to make a column filtered by default.
 Use `sorter` to make a column sortable. `sorter` can be a function of the type `function(a, b) { ... }` for sorting data locally.
 `sortDirections: ['ascend' | 'descend']` defines available sort methods for each columns, effective for all columns when set on table props.
 Uses `defaultSortOrder` to make a column sorted by default.
 If a `sortOrder` or `defaultSortOrder` is specified with the value `ascend` or `descend`, you can access this value from within the function passed to the `sorter` as explained above. Such a function can take the form: `function(a, b, sortOrder) { ... }`.
-</us>
+
+</docs>
 
 <template>
   <a-table :columns="columns" :data-source="data" @change="onChange" />
 </template>
 <script lang="ts">
-const columns = [
+import { defineComponent } from 'vue';
+
+type TableDataType = {
+  key: string;
+  name: string;
+  age: number;
+  address: string;
+};
+
+type PaginationType = {
+  current: number;
+  pageSize: number;
+};
+
+type FilterType = {
+  name: string;
+  address: string;
+};
+
+type ColumnType = {
+  title: string;
+  dataIndex: string;
+  filters?: {
+    text: string;
+    value: string;
+    children?: {
+      text: string;
+      value: string;
+    }[];
+  }[];
+  onFilter?: (value: string, record: TableDataType) => boolean;
+  sorter?: (a: TableDataType, b: TableDataType) => number;
+  sortDirections?: string[];
+  defaultSortOrder?: string;
+  filterMultiple?: string[] | boolean;
+};
+
+const columns: ColumnType[] = [
   {
     title: 'Name',
     dataIndex: 'name',
@@ -50,15 +95,15 @@ const columns = [
     ],
     // specify the condition of filtering result
     // here is that finding the name started with `value`
-    onFilter: (value, record) => record.name.indexOf(value) === 0,
-    sorter: (a, b) => a.name.length - b.name.length,
+    onFilter: (value: string, record: TableDataType) => record.name.indexOf(value) === 0,
+    sorter: (a: TableDataType, b: TableDataType) => a.name.length - b.name.length,
     sortDirections: ['descend'],
   },
   {
     title: 'Age',
     dataIndex: 'age',
     defaultSortOrder: 'descend',
-    sorter: (a, b) => a.age - b.age,
+    sorter: (a: TableDataType, b: TableDataType) => a.age - b.age,
   },
   {
     title: 'Address',
@@ -74,13 +119,13 @@ const columns = [
       },
     ],
     filterMultiple: false,
-    onFilter: (value, record) => record.address.indexOf(value) === 0,
-    sorter: (a, b) => a.address.length - b.address.length,
+    onFilter: (value: string, record: TableDataType) => record.address.indexOf(value) === 0,
+    sorter: (a: TableDataType, b: TableDataType) => a.address.length - b.address.length,
     sortDirections: ['descend', 'ascend'],
   },
 ];
 
-const data = [
+const data: TableDataType[] = [
   {
     key: '1',
     name: 'John Brown',
@@ -106,20 +151,16 @@ const data = [
     address: 'London No. 2 Lake Park',
   },
 ];
-
-function onChange(pagination, filters, sorter) {
-  console.log('params', pagination, filters, sorter);
-}
-
-export default {
-  data() {
+export default defineComponent({
+  setup() {
+    const onChange = (pagination: PaginationType, filters: FilterType[], sorter: ColumnType) => {
+      console.log('params', pagination, filters, sorter);
+    };
     return {
       data,
       columns,
+      onChange,
     };
   },
-  methods: {
-    onChange,
-  },
-};
+});
 </script>
