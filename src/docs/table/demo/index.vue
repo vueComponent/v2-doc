@@ -21,6 +21,7 @@
     <RowSelectionCustom />
     <RowSelection />
     <Size />
+    <Stripe />
     <Template />
   </demo-sort>
 </template>
@@ -49,6 +50,7 @@ import RowSelection from './row-selection.vue';
 import Size from './size.vue';
 import Template from './template.vue';
 import Ellipsis from './ellipsis.vue';
+import Stripe from './stripe.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
 
@@ -78,6 +80,7 @@ export default {
     RowSelection,
     Size,
     Template,
+    Stripe,
   },
 };
 </script>
