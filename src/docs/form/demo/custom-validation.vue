@@ -9,33 +9,33 @@ title:
 ## zh-CN
 
 这个例子中展示了如何使用自定义验证规则来完成密码的二次验证。本例还使用 `has-feedback` 属性为输入框添加了表示校验结果的反馈图标。
-自定义校验 callback 必须被调用。 更多高级用法可参考 [async-validator](https://github.com/yiminghe/async-validator)
+更多高级用法可参考 [async-validator](https://github.com/yiminghe/async-validator)
 
 ## en-US
 
 This example shows how to customize your own validation rules to finish a two-factor password verification.
 You can use `has-feedback` to reflect validation result as an icon.
-Custom validate callback function must be called. See more advanced usage at [async-validator](https://github.com/yiminghe/async-validator).
+See more advanced usage at [async-validator](https://github.com/yiminghe/async-validator).
 </docs>
 
 <template>
   <a-form
     name="custom-validation"
-    ref="ruleForm"
-    :model="ruleForm"
+    ref="formRef"
+    :model="formState"
     :rules="rules"
     v-bind="layout"
     @finish="handleFinish"
     @finishFailed="handleFinishFailed"
   >
     <a-form-item required has-feedback label="Password" name="pass">
-      <a-input v-model:value="ruleForm.pass" type="password" autocomplete="off" />
+      <a-input v-model:value="formState.pass" type="password" autocomplete="off" />
     </a-form-item>
     <a-form-item has-feedback label="Confirm" name="checkPass">
-      <a-input v-model:value="ruleForm.checkPass" type="password" autocomplete="off" />
+      <a-input v-model:value="formState.checkPass" type="password" autocomplete="off" />
     </a-form-item>
     <a-form-item has-feedback label="Age" name="age">
-      <a-input-number v-model:value="ruleForm.age" />
+      <a-input-number v-model:value="formState.age" />
     </a-form-item>
     <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
       <a-button type="primary" html-type="submit">Submit</a-button>
@@ -43,10 +43,23 @@ Custom validate callback function must be called. See more advanced usage at [as
     </a-form-item>
   </a-form>
 </template>
-<script>
-export default {
-  data() {
-    let checkAge = async (rule, value, callback) => {
+<script lang="ts">
+import { RuleObject, ValidateErrorEntity } from 'ant-design-vue/lib/form/interface';
+import { defineComponent, reactive, ref, UnwrapRef } from 'vue';
+interface FormState {
+  pass: string;
+  checkPass: string;
+  age: number | undefined;
+}
+export default defineComponent({
+  setup() {
+    const formRef = ref();
+    const formState: UnwrapRef<FormState> = reactive({
+      pass: '',
+      checkPass: '',
+      age: undefined,
+    });
+    let checkAge = async (rule: RuleObject, value: number) => {
       if (!value) {
         return Promise.reject('Please input the age');
       }
@@ -60,52 +73,53 @@ export default {
         }
       }
     };
-    let validatePass = async (rule, value) => {
+    let validatePass = async (rule: RuleObject, value: string) => {
       if (value === '') {
         return Promise.reject('Please input the password');
       } else {
-        if (this.ruleForm.checkPass !== '') {
-          this.$refs.ruleForm.validateField('checkPass');
+        if (formState.checkPass !== '') {
+          formRef.value.validateField('checkPass');
         }
         return Promise.resolve();
       }
     };
-    let validatePass2 = async (rule, value, callback) => {
+    let validatePass2 = async (rule: RuleObject, value: string) => {
       if (value === '') {
         return Promise.reject('Please input the password again');
-      } else if (value !== this.ruleForm.pass) {
+      } else if (value !== formState.pass) {
         return Promise.reject("Two inputs don't match!");
       } else {
         return Promise.resolve();
       }
     };
+
+    const rules = {
+      pass: [{ validator: validatePass, trigger: 'change' }],
+      checkPass: [{ validator: validatePass2, trigger: 'change' }],
+      age: [{ validator: checkAge, trigger: 'change' }],
+    };
+    const layout = {
+      labelCol: { span: 4 },
+      wrapperCol: { span: 14 },
+    };
+    const handleFinish = (values: FormState) => {
+      console.log(values, formState);
+    };
+    const handleFinishFailed = (errors: ValidateErrorEntity<FormState>) => {
+      console.log(errors);
+    };
+    const resetForm = () => {
+      formRef.value.resetFields();
+    };
     return {
-      ruleForm: {
-        pass: '',
-        checkPass: '',
-        age: '',
-      },
-      rules: {
-        pass: [{ validator: validatePass, trigger: 'change' }],
-        checkPass: [{ validator: validatePass2, trigger: 'change' }],
-        age: [{ validator: checkAge, trigger: 'change' }],
-      },
-      layout: {
-        labelCol: { span: 4 },
-        wrapperCol: { span: 14 },
-      },
+      formState,
+      formRef,
+      rules,
+      layout,
+      handleFinishFailed,
+      handleFinish,
+      resetForm,
     };
   },
-  methods: {
-    handleFinish(values) {
-      console.log(values);
-    },
-    handleFinishFailed(errors) {
-      console.log(errors);
-    },
-    resetForm() {
-      this.$refs.ruleForm.resetFields();
-    },
-  },
-};
+});
 </script>

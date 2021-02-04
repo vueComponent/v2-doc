@@ -12,7 +12,7 @@
     <UseFormMerge />
   </demo-sort>
 </template>
-<script>
+<script lang="ts">
 import Basic from './basic.vue';
 import CustomValidation from './custom-validation.vue';
 import DynamicFormItem from './dynamic-form-item.vue';

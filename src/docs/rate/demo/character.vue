@@ -23,7 +23,7 @@ Replace the default star to other character like alphabet, digit, iconfont or ev
       </template>
     </a-rate>
     <br />
-    <a-rate v-model:value="value2" character="A" allow-half style="fontsize: 36px" />
+    <a-rate v-model:value="value2" character="A" allow-half style="font-size: 36px" />
     <br />
     <a-rate v-model:value="value3" character="好" allow-half />
     <br />

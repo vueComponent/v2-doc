@@ -34,15 +34,15 @@ Integration [@ant-design-vue/use](https://github.com/vueComponent/use) use form 
       </a-checkbox-group>
     </a-form-item>
     <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
-      <a-button type="primary" @click="onSubmit">Create</a-button>
+      <a-button type="primary" @click.prevent="onSubmit">Create</a-button>
       <a-button style="margin-left: 10px" @click="resetFields">Reset</a-button>
     </a-form-item>
   </a-form>
 </template>
-<script>
-import { reactive, toRaw } from 'vue';
+<script lang="ts">
+import { defineComponent, reactive, toRaw } from 'vue';
 import { useForm } from '@ant-design-vue/use';
-export default {
+export default defineComponent({
   setup() {
     const modelRef = reactive({
       name: '',
@@ -71,8 +71,7 @@ export default {
       ],
     });
     const { resetFields, validate, validateInfos } = useForm(modelRef, rulesRef);
-    const onSubmit = e => {
-      e.preventDefault();
+    const onSubmit = () => {
       validate()
         .then(() => {
           console.log(toRaw(modelRef));
@@ -90,5 +89,5 @@ export default {
       onSubmit,
     };
   },
-};
+});
 </script>

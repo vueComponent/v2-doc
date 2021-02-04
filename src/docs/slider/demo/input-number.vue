@@ -22,7 +22,7 @@ Synchronize with [InputNumber](/components/input-number/) component.
         <a-slider v-model:value="inputValue1" :min="1" :max="20" />
       </a-col>
       <a-col :span="4">
-        <a-input-number v-model:value="inputValue1" :min="1" :max="20" style="marginleft: 16px" />
+        <a-input-number v-model:value="inputValue1" :min="1" :max="20" style="margin-left: 16px" />
       </a-col>
     </a-row>
     <a-row>
@@ -35,7 +35,7 @@ Synchronize with [InputNumber](/components/input-number/) component.
           :min="0"
           :max="1"
           :step="0.01"
-          style="marginleft: 16px"
+          style="margin-left: 16px"
         />
       </a-col>
     </a-row>

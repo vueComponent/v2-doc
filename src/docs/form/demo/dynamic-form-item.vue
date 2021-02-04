@@ -15,11 +15,7 @@ title:
 Add or remove form items dynamically.
 </docs>
 <template>
-  <a-form
-    ref="dynamicValidateForm"
-    :model="dynamicValidateForm"
-    v-bind="formItemLayoutWithOutLabel"
-  >
+  <a-form ref="formRef" :model="dynamicValidateForm" v-bind="formItemLayoutWithOutLabel">
     <a-form-item
       v-for="(domain, index) in dynamicValidateForm.domains"
       :key="domain.key"
@@ -51,74 +47,84 @@ Add or remove form items dynamically.
       </a-button>
     </a-form-item>
     <a-form-item v-bind="formItemLayoutWithOutLabel">
-      <a-button type="primary" html-type="submit" @click="submitForm('dynamicValidateForm')">
-        Submit
-      </a-button>
-      <a-button style="margin-left: 10px" @click="resetForm('dynamicValidateForm')">Reset</a-button>
+      <a-button type="primary" html-type="submit" @click="submitForm">Submit</a-button>
+      <a-button style="margin-left: 10px" @click="resetForm">Reset</a-button>
     </a-form-item>
   </a-form>
 </template>
 
-<script>
+<script lang="ts">
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons-vue';
+import { ValidateErrorEntity } from 'ant-design-vue/lib/form/interface';
+import { defineComponent, reactive, ref, UnwrapRef } from 'vue';
 
-let id = 0;
-export default {
+interface Domain {
+  value: string;
+  key: number;
+}
+export default defineComponent({
+  setup() {
+    const formRef = ref();
+    const formItemLayout = {
+      labelCol: {
+        xs: { span: 24 },
+        sm: { span: 4 },
+      },
+      wrapperCol: {
+        xs: { span: 24 },
+        sm: { span: 20 },
+      },
+    };
+    const formItemLayoutWithOutLabel = {
+      wrapperCol: {
+        xs: { span: 24, offset: 0 },
+        sm: { span: 20, offset: 4 },
+      },
+    };
+    const dynamicValidateForm: UnwrapRef<{ domains: Domain[] }> = reactive({
+      domains: [],
+    });
+    const submitForm = () => {
+      formRef.value
+        .validate()
+        .then(() => {
+          console.log('values', dynamicValidateForm.domains);
+        })
+        .catch((error: ValidateErrorEntity<any>) => {
+          console.log('error', error);
+        });
+    };
+    const resetForm = () => {
+      formRef.value.resetFields();
+    };
+    const removeDomain = (item: Domain) => {
+      let index = dynamicValidateForm.domains.indexOf(item);
+      if (index !== -1) {
+        dynamicValidateForm.domains.splice(index, 1);
+      }
+    };
+    const addDomain = () => {
+      dynamicValidateForm.domains.push({
+        value: '',
+        key: Date.now(),
+      });
+    };
+    return {
+      formRef,
+      formItemLayout,
+      formItemLayoutWithOutLabel,
+      dynamicValidateForm,
+      submitForm,
+      resetForm,
+      removeDomain,
+      addDomain,
+    };
+  },
   components: {
     MinusCircleOutlined,
     PlusOutlined,
   },
-  data() {
-    return {
-      formItemLayout: {
-        labelCol: {
-          xs: { span: 24 },
-          sm: { span: 4 },
-        },
-        wrapperCol: {
-          xs: { span: 24 },
-          sm: { span: 20 },
-        },
-      },
-      formItemLayoutWithOutLabel: {
-        wrapperCol: {
-          xs: { span: 24, offset: 0 },
-          sm: { span: 20, offset: 4 },
-        },
-      },
-      dynamicValidateForm: {
-        domains: [],
-      },
-    };
-  },
-  methods: {
-    submitForm(formName) {
-      this.$refs[formName]
-        .validate()
-        .then(() => {
-          console.log('values', this.dynamicValidateForm.domains);
-        })
-        .catch(error => {
-          console.log('error', error);
-        });
-    },
-    resetForm(formName) {
-      this.$refs[formName].resetFields();
-    },
-    removeDomain(item) {
-      let index = this.dynamicValidateForm.domains.indexOf(item);
-      if (index !== -1) {
-        this.dynamicValidateForm.domains.splice(index, 1);
-      }
-    },
-    addDomain() {
-      this.dynamicValidateForm.domains.push({
-        value: '',
-        key: Date.now(),
-      });
-    },
-  },
-};
+});
 </script>
 <style>
 .dynamic-delete-button {

@@ -48,7 +48,7 @@ Open a new drawer on top of an existing drawer to handle multi branch tasks.
         borderRadius: '0 0 4px 4px',
       }"
     >
-      <a-button style="marginright: 8px" @click="onClose">Cancel</a-button>
+      <a-button style="margin-right: 8px" @click="onClose">Cancel</a-button>
       <a-button type="primary" @click="onClose">Submit</a-button>
     </div>
   </a-drawer>
