@@ -1,27 +1,36 @@
-<cn>
-#### 嵌套子表格
-展示每行数据更详细的信息。
-</cn>
+<docs>
+---
+order: 15
+title:
+  zh-CN: 嵌套子表格
+  en-US: Nested tables
 
-<us>
-#### Nested tables
+---
+
+## zh-CN
+
+展示每行数据更详细的信息。
+
+## en-US
+
 Showing more detailed info of every row.
-</us>
+
+</docs>
 
 <template>
   <a-table :columns="columns" :data-source="data" class="components-table-demo-nested">
-    <template #operation="{ text }">
+    <template #operation>
       <a>Publish</a>
     </template>
-    <template #expandedRowRender="{ text }">
+    <template #expandedRowRender>
       <a-table :columns="innerColumns" :data-source="innerData" :pagination="false">
-        <template #status="{ text }">
+        <template #status>
           <span>
             <a-badge status="success" />
             Finished
           </span>
         </template>
-        <template #operation="{ text }">
+        <template #operation>
           <span class="table-operation">
             <a>Pause</a>
             <a>Stop</a>
@@ -45,6 +54,8 @@ Showing more detailed info of every row.
 </template>
 <script lang="ts">
 import { DownOutlined } from '@ant-design/icons-vue';
+import { defineComponent } from 'vue';
+
 const columns = [
   { title: 'Name', dataIndex: 'name', key: 'name' },
   { title: 'Platform', dataIndex: 'platform', key: 'platform' },
@@ -55,7 +66,17 @@ const columns = [
   { title: 'Action', key: 'operation', slots: { customRender: 'operation' } },
 ];
 
-const data = [];
+interface DataItem {
+  key: number;
+  name: string;
+  platform: string;
+  version: string;
+  upgradeNum: number;
+  creator: string;
+  createdAt: string;
+}
+
+const data: DataItem[] = [];
 for (let i = 0; i < 3; ++i) {
   data.push({
     key: i,
@@ -81,7 +102,14 @@ const innerColumns = [
   },
 ];
 
-const innerData = [];
+interface innerDataItem {
+  key: number;
+  date: string;
+  name: string;
+  upgradeNum: string;
+}
+
+const innerData: innerDataItem[] = [];
 for (let i = 0; i < 3; ++i) {
   innerData.push({
     key: i,
@@ -91,11 +119,11 @@ for (let i = 0; i < 3; ++i) {
   });
 }
 
-export default {
+export default defineComponent({
   components: {
     DownOutlined,
   },
-  data() {
+  setup() {
     return {
       data,
       columns,
@@ -103,5 +131,5 @@ export default {
       innerData,
     };
   },
-};
+});
 </script>

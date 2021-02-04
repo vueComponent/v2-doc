@@ -1,18 +1,27 @@
-<cn>
-#### 可控的筛选和排序
+<docs>
+---
+order: 16
+title:
+  zh-CN: 可控的筛选和排序
+  en-US: Reset filters and sorters
+
+---
+
+## zh-CN
+
 使用受控属性对筛选和排序状态进行控制。
 > 1. columns 中定义了 filteredValue 和 sortOrder 属性即视为受控模式。
 > 2. 只支持同时对一列进行排序，请保证只有一列的 sortOrder 属性是生效的。
 > 3. 务必指定 `column.key`。
-</cn>
 
-<us>
-#### Reset filters and sorters
+## en-US
+
 Control filters and sorters by `filteredValue` and `sortOrder`.
 > 1. Defining `filteredValue` or `sortOrder` means that it is in the controlled mode.
 > 2. Make sure `sortOrder` is assigned for only one column.
 > 3. `column.key` is required.
-</us>
+
+</docs>
 
 <template>
   <div>
@@ -25,7 +34,19 @@ Control filters and sorters by `filteredValue` and `sortOrder`.
   </div>
 </template>
 <script lang="ts">
-const data = [
+import { computed, defineComponent, ref } from 'vue';
+import { TableState, TableStateFilters } from 'ant-design-vue/lib/table/interface';
+
+type Pagination = TableState['pagination'];
+
+interface DataItem {
+  key: string;
+  name: string;
+  age: number;
+  address: string;
+}
+
+const data: DataItem[] = [
   {
     key: '1',
     name: 'John Brown',
@@ -52,20 +73,15 @@ const data = [
   },
 ];
 
-export default {
-  data() {
-    return {
-      data,
-      filteredInfo: null,
-      sortedInfo: null,
-    };
-  },
-  computed: {
-    columns() {
-      let { sortedInfo, filteredInfo } = this;
-      sortedInfo = sortedInfo || {};
-      filteredInfo = filteredInfo || {};
-      const columns = [
+export default defineComponent({
+  setup() {
+    const filteredInfo = ref();
+    const sortedInfo = ref();
+
+    const columns = computed(() => {
+      const filtered = filteredInfo.value || {};
+      const sorted = sortedInfo.value || {};
+      return [
         {
           title: 'Name',
           dataIndex: 'name',
@@ -74,18 +90,18 @@ export default {
             { text: 'Joe', value: 'Joe' },
             { text: 'Jim', value: 'Jim' },
           ],
-          filteredValue: filteredInfo.name || null,
-          onFilter: (value, record) => record.name.includes(value),
-          sorter: (a, b) => a.name.length - b.name.length,
-          sortOrder: sortedInfo.columnKey === 'name' && sortedInfo.order,
+          filteredValue: filtered.name || null,
+          onFilter: (value: string, record: DataItem) => record.name.includes(value),
+          sorter: (a: DataItem, b: DataItem) => a.name.length - b.name.length,
+          sortOrder: sorted.columnKey === 'name' && sorted.order,
           ellipsis: true,
         },
         {
           title: 'Age',
           dataIndex: 'age',
           key: 'age',
-          sorter: (a, b) => a.age - b.age,
-          sortOrder: sortedInfo.columnKey === 'age' && sortedInfo.order,
+          sorter: (a: DataItem, b: DataItem) => a.age - b.age,
+          sortOrder: sorted.columnKey === 'age' && sorted.order,
         },
         {
           title: 'Address',
@@ -95,37 +111,44 @@ export default {
             { text: 'London', value: 'London' },
             { text: 'New York', value: 'New York' },
           ],
-          filteredValue: filteredInfo.address || null,
-          onFilter: (value, record) => record.address.includes(value),
-          sorter: (a, b) => a.address.length - b.address.length,
-          sortOrder: sortedInfo.columnKey === 'address' && sortedInfo.order,
+          filteredValue: filtered.address || null,
+          onFilter: (value: string, record: DataItem) => record.address.includes(value),
+          sorter: (a: DataItem, b: DataItem) => a.address.length - b.address.length,
+          sortOrder: sorted.columnKey === 'address' && sorted.order,
           ellipsis: true,
         },
       ];
-      return columns;
-    },
-  },
-  methods: {
-    handleChange(pagination, filters, sorter) {
+    });
+
+    const handleChange = (pagination: Pagination, filters: TableStateFilters, sorter: any) => {
       console.log('Various parameters', pagination, filters, sorter);
-      this.filteredInfo = filters;
-      this.sortedInfo = sorter;
-    },
-    clearFilters() {
-      this.filteredInfo = null;
-    },
-    clearAll() {
-      this.filteredInfo = null;
-      this.sortedInfo = null;
-    },
-    setAgeSort() {
-      this.sortedInfo = {
+      filteredInfo.value = filters;
+      sortedInfo.value = sorter;
+    };
+    const clearFilters = () => {
+      filteredInfo.value = null;
+    };
+    const clearAll = () => {
+      filteredInfo.value = null;
+      sortedInfo.value = null;
+    };
+    const setAgeSort = () => {
+      sortedInfo.value = {
         order: 'descend',
         columnKey: 'age',
       };
-    },
+    };
+
+    return {
+      data,
+      columns,
+      handleChange,
+      clearFilters,
+      clearAll,
+      setAgeSort,
+    };
   },
-};
+});
 </script>
 <style scoped>
 .table-operations {
