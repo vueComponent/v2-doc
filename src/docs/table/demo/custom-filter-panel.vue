@@ -8,7 +8,6 @@
 Implement a customized column search example via `filterDropdown`.
 </us>
 
-```vue
 <template>
   <a-table :data-source="data" :columns="columns">
     <template #filterDropdown="{ setSelectedKeys, selectedKeys, confirm, clearFilters, column }">
@@ -17,7 +16,7 @@ Implement a customized column search example via `filterDropdown`.
           :ref="c => (searchInput = c)"
           :placeholder="`Search ${column.dataIndex}`"
           :value="selectedKeys[0]"
-          style="width: 188px; margin-bottom: 8px; display: block;"
+          style="width: 188px; margin-bottom: 8px; display: block"
           @change="e => setSelectedKeys(e.target.value ? [e.target.value] : [])"
           @pressEnter="handleSearch(selectedKeys, confirm, column.dataIndex)"
         />
@@ -58,7 +57,7 @@ Implement a customized column search example via `filterDropdown`.
   </a-table>
 </template>
 
-<script>
+<script lang="ts">
 import { SearchOutlined } from '@ant-design/icons-vue';
 const data = [
   {
@@ -108,10 +107,7 @@ export default {
             customRender: 'customRender',
           },
           onFilter: (value, record) =>
-            record.name
-              .toString()
-              .toLowerCase()
-              .includes(value.toLowerCase()),
+            record.name.toString().toLowerCase().includes(value.toLowerCase()),
           onFilterDropdownVisibleChange: visible => {
             if (visible) {
               setTimeout(() => {
@@ -131,10 +127,7 @@ export default {
             customRender: 'customRender',
           },
           onFilter: (value, record) =>
-            record.age
-              .toString()
-              .toLowerCase()
-              .includes(value.toLowerCase()),
+            record.age.toString().toLowerCase().includes(value.toLowerCase()),
           onFilterDropdownVisibleChange: visible => {
             if (visible) {
               setTimeout(() => {
@@ -153,10 +146,7 @@ export default {
             customRender: 'customRender',
           },
           onFilter: (value, record) =>
-            record.address
-              .toString()
-              .toLowerCase()
-              .includes(value.toLowerCase()),
+            record.address.toString().toLowerCase().includes(value.toLowerCase()),
           onFilterDropdownVisibleChange: visible => {
             if (visible) {
               setTimeout(() => {
@@ -190,4 +180,3 @@ export default {
   padding: 0px;
 }
 </style>
-```

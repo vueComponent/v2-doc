@@ -10,15 +10,14 @@ Ellipsize cell content via setting `column.ellipsis`.
 > Cannot ellipsize table header with sorters and filters for now.
 </us>
 
-```vue
 <template>
   <a-table :columns="columns" :data-source="data">
-    <template #name="{text}">
+    <template #name="{ text }">
       <a>{{ text }}</a>
     </template>
   </a-table>
 </template>
-<script>
+<script lang="ts">
 const columns = [
   {
     title: 'Name',
@@ -91,4 +90,3 @@ export default {
   },
 };
 </script>
-```

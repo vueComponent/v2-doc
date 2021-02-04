@@ -8,7 +8,6 @@
 Table with editable rows.
 </us>
 
-```vue
 <template>
   <a-table :columns="columns" :data-source="data" bordered>
     <template v-for="col in ['name', 'age', 'address']" #[col]="{ text, record, index }">
@@ -41,7 +40,7 @@ Table with editable rows.
     </template>
   </a-table>
 </template>
-<script>
+<script lang="ts">
 const columns = [
   {
     title: 'name',
@@ -135,4 +134,3 @@ export default {
   margin-right: 8px;
 }
 </style>
-```

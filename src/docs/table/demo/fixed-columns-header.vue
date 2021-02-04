@@ -12,7 +12,6 @@ A Solution for displaying large amounts of data with long columns.
 > A fixed value which is greater than table width for `scroll.x` is recommended. The sum of unfixed columns should not greater than `scroll.x`.
 </us>
 
-```vue
 <template>
   <a-table :columns="columns" :data-source="data" :scroll="{ x: 1500, y: 300 }">
     <template #action="{ text }">
@@ -20,7 +19,7 @@ A Solution for displaying large amounts of data with long columns.
     </template>
   </a-table>
 </template>
-<script>
+<script lang="ts">
 const columns = [
   { title: 'Full Name', width: 100, dataIndex: 'name', key: 'name', fixed: 'left' },
   { title: 'Age', width: 100, dataIndex: 'age', key: 'age', fixed: 'left' },
@@ -60,4 +59,3 @@ export default {
   },
 };
 </script>
-```

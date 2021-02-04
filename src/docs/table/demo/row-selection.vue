@@ -10,7 +10,6 @@ Rows can be selectable by making first column as a selectable column.
 > selection happens when clicking checkbox defaultly.
 </us>
 
-```vue
 <template>
   <a-table :row-selection="rowSelection" :columns="columns" :data-source="data">
     <template #name="{ text }">
@@ -18,7 +17,7 @@ Rows can be selectable by making first column as a selectable column.
     </template>
   </a-table>
 </template>
-<script>
+<script lang="ts">
 const columns = [
   {
     title: 'Name',
@@ -83,4 +82,3 @@ export default {
   },
 };
 </script>
-```

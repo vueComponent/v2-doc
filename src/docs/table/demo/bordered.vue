@@ -8,21 +8,16 @@
 Add border, title and footer for table.
 </us>
 
-```vue
 <template>
   <a-table :columns="columns" :data-source="data" bordered>
     <template #name="{ text }">
       <a>{{ text }}</a>
     </template>
-    <template #title="currentPageData">
-      Header
-    </template>
-    <template #footer="currentPageData">
-      Footer
-    </template>
+    <template #title="currentPageData">Header</template>
+    <template #footer="currentPageData">Footer</template>
   </a-table>
 </template>
-<script>
+<script lang="ts">
 const columns = [
   {
     title: 'Name',
@@ -76,4 +71,3 @@ td.column-money {
   text-align: right !important;
 }
 </style>
-```

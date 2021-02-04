@@ -8,7 +8,6 @@
 To perform operations and clear selections after selecting some rows, use `rowSelection.selectedRowKeys` to control selected rows.
 </us>
 
-```vue
 <template>
   <div>
     <div style="margin-bottom: 16px">
@@ -28,7 +27,7 @@ To perform operations and clear selections after selecting some rows, use `rowSe
     />
   </div>
 </template>
-<script>
+<script lang="ts">
 const columns = [
   {
     title: 'Name',
@@ -84,4 +83,3 @@ export default {
   },
 };
 </script>
-```

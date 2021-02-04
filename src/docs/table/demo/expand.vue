@@ -8,7 +8,6 @@
 When there's too much information to show and the table can't display all at once.
 </us>
 
-```vue
 <template>
   <a-table :columns="columns" :data-source="data">
     <template #action="{ text }">
@@ -21,7 +20,7 @@ When there's too much information to show and the table can't display all at onc
     </template>
   </a-table>
 </template>
-<script>
+<script lang="ts">
 const columns = [
   { title: 'Name', dataIndex: 'name', key: 'name' },
   { title: 'Age', dataIndex: 'age', key: 'age' },
@@ -62,4 +61,3 @@ export default {
   },
 };
 </script>
-```

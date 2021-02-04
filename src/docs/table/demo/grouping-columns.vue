@@ -8,7 +8,6 @@
 Group table head with `columns[n].children`.
 </us>
 
-```vue
 <template>
   <a-table
     :columns="columns"
@@ -18,7 +17,7 @@ Group table head with `columns[n].children`.
     :scroll="{ x: 'calc(700px + 50%)', y: 240 }"
   />
 </template>
-<script>
+<script lang="ts">
 const columns = [
   {
     title: 'Name',
@@ -127,4 +126,3 @@ export default {
   },
 };
 </script>
-```

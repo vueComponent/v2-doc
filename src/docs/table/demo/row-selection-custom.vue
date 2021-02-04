@@ -8,11 +8,10 @@
 Use `rowSelection.selections` custom selections, default no select dropdown, show default selections via setting to `true`.
 </us>
 
-```vue
 <template>
   <a-table :row-selection="rowSelection" :columns="columns" :data-source="data" />
 </template>
-<script>
+<script lang="ts">
 const columns = [
   {
     title: 'Name',
@@ -101,4 +100,3 @@ export default {
   },
 };
 </script>
-```

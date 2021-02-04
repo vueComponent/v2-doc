@@ -8,14 +8,16 @@
 Simple table with actions.
 </us>
 
-```vue
 <template>
   <a-table :columns="columns" :data-source="data">
     <template #name="{ text }">
       <a>{{ text }}</a>
     </template>
     <template #customTitle>
-      <span><smile-outlined /> Name</span>
+      <span>
+        <smile-outlined />
+        Name
+      </span>
     </template>
     <template #tags="{ text: tags }">
       <span>
@@ -34,12 +36,15 @@ Simple table with actions.
         <a-divider type="vertical" />
         <a>Delete</a>
         <a-divider type="vertical" />
-        <a class="ant-dropdown-link"> More actions <down-outlined /> </a>
+        <a class="ant-dropdown-link">
+          More actions
+          <down-outlined />
+        </a>
       </span>
     </template>
   </a-table>
 </template>
-<script>
+<script lang="ts">
 import { SmileOutlined, DownOutlined } from '@ant-design/icons-vue';
 const columns = [
   {
@@ -107,4 +112,3 @@ export default {
   },
 };
 </script>
-```

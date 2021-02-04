@@ -16,7 +16,7 @@ Implement resizable column by integrate with [vue-draggable-resizable](https://g
   </a-table>
 </template>
 
-<script>
+<script lang="ts">
 import { reactive } from 'vue';
 const columns = [
   {

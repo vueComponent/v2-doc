@@ -14,24 +14,17 @@ Control filters and sorters by `filteredValue` and `sortOrder`.
 > 3. `column.key` is required.
 </us>
 
-```vue
 <template>
   <div>
     <div class="table-operations">
-      <a-button @click="setAgeSort">
-        Sort age
-      </a-button>
-      <a-button @click="clearFilters">
-        Clear filters
-      </a-button>
-      <a-button @click="clearAll">
-        Clear filters and sorters
-      </a-button>
+      <a-button @click="setAgeSort">Sort age</a-button>
+      <a-button @click="clearFilters">Clear filters</a-button>
+      <a-button @click="clearAll">Clear filters and sorters</a-button>
     </div>
     <a-table :columns="columns" :data-source="data" @change="handleChange" />
   </div>
 </template>
-<script>
+<script lang="ts">
 const data = [
   {
     key: '1',
@@ -143,4 +136,3 @@ export default {
   margin-right: 8px;
 }
 </style>
-```

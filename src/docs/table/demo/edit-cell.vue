@@ -8,11 +8,8 @@
 Table with editable cells.
 </us>
 
-```vue
 <template>
-  <a-button class="editable-add-btn" @click="handleAdd">
-    Add
-  </a-button>
+  <a-button class="editable-add-btn" @click="handleAdd">Add</a-button>
   <a-table bordered :data-source="dataSource" :columns="columns">
     <template #name="{ text, record }">
       <editable-cell :text="text" @change="val => onCellChange(record.key, 'name', val)" />
@@ -28,7 +25,7 @@ Table with editable cells.
     </template>
   </a-table>
 </template>
-<script>
+<script lang="ts">
 import { CheckOutlined, EditOutlined } from '@ant-design/icons-vue';
 
 const EditableCell = {
@@ -186,4 +183,3 @@ export default {
   display: inline-block;
 }
 </style>
-```

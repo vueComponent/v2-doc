@@ -8,7 +8,6 @@
 There are two compacted table sizes: `middle` and `small`. The `small` size is used in Modals only.
 </us>
 
-```vue
 <template>
   <div id="components-table-demo-size">
     <h4>Middle size table</h4>
@@ -17,7 +16,7 @@ There are two compacted table sizes: `middle` and `small`. The `small` size is u
     <a-table :columns="columns" :data-source="data" size="small" />
   </div>
 </template>
-<script>
+<script lang="ts">
 const columns = [
   {
     title: 'Name',
@@ -67,4 +66,3 @@ export default {
   margin-bottom: 16px;
 }
 </style>
-```

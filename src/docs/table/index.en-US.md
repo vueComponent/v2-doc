@@ -1,3 +1,68 @@
+---
+category: Components
+cols: 1
+type: Data Display
+title: Table
+cover: https://gw.alipayobjects.com/zos/alicdn/f-SbcX2Lx/Table.svg
+---
+
+A table displays rows of data.
+
+## When To Use
+
+- To display a collection of structured data.
+- To sort, search, paginate, filter data.
+
+## How To Use
+
+Specify `dataSource` of Table as an array of data.
+
+```html
+<template>
+  <a-table :dataSource="dataSource" :columns="columns" />
+</template>
+<script>
+  export default {
+    setup() {
+      return {
+        dataSource: [
+          {
+            key: '1',
+            name: 'Mike',
+            age: 32,
+            address: '10 Downing Street',
+          },
+          {
+            key: '2',
+            name: 'John',
+            age: 42,
+            address: '10 Downing Street',
+          },
+        ],
+
+        columns: [
+          {
+            title: 'Name',
+            dataIndex: 'name',
+            key: 'name',
+          },
+          {
+            title: 'Age',
+            dataIndex: 'age',
+            key: 'age',
+          },
+          {
+            title: 'Address',
+            dataIndex: 'address',
+            key: 'address',
+          },
+        ],
+      };
+    },
+  };
+</script>
+```
+
 ## API
 
 ### Table
@@ -37,7 +102,7 @@
 ### Events
 
 | Events Name | Description | Arguments |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | change | Callback executed when pagination, filters or sorter is changed | Function(pagination, filters, sorter, { currentDataSource }) |  |
 | expand | Callback executed when the row expand icon is clicked | Function(expanded, record) |  |
 | expandedRowsChange | Callback executed when the expanded rows change | Function(expandedRows) |  |

@@ -16,11 +16,10 @@ Uses `defaultSortOrder` to make a column sorted by default.
 If a `sortOrder` or `defaultSortOrder` is specified with the value `ascend` or `descend`, you can access this value from within the function passed to the `sorter` as explained above. Such a function can take the form: `function(a, b, sortOrder) { ... }`.
 </us>
 
-```vue
 <template>
   <a-table :columns="columns" :data-source="data" @change="onChange" />
 </template>
-<script>
+<script lang="ts">
 const columns = [
   {
     title: 'Name',
@@ -124,4 +123,3 @@ export default {
   },
 };
 </script>
-```

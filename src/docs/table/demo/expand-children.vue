@@ -12,11 +12,10 @@ You can control the indent width by setting `indentSize`.
 > Note, no support for recursive selection of tree structure data table yet.
 </us>
 
-```vue
 <template>
   <a-table :columns="columns" :data-source="data" :row-selection="rowSelection" />
 </template>
-<script>
+<script lang="ts">
 const columns = [
   {
     title: 'Name',
@@ -124,4 +123,3 @@ export default {
   },
 };
 </script>
-```

@@ -10,7 +10,6 @@ Using template style API
 > Since this is just a syntax sugar for the prop `columns`, so that you can't compose `Column` and `ColumnGroup` with other Components.
 </us>
 
-```vue
 <template>
   <a-table :data-source="data">
     <a-table-column-group>
@@ -40,7 +39,7 @@ Using template style API
     </a-table-column>
   </a-table>
 </template>
-<script>
+<script lang="ts">
 const data = [
   {
     key: '1',
@@ -76,4 +75,3 @@ export default {
   },
 };
 </script>
-```
