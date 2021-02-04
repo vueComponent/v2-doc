@@ -3,8 +3,7 @@
     <Basic />
     <Ajax />
     <Bordered />
-    <!-- <Ellipsis />
-  
+    <Ellipsis />
     <ColspanRowspan />
     <CustomFilterPanel />
     <EditCell />
@@ -22,7 +21,7 @@
     <RowSelectionCustom />
     <RowSelection />
     <Size />
-    <Template /> -->
+    <Template />
   </demo-sort>
 </template>
 
@@ -58,27 +57,27 @@ export default {
   US,
   components: {
     Basic,
-    //Ellipsis,
+    Ellipsis,
     Ajax,
     Bordered,
-    // ColspanRowspan,
-    // CustomFilterPanel,
-    // EditCell,
-    // EditRow,
-    // ExpandChildren,
-    // Expand,
-    // FixedColumnsHeader,
-    // FixedColumns,
-    // FixedHeader,
-    // GroupingColumns,
-    // Head,
-    // NestedTable,
-    // ResetFilter,
-    // RowSelectionAndOperation,
-    // RowSelectionCustom,
-    // RowSelection,
-    // Size,
-    // Template,
+    ColspanRowspan,
+    CustomFilterPanel,
+    EditCell,
+    EditRow,
+    ExpandChildren,
+    Expand,
+    FixedColumnsHeader,
+    FixedColumns,
+    FixedHeader,
+    GroupingColumns,
+    Head,
+    NestedTable,
+    ResetFilter,
+    RowSelectionAndOperation,
+    RowSelectionCustom,
+    RowSelection,
+    Size,
+    Template,
   },
 };
 </script>
