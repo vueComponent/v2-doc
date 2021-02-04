@@ -1,12 +1,19 @@
-<cn>
-#### 基本用法
-简单的表格，最后一列是各种操作。
-</cn>
+<docs>
+---
+order: 0
+title:
+  en-US: Basic Usage
+  zh-CN: 基本用法
+---
 
-<us>
-#### basic Usage
+## zh-CN
+
+简单的表格，最后一列是各种操作。
+
+## en-US
+
 Simple table with actions.
-</us>
+</docs>
 
 <template>
   <a-table :columns="columns" :data-source="data">
@@ -30,7 +37,7 @@ Simple table with actions.
         </a-tag>
       </span>
     </template>
-    <template #action="{ text, record }">
+    <template #action="{ record }">
       <span>
         <a>Invite 一 {{ record.name }}</a>
         <a-divider type="vertical" />
@@ -46,6 +53,7 @@ Simple table with actions.
 </template>
 <script lang="ts">
 import { SmileOutlined, DownOutlined } from '@ant-design/icons-vue';
+import { defineComponent } from 'vue';
 const columns = [
   {
     dataIndex: 'name',
@@ -99,16 +107,16 @@ const data = [
   },
 ];
 
-export default {
-  components: {
-    SmileOutlined,
-    DownOutlined,
-  },
-  data() {
+export default defineComponent({
+  setup() {
     return {
       data,
       columns,
     };
   },
-};
+  components: {
+    SmileOutlined,
+    DownOutlined,
+  },
+});
 </script>

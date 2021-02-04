@@ -18,12 +18,13 @@ Table cell supports `colSpan` and `rowSpan` that set in render return object. Wh
   </a-table>
 </template>
 <script lang="ts">
+import { h } from 'vue';
 // In the fifth row, other columns are merged into first column
 // by setting it's colSpan to be 0
-const renderContent = ({ text, index }) => {
+const renderContent = ({ text, index }: any) => {
   const obj = {
     children: text,
-    props: {},
+    props: {} as any,
   };
   if (index === 4) {
     obj.props.colSpan = 0;
@@ -80,12 +81,12 @@ export default {
       {
         title: 'Name',
         dataIndex: 'name',
-        customRender: ({ text, index }) => {
+        customRender: ({ text, index }: any) => {
           if (index < 4) {
-            return <a href="javascript:;">{text}</a>;
+            return h('a', { href: 'javascript:;' }, text);
           }
           return {
-            children: <a href="javascript:;">{text}</a>,
+            children: h('a', { href: 'javascript:;' }, text),
             props: {
               colSpan: 5,
             },
@@ -101,10 +102,10 @@ export default {
         title: 'Home phone',
         colSpan: 2,
         dataIndex: 'tel',
-        customRender: ({ text, index }) => {
+        customRender: ({ text, index }: any) => {
           const obj = {
             children: text,
-            props: {},
+            props: {} as any,
           };
           if (index === 2) {
             obj.props.rowSpan = 2;

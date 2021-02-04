@@ -1,23 +1,32 @@
-<cn>
-#### 带边框
-添加表格边框线，页头和页脚。
-</cn>
+<docs>
+---
+order: 12
+title:
+  en-US: border, title and footer
+  zh-CN: 带边框
+---
 
-<us>
-#### border, title and footer
+## zh-CN
+
+添加表格边框线，页头和页脚。
+
+## en-US
+
 Add border, title and footer for table.
-</us>
+</docs>
 
 <template>
   <a-table :columns="columns" :data-source="data" bordered>
     <template #name="{ text }">
       <a>{{ text }}</a>
     </template>
-    <template #title="currentPageData">Header</template>
-    <template #footer="currentPageData">Footer</template>
+    <template #title>Header</template>
+    <template #footer>Footer</template>
   </a-table>
 </template>
 <script lang="ts">
+import { defineComponent } from 'vue';
+
 const columns = [
   {
     title: 'Name',
@@ -56,14 +65,14 @@ const data = [
   },
 ];
 
-export default {
-  data() {
+export default defineComponent({
+  setup() {
     return {
       data,
       columns,
     };
   },
-};
+});
 </script>
 <style>
 th.column-money,

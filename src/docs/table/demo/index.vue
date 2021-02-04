@@ -1,9 +1,10 @@
 <template>
   <demo-sort :cols="1">
     <Basic />
-    <Ellipsis />
     <Ajax />
     <Bordered />
+    <!-- <Ellipsis />
+  
     <ColspanRowspan />
     <CustomFilterPanel />
     <EditCell />
@@ -21,11 +22,12 @@
     <RowSelectionCustom />
     <RowSelection />
     <Size />
-    <Template />
+    <Template /> -->
   </demo-sort>
 </template>
 
 <script lang="ts">
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Ajax from './ajax.vue';
 import Basic from './basic.vue';
 import Bordered from './bordered.vue';
@@ -47,8 +49,6 @@ import RowSelectionCustom from './row-selection-custom.vue';
 import RowSelection from './row-selection.vue';
 import Size from './size.vue';
 import Template from './template.vue';
-// import ResizableColumn from './resizable-column';
-// import ResizableColumnString from '!raw-loader!./resizable-column';
 import Ellipsis from './ellipsis.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
@@ -58,27 +58,27 @@ export default {
   US,
   components: {
     Basic,
-    Ellipsis,
+    //Ellipsis,
     Ajax,
     Bordered,
-    ColspanRowspan,
-    CustomFilterPanel,
-    EditCell,
-    EditRow,
-    ExpandChildren,
-    Expand,
-    FixedColumnsHeader,
-    FixedColumns,
-    FixedHeader,
-    GroupingColumns,
-    Head,
-    NestedTable,
-    ResetFilter,
-    RowSelectionAndOperation,
-    RowSelectionCustom,
-    RowSelection,
-    Size,
-    Template,
+    // ColspanRowspan,
+    // CustomFilterPanel,
+    // EditCell,
+    // EditRow,
+    // ExpandChildren,
+    // Expand,
+    // FixedColumnsHeader,
+    // FixedColumns,
+    // FixedHeader,
+    // GroupingColumns,
+    // Head,
+    // NestedTable,
+    // ResetFilter,
+    // RowSelectionAndOperation,
+    // RowSelectionCustom,
+    // RowSelection,
+    // Size,
+    // Template,
   },
 };
 </script>

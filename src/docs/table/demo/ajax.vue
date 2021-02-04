@@ -23,7 +23,7 @@ This example shows how to fetch and present data from a remote server, and how t
   <a-table
     :columns="columns"
     :row-key="record => record.login.uuid"
-    :data-source="data"
+    :data-source="dataSource"
     :pagination="pagination"
     :loading="loading"
     @change="handleTableChange"
@@ -32,7 +32,9 @@ This example shows how to fetch and present data from a remote server, and how t
   </a-table>
 </template>
 <script lang="ts">
-import reqwest from 'reqwest';
+import { TableState, TableStateFilters } from 'ant-design-vue/lib/table/interface';
+import axios from 'axios';
+import { defineComponent, onMounted, reactive, ref, UnwrapRef } from 'vue';
 const columns = [
   {
     title: 'Name',
@@ -56,53 +58,53 @@ const columns = [
   },
 ];
 
-export default {
-  data() {
-    return {
-      data: [],
-      pagination: {},
-      loading: false,
-      columns,
+type Pagination = TableState['pagination'];
+
+export default defineComponent({
+  setup() {
+    const dataSource = ref([]);
+    const loading = ref(false);
+    const pagination: UnwrapRef<Pagination> = reactive({});
+    const fetch = (params = {}) => {
+      console.log('params:', params);
+      loading.value = true;
+      axios
+        .get('https://randomuser.me/api', {
+          params: {
+            results: 10,
+            ...params,
+          },
+        })
+        .then(({ data }) => {
+          console.log(data);
+          // Read total count from server
+          // pagination.total = data.totalCount;
+          pagination.total = 200;
+          loading.value = false;
+          dataSource.value = data.results;
+        });
     };
-  },
-  mounted() {
-    this.fetch();
-  },
-  methods: {
-    handleTableChange(pagination, filters, sorter) {
-      console.log(pagination);
-      const pager = { ...this.pagination };
-      pager.current = pagination.current;
-      this.pagination = pager;
-      this.fetch({
+    const handleTableChange = (pag: Pagination, filters: TableStateFilters, sorter: any) => {
+      console.log(pag);
+      Object.assign(pagination, pag);
+      fetch({
         results: pagination.pageSize,
         page: pagination.current,
         sortField: sorter.field,
         sortOrder: sorter.order,
         ...filters,
       });
-    },
-    fetch(params = {}) {
-      console.log('params:', params);
-      this.loading = true;
-      reqwest({
-        url: 'https://randomuser.me/api',
-        method: 'get',
-        data: {
-          results: 10,
-          ...params,
-        },
-        type: 'json',
-      }).then(data => {
-        const pagination = { ...this.pagination };
-        // Read total count from server
-        // pagination.total = data.totalCount;
-        pagination.total = 200;
-        this.loading = false;
-        this.data = data.results;
-        this.pagination = pagination;
-      });
-    },
+    };
+    onMounted(() => {
+      fetch();
+    });
+    return {
+      dataSource,
+      pagination,
+      loading,
+      columns,
+      handleTableChange,
+    };
   },
-};
+});
 </script>

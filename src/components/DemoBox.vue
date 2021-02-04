@@ -107,10 +107,16 @@ export default defineComponent({
 
     const globalConfig = inject<GlobalConfig>(GLOBAL_CONFIG) as any;
     const title = computed(
-      () => props.jsfiddle?.title[globalConfig.isZhCN.value ? 'zh-CN' : 'en-US'],
+      () =>
+        props.jsfiddle &&
+        props.jsfiddle.title &&
+        props.jsfiddle?.title[globalConfig.isZhCN.value ? 'zh-CN' : 'en-US'],
     );
-    const iframeDemoKey = computed(() =>
-      props.jsfiddle?.title['en-US'].split(' ').join('-').toLowerCase(),
+    const iframeDemoKey = computed(
+      () =>
+        props.jsfiddle &&
+        props.jsfiddle.title &&
+        props.jsfiddle?.title['en-US'].split(' ').join('-').toLowerCase(),
     );
     const onCopyTooltipVisibleChange = (visible: boolean) => {
       if (visible) {
