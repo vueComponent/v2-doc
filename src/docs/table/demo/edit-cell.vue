@@ -20,7 +20,16 @@ Table with editable cells.
   <a-button class="editable-add-btn" @click="handleAdd" style="margin-bottom: 8px">Add</a-button>
   <a-table bordered :data-source="dataSource" :columns="columns">
     <template #name="{ text, record }">
-      <editable-cell :text="text" @change="val => onCellChange(record.key, 'name', val)" />
+      <div class="editable-cell">
+        <div v-if="editableData[record.key]" class="editable-cell-input-wrapper">
+          <a-input v-model:value="editableData[record.key].name" @pressEnter="save(record.key)" />
+          <check-outlined class="editable-cell-icon-check" @click="save(record.key)" />
+        </div>
+        <div v-else class="editable-cell-text-wrapper">
+          {{ text || ' ' }}
+          <edit-outlined class="editable-cell-icon" @click="edit(record.key)" />
+        </div>
+      </div>
     </template>
     <template #operation="{ record }">
       <a-popconfirm
@@ -34,112 +43,23 @@ Table with editable cells.
   </a-table>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from 'vue';
+import { computed, defineComponent, reactive, Ref, ref, UnwrapRef } from 'vue';
 import { CheckOutlined, EditOutlined } from '@ant-design/icons-vue';
+import { cloneDeep } from 'lodash-es';
 
-const EditableCell = defineComponent({
-  name: 'EditableCell',
-  template: `
-    <div class="editable-cell">
-        <div v-if="editable" class="editable-cell-input-wrapper">
-          <a-input v-model:value="value" @pressEnter="check" />
-          <check-outlined class="editable-cell-icon-check" @click="check" />
-        </div>
-        <div v-else class="editable-cell-text-wrapper">
-          {{value || ' '}}
-          <edit-outlined class="editable-cell-icon" @click="edit" />
-        </div>
-    </div>
-  `,
-  components: {
-    CheckOutlined,
-    EditOutlined,
-  },
-  props: {
-    text: String,
-    onChange: Function,
-  },
-  setup(props, { emit }) {
-    const state = reactive({
-      value: props.text,
-      editable: false,
-    });
-
-    const handleChange = (e: any) => {
-      const value = e.target.value;
-      state.value = value;
-    };
-    const check = () => {
-      state.editable = false;
-      emit('change', state.value);
-    };
-    const edit = () => {
-      state.editable = true;
-    };
-
-    return {
-      ...toRefs(state),
-      handleChange,
-      check,
-      edit,
-    };
-  },
-});
-
-interface Data {
-  key: string | number;
+interface DataItem {
+  key: string;
   name: string;
-  age: number | string;
+  age: number;
   address: string;
 }
 
 export default defineComponent({
   components: {
-    EditableCell,
+    CheckOutlined,
+    EditOutlined,
   },
   setup() {
-    const state = reactive<{ count: number; dataSource: Data[] }>({
-      count: 2,
-      dataSource: [
-        {
-          key: '0',
-          name: 'Edward King 0',
-          age: '32',
-          address: 'London, Park Lane no. 0',
-        },
-        {
-          key: '1',
-          name: 'Edward King 1',
-          age: '32',
-          address: 'London, Park Lane no. 1',
-        },
-      ],
-    });
-
-    const onCellChange = (key: string, dataIndex: keyof Data, value: any) => {
-      const dataSource = [...state.dataSource];
-      const target = dataSource.find(item => item.key === key);
-      if (target) {
-        target[dataIndex] = value;
-        state.dataSource = dataSource;
-      }
-    };
-    const onDelete = (key: string) => {
-      const dataSource = [...state.dataSource];
-      state.dataSource = dataSource.filter(item => item.key !== key);
-    };
-    const handleAdd = () => {
-      const { count, dataSource } = state;
-      const newData = {
-        key: `${count}`,
-        name: `Edward King ${count}`,
-        age: '32',
-        address: `London, Park Lane no. ${count}`,
-      };
-      state.dataSource = [...dataSource, newData];
-      state.count = count + 1;
-    };
-
     const columns = [
       {
         title: 'name',
@@ -161,13 +81,53 @@ export default defineComponent({
         slots: { customRender: 'operation' },
       },
     ];
+    const dataSource: Ref<DataItem[]> = ref([
+      {
+        key: '0',
+        name: 'Edward King 0',
+        age: 32,
+        address: 'London, Park Lane no. 0',
+      },
+      {
+        key: '1',
+        name: 'Edward King 1',
+        age: 32,
+        address: 'London, Park Lane no. 1',
+      },
+    ]);
+    const count = computed(() => dataSource.value.length + 1);
+    const editableData: UnwrapRef<Record<string, DataItem>> = reactive({});
+
+    const edit = (key: string) => {
+      editableData[key] = cloneDeep(dataSource.value.filter(item => key === item.key)[0]);
+    };
+    const save = (key: string) => {
+      Object.assign(dataSource.value.filter(item => key === item.key)[0], editableData[key]);
+      delete editableData[key];
+    };
+
+    const onDelete = (key: string) => {
+      dataSource.value = dataSource.value.filter(item => item.key !== key);
+    };
+    const handleAdd = () => {
+      const newData = {
+        key: `${count.value}`,
+        name: `Edward King ${count.value}`,
+        age: 32,
+        address: `London, Park Lane no. ${count.value}`,
+      };
+      dataSource.value.push(newData);
+    };
 
     return {
       columns,
-      onCellChange,
       onDelete,
       handleAdd,
-      ...toRefs(state),
+      dataSource,
+      editableData,
+      count,
+      edit,
+      save,
     };
   },
 });
@@ -193,7 +153,7 @@ export default defineComponent({
   }
 
   .editable-cell-icon {
-    line-height: 18px;
+    margin-top: 4px;
     display: none;
   }
 
