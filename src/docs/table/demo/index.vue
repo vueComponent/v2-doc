@@ -7,7 +7,6 @@
     <ColspanRowspan />
     <CustomFilterPanel />
     <EditCell />
-    <EditCell2 />
     <EditRow />
     <ExpandChildren />
     <Expand />
@@ -52,7 +51,6 @@ import Size from './size.vue';
 import Template from './template.vue';
 import Ellipsis from './ellipsis.vue';
 import Stripe from './stripe.vue';
-import EditCell2 from './edit-cell2.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
 
@@ -83,7 +81,6 @@ export default {
     Size,
     Template,
     Stripe,
-    EditCell2,
   },
 };
 </script>
