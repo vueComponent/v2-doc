@@ -1,20 +1,28 @@
-<cn>
-#### 可编辑单元格
-带单元格编辑功能的表格。
-</cn>
+<docs>
+---
+order: 6
+title:
+  en-US: Editable Cells
+  zh-CN: 可编辑单元格
+---
 
-<us>
-#### Editable Cells
+## zh-CN
+
+带单元格编辑功能的表格。
+
+## en-US
+
 Table with editable cells.
-</us>
+
+</docs>
 
 <template>
-  <a-button class="editable-add-btn" @click="handleAdd">Add</a-button>
+  <a-button class="editable-add-btn" @click="handleAdd" style="margin-bottom: 8px">Add</a-button>
   <a-table bordered :data-source="dataSource" :columns="columns">
     <template #name="{ text, record }">
       <editable-cell :text="text" @change="val => onCellChange(record.key, 'name', val)" />
     </template>
-    <template #operation="{ text, record }">
+    <template #operation="{ record }">
       <a-popconfirm
         v-if="dataSource.length"
         title="Sure to delete?"
@@ -26,9 +34,10 @@ Table with editable cells.
   </a-table>
 </template>
 <script lang="ts">
+import { defineComponent, reactive, toRefs } from 'vue';
 import { CheckOutlined, EditOutlined } from '@ant-design/icons-vue';
 
-const EditableCell = {
+const EditableCell = defineComponent({
   name: 'EditableCell',
   template: `
     <div class="editable-cell">
@@ -50,32 +59,47 @@ const EditableCell = {
     text: String,
     onChange: Function,
   },
-  data() {
-    return {
-      value: this.text,
+  setup(props, { emit }) {
+    const state = reactive({
+      value: props.text,
       editable: false,
+    });
+
+    const handleChange = (e: any) => {
+      const value = e.target.value;
+      state.value = value;
+    };
+    const check = () => {
+      state.editable = false;
+      emit('change', state.value);
+    };
+    const edit = () => {
+      state.editable = true;
+    };
+
+    return {
+      ...toRefs(state),
+      handleChange,
+      check,
+      edit,
     };
   },
-  methods: {
-    handleChange(e) {
-      const value = e.target.value;
-      this.value = value;
-    },
-    check() {
-      this.editable = false;
-      this.$emit('change', this.value);
-    },
-    edit() {
-      this.editable = true;
-    },
-  },
-};
-export default {
+});
+
+interface Data {
+  key: string | number;
+  name: string;
+  age: number | string;
+  address: string;
+}
+
+export default defineComponent({
   components: {
     EditableCell,
   },
-  data() {
-    return {
+  setup() {
+    const state = reactive<{ count: number; dataSource: Data[] }>({
+      count: 2,
       dataSource: [
         {
           key: '0',
@@ -90,56 +114,63 @@ export default {
           address: 'London, Park Lane no. 1',
         },
       ],
-      count: 2,
-      columns: [
-        {
-          title: 'name',
-          dataIndex: 'name',
-          width: '30%',
-          slots: { customRender: 'name' },
-        },
-        {
-          title: 'age',
-          dataIndex: 'age',
-        },
-        {
-          title: 'address',
-          dataIndex: 'address',
-        },
-        {
-          title: 'operation',
-          dataIndex: 'operation',
-          slots: { customRender: 'operation' },
-        },
-      ],
-    };
-  },
-  methods: {
-    onCellChange(key, dataIndex, value) {
-      const dataSource = [...this.dataSource];
+    });
+
+    const onCellChange = (key: string, dataIndex: keyof Data, value: any) => {
+      const dataSource = [...state.dataSource];
       const target = dataSource.find(item => item.key === key);
       if (target) {
         target[dataIndex] = value;
-        this.dataSource = dataSource;
+        state.dataSource = dataSource;
       }
-    },
-    onDelete(key) {
-      const dataSource = [...this.dataSource];
-      this.dataSource = dataSource.filter(item => item.key !== key);
-    },
-    handleAdd() {
-      const { count, dataSource } = this;
+    };
+    const onDelete = (key: string) => {
+      const dataSource = [...state.dataSource];
+      state.dataSource = dataSource.filter(item => item.key !== key);
+    };
+    const handleAdd = () => {
+      const { count, dataSource } = state;
       const newData = {
-        key: count,
+        key: `${count}`,
         name: `Edward King ${count}`,
-        age: 32,
+        age: '32',
         address: `London, Park Lane no. ${count}`,
       };
-      this.dataSource = [...dataSource, newData];
-      this.count = count + 1;
-    },
+      state.dataSource = [...dataSource, newData];
+      state.count = count + 1;
+    };
+
+    const columns = [
+      {
+        title: 'name',
+        dataIndex: 'name',
+        width: '30%',
+        slots: { customRender: 'name' },
+      },
+      {
+        title: 'age',
+        dataIndex: 'age',
+      },
+      {
+        title: 'address',
+        dataIndex: 'address',
+      },
+      {
+        title: 'operation',
+        dataIndex: 'operation',
+        slots: { customRender: 'operation' },
+      },
+    ];
+
+    return {
+      columns,
+      onCellChange,
+      onDelete,
+      handleAdd,
+      ...toRefs(state),
+    };
   },
-};
+});
 </script>
 <style lang="less">
 .editable-cell {

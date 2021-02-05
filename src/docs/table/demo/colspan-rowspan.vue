@@ -1,14 +1,22 @@
-<cn>
-#### 表格行/列合并
+<docs>
+---
+order: 4
+title:
+  en-US: ColSpan and rowSpan
+  zh-CN: 表格行/列合并
+---
+
+## zh-CN
+
 表头只支持列合并，使用 column 里的 colSpan 进行设置。
 表格支持行/列合并，使用 render 里的单元格属性 colSpan 或者 rowSpan 设值为 0 时，设置的表格不会渲染。
-</cn>
 
-<us>
-#### colSpan and rowSpan
+## en-US
+
 Table column title supports `colSpan` that set in `column`.
 Table cell supports `colSpan` and `rowSpan` that set in render return object. When each of them is set to `0`, the cell will not be rendered.
-</us>
+
+</docs>
 
 <template>
   <a-table :columns="columns" :data-source="data" bordered>
@@ -18,7 +26,8 @@ Table cell supports `colSpan` and `rowSpan` that set in render return object. Wh
   </a-table>
 </template>
 <script lang="ts">
-import { h } from 'vue';
+import { defineComponent, h } from 'vue';
+import { ColumnProps } from 'ant-design-vue/es/table/interface';
 // In the fifth row, other columns are merged into first column
 // by setting it's colSpan to be 0
 const renderContent = ({ text, index }: any) => {
@@ -75,13 +84,13 @@ const data = [
   },
 ];
 
-export default {
-  data() {
-    const columns = [
+export default defineComponent({
+  setup() {
+    const columns: ColumnProps[] = [
       {
         title: 'Name',
         dataIndex: 'name',
-        customRender: ({ text, index }: any) => {
+        customRender: ({ text, index }) => {
           if (index < 4) {
             return h('a', { href: 'javascript:;' }, text);
           }
@@ -102,7 +111,7 @@ export default {
         title: 'Home phone',
         colSpan: 2,
         dataIndex: 'tel',
-        customRender: ({ text, index }: any) => {
+        customRender: ({ text, index }) => {
           const obj = {
             children: text,
             props: {} as any,
@@ -137,5 +146,5 @@ export default {
       columns,
     };
   },
-};
+});
 </script>

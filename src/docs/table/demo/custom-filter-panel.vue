@@ -1,19 +1,27 @@
-<cn>
-#### 自定义筛选菜单
-通过 `filterDropdown` 定义自定义的列筛选功能，并实现一个搜索列的示例。
-</cn>
+<docs>
+---
+order: 5
+title:
+  en-US: Customized filter panel
+  zh-CN: 自定义筛选菜单
+---
 
-<us>
-#### Customized filter panel
+## zh-CN
+
+通过 `filterDropdown` 定义自定义的列筛选功能，并实现一个搜索列的示例。
+
+## en-US
+
 Implement a customized column search example via `filterDropdown`.
-</us>
+
+</docs>
 
 <template>
   <a-table :data-source="data" :columns="columns">
     <template #filterDropdown="{ setSelectedKeys, selectedKeys, confirm, clearFilters, column }">
       <div style="padding: 8px">
         <a-input
-          :ref="c => (searchInput = c)"
+          ref="searchInput"
           :placeholder="`Search ${column.dataIndex}`"
           :value="selectedKeys[0]"
           style="width: 188px; margin-bottom: 8px; display: block"
@@ -37,14 +45,18 @@ Implement a customized column search example via `filterDropdown`.
     <template #filterIcon="filtered">
       <search-outlined :style="{ color: filtered ? '#108ee9' : undefined }" />
     </template>
-    <template #customRender="{ text, record, index, column }">
+    <template #customRender="{ text, column }">
       <span v-if="searchText && searchedColumn === column.dataIndex">
         <template
           v-for="(fragment, i) in text
             .toString()
             .split(new RegExp(`(?<=${searchText})|(?=${searchText})`, 'i'))"
         >
-          <mark v-if="fragment.toLowerCase() === searchText.toLowerCase()" class="highlight">
+          <mark
+            v-if="fragment.toLowerCase() === searchText.toLowerCase()"
+            class="highlight"
+            :key="i"
+          >
             {{ fragment }}
           </mark>
           <template v-else>{{ fragment }}</template>
@@ -57,8 +69,9 @@ Implement a customized column search example via `filterDropdown`.
   </a-table>
 </template>
 
-<script lang="ts">
+<script>
 import { SearchOutlined } from '@ant-design/icons-vue';
+import { defineComponent, reactive, ref } from 'vue';
 const data = [
   {
     key: '1',
@@ -86,93 +99,102 @@ const data = [
   },
 ];
 
-export default {
+export default defineComponent({
   components: {
     SearchOutlined,
   },
-  data() {
+  setup() {
+    const state = reactive({
+      searchText: '',
+      searchedColumn: '',
+    });
+
+    const searchInput = ref();
+
+    const columns = [
+      {
+        title: 'Name',
+        dataIndex: 'name',
+        key: 'name',
+        slots: {
+          filterDropdown: 'filterDropdown',
+          filterIcon: 'filterIcon',
+          customRender: 'customRender',
+        },
+        onFilter: (value, record) =>
+          record.name.toString().toLowerCase().includes(value.toLowerCase()),
+        onFilterDropdownVisibleChange: visible => {
+          if (visible) {
+            setTimeout(() => {
+              console.log(searchInput.value);
+              searchInput.value.focus();
+            }, 0);
+          }
+        },
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+        key: 'age',
+        slots: {
+          filterDropdown: 'filterDropdown',
+          filterIcon: 'filterIcon',
+          customRender: 'customRender',
+        },
+        onFilter: (value, record) =>
+          record.age.toString().toLowerCase().includes(value.toLowerCase()),
+        onFilterDropdownVisibleChange: visible => {
+          if (visible) {
+            setTimeout(() => {
+              searchInput.value.focus();
+            });
+          }
+        },
+      },
+      {
+        title: 'Address',
+        dataIndex: 'address',
+        key: 'address',
+        slots: {
+          filterDropdown: 'filterDropdown',
+          filterIcon: 'filterIcon',
+          customRender: 'customRender',
+        },
+        onFilter: (value, record) =>
+          record.address.toString().toLowerCase().includes(value.toLowerCase()),
+        onFilterDropdownVisibleChange: visible => {
+          if (visible) {
+            setTimeout(() => {
+              searchInput.value.focus();
+            });
+          }
+        },
+      },
+    ];
+
+    const handleSearch = (selectedKeys, confirm, dataIndex) => {
+      confirm();
+      console.log(selectedKeys[0]);
+      state.searchText = selectedKeys[0];
+      state.searchedColumn = dataIndex;
+    };
+
+    const handleReset = clearFilters => {
+      clearFilters();
+      state.searchText = '';
+    };
+
     return {
       data,
+      columns,
+      handleSearch,
+      handleReset,
       searchText: '',
       searchInput: null,
       searchedColumn: '',
-      columns: [
-        {
-          title: 'Name',
-          dataIndex: 'name',
-          key: 'name',
-          slots: {
-            filterDropdown: 'filterDropdown',
-            filterIcon: 'filterIcon',
-            customRender: 'customRender',
-          },
-          onFilter: (value, record) =>
-            record.name.toString().toLowerCase().includes(value.toLowerCase()),
-          onFilterDropdownVisibleChange: visible => {
-            if (visible) {
-              setTimeout(() => {
-                console.log(this.searchInput);
-                this.searchInput.focus();
-              }, 0);
-            }
-          },
-        },
-        {
-          title: 'Age',
-          dataIndex: 'age',
-          key: 'age',
-          slots: {
-            filterDropdown: 'filterDropdown',
-            filterIcon: 'filterIcon',
-            customRender: 'customRender',
-          },
-          onFilter: (value, record) =>
-            record.age.toString().toLowerCase().includes(value.toLowerCase()),
-          onFilterDropdownVisibleChange: visible => {
-            if (visible) {
-              setTimeout(() => {
-                this.searchInput.focus();
-              });
-            }
-          },
-        },
-        {
-          title: 'Address',
-          dataIndex: 'address',
-          key: 'address',
-          slots: {
-            filterDropdown: 'filterDropdown',
-            filterIcon: 'filterIcon',
-            customRender: 'customRender',
-          },
-          onFilter: (value, record) =>
-            record.address.toString().toLowerCase().includes(value.toLowerCase()),
-          onFilterDropdownVisibleChange: visible => {
-            if (visible) {
-              setTimeout(() => {
-                this.searchInput.focus();
-              });
-            }
-          },
-        },
-      ],
     };
   },
-  methods: {
-    handleSearch(selectedKeys, confirm, dataIndex) {
-      confirm();
-      console.log(selectedKeys[0]);
-      this.searchText = selectedKeys[0];
-      this.searchedColumn = dataIndex;
-      this.$forceUpdate();
-    },
-
-    handleReset(clearFilters) {
-      clearFilters();
-      this.searchText = '';
-    },
-  },
-};
+});
 </script>
 <style scoped>
 .highlight {
