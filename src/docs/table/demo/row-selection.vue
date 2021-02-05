@@ -24,7 +24,7 @@ selection happens when clicking checkbox defaultly. You can see https://codesand
   </a-table>
 </template>
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
+import { defineComponent } from 'vue';
 import { ColumnProps } from 'ant-design-vue/es/table/interface';
 
 type Key = ColumnProps['key'];
@@ -80,17 +80,15 @@ const data: DataType[] = [
 
 export default defineComponent({
   setup() {
-    const rowSelection = computed(() => {
-      return {
-        onChange: (selectedRowKeys: Key[], selectedRows: DataType[]) => {
-          console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-        },
-        getCheckboxProps: (record: DataType) => ({
-          disabled: record.name === 'Disabled User', // Column configuration not to be checked
-          name: record.name,
-        }),
-      };
-    });
+    const rowSelection = {
+      onChange: (selectedRowKeys: Key[], selectedRows: DataType[]) => {
+        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+      },
+      getCheckboxProps: (record: DataType) => ({
+        disabled: record.name === 'Disabled User', // Column configuration not to be checked
+        name: record.name,
+      }),
+    };
 
     return {
       data,
