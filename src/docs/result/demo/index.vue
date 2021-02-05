@@ -1,12 +1,14 @@
 <template>
-  <success />
-  <info />
-  <warning />
-  <denied />
-  <find-less />
-  <server-error />
-  <error />
-  <custom-icon />
+  <demo-sort :cols="1">
+    <success />
+    <info />
+    <warning />
+    <denied />
+    <find-less />
+    <server-error />
+    <error />
+    <custom-icon />
+  </demo-sort>
 </template>
 <script lang="ts">
 import Success from './success.vue';

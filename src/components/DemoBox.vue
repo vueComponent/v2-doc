@@ -110,12 +110,14 @@ export default defineComponent({
         props.jsfiddle.title &&
         props.jsfiddle?.title[globalConfig.isZhCN.value ? 'zh-CN' : 'en-US'],
     );
-    const iframeDemoKey = computed(
-      () =>
+    const iframeDemoKey = computed(() => {
+      return (
         props.jsfiddle &&
         props.jsfiddle.title &&
-        props.jsfiddle?.title['en-US'].split(' ').join('-').toLowerCase(),
-    );
+        props.jsfiddle?.title['en-US'] &&
+        String(props.jsfiddle?.title['en-US']).split(' ').join('-').toLowerCase()
+      );
+    });
     const onCopyTooltipVisibleChange = (visible: boolean) => {
       if (visible) {
         copyTooltipVisible.value = visible;

@@ -30,7 +30,6 @@ Custom suffix icon
     style="margin-top: 1rem"
     :options="options"
     placeholder="Please select"
-    @change="onChange"
   />
 </template>
 <script lang="ts">
