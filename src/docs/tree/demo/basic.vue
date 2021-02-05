@@ -29,16 +29,7 @@ The most basic usage, tell you how to use checkable, selectable, disabled, defau
 </template>
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue';
-
-// TODO 组件库中导出
-interface TreeDataItem {
-  key?: string;
-  title?: string;
-  disabled?: boolean;
-  disableCheckbox?: boolean;
-  slots?: Record<string, string>;
-  children?: TreeDataItem[];
-}
+import { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
 
 const treeData: TreeDataItem[] = [
   {

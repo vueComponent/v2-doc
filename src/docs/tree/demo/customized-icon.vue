@@ -36,14 +36,8 @@ You can customize icons for different nodes.
 <script lang="ts">
 import { DownOutlined, SmileOutlined, FrownOutlined, FrownFilled } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
-interface TreeDataItem {
-  key?: string;
-  title?: string;
-  disabled?: boolean;
-  disableCheckbox?: boolean;
-  slots?: Record<string, string>;
-  children?: TreeDataItem[];
-}
+import { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
+
 const treeData: TreeDataItem[] = [
   {
     title: 'parent 1',

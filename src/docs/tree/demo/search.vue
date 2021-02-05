@@ -38,11 +38,8 @@ Searchable Tree.
 
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue';
-interface TreeDataItem {
-  title: string;
-  key: string;
-  children?: TreeDataItem[];
-}
+import { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
+
 const x = 3;
 const y = 2;
 const z = 1;

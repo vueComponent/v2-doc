@@ -27,11 +27,8 @@ To load data asynchronously when click to expand a treeNode.
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-interface TreeDataItem {
-  title: string;
-  key: string;
-  isLeaf?: boolean;
-}
+import { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
+
 export default defineComponent({
   setup() {
     const expandedKeys = ref<string[]>([]);

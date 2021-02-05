@@ -29,13 +29,8 @@ Drag treeNode to insert after the other treeNode or insert into the other parent
 
 <script lang="ts">
 import { defineComponent, ref, VNode } from 'vue';
+import { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
 
-// TODO 从组件库中导出
-interface TreeDataItem {
-  title?: string;
-  key?: string;
-  children?: TreeDataItem[];
-}
 interface DragEnterEvent {
   event: DragEvent;
   expandedKeys: string[];

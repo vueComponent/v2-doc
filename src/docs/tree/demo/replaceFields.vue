@@ -28,13 +28,7 @@ Replace the title,key and children fields in treeNode with the corresponding fie
 </template>
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue';
-interface TreeDataItem {
-  name: string;
-  key: string;
-  disabled?: boolean;
-  disableCheckbox?: boolean;
-  child?: TreeDataItem[];
-}
+import { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
 
 export default defineComponent({
   setup() {
