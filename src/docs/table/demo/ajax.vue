@@ -33,8 +33,9 @@ This example shows how to fetch and present data from a remote server, and how t
 </template>
 <script lang="ts">
 import { TableState, TableStateFilters } from 'ant-design-vue/es/table/interface';
+import { useRequest } from 'vue-request';
 import axios from 'axios';
-import { defineComponent, onMounted, reactive, ref, UnwrapRef } from 'vue';
+import { defineComponent, reactive, UnwrapRef } from 'vue';
 const columns = [
   {
     title: 'Name',
@@ -59,45 +60,49 @@ const columns = [
 ];
 
 type Pagination = TableState['pagination'];
+type APIParams = {
+  results: number;
+  page?: number;
+  sortField?: string;
+  sortOrder?: number;
+  [key: string]: any;
+};
+type APIResult = {
+  results: {
+    gender: 'female' | 'male';
+    name: string;
+    email: string;
+  }[];
+};
+
+const queryData = (params: APIParams) => {
+  return axios.get<APIResult>('https://randomuser.me/api', { params: params });
+};
 
 export default defineComponent({
   setup() {
-    const dataSource = ref([]);
-    const loading = ref(false);
-    const pagination: UnwrapRef<Pagination> = reactive({});
-    const fetch = (params = {}) => {
-      console.log('params:', params);
-      loading.value = true;
-      axios
-        .get('https://randomuser.me/api', {
-          params: {
-            results: 10,
-            ...params,
-          },
-        })
-        .then(({ data }) => {
-          console.log(data);
-          // Read total count from server
-          // pagination.total = data.totalCount;
-          pagination.total = 200;
-          loading.value = false;
-          dataSource.value = data.results;
-        });
-    };
+    const pagination: UnwrapRef<Pagination> = reactive({ total: 200 });
+    const { data: dataSource, run, loading } = useRequest(queryData, {
+      defaultParams: [
+        {
+          results: 10,
+        },
+      ],
+      formatResult: res => res.data.results,
+    });
+
     const handleTableChange = (pag: Pagination, filters: TableStateFilters, sorter: any) => {
       console.log(pag);
       Object.assign(pagination, pag);
-      fetch({
-        results: pagination.pageSize,
+      run({
+        results: pagination.pageSize!,
         page: pagination.current,
         sortField: sorter.field,
         sortOrder: sorter.order,
         ...filters,
       });
     };
-    onMounted(() => {
-      fetch();
-    });
+
     return {
       dataSource,
       pagination,
