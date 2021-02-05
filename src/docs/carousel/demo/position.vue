@@ -42,7 +42,7 @@ export default defineComponent({
 </script>
 <style scoped>
 /* For demo */
-.ant-carousel ::v-deep(.slick-slide) {
+.ant-carousel :deep(.slick-slide) {
   text-align: center;
   height: 160px;
   line-height: 160px;
@@ -50,7 +50,7 @@ export default defineComponent({
   overflow: hidden;
 }
 
-.ant-carousel ::v-deep(.slick-slide h3) {
+.ant-carousel :deep(.slick-slide h3) {
   color: #fff;
 }
 </style>

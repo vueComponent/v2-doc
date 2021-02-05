@@ -123,11 +123,11 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-#components-grid-demo-playground ::v-deep(.ant-col) {
+#components-grid-demo-playground :deep(.ant-col) {
   background: transparent;
   border: 0;
 }
-#components-grid-demo-playground ::v-deep(.ant-col) > div {
+#components-grid-demo-playground :deep(.ant-col) > div {
   background: #00a0e9;
   height: 120px;
   line-height: 120px;

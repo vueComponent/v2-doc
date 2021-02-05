@@ -34,15 +34,15 @@ Search with remote data.
     </a-select-option>
   </a-select>
 </template>
-<script>
+<script lang="ts">
 import jsonp from 'fetch-jsonp';
 import querystring from 'querystring';
 import { defineComponent, ref } from 'vue';
 
-let timeout;
-let currentValue;
+let timeout: any;
+let currentValue = '';
 
-function fetch(value, callback) {
+function fetch(value: string, callback: any) {
   if (timeout) {
     clearTimeout(timeout);
     timeout = null;
@@ -59,8 +59,8 @@ function fetch(value, callback) {
       .then(d => {
         if (currentValue === value) {
           const result = d.result;
-          const data = [];
-          result.forEach(r => {
+          const data: any[] = [];
+          result.forEach((r: any) => {
             data.push({
               value: r[0],
               text: r[0],
@@ -76,16 +76,16 @@ function fetch(value, callback) {
 
 export default defineComponent({
   setup() {
-    const data = ref([]);
-    const value = ref(undefined);
+    const data = ref<any[]>([]);
+    const value = ref();
 
-    const handleSearch = value => {
-      fetch(value, d => (data.value = d));
+    const handleSearch = (val: string) => {
+      fetch(val, (d: any[]) => (data.value = d));
     };
-    const handleChange = val => {
+    const handleChange = (val: string) => {
       console.log(val);
       value.value = val;
-      fetch(value, d => (data.value = d));
+      fetch(val, (d: any[]) => (data.value = d));
     };
     return {
       handleSearch,

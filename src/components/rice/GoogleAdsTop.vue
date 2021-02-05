@@ -1,5 +1,5 @@
 <template>
-  <div v-if="process.env.NODE_ENV !== 'development'" class="google-ads">
+  <div class="google-ads">
     <ins
       ref="ins"
       style="display: block"

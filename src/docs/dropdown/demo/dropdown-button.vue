@@ -124,7 +124,7 @@ export default defineComponent({
 });
 </script>
 <style lang="less" scoped>
-.demo-dropdown-wrap ::v-deep(.ant-dropdown-button) {
+.demo-dropdown-wrap :deep(.ant-dropdown-button) {
   margin-right: 8px;
   margin-bottom: 8px;
 }

@@ -12,7 +12,7 @@ title:
 
 ## en-US
 
-Create a reusable Vue component by using `<Icon><template #component></template></Icon>`. The property / slot `component` takes a Vue component that renders to `svg` element.
+Create a reusable Vue component by using `Icon`. The property / slot `component` takes a Vue component that renders to `svg` element.
 
 </docs>
 
@@ -86,7 +86,7 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-.custom-icons-list ::v-deep(.anticon) {
+.custom-icons-list :deep(.anticon) {
   margin-right: 6px;
 }
 </style>

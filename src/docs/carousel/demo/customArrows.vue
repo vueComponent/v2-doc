@@ -46,7 +46,7 @@ export default defineComponent({
 </script>
 <style scoped>
 /* For demo */
-.ant-carousel ::v-deep(.slick-slide) {
+.ant-carousel :deep(.slick-slide) {
   text-align: center;
   height: 160px;
   line-height: 160px;
@@ -54,7 +54,7 @@ export default defineComponent({
   overflow: hidden;
 }
 
-.ant-carousel ::v-deep(.slick-arrow.custom-slick-arrow) {
+.ant-carousel :deep(.slick-arrow.custom-slick-arrow) {
   width: 25px;
   height: 25px;
   font-size: 25px;
@@ -62,14 +62,14 @@ export default defineComponent({
   background-color: rgba(31, 45, 61, 0.11);
   opacity: 0.3;
 }
-.ant-carousel ::v-deep(.custom-slick-arrow:before) {
+.ant-carousel :deep(.custom-slick-arrow:before) {
   display: none;
 }
-.ant-carousel ::v-deep(.custom-slick-arrow:hover) {
+.ant-carousel :deep(.custom-slick-arrow:hover) {
   opacity: 0.5;
 }
 
-.ant-carousel ::v-deep(.slick-slide h3) {
+.ant-carousel :deep(.slick-slide h3) {
   color: #fff;
 }
 </style>

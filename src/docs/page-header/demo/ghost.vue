@@ -44,7 +44,7 @@ The default PageHeader is a transparent background. In some cases, PageHeader ne
   </div>
 </template>
 <style scoped>
-.demo-page-header ::v-deep(tr:last-child td) {
+.demo-page-header :deep(tr:last-child td) {
   padding-bottom: 0;
 }
 </style>

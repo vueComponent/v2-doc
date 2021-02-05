@@ -134,7 +134,7 @@ export default defineComponent({
 });
 </script>
 <style lang="less" scoped>
-.toc-affix ::v-deep(.ant-anchor) {
+.toc-affix :deep(.ant-anchor) {
   font-size: 12px;
   max-width: 110px;
   .ant-anchor-link {

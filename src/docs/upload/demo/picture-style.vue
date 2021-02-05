@@ -102,15 +102,15 @@ export default defineComponent({
 </script>
 <style scoped>
 /* tile uploaded pictures */
-.upload-list-inline ::v-deep(.ant-upload-list-item) {
+.upload-list-inline :deep(.ant-upload-list-item) {
   float: left;
   width: 200px;
   margin-right: 8px;
 }
-.upload-list-inline ::v-deep(.ant-upload-animate-enter) {
+.upload-list-inline :deep(.ant-upload-animate-enter) {
   animation-name: uploadAnimateInlineIn;
 }
-.upload-list-inline ::v-deep(.ant-upload-animate-leave) {
+.upload-list-inline :deep(.ant-upload-animate-leave) {
   animation-name: uploadAnimateInlineOut;
 }
 </style>

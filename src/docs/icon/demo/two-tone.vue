@@ -34,7 +34,7 @@ export default {
 };
 </script>
 <style scoped>
-.icons-list ::v-deep(.anticon) {
+.icons-list :deep(.anticon) {
   margin-right: 6px;
   font-size: 24px;
 }

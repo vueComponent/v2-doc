@@ -26,7 +26,7 @@ Timing of scrolling to the next card/picture.
 </template>
 <style scoped>
 /* For demo */
-.ant-carousel ::v-deep(.slick-slide) {
+.ant-carousel :deep(.slick-slide) {
   text-align: center;
   height: 160px;
   line-height: 160px;
@@ -34,7 +34,7 @@ Timing of scrolling to the next card/picture.
   overflow: hidden;
 }
 
-.ant-carousel ::v-deep(.slick-slide h3) {
+.ant-carousel :deep(.slick-slide h3) {
   color: #fff;
 }
 </style>

@@ -144,22 +144,22 @@ export default defineComponent({
 
 <style scoped>
 .certain-category-search-wrapper
-  ::v-deep(.certain-category-search.ant-select-auto-complete)
+  :deep(.certain-category-search.ant-select-auto-complete)
   .ant-input-affix-wrapper
   .ant-input-suffix {
   right: 12px;
 }
-.certain-category-search-wrapper ::v-deep(.certain-search-item-count) {
+.certain-category-search-wrapper :deep(.certain-search-item-count) {
   position: absolute;
   color: #999;
   right: 16px;
 }
 .certain-category-search-wrapper
-  ::v-deep(.certain-category-search.ant-select-focused)
+  :deep(.certain-category-search.ant-select-focused)
   .certain-category-icon {
   color: #108ee9;
 }
-.certain-category-search-wrapper ::v-deep(.certain-category-icon) {
+.certain-category-search-wrapper :deep(.certain-category-icon) {
   color: #6e6e6e;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   font-size: 16px;
