@@ -17,10 +17,7 @@
       <div class="code-box-title">
         <a :href="`#${sectionId}`">{{ title }}</a>
       </div>
-      <div class="code-box-description">
-        <slot v-if="isZhCN" name="description" />
-        <slot v-else name="us-description" />
-      </div>
+      <div class="code-box-description" v-html="docHtml"></div>
       <div class="code-box-actions">
         <a-tooltip :title="$t(`app.demo.type.${type ? 'js' : 'ts'}`)">
           <span
@@ -84,6 +81,7 @@ import { GLOBAL_CONFIG } from '@/SymbolKey';
 import { computed, defineComponent, inject, onMounted, ref } from 'vue';
 import { CheckOutlined, SnippetsOutlined } from '@ant-design/icons-vue';
 export default defineComponent({
+  name: 'DemoBox',
   props: {
     jsfiddle: Object,
   },
@@ -126,6 +124,15 @@ export default defineComponent({
         copyTooltipVisible.value = visible;
       }
     };
+    const docHtml = computed(() =>
+      props.jsfiddle && props.jsfiddle.docHtml
+        ? (
+            props.jsfiddle.docHtml
+              .replace('<h2 id="zh-cn">zh-CN</h2>', '')
+              .split('<h2 id="en-us">en-US</h2>')[globalConfig.isZhCN ? 0 : 1] || ''
+          ).trim()
+        : '',
+    );
     const handleCodeExpand = () => {
       codeExpand.value = !codeExpand.value;
     };
@@ -149,6 +156,7 @@ export default defineComponent({
       });
     });
     return {
+      docHtml,
       iframeDemo,
       iframeDemoKey,
       iframeHeight,

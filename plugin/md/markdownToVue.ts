@@ -114,6 +114,7 @@ ${jsSourceCode}
     JSON.stringify({
       us,
       cn,
+      docHtml: pageData.html.split('<pre class="language-vue" v-pre>')[0],
       ...pageData.frontmatter,
       relativePath: pageData.relativePath,
       // htmlCode: Buffer.from(html).toString('base64'),
@@ -127,8 +128,6 @@ ${jsSourceCode}
     <template>
       <demo-box :jsfiddle="${jsfiddle}">
         ${template.replace('<template>', '<template v-slot:default>')}
-        <template #description>${md.render(cn || '').html}</template>
-        <template #us-description>${md.render(us || '').html}</template>
         <template #htmlCode>${html}</template>
         <template #jsVersionHtml>${jsVersion}</template>
       </demo-box>
