@@ -29,6 +29,7 @@ export default {
   ],
   optimizeDeps: {
     include: [
+      'fetch-jsonp',
       'ant-design-vue/es/locale-provider/zh_CN',
       'ant-design-vue/es/locale/en_US',
       'ant-design-vue/es/locale/zh_CN',
