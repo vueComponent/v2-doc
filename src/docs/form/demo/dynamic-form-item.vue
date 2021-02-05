@@ -55,7 +55,7 @@ Add or remove form items dynamically.
 
 <script lang="ts">
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons-vue';
-import { ValidateErrorEntity } from 'ant-design-vue/lib/form/interface';
+import { ValidateErrorEntity } from 'ant-design-vue/es/form/interface';
 import { defineComponent, reactive, ref, UnwrapRef } from 'vue';
 
 interface Domain {

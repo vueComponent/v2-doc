@@ -35,7 +35,7 @@ Control filters and sorters by `filteredValue` and `sortOrder`.
 </template>
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue';
-import { TableState, TableStateFilters } from 'ant-design-vue/lib/table/interface';
+import { TableState, TableStateFilters } from 'ant-design-vue/es/table/interface';
 
 type Pagination = TableState['pagination'];
 

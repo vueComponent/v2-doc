@@ -70,7 +70,7 @@ Tree with connected line between nodes, turn on by `showLine`, customize the pre
 </template>
 <script lang="ts">
 import { CarryOutOutlined, FormOutlined } from '@ant-design/icons-vue';
-import { SelectEvent } from 'ant-design-vue/lib/tree/Tree';
+import { SelectEvent } from 'ant-design-vue/es/tree/Tree';
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   components: {

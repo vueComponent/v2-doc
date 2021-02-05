@@ -87,7 +87,7 @@ The sidebar.
 
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
-| breakpoint | [breakpoints](/ant-desing-vue/components/grid#api) of the responsive layout | Enum { 'xs', 'sm', 'md', 'lg', 'xl', 'xxl' } | - |  |
+| breakpoint | [breakpoints](/components/grid#api) of the responsive layout | Enum { 'xs', 'sm', 'md', 'lg', 'xl', 'xxl' } | - |  |
 | class | container className | string | - |  |
 | collapsed(v-model) | to set the current status | boolean | - |  |
 | collapsedWidth | width of the collapsed sidebar, by setting to `0` a special trigger will appear | number | 80 |  |
@@ -105,11 +105,11 @@ The sidebar.
 | Events Name | Description | Arguments |
 | --- | --- | --- | --- |
 | collapse | the callback function, executed by clicking the trigger or activating the responsive layout | (collapsed, type) => {} |
-| breakpoint | the callback function, executed when [breakpoints](/ant-desing-vue/components/grid#api) changed | (broken) => {} | - |
+| breakpoint | the callback function, executed when [breakpoints](/components/grid#api) changed | (broken) => {} | - |
 
 #### breakpoint width
 
-```js
+```jsx
 {
   xs: '480px',
   sm: '576px',

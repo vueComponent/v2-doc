@@ -32,7 +32,7 @@ This example shows how to fetch and present data from a remote server, and how t
   </a-table>
 </template>
 <script lang="ts">
-import { TableState, TableStateFilters } from 'ant-design-vue/lib/table/interface';
+import { TableState, TableStateFilters } from 'ant-design-vue/es/table/interface';
 import axios from 'axios';
 import { defineComponent, onMounted, reactive, ref, UnwrapRef } from 'vue';
 const columns = [

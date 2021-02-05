@@ -67,7 +67,7 @@ Just add the `rules` attribute for `Form` component, pass validation rules, and 
   </a-form>
 </template>
 <script lang="ts">
-import { ValidateErrorEntity } from 'ant-design-vue/lib/form/interface';
+import { ValidateErrorEntity } from 'ant-design-vue/es/form/interface';
 import { Moment } from 'moment';
 import { defineComponent, reactive, ref, toRaw, UnwrapRef } from 'vue';
 interface FormState {
