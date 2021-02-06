@@ -95,12 +95,15 @@ ${vueCode.trim()}
   const script = fetchCode(vueCode, 'script');
   const style = fetchCode(vueCode, 'style');
   const scriptContent = fetchCode(vueCode, 'scriptContent');
-  const jsCode = tsToJs(scriptContent);
+  let jsCode = tsToJs(scriptContent).trim();
+  jsCode = jsCode
+    ? `<script>
+${jsCode}
+</script>`
+    : '';
   const jsSourceCode = `
 ${template}
-<script>
 ${jsCode}
-</script>
 ${style}
   `.trim();
   let { html: jsVersion } = md.render(`\`\`\`vue

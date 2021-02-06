@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "node --max_old_space_size=8000 ./node_modules/vite/bin/vite.js build",
-    "lint": "eslint -c ./.eslintrc.js --fix --ext .jsx,.vue,.ts,.tsx ./src"
+    "build": "node --max_old_space_size=8000 ./node_modules/vite/bin/vite.js build --base=https://alicdn.antdv.com/v2/",
+    "lint": "eslint -c ./.eslintrc.js --fix --ext .jsx,.vue,.ts,.tsx ./src",
+    "pub": "npm run build && node scripts/pushToOSS.js"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.0.1",
@@ -13,7 +14,8 @@
     "@vue/babel-plugin-jsx": "^1.0.1",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
-    "ant-design-vue": "^2.0.0-rc.8",
+    "ali-oss": "^6.13.2",
+    "ant-design-vue": "^2.0.0",
     "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.5",
     "diacritics": "^1.3.0",
