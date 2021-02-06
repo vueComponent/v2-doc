@@ -91,7 +91,7 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="less" scoped>
+<style lang="less">
 @import '../../theme/static/theme.less';
 @import './index.less';
 
@@ -142,13 +142,5 @@ export default defineComponent({
   & > .ant-menu-submenu {
     text-align: center;
   }
-}
-
-.header-link {
-  color: @site-text-color;
-}
-
-.ant-menu-item-active .header-link {
-  color: @primary-color;
 }
 </style>
