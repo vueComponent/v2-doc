@@ -28,23 +28,8 @@ Drag treeNode to insert after the other treeNode or insert into the other parent
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, VNode } from 'vue';
-import { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
-
-interface DragEnterEvent {
-  event: DragEvent;
-  expandedKeys: string[];
-  node: VNode;
-}
-
-interface DropEvent {
-  dragNode: any;
-  dragNodesKeys: string[];
-  dropPosition: number;
-  dropToGap: boolean;
-  event: DragEvent;
-  node: any;
-}
+import { defineComponent, ref } from 'vue';
+import { TreeDataItem, TreeDragEvent, DropEvent } from 'ant-design-vue/es/tree/Tree';
 
 const x = 3;
 const y = 2;
@@ -77,7 +62,7 @@ export default defineComponent({
   setup() {
     const expandedKeys = ref<string[]>(['0-0', '0-0-0', '0-0-0-0']);
     const gData = ref<TreeDataItem[]>(genData);
-    const onDragEnter = (info: DragEnterEvent) => {
+    const onDragEnter = (info: TreeDragEvent) => {
       console.log(info);
       // expandedKeys 需要展开时
       // expandedKeys.value = info.expandedKeys

@@ -108,8 +108,8 @@ export default defineComponent({
     watch(searchValue, value => {
       const expanded = dataList
         .map((item: TreeDataItem) => {
-          if (item.title.indexOf(value) > -1) {
-            return getParentKey(item.key, gData.value);
+          if ((item.title as string).indexOf(value) > -1) {
+            return getParentKey(item.key as string, gData.value);
           }
           return null;
         })
