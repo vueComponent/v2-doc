@@ -1,5 +1,21 @@
 <template>
   <header id="header" :class="headerClassName">
+    <div class="adblock-banner" v-if="visibleAdblockBanner">
+      <template v-if="isZhCN">
+        我们检测到你可能使用了 AdBlock 或 Adblock
+        Plus，它会影响到正常功能的使用（如复制、展开代码等）。
+        <br />
+        你可以将 Ant Design Vue 加入白名单，以便我们更好地提供服务。
+      </template>
+      <template v-else>
+        We have detected that you may use AdBlock or Adblock Plus, which will affect the use of
+        normal functions (such as copying, expanding code, etc.)
+        <br />
+        You can add Ant Design Vue to the whitelist so that we can provide better services.
+      </template>
+
+      <CloseOutlined class="close-icon" @click="visibleAdblockBanner = false" />
+    </div>
     <a-popover
       overlayClassName="popover-menu"
       placement="bottomRight"
@@ -32,11 +48,11 @@
 import { GlobalConfig } from '@/App.vue';
 import { GLOBAL_CONFIG } from '@/SymbolKey';
 import { getLocalizedPathname } from '@/utils/util';
-import { computed, defineComponent, inject, onMounted, ref } from 'vue';
+import { computed, defineComponent, inject, onMounted, Ref, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import Logo from './Logo.vue';
 import Menu from './Menu.vue';
-import { UnorderedListOutlined } from '@ant-design/icons-vue';
+import { UnorderedListOutlined, CloseOutlined } from '@ant-design/icons-vue';
 import SearchBox from './SearchBox.vue';
 export default defineComponent({
   setup() {
@@ -92,11 +108,16 @@ export default defineComponent({
         initDocSearch();
       });
     });
+    const visibleAdblockBanner = ref(false);
+    watch(globalConfig?.blocked as Ref<boolean>, val => {
+      visibleAdblockBanner.value = val;
+    });
     return {
       isZhCN: globalConfig!.isZhCN,
       isMobile: globalConfig!.isMobile,
       responsive: globalConfig!.responsive,
       getLocalizedPathname,
+      visibleAdblockBanner,
       headerClassName: {
         clearfix: true,
         'home-header': isHome.value,
@@ -111,7 +132,25 @@ export default defineComponent({
     Menu,
     UnorderedListOutlined,
     SearchBox,
+    CloseOutlined,
   },
 });
 </script>
 <style lang="less" src="./index.less"></style>
+<style scope>
+.adblock-banner {
+  position: relative;
+  z-index: 100;
+  min-width: 1000px;
+  padding: 16px;
+  line-height: 28px;
+  color: #8590a6;
+  text-align: center;
+  background-color: #ebebeb;
+}
+.close-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+</style>

@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, provide, Ref, watch } from 'vue';
+import { computed, defineComponent, provide, Ref, watch, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import useMediaQuery from './hooks/useMediaQuery';
@@ -22,6 +22,7 @@ export interface GlobalConfig {
   lang: Ref<'zh-CN' | 'en-US'>;
   isZhCN: Ref<boolean>;
   responsive: Ref<null | 'narrow' | 'crowded'>;
+  blocked: Ref<boolean>;
 }
 export default defineComponent({
   setup() {
@@ -42,6 +43,7 @@ export default defineComponent({
       responsive,
       lang: computed(() => i18n.locale.value as any),
       isZhCN: computed(() => i18n.locale.value === 'zh-CN'),
+      blocked: ref(false),
     };
     provide(GLOBAL_CONFIG, globalConfig);
     watch(
@@ -65,7 +67,12 @@ export default defineComponent({
     const locale = computed(() => {
       return globalConfig.isZhCN.value ? zhCN : enUS;
     });
-
+    setTimeout(() => {
+      const div = document.createElement('div');
+      div.className = 'adsbox';
+      document.body.appendChild(div);
+      globalConfig.blocked.value = 'none' === getComputedStyle(div).display;
+    }, 300);
     return { globalConfig, locale };
   },
 });
