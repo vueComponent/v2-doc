@@ -15,7 +15,11 @@
         <a-menu-item-group :key="m.order" :title="isZhCN ? m.title : m.enTitle">
           <template v-for="n in m.children">
             <a-menu-item v-if="n.path" :key="n.path">
-              <router-link :to="getLocalizedPathname(n.path, isZhCN)">
+              <a v-if="n.target" :target="n.target" :href="n.path">
+                <span>{{ isZhCN ? n.title : n.enTitle || n.title }}</span>
+                <span v-if="isZhCN" class="chinese">{{ n.subtitle }}</span>
+              </a>
+              <router-link v-else :to="getLocalizedPathname(n.path, isZhCN)">
                 <span>{{ isZhCN ? n.title : n.enTitle || n.title }}</span>
                 <span v-if="isZhCN" class="chinese">{{ n.subtitle }}</span>
               </router-link>
@@ -25,7 +29,10 @@
       </template>
       <template v-else>
         <a-menu-item :key="m.path">
-          <router-link :to="getLocalizedPathname(m.path, isZhCN)">
+          <a v-if="m.target" :target="m.target" :href="m.path">
+            {{ isZhCN ? `${m.title} ${m.subtitle || ''}` : m.enTitle || m.title }}
+          </a>
+          <router-link v-else :to="getLocalizedPathname(m.path, isZhCN)">
             {{ isZhCN ? `${m.title} ${m.subtitle || ''}` : m.enTitle || m.title }}
           </router-link>
         </a-menu-item>

@@ -1,6 +1,7 @@
 import { groupBy, sortBy } from 'lodash-es';
-import { computed, ComputedRef } from 'vue';
+import { computed, ComputedRef, inject } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { GLOBAL_CONFIG } from '../SymbolKey';
 const typeOrder: any = {
   组件总览: { order: -1, en: 'Overview' },
   通用: { order: 0, en: 'General' },
@@ -21,11 +22,12 @@ const useMenus = (): {
   const route = useRoute();
   const router = useRouter();
   const routes = router.getRoutes();
+  const globalConfig = inject<any>(GLOBAL_CONFIG);
   const menus = computed(() => {
     const path = route.path;
     const category = path.split('/')[1];
     const pattern = /^\/iframe/;
-    return routes
+    const ms = routes
       .filter(
         r =>
           r.meta &&
@@ -34,6 +36,18 @@ const useMenus = (): {
           !pattern.test(r.path),
       )
       .map(r => ({ ...r.meta, path: r.path.split(':lang')[0] }));
+    if (category === 'docs') {
+      ms.push({
+        enTitle: 'Change Log',
+        title: '更新日志',
+        category: 'docs',
+        target: '_blank',
+        path: globalConfig.isZhCN.value
+          ? 'https://github.com/vueComponent/ant-design-vue/blob/next/CHANGELOG.zh-CN.md'
+          : 'https://github.com/vueComponent/ant-design-vue/blob/next/CHANGELOG.en-US.md',
+      } as any);
+    }
+    return ms;
   });
   const activeMenuItem = computed(() => {
     return route.path.split('-cn')[0];

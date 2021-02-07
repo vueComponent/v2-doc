@@ -1,5 +1,6 @@
 interface Window {
   docsearch: any;
+  notBlockEnabled: any;
 }
 
 interface Header {
