@@ -3,8 +3,21 @@
   <div class="main-wrapper">
     <a-row>
       <template v-if="isMobile">
-        <a-drawer key="Mobile-menu" wrapperClassName="drawer-wrapper">
+        <a-drawer
+          :closable="false"
+          placement="left"
+          class="drawer drawer-left"
+          :visible="visible"
+          key="mobile-menu"
+          wrapperClassName="drawer-wrapper"
+        >
           <Menu :menus="dataSource" :activeMenuItem="activeMenuItem" :isZhCN="isZhCN" />
+          <template #handle>
+            <div class="drawer-handle" @click="handleClickShowButton">
+              <close-outlined v-if="visible" :style="iconStyle" />
+              <MenuOutlined v-else :style="iconStyle" />
+            </div>
+          </template>
         </a-drawer>
       </template>
       <template v-else>
@@ -56,10 +69,12 @@ import useMenus from '@/hooks/useMenus';
 import TopAd from '../components/rice/top_rice.vue';
 import Sponsors from '../components/rice/sponsors.vue';
 import RightBottomAd from '../components/rice/right_bottom_rice.vue';
+import { CloseOutlined, MenuOutlined } from '@ant-design/icons-vue';
 
 export default defineComponent({
   name: 'Layout',
   setup() {
+    const visible = ref(false);
     const route = useRoute();
     const globalConfig = inject<GlobalConfig>(GLOBAL_CONFIG);
     const { menus, activeMenuItem, currentMenuIndex, dataSource } = useMenus();
@@ -107,7 +122,11 @@ export default defineComponent({
         'main-container-component': isDemo.value,
       };
     });
+    const handleClickShowButton = () => {
+      visible.value = !visible.value;
+    };
     return {
+      visible,
       isMobile: globalConfig!.isMobile,
       isZhCN,
       mainContainerClass,
@@ -119,6 +138,11 @@ export default defineComponent({
       matchCom,
       pageData,
       dataSource,
+      handleClickShowButton,
+      iconStyle: {
+        // color: '#fff',
+        fontSize: '20px',
+      },
     };
   },
   components: {
@@ -130,6 +154,8 @@ export default defineComponent({
     Footer,
     Menu,
     PrevAndNext,
+    CloseOutlined,
+    MenuOutlined,
   },
 });
 </script>
