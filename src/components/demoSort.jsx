@@ -1,6 +1,7 @@
-import { inject } from 'vue';
+import { defineComponent, inject } from 'vue';
+import { GLOBAL_CONFIG } from '@/SymbolKey';
 
-export default {
+export default defineComponent({
   props: {
     cols: {
       type: [Number, String],
@@ -10,11 +11,13 @@ export default {
   setup() {
     return {
       demoContext: inject('demoContext', {}),
+      globalConfig: inject(GLOBAL_CONFIG),
     };
   },
   render() {
-    const { cols, $slots } = this;
-    const isSingleCol = cols === 1;
+    const { cols, globalConfig, $slots } = this;
+    // 手机访问强制开启单行 demo 模式
+    const isSingleCol = cols === 1 || globalConfig.isMobile.value;
     const leftChildren = [];
     const rightChildren = [];
     const children = $slots.default?.() || [];
@@ -41,4 +44,4 @@ export default {
       </a-row>
     );
   },
-};
+});
