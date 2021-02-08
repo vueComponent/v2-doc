@@ -27,15 +27,25 @@ const useMenus = (): {
     const path = route.path;
     const category = path.split('/')[1];
     const pattern = /^\/iframe/;
+    const isZhCN = globalConfig.isZhCN.value;
     const ms = routes
-      .filter(
-        r =>
+      .filter(r => {
+        const inCategory =
           r.meta &&
           r.meta.category &&
           r.meta.category.toLowerCase() === category &&
-          !pattern.test(r.path),
-      )
-      .map(r => ({ ...r.meta, path: r.path.split(':lang')[0] }));
+          !pattern.test(r.path);
+        if (inCategory && category === 'docs') {
+          if (isZhCN) {
+            return r.path.indexOf('-cn') >= 0;
+          } else {
+            return r.path.indexOf('-cn') === -1;
+          }
+        } else {
+          return inCategory;
+        }
+      })
+      .map(r => ({ ...r.meta, path: r.path.split(':lang')[0].replace('-cn', '') }));
     if (category === 'docs') {
       ms.push({
         enTitle: 'Change Log',
