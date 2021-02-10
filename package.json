@@ -37,7 +37,7 @@
     "markdown-it-container": "^2.0.0",
     "markdown-it-emoji": "^1.4.0",
     "markdown-it-table-of-contents": "^0.4.4",
-    "marked": "^1.2.7",
+    "marked": "^2.0.0",
     "moment": "^2.29.1",
     "nprogress": "^0.2.0",
     "prettier": "^2.2.1",
