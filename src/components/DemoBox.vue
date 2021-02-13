@@ -109,7 +109,7 @@ export default defineComponent({
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     const addDemosInfo: any = inject('addDemosInfo', () => {});
 
-    const globalConfig = inject<GlobalConfig>(GLOBAL_CONFIG) as any;
+    const globalConfig = inject<GlobalConfig>(GLOBAL_CONFIG)!;
     const title = computed(
       () =>
         props.jsfiddle &&
