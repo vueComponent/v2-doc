@@ -12,7 +12,7 @@
       :getPopupContainer="trigger => trigger.parentNode"
     >
       <a-select-option :value="antdVersion">{{ antdVersion }}</a-select-option>
-      <a-select-option value="1.x" @click="() => (location.href = 'https://1x.antdv.com')">
+      <a-select-option value="1.x" @click="location.href = 'https://1x.antdv.com'">
         1.x
       </a-select-option>
     </a-select>
@@ -62,6 +62,7 @@ export default defineComponent({
     return {
       onLangChange,
       antdVersion,
+      location: window.location,
     };
   },
   components: {

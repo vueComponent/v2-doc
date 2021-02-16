@@ -17,12 +17,7 @@ Upload files manually after `beforeUpload` returns `false`.
 
 <template>
   <div class="clearfix">
-    <a-upload
-      :file-list="fileList"
-      :remove="handleRemove"
-      :before-upload="beforeUpload"
-      v-model:file-list="fileList"
-    >
+    <a-upload :file-list="fileList" :remove="handleRemove" :before-upload="beforeUpload">
       <a-button>
         <upload-outlined></upload-outlined>
         Select File
@@ -78,8 +73,8 @@ export default defineComponent({
 
     const handleUpload = () => {
       const formData = new FormData();
-      fileList.value.forEach(({ file }: FileItem) => {
-        formData.append('files[]', file);
+      fileList.value.forEach((file: FileItem) => {
+        formData.append('files[]', file as any);
       });
       uploading.value = true;
 
