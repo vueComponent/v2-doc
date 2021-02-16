@@ -109,7 +109,7 @@ export default defineComponent({
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     const addDemosInfo: any = inject('addDemosInfo', () => {});
 
-    const globalConfig = inject<GlobalConfig>(GLOBAL_CONFIG) as any;
+    const globalConfig = inject<GlobalConfig>(GLOBAL_CONFIG)!;
     const title = computed(
       () =>
         props.jsfiddle &&
@@ -144,7 +144,7 @@ export default defineComponent({
         ? (
             props.jsfiddle.docHtml
               .replace('<h2 id="zh-cn">zh-CN</h2>', '')
-              .split('<h2 id="en-us">en-US</h2>')[globalConfig.isZhCN ? 0 : 1] || ''
+              .split('<h2 id="en-us">en-US</h2>')[globalConfig.isZhCN.value ? 0 : 1] || ''
           ).trim()
         : '',
     );

@@ -1,10 +1,14 @@
 <template>
   <section class="markdown">
-    <h1>{{ globalConfig.isZhCN ? '组件总览' : 'Overview' }}</h1>
+    <h1>{{ isZhCN ? '组件总览' : 'Overview' }}</h1>
     <section class="markdown">
       <p>
         <code>ant-design-vue</code>
-        为 Web 应用提供了丰富的基础 UI 组件，我们还将持续探索企业级应用的最佳 UI 实践。
+        {{
+          isZhCN
+            ? '为 Web 应用提供了丰富的基础 UI 组件，我们还将持续探索企业级应用的最佳 UI 实践。'
+            : 'provides plenty of UI components to enrich your web applications, and we will improve components experience consistently. '
+        }}
       </p>
     </section>
     <a-divider></a-divider>
@@ -24,18 +28,19 @@
       <div class="components-overview">
         <h2 class="ant-typography components-overview-group-title">
           <a-space align="center">
-            {{ group.title }}
+            {{ isZhCN ? group.title : group.enTitle }}
             <a-tag style="display: block">{{ group.children.length }}</a-tag>
           </a-space>
         </h2>
         <a-row :gutter="[24, 24]">
           <template v-for="component in group.children" :key="component.title">
             <a-col :xs="24" :sm="12" :lg="8" :xl="6">
-              <router-link :to="getLocalizedPathname(component.path, globalConfig.isZhCN)">
+              <router-link :to="getLocalizedPathname(component.path, isZhCN)">
                 <a-card size="small" class="components-overview-card">
                   <template #title>
                     <div class="components-overview-title">
-                      {{ component.title }} {{ globalConfig.isZhCN ? component.subtitle : '' }}
+                      {{ component.title }}
+                      {{ isZhCN ? component.subtitle : '' }}
                     </div>
                   </template>
                   <div class="components-overview-img">
@@ -87,6 +92,7 @@ export default defineComponent({
       menuItems,
       getLocalizedPathname,
       inputRef,
+      isZhCN: globalConfig?.isZhCN,
     };
   },
   components: {
