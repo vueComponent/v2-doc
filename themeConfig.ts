@@ -4,7 +4,13 @@ const themeConfig = [
   {
     theme: 'dark',
     htmlThemeAttr: 'dark',
-    modifyVars: { ...getThemeVariables({ dark: true }) },
+    modifyVars: {
+      ...getThemeVariables({ dark: true }),
+      'text-color': 'fade(@white, 65%)',
+      'gray-8': '@text-color',
+      'background-color-base': '#555',
+      'skeleton-color': 'rgba(0,0,0,0.8)',
+    },
   },
 ];
 const additionalData = async (content: string, filename: string): Promise<string> => {
