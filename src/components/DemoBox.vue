@@ -178,13 +178,14 @@ export default defineComponent({
         title,
       });
     });
+    const theme = computed(() => inject('themeMode', { theme: ref('default') }).theme.value);
     return {
       docHtml,
       iframeDemo,
       iframeDemoKey,
       iframeHeight,
       inIframe,
-      theme: 'light',
+      theme,
       type,
       warning,
       blocked: globalConfig.blocked,

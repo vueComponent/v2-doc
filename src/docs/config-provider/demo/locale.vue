@@ -48,7 +48,7 @@ Components which need localization support are listed here, you can toggle the l
       <div class="example">
         <a-transfer :data-source="[]" show-search :target-keys="[]" :render="item => item.title" />
       </div>
-      <div style="width: 319px; border: 1px solid #d9d9d9; border-radius: 4px">
+      <div class="site-config-provider-calendar-wrapper">
         <a-calendar :fullscreen="false" :value="moment()" />
       </div>
       <div class="example">
@@ -119,6 +119,11 @@ export default defineComponent({
 });
 </script>
 <style scoped>
+.site-config-provider-calendar-wrapper {
+  width: 319px;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+}
 .locale-components {
   border-top: 1px solid #d9d9d9;
   padding-top: 16px;
@@ -134,5 +139,11 @@ export default defineComponent({
 
 .change-locale {
   margin-bottom: 16px;
+}
+[data-theme='dark'] .locale-components {
+  border-top: 1px solid #303030;
+}
+[data-theme='dark'] .site-config-provider-calendar-wrapper {
+  border: 1px solid #303030;
 }
 </style>
