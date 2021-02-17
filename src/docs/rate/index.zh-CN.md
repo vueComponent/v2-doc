@@ -1,6 +1,6 @@
 ---
 category: Components
-type: Data Entry
+type: 数据录入
 title: Rate
 subtitle: 评分
 cover: https://gw.alipayobjects.com/zos/alicdn/R5uiIWmxe/Rate.svg

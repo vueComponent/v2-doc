@@ -1,6 +1,6 @@
 ---
 category: Components
-type: Data Display
+type: 数据展示
 title: Popover
 subtitle: 气泡卡片
 cover: https://gw.alipayobjects.com/zos/alicdn/1PNL1p_cO/Popover.svg
