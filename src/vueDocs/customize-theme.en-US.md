@@ -150,6 +150,50 @@ You must import styles as less format. A common mistake would be importing multi
 - If you import styles by specifying the `style` option of [babel-plugin-import](https://github.com/ant-design/babel-plugin-import), change it from `'css'` to `true`, which will import the `less` version of antd.
 - If you import styles from `'ant-design-vue/dist/antd.css'`, change it to `ant-design-vue/dist/antd.less`.
 
+## Use dark theme
+
+Method 1: Import [antd.dark.less](https://unpkg.com/browse/ant-design-vue@2.0.0/dist/antd.dark.less) in the style file:
+
+```less
+@import '~ant-design-vue/dist/antd.dark.less'; // Introduce the official dark less style entry file
+```
+
+If the project does not use Less, you can import [antd.dark.css](https://unpkg.com/browse/ant-design-vue@2.0.0/dist/antd.dark.css) in the CSS file:
+
+```css
+@import '~ant-design-vue/dist/antd.dark.css';
+```
+
+> Note that you don't need to import `ant-design-vue/dist/antd.less` or `ant-design-vue/dist/antd.css` anymore, please remove it, and remove babel-plugin-import `style` config too. You can't enable two or more theme at the same time by this method.
+
+Method 3: using [less-loader](https://github.com/webpack-contrib/less-loader) in `webpack.config.js` to introduce as needed:
+
+```diff
+const { getThemeVariables } = require('ant-design-vue/dist/theme');
+
+// webpack.config.js
+module.exports = {
+  rules: [{
+    test: /\.less$/,
+    use: [{
+      loader: 'style-loader',
+    }, {
+      loader: 'css-loader', // translates CSS into CommonJS
+    }, {
+      loader: 'less-loader', // compiles Less to CSS
++     options: {
++       lessOptions: { // If you are using less-loader@5 please spread the lessOptions to options directly
++         modifyVars: getThemeVariables({
++           dark: true, // Enable dark mode
++         }),
++         javascriptEnabled: true,
++       },
++     },
+    }],
+  }],
+};
+```
+
 ## Related Articles
 
 - [How to Customize Ant Design with React & Webpack… the Missing Guide](https://medium.com/@GeoffMiller/how-to-customize-ant-design-with-react-webpack-the-missing-guide-c6430f2db10f)

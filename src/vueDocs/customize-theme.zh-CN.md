@@ -128,6 +128,49 @@ module.exports = {
 - 如果你在使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 的 `style` 配置来引入样式，需要将配置值从 `'css'` 改为 `true`，这样会引入 less 文件。
 - 如果你是通过 `'ant-design-vue/dist/antd.css'` 引入样式的，改为 `ant-design-vue/dist/antd.less`。
 
+## 使用暗黑主题
+
+方式一：在样式文件全量引入 [antd.dark.less](https://unpkg.com/browse/ant-design-vue@2.0.0/dist/antd.dark.less)。
+```less
+@import '~ant-design-vue/dist/antd.dark.less'; // 引入官方提供的暗色 less 样式入口文件
+```
+
+如果项目不使用 Less，可在 CSS 文件中全量引入 [antd.dark.css](https://unpkg.com/browse/ant-design-vue@2.0.0/dist/antd.dark.css)。
+
+```css
+@import '~ant-design-vue/dist/antd.dark.css';
+```
+
+> 注意这种方式下你不需要再引入 `ant-design-vue/dist/antd.less` 或 `ant-design-vue/dist/antd.css` 了，可以安全移除掉。也不需要开启 babel-plugin-import 的 `style` 配置。通过此方式不能同时配置两种及以上主题。
+
+方式二：是用在 `webpack.config.js` 使用 [less-loader](https://github.com/webpack-contrib/less-loader) 按需引入：
+
+```diff
+const { getThemeVariables } = require('ant-design-vue/dist/theme');
+
+// webpack.config.js
+module.exports = {
+  rules: [{
+    test: /\.less$/,
+    use: [{
+      loader: 'style-loader',
+    }, {
+      loader: 'css-loader', // translates CSS into CommonJS
+    }, {
+      loader: 'less-loader', // compiles Less to CSS
++     options: {
++       lessOptions: { // 如果使用less-loader@5，请移除 lessOptions 这一级直接配置选项。
++         modifyVars: getThemeVariables({
++           dark: true, // 开启暗黑模式
++         }),
++         javascriptEnabled: true,
++       },
++     },
+    }],
+  }],
+};
+```
+
 ## 社区教程 for Antd React
 
 - [How to Customize Ant Design with React & Webpack… the Missing Guide](https://medium.com/@GeoffMiller/how-to-customize-ant-design-with-react-webpack-the-missing-guide-c6430f2db10f)
