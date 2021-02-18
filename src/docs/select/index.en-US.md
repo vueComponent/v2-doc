@@ -27,6 +27,7 @@ Select component to select value from options.
 | allowClear | Show clear button. | boolean | false |
 | autoClearSearchValue | Whether the current search will be cleared on selecting an item. Only applies when `mode` is set to `multiple` or `tags`. | boolean | true |
 | autofocus | Get focus by default | boolean | false |
+| bordered | Whether has border style | boolean | true |
 | defaultActiveFirstOption | Whether active first option by default | boolean | true |
 | disabled | Whether disabled select | boolean | false |
 | dropdownClassName | className of dropdown menu | string | - |
