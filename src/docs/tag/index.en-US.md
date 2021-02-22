@@ -1,3 +1,17 @@
+---
+category: Components
+type: Data Display
+title: Tag
+cover: https://gw.alipayobjects.com/zos/alicdn/cH1BOLfxC/Tag.svg
+---
+
+Tag for categorizing or markup.
+
+## When To Use
+
+- It can be used to tag by dimension or property.
+- When categorizing.
+
 ## API
 
 ### Tag
