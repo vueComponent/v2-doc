@@ -33,9 +33,9 @@ This example shows how to fetch and present data from a remote server, and how t
 </template>
 <script lang="ts">
 import { TableState, TableStateFilters } from 'ant-design-vue/es/table/interface';
-import { useRequest } from 'vue-request';
+import { usePagination } from 'vue-request';
 import axios from 'axios';
-import { defineComponent, reactive, UnwrapRef } from 'vue';
+import { computed, defineComponent } from 'vue';
 const columns = [
   {
     title: 'Name',
@@ -81,22 +81,24 @@ const queryData = (params: APIParams) => {
 
 export default defineComponent({
   setup() {
-    const pagination: UnwrapRef<Pagination> = reactive({ total: 200 });
-    const { data: dataSource, run, loading } = useRequest(queryData, {
-      defaultParams: [
-        {
-          results: 10,
-        },
-      ],
+    const { data: dataSource, run, loading, current, pageSize } = usePagination(queryData, {
       formatResult: res => res.data.results,
+      pagination: {
+        currentKey: 'page',
+        pageSizeKey: 'results',
+      },
     });
 
+    const pagination = computed(() => ({
+      total: 200,
+      current: current.value,
+      pageSize: pageSize.value,
+    }));
+
     const handleTableChange = (pag: Pagination, filters: TableStateFilters, sorter: any) => {
-      console.log(pag);
-      Object.assign(pagination, pag);
       run({
-        results: pagination.pageSize!,
-        page: pagination.current,
+        results: pag!.pageSize!,
+        page: pag?.current,
         sortField: sorter.field,
         sortOrder: sorter.order,
         ...filters,
