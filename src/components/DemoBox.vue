@@ -19,7 +19,7 @@
       </div>
       <div class="code-box-description" v-html="docHtml"></div>
       <div class="code-box-actions">
-        <a-tooltip :title="$t(`app.demo.type.${type ? 'js' : 'ts'}`)">
+        <a-tooltip :title="$t(`app.demo.type.${type === 'JS' ? 'js' : 'ts'}`)">
           <span
             class="code-expand-icon code-box-code-action"
             style="width: auto"
