@@ -48,6 +48,22 @@
             </a-anchor>
           </a-affix>
         </section>
+        <div class="fixed-widgets" :style="isZhCN ? { bottom: '175px' } : {}">
+          <a-dropdown placement="topCenter">
+            <template #overlay>
+              <a-menu
+                @click="({ key }) => themeMode.changeTheme(key)"
+                :selectedKeys="[themeMode.theme.value]"
+              >
+                <a-menu-item key="default">{{ $t('app.theme.switch.default') }}</a-menu-item>
+                <a-menu-item key="dark">{{ $t('app.theme.switch.dark') }}</a-menu-item>
+              </a-menu>
+            </template>
+            <a-avatar class="fixed-widgets-avatar" :size="44">
+              <template #icon><ThemeIcon /></template>
+            </a-avatar>
+          </a-dropdown>
+        </div>
         <PrevAndNext :menus="menus" :currentMenuIndex="currentMenuIndex" />
         <Footer />
       </a-col>
@@ -70,6 +86,7 @@ import TopAd from '../components/rice/top_rice.vue';
 import Sponsors from '../components/rice/sponsors.vue';
 import RightBottomAd from '../components/rice/right_bottom_rice.vue';
 import { CloseOutlined, MenuOutlined } from '@ant-design/icons-vue';
+import ThemeIcon from './ThemeIcon.vue';
 
 export default defineComponent({
   name: 'Layout',
@@ -86,6 +103,11 @@ export default defineComponent({
         demos.value.push(info);
       }
     });
+
+    const themeMode = inject('themeMode', () => ({
+      theme: ref('default'),
+      changeTheme: () => void 0,
+    }));
 
     watch(
       () => route.path,
@@ -126,6 +148,7 @@ export default defineComponent({
       visible.value = !visible.value;
     };
     return {
+      themeMode,
       visible,
       isMobile: globalConfig!.isMobile,
       isZhCN,
@@ -156,6 +179,7 @@ export default defineComponent({
     PrevAndNext,
     CloseOutlined,
     MenuOutlined,
+    ThemeIcon,
   },
 });
 </script>
@@ -176,6 +200,15 @@ export default defineComponent({
   }
   .ant-anchor-ink-ball {
     display: none;
+  }
+}
+
+[data-theme='dark'] .toc-affix :deep(.ant-anchor) {
+  .ant-anchor-link {
+    border-left: 2px solid #303030;
+  }
+  .ant-anchor-link-active {
+    border-left: 2px solid #177ddc;
   }
 }
 </style>

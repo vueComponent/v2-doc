@@ -23,7 +23,7 @@ export default [
   ${Object.keys(components).map(
     component => `
   {
-    path: '${component}:lang(.*)',
+    path: '${component}:lang(-cn)?',
     meta: ${JSON.stringify(components[component])},
     component: () => import('../docs/${component}/demo/index.vue'),
   }`,

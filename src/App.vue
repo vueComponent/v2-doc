@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, provide, Ref, watch, ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import useMediaQuery from './hooks/useMediaQuery';
 import { GLOBAL_CONFIG } from './SymbolKey';
@@ -27,9 +27,11 @@ export interface GlobalConfig {
 export default defineComponent({
   setup() {
     const route = useRoute();
+    const router = useRouter();
     const i18n = useI18n();
     const colSize = useMediaQuery();
     const isMobile = computed(() => colSize.value === 'sm' || colSize.value === 'xs');
+    const theme = ref(localStorage.getItem('theme') || 'default');
     const responsive = computed(() => {
       if (colSize.value === 'xs') {
         return 'crowded';
@@ -45,6 +47,14 @@ export default defineComponent({
       isZhCN: computed(() => i18n.locale.value === 'zh-CN'),
       blocked: ref(false),
     };
+    const changeTheme = (t: string) => {
+      theme.value = t;
+      localStorage.setItem('theme', t);
+    };
+    provide('themeMode', {
+      theme,
+      changeTheme,
+    });
     provide(GLOBAL_CONFIG, globalConfig);
     watch(
       () => route.path,
@@ -73,6 +83,19 @@ export default defineComponent({
       document.body.appendChild(div);
       globalConfig.blocked.value = 'none' === getComputedStyle(div).display;
     }, 300);
+    watch(
+      theme,
+      () => {
+        if (theme.value === 'dark') {
+          document.getElementsByTagName('html')[0].setAttribute('data-doc-theme', 'dark');
+          document.getElementsByTagName('body')[0].setAttribute('data-theme', 'dark');
+        } else {
+          document.getElementsByTagName('html')[0].setAttribute('data-doc-theme', 'light');
+          document.getElementsByTagName('body')[0].setAttribute('data-theme', 'light');
+        }
+      },
+      { immediate: true },
+    );
     return { globalConfig, locale };
   },
 });

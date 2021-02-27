@@ -1,6 +1,6 @@
 ---
 category: Components
-type: Data Entry
+type: 数据录入
 title: Mentions
 subtitle: 提及
 cover: https://gw.alipayobjects.com/zos/alicdn/jPE-itMFM/Mentions.svg

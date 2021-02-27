@@ -28,6 +28,7 @@ cover: https://gw.alipayobjects.com/zos/alicdn/_0XzgOis7/Select.svg
 | allowClear | 支持清除 | boolean | false |
 | autoClearSearchValue | 是否在选中项后清空搜索框，只在 `mode` 为 `multiple` 或 `tags` 时有效。 | boolean | true |
 | autofocus | 默认获取焦点 | boolean | false |
+| bordered | 是否有边框 | boolean | true |
 | defaultActiveFirstOption | 是否默认高亮第一个选项。 | boolean | true |
 | disabled | 是否禁用 | boolean | false |
 | dropdownClassName | 下拉菜单的 className 属性 | string | - |

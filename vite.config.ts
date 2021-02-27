@@ -3,19 +3,19 @@ import vue from '@vitejs/plugin-vue';
 import md from './plugin/md';
 import docs from './plugin/docs';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import { getThemeVariables } from 'ant-design-vue/dist/theme';
+import { additionalData } from './themeConfig';
 
 /**
  * @type {import('vite').UserConfig}
  */
 export default {
-  // alias: [{
-  //   find: '@',
-  //   replacement: path.join(__dirname, './src'),
-  // }],
-  alias: {
-    // moment: 'moment/dist/moment.js',
-    '@': path.join(__dirname, './src'),
-    vue: 'vue/dist/vue.esm-bundler.js',
+  resolve: {
+    alias: {
+      // moment: 'moment/dist/moment.js',
+      '@': path.join(__dirname, './src'),
+      vue: 'vue/dist/vue.esm-bundler.js',
+    },
   },
   plugins: [
     vueJsx({
@@ -44,9 +44,10 @@ export default {
   css: {
     preprocessorOptions: {
       less: {
-        modifyVars: {},
+        modifyVars: { ...getThemeVariables() },
         javascriptEnabled: true,
         // includePaths: ["node_modules/"],
+        additionalData,
       },
     },
   },

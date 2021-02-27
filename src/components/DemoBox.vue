@@ -19,7 +19,7 @@
       </div>
       <div class="code-box-description" v-html="docHtml"></div>
       <div class="code-box-actions">
-        <a-tooltip :title="$t(`app.demo.type.${type ? 'js' : 'ts'}`)">
+        <a-tooltip :title="$t(`app.demo.type.${type === 'JS' ? 'js' : 'ts'}`)">
           <span
             class="code-expand-icon code-box-code-action"
             style="width: auto"
@@ -178,13 +178,14 @@ export default defineComponent({
         title,
       });
     });
+    const theme = computed(() => inject('themeMode', { theme: ref('default') }).theme.value);
     return {
       docHtml,
       iframeDemo,
       iframeDemoKey,
       iframeHeight,
       inIframe,
-      theme: 'light',
+      theme,
       type,
       warning,
       blocked: globalConfig.blocked,
