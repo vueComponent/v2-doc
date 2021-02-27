@@ -174,7 +174,6 @@ export default defineComponent({
 
     const handleSearch = (selectedKeys, confirm, dataIndex) => {
       confirm();
-      console.log(selectedKeys[0]);
       state.searchText = selectedKeys[0];
       state.searchedColumn = dataIndex;
     };
@@ -190,7 +189,7 @@ export default defineComponent({
       handleSearch,
       handleReset,
       searchText: '',
-      searchInput: null,
+      searchInput,
       searchedColumn: '',
     };
   },
