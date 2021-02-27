@@ -130,7 +130,7 @@ const routes = [
       { path: '', redirect: '/docs/vue/introduce/' },
     ],
   },
-  { path: '/:lang(.*)', redirect: '/docs/vue/introduce/' },
+  { path: '/:lang(.*)', redirect: '/components/overview/' },
 ];
 
 export default createRouter({
