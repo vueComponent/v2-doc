@@ -10,7 +10,7 @@ title:
 
 展示动态变化的效果。
 
-# en-US
+## en-US
   
 The count will be animated as it changes.
 </docs>
