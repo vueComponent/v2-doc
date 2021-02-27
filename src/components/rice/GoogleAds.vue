@@ -1,5 +1,5 @@
 <template>
-  <div class="google-ads" id="API">
+  <div v-if="false" class="google-ads" id="API">
     <ins
       ref="ins"
       class="adsbygoogle"
@@ -16,7 +16,7 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   mounted() {
-    this.load();
+    // this.load();
   },
   methods: {
     load() {
