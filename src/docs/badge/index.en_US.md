@@ -23,6 +23,8 @@ Badge normally appears in proximity to notifications or user avatars with eye-ca
 <a-badge :count="5" />
 ```
 
+### Badge
+
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
 | color | Customize Badge dot color | string | - | 1.5.0 |
@@ -35,3 +37,11 @@ Badge normally appears in proximity to notifications or user avatars with eye-ca
 | text | If `status` is set, `text` sets the display text of the status `dot` | string | `''` |  |
 | numberStyle | sets the display style of the status `dot` | object | '' |  |
 | title | Text to show when hovering over the badge | string | `count` |  |
+
+### Badge.Ribbon (2.0.1+)
+
+| Property | Description | Type | Default | Version |
+| --- | --- | --- | --- | --- |
+| color | Customize Ribbon color | string | - |  |
+| placement | The placement of the Ribbon, `start` and `end` follow text direction (RTL or LTR) | `start` \| `end` | `end` |  |
+| text | Content inside the Ribbon | string \| VNode \| slot | - |  |

@@ -24,6 +24,8 @@ cover: https://gw.alipayobjects.com/zos/antfincdn/6%26GF9WHwvY/Badge.svg
 <a-badge :count="5" />
 ```
 
+### Badge
+
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | color | 自定义小圆点的颜色 | string | - | 1.5.0 |
@@ -36,3 +38,11 @@ cover: https://gw.alipayobjects.com/zos/antfincdn/6%26GF9WHwvY/Badge.svg
 | text | 在设置了 `status` 的前提下有效，设置状态点的文本 | string | '' |  |
 | numberStyle | 设置状态点的样式 | object | '' |  |
 | title | 设置鼠标放在状态点上时显示的文字 | string | `count` |  |
+
+### Badge.Ribbon (2.0.1+)
+
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- |
+| color | 自定义缎带的颜色 | string | - |  |
+| placement | 缎带的位置，`start` 和 `end` 随文字方向（RTL 或 LTR）变动 | `start` \| `end` | `end` |  |
+| text | 缎带中填入的内容 | string \| VNode \| slot | - |  |
