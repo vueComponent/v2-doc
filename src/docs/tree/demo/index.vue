@@ -9,6 +9,7 @@
     <directory />
     <switcher-icon />
     <replace-fields />
+    <context-menu />
   </demo-sort>
 </template>
 <script lang="ts">
@@ -21,6 +22,7 @@ import CustomIcon from './customized-icon.vue';
 import Directory from './directory.vue';
 import SwitcherIcon from './switcher-icon.vue';
 import ReplaceFields from './replaceFields.vue';
+import ContextMenu from './context-menu.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
 import { defineComponent } from 'vue';
@@ -38,6 +40,7 @@ export default defineComponent({
     Directory,
     SwitcherIcon,
     ReplaceFields,
+    ContextMenu,
   },
   setup() {
     return {};
