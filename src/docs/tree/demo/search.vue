@@ -20,9 +20,10 @@ Searchable Tree.
   <div>
     <a-input-search v-model:value="searchValue" style="margin-bottom: 8px" placeholder="Search" />
     <a-tree
-      v-model:expandedKeys="expandedKeys"
+      :expandedKeys="expandedKeys"
       :auto-expand-parent="autoExpandParent"
       :tree-data="gData"
+      @expand="onExpand"
     >
       <template #title="{ title }">
         <span v-if="title.indexOf(searchValue) > -1">
@@ -102,9 +103,11 @@ export default defineComponent({
     const autoExpandParent = ref<boolean>(true);
     const gData = ref<TreeDataItem[]>(genData);
 
-    watch(expandedKeys, () => {
+    const onExpand = (keys: string[]) => {
+      expandedKeys.value = keys;
       autoExpandParent.value = false;
-    });
+    };
+
     watch(searchValue, value => {
       const expanded = dataList
         .map((item: TreeDataItem) => {
@@ -123,6 +126,7 @@ export default defineComponent({
       searchValue,
       autoExpandParent,
       gData,
+      onExpand,
     };
   },
 });
