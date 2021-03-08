@@ -4468,10 +4468,10 @@ vue-i18n@^9.0.0-rc.1:
     "@intlify/shared" "9.0.0-rc.2"
     "@vue/devtools-api" "^6.0.0-beta.3"
 
-vue-request@^1.0.0-beta.8:
-  version "1.0.0-beta.8"
-  resolved "https://registry.npm.taobao.org/vue-request/download/vue-request-1.0.0-beta.8.tgz#3ebc09d5fc25957468a8061f9fec586c4f669522"
-  integrity sha1-PrwJ1fwllXRoqAYfn+xYbE9mlSI=
+vue-request@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.npm.taobao.org/vue-request/download/vue-request-1.0.4.tgz?cache=0&sync_timestamp=1615176447437&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-request%2Fdownload%2Fvue-request-1.0.4.tgz#f24d26a6a40b65c30651fe146341491ec2969fb2"
+  integrity sha1-8k0mpqQLZcMGUf4UY0FJHsKWn7I=
 
 vue-router@^4.0.2:
   version "4.0.3"
