@@ -27,6 +27,7 @@ Render in current dom. custom container, check getContainer.
       padding: '48px',
       textAlign: 'center',
       background: '#fafafa',
+      width: '100%',
     }"
   >
     Render in this
@@ -47,10 +48,10 @@ Render in current dom. custom container, check getContainer.
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, onMounted, ref } from 'vue';
 export default defineComponent({
   setup() {
-    const visible = ref(false);
+    const visible = ref(true);
 
     const afterVisibleChange = (bool: boolean) => {
       console.log('visible', bool);
@@ -63,6 +64,11 @@ export default defineComponent({
     const onClose = () => {
       visible.value = false;
     };
+
+    onMounted(() => {
+      visible.value = false;
+    });
+
     return {
       visible,
       afterVisibleChange,
