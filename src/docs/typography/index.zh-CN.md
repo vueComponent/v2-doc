@@ -26,11 +26,12 @@ cover: https://gw.alipayobjects.com/zos/alicdn/GOM1KQ24O/Typography.svg
 | disabled | 禁用文本 | boolean | false |  |
 | editable | 是否可编辑，为对象时可对编辑进行控制 | boolean \| [editable](#editable) | false | [editable](#editable) |
 | ellipsis | 自动溢出省略 | boolean | false |  |
-| keyboard | 添加键盘样式 | boolean | false | 4.3.0 |
+| keyboard | 添加键盘样式 | boolean | false |  |
 | mark | 添加标记样式 | boolean | false |  |
 | strong | 是否加粗 | boolean | false |  |
-| type | 文本类型 | `secondary` \| `success` \| `warning` \| `danger` | - | success: 4.6.0 |
+| type | 文本类型 | `secondary` \| `success` \| `warning` \| `danger` | - |  |
 | underline | 添加下划线样式 | boolean | false |  |
+| content(v-model) | 当使用 ellipsis 或 editable 时，使用 content 代替 children | string | - |  |
 
 ### Typography.Title
 
@@ -42,11 +43,11 @@ cover: https://gw.alipayobjects.com/zos/alicdn/GOM1KQ24O/Typography.svg
 | disabled | 禁用文本 | boolean | false |  |
 | editable | 是否可编辑，为对象时可对编辑进行控制 | boolean \| [editable](#editable) | false | [editable](#editable) |
 | ellipsis | 自动溢出省略，为对象时可设置省略行数、是否可展开、添加后缀等 | boolean \| [ellipsis](#ellipsis) | false | [ellipsis](#ellipsis) |
-| level | 重要程度，相当于 `h1`、`h2`、`h3`、`h4`、`h5` | number: 1, 2, 3, 4, 5 | 1 | 5: 4.6.0 |
+| level | 重要程度，相当于 `h1`、`h2`、`h3`、`h4`、`h5` | number: 1, 2, 3, 4, 5 | 1 | |
 | mark | 添加标记样式 | boolean | false |  |
-| type | 文本类型 | `secondary` \| `success` \| `warning` \| `danger` | - | success: 4.6.0 |
+| type | 文本类型 | `secondary` \| `success` \| `warning` \| `danger` | - |  |
 | underline | 添加下划线样式 | boolean | false |  |
-| onChange | 当用户提交编辑内容时触发 | function(string) | - |  |
+| content(v-model) | 当使用 ellipsis 或 editable 时，使用 content 代替 children | string | - |  |
 
 ### Typography.Paragraph
 
@@ -60,33 +61,42 @@ cover: https://gw.alipayobjects.com/zos/alicdn/GOM1KQ24O/Typography.svg
 | ellipsis | 自动溢出省略，为对象时可设置省略行数、是否可展开、添加后缀等 | boolean \| [ellipsis](#ellipsis) | false | [ellipsis](#ellipsis) |
 | mark | 添加标记样式 | boolean | false |  |
 | strong | 是否加粗 | boolean | false |  |
-| type | 文本类型 | `secondary` \| `success` \| `warning` \| `danger` | - | success: 4.6.0 |
+| type | 文本类型 | `secondary` \| `success` \| `warning` \| `danger` | - |  |
 | underline | 添加下划线样式 | boolean | false |  |
-| onChange | 当用户提交编辑内容时触发 | function(string) | - |  |
+| content(v-model) | 当使用 ellipsis 或 editable 时，使用 content 代替 children | string | - |  |
+
+### slots
+
+| 名称 | 说明 | 参数 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- |
+| editableIcon | 自定义编辑图标 | - | &lt;EditOutlined /> |  |
+| editableTooltip | 自定义提示文本，当 `editable.tooltip = false` 时关闭 | - | `编辑` |  |
+| copyableIcon | 自定义拷贝图标 | `{ copied: boolean }` | `copied ? <CheckOutlined /> : <CopyOutlined />` |  |
+| copyableTooltip | 自定义提示文案，当 `copyable.tooltip = false` 时关闭 | `{ copied: boolean }` | `copied ? '复制成功' : '复制'` |  |
+| ellipsisSymbol | 自定义展开描述文案 | - | - |  |
+| ellipsisTooltip | 省略时，展示提示信息 | - | - |  |
+
 
 ### copyable
 
     {
       text: string,
       onCopy: function,
-      icon: ReactNode,
-      tooltips: false | [ReactNode, ReactNode],
+      tooltip: false,
     }
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
-| icon | 自定义拷贝图标：\[默认图标, 拷贝后的图标] | \[ReactNode, ReactNode] | - | 4.6.0 |
 | text | 拷贝到剪切板里的文本 | string | - |  |
-| tooltips | 自定义提示文案，为 false 时隐藏文案 | \[ReactNode, ReactNode] | \[`复制`, `复制成功`] | 4.4.0 |
+| tooltip | 是否展示提示文本 | boolean | true |  |
 | onCopy | 拷贝成功的回调函数 | function | - |  |
 
 ### editable
 
     {
-      icon: ReactNode,
-      tooltip: boolean | ReactNode,
+      tooltip: boolean,
       editing: boolean,
-      maxLength: number,
+      maxlength: number,
       autoSize: boolean | { minRows: number, maxRows: number },
       onStart: function,
       onChange: function(string),
@@ -96,14 +106,13 @@ cover: https://gw.alipayobjects.com/zos/alicdn/GOM1KQ24O/Typography.svg
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
-| autoSize | 自动 resize 文本域 | boolean \| { minRows: number, maxRows: number } | - | 4.4.0 |
+| autoSize | 自动 resize 文本域 | boolean \| { minRows: number, maxRows: number } | - | |
 | editing | 控制是否是编辑中状态 | boolean | false |  |
-| icon | 自定义编辑图标 | ReactNode | &lt;EditOutlined /> | 4.6.0 |
-| maxLength | 编辑中文本域最大长度 | number | - | 4.4.0 |
-| tooltip | 自定义提示文本，为 false 时关闭 | boolean \| ReactNode | `编辑` | 4.6.0 |
+| maxlength | 编辑中文本域最大长度 | number | - |  |
+| tooltip | 是否展示提示文本 | boolean | true |  |
 | onCancel | 按 ESC 退出编辑状态时触发 | function | - |  |
 | onChange | 文本域编辑时触发 | function(event) | - |  |
-| onEnd | 按 ENTER 结束编辑状态时触发 | function | - | 4.14.0 |
+| onEnd | 按 ENTER 结束编辑状态时触发 | function | - |  |
 | onStart | 进入编辑中状态时触发 | function | - |  |
 | onCancel | 按 ESC 退出编辑状态时触发 | function | - |  |
 | onEnd | 按 ENTER 结束编辑状态时触发 | function | - |  |
@@ -114,8 +123,8 @@ cover: https://gw.alipayobjects.com/zos/alicdn/GOM1KQ24O/Typography.svg
       rows: number,
       expandable: boolean,
       suffix: string,
-      symbol: ReactNode,
-      tooltip: boolean | ReactNode,
+      symbol: string,
+      tooltip: boolean,
       onExpand: function(event),
       onEllipsis: function(ellipsis),
     }
@@ -125,7 +134,7 @@ cover: https://gw.alipayobjects.com/zos/alicdn/GOM1KQ24O/Typography.svg
 | expandable | 是否可展开           | boolean              | -      |        |
 | rows       | 最多显示的行数       | number               | -      |        |
 | suffix     | 自定义省略内容后缀   | string               | -      |        |
-| symbol     | 自定义展开描述文案   | ReactNode            | `展开` |        |
-| tooltip    | 省略时，展示提示信息 | boolean \| ReactNode | -      |      |
+| symbol     | 自定义展开描述文案   | string            | `展开` |        |
+| tooltip    | 省略时，展示提示信息 | boolean \| string | -      |      |
 | onEllipsis | 触发省略时的回调     | function(ellipsis)   | -      |      |
 | onExpand   | 点击展开时的回调     | function(event)      | -      |        |
