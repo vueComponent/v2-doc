@@ -43,7 +43,7 @@ cover: https://gw.alipayobjects.com/zos/alicdn/GOM1KQ24O/Typography.svg
 | disabled | 禁用文本 | boolean | false |  |
 | editable | 是否可编辑，为对象时可对编辑进行控制 | boolean \| [editable](#editable) | false | [editable](#editable) |
 | ellipsis | 自动溢出省略，为对象时可设置省略行数、是否可展开、添加后缀等 | boolean \| [ellipsis](#ellipsis) | false | [ellipsis](#ellipsis) |
-| level | 重要程度，相当于 `h1`、`h2`、`h3`、`h4`、`h5` | number: 1, 2, 3, 4, 5 | 1 | |
+| level | 重要程度，相当于 `h1`、`h2`、`h3`、`h4`、`h5` | number: 1, 2, 3, 4, 5 | 1 |  |
 | mark | 添加标记样式 | boolean | false |  |
 | type | 文本类型 | `secondary` \| `success` \| `warning` \| `danger` | - |  |
 | underline | 添加下划线样式 | boolean | false |  |
@@ -76,37 +76,40 @@ cover: https://gw.alipayobjects.com/zos/alicdn/GOM1KQ24O/Typography.svg
 | ellipsisSymbol | 自定义展开描述文案 | - | - |  |
 | ellipsisTooltip | 省略时，展示提示信息 | - | - |  |
 
-
 ### copyable
 
-    {
-      text: string,
-      onCopy: function,
-      tooltip: false,
-    }
+```json
+  {
+    text: string,
+    onCopy: function,
+    tooltip: false,
+  }
+```
 
-| 参数 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- |
-| text | 拷贝到剪切板里的文本 | string | - |  |
-| tooltip | 是否展示提示文本 | boolean | true |  |
-| onCopy | 拷贝成功的回调函数 | function | - |  |
+| 参数    | 说明                 | 类型     | 默认值 | 版本 |
+| ------- | -------------------- | -------- | ------ | ---- |
+| text    | 拷贝到剪切板里的文本 | string   | -      |      |
+| tooltip | 是否展示提示文本     | boolean  | true   |      |
+| onCopy  | 拷贝成功的回调函数   | function | -      |      |
 
 ### editable
 
-    {
-      tooltip: boolean,
-      editing: boolean,
-      maxlength: number,
-      autoSize: boolean | { minRows: number, maxRows: number },
-      onStart: function,
-      onChange: function(string),
-      onCancel: function,
-      onEnd: function,
-    }
+```json
+  {
+    tooltip: boolean,
+    editing: boolean,
+    maxlength: number,
+    autoSize: boolean | { minRows: number, maxRows: number },
+    onStart: function,
+    onChange: function(string),
+    onCancel: function,
+    onEnd: function,
+  }
+```
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
-| autoSize | 自动 resize 文本域 | boolean \| { minRows: number, maxRows: number } | - | |
+| autoSize | 自动 resize 文本域 | boolean \| { minRows: number, maxRows: number } | - |  |
 | editing | 控制是否是编辑中状态 | boolean | false |  |
 | maxlength | 编辑中文本域最大长度 | number | - |  |
 | tooltip | 是否展示提示文本 | boolean | true |  |
@@ -119,22 +122,24 @@ cover: https://gw.alipayobjects.com/zos/alicdn/GOM1KQ24O/Typography.svg
 
 ### ellipsis
 
-    {
-      rows: number,
-      expandable: boolean,
-      suffix: string,
-      symbol: string,
-      tooltip: boolean,
-      onExpand: function(event),
-      onEllipsis: function(ellipsis),
-    }
+```json
+  {
+    rows: number,
+    expandable: boolean,
+    suffix: string,
+    symbol: string,
+    tooltip: boolean,
+    onExpand: function(event),
+    onEllipsis: function(ellipsis),
+  }
+```
 
-| 参数       | 说明                 | 类型                 | 默认值 | 版本   |
-| ---------- | -------------------- | -------------------- | ------ | ------ |
-| expandable | 是否可展开           | boolean              | -      |        |
-| rows       | 最多显示的行数       | number               | -      |        |
-| suffix     | 自定义省略内容后缀   | string               | -      |        |
-| symbol     | 自定义展开描述文案   | string            | `展开` |        |
-| tooltip    | 省略时，展示提示信息 | boolean \| string | -      |      |
-| onEllipsis | 触发省略时的回调     | function(ellipsis)   | -      |      |
-| onExpand   | 点击展开时的回调     | function(event)      | -      |        |
+| 参数       | 说明                 | 类型               | 默认值 | 版本 |
+| ---------- | -------------------- | ------------------ | ------ | ---- |
+| expandable | 是否可展开           | boolean            | -      |      |
+| rows       | 最多显示的行数       | number             | -      |      |
+| suffix     | 自定义省略内容后缀   | string             | -      |      |
+| symbol     | 自定义展开描述文案   | string             | `展开` |      |
+| tooltip    | 省略时，展示提示信息 | boolean \| string  | -      |      |
+| onEllipsis | 触发省略时的回调     | function(ellipsis) | -      |      |
+| onExpand   | 点击展开时的回调     | function(event)    | -      |      |

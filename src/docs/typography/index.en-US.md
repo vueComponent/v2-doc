@@ -25,7 +25,7 @@ Basic text writing, including headings, body text, lists, and more.
 | disabled | Disabled content | boolean | false |  |
 | editable | If editable. Can control edit state when is object | boolean \| [editable](#editable) | false | [editable](#editable) |
 | ellipsis | Display ellipsis when text overflows | boolean | false |  |
-| keyboard | Keyboard style | boolean | false | |
+| keyboard | Keyboard style | boolean | false |  |
 | mark | Marked style | boolean | false |  |
 | strong | Bold style | boolean | false |  |
 | type | Content type | `secondary` \| `success` \| `warning` \| `danger` | - |  |
@@ -64,7 +64,6 @@ Basic text writing, including headings, body text, lists, and more.
 | underline | Underlined style | boolean | false |  |
 | content(v-model) | When using ellipsis or editable, use content instead of children | string | - |  |
 
-
 ### slots
 
 | Name | Description | Property | Default | Version |
@@ -78,30 +77,34 @@ Basic text writing, including headings, body text, lists, and more.
 
 ### copyable
 
-    {
-      text: string,
-      onCopy: function,
-      tooltip: false,
-    }
+```json
+  {
+    text: string,
+    onCopy: function,
+    tooltip: false,
+  }
+```
 
-| Property | Description | Type | Default | Version |
-| --- | --- | --- | --- | --- |
-| text | The text to copy | string | - |  |
-| tooltip | Whether to show tooltip | boolean | true |  |
-| onCopy | Called when copied text | function | - |  |
+| Property | Description             | Type     | Default | Version |
+| -------- | ----------------------- | -------- | ------- | ------- |
+| text     | The text to copy        | string   | -       |         |
+| tooltip  | Whether to show tooltip | boolean  | true    |         |
+| onCopy   | Called when copied text | function | -       |         |
 
 ### editable
 
-    {
-      tooltip: boolean,
-      editing: boolean,
-      maxlength: number,
-      autoSize: boolean | { minRows: number, maxRows: number },
-      onStart: function,
-      onChange: function(string),
-      onCancel: function,
-      onEnd: function,
-    }
+```json
+  {
+    tooltip: boolean,
+    editing: boolean,
+    maxlength: number,
+    autoSize: boolean | { minRows: number, maxRows: number },
+    onStart: function,
+    onChange: function(string),
+    onCancel: function,
+    onEnd: function,
+  }
+```
 
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
@@ -118,22 +121,24 @@ Basic text writing, including headings, body text, lists, and more.
 
 ### ellipsis
 
-    {
-      rows: number,
-      expandable: boolean,
-      suffix: string,
-      symbol: string,
-      tooltip: boolean | string,
-      onExpand: function(event),
-      onEllipsis: function(ellipsis),
-    }
+```json
+  {
+    rows: number,
+    expandable: boolean,
+    suffix: string,
+    symbol: string,
+    tooltip: boolean | string,
+    onExpand: function(event),
+    onEllipsis: function(ellipsis),
+  }
+```
 
-| Property | Description | Type | Default | Version |
-| --- | --- | --- | --- | --- |
-| expandable | Whether to be expandable | boolean | - |  |
-| rows | Max rows of content | number | - |  |
-| suffix | Suffix of ellipsis content | string | - |  |
-| symbol | Custom description of ellipsis | string | `Expand` |  |
-| tooltip | Show tooltip when ellipsis | boolean \| string | - | |
-| onEllipsis | Called when enter or leave ellipsis state | function(ellipsis) | - |  |
-| onExpand | Called when expand content | function(event) | - |  |
+| Property   | Description                               | Type               | Default  | Version |
+| ---------- | ----------------------------------------- | ------------------ | -------- | ------- |
+| expandable | Whether to be expandable                  | boolean            | -        |         |
+| rows       | Max rows of content                       | number             | -        |         |
+| suffix     | Suffix of ellipsis content                | string             | -        |         |
+| symbol     | Custom description of ellipsis            | string             | `Expand` |         |
+| tooltip    | Show tooltip when ellipsis                | boolean \| string  | -        |         |
+| onEllipsis | Called when enter or leave ellipsis state | function(ellipsis) | -        |         |
+| onExpand   | Called when expand content                | function(event)    | -        |         |

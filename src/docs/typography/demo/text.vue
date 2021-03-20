@@ -15,7 +15,7 @@ title:
 Provides multiple types of text and link.
 </docs>
 <template>
- <a-space direction="vertical">
+  <a-space direction="vertical">
     <a-typography-text>Ant Design Vue (default)</a-typography-text>
     <a-typography-text type="secondary">Ant Design Vue (secondary)</a-typography-text>
     <a-typography-text type="success">Ant Design Vue (success)</a-typography-text>
