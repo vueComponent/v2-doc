@@ -26,4 +26,5 @@ export default {
   ...login,
   ...register,
   ...registerResult,
+  'app.sponsor': 'Sponsors',
 };

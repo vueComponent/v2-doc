@@ -130,7 +130,8 @@ const routes = [
       { path: '', redirect: '/docs/vue/introduce/' },
     ],
   },
-  { path: '/:lang(.*)', redirect: '/components/overview/' },
+  { path: '/', component: () => import('../views/Home/index.vue') },
+  { path: '/:lang(.*)', redirect: '/' },
 ];
 
 export default createRouter({

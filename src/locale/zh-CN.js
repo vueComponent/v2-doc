@@ -31,4 +31,5 @@ export default {
   ...login,
   ...register,
   ...registerResult,
+  'app.sponsor': '赞助商',
 };
