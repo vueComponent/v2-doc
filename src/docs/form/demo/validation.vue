@@ -120,7 +120,7 @@ export default defineComponent({
         });
     };
     const resetForm = () => {
-      formRef.value.ruleformState.resetFields();
+      formRef.value.resetFields();
     };
     return {
       formRef,
