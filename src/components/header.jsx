@@ -191,14 +191,8 @@ export default {
                   </a-popover>
                 </a-menu-item>
                 <a-menu-item key="qq">
-                  <a-popover
-                    placement="right"
-                    content={
-                      <img width="160" height="160" alt="qq" src="https://qn.antdv.com/qq.png" />
-                    }
-                  >
-                    <a>QQ(217490093)</a>
-                  </a-popover>
+                  <a>QQ 群1：217490093（3000人已满）</a>
+                  <a>QQ 群2：809774695</a>
                 </a-menu-item>
               </a-sub-menu>
             </a-menu>
