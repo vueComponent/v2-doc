@@ -20,7 +20,6 @@ cover: https://gw.alipayobjects.com/zos/alicdn/zNdJQMhfm/Switch.svg
 | autofocus         | 组件自动获取焦点                    | boolean      | false   |
 | checked(v-model)  | 指定当前是否选中                    | boolean      | false   |
 | checkedChildren   | 选中时的内容                        | string\|slot |         |
-| defaultChecked    | 初始是否选中                        | boolean      | false   |
 | disabled          | 是否禁用                            | boolean      | false   |
 | loading           | 加载中的开关                        | boolean      | false   |
 | size              | 开关大小，可选值：`default` `small` | string       | default |
