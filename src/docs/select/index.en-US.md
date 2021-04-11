@@ -42,7 +42,7 @@ Select component to select value from options.
 | maxTagCount | Max tag count to show | number | - |
 | maxTagPlaceholder | Placeholder for not showing tags | slot/function(omittedValues) | - |
 | maxTagTextLength | Max text length to show | number | - |
-| mode | Set mode of Select | 'default' \| 'multiple' \| 'tags' | 'default' |
+| mode | Set mode of Select | 'multiple' \| 'tags' | - |
 | notFoundContent | Specify content to show when no result matches.. | string\|slot | 'Not Found' |
 | optionFilterProp | Which prop value of option will be used for filter if filterOption is true | string | value |
 | optionLabelProp | Which prop value of option will render as content of select. | string | `value` for `combobox`, `children` for other modes |

@@ -43,7 +43,7 @@ cover: https://gw.alipayobjects.com/zos/alicdn/_0XzgOis7/Select.svg
 | maxTagCount | 最多显示多少个 tag | number | - |
 | maxTagPlaceholder | 隐藏 tag 时显示的内容 | slot/function(omittedValues) | - |
 | maxTagTextLength | 最大显示的 tag 文本长度 | number | - |
-| mode | 设置 Select 的模式为多选或标签 | 'default' \| 'multiple' \| 'tags' \| 'combobox' | - |
+| mode | 设置 Select 的模式为多选或标签 | 'multiple' \| 'tags' \| 'combobox' | - |
 | notFoundContent | 当下拉列表为空时显示的内容 | string\|slot | 'Not Found' |
 | optionFilterProp | 搜索时过滤对应的 option 属性，不支持 children | string | value |
 | optionLabelProp | 回填到选择框的 Option 的属性值，默认是 Option 的子元素。比如在子元素需要高亮效果时，此值可以设为 `value`。 | string | `children` （combobox 模式下为 `value`） |
