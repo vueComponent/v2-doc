@@ -42,7 +42,7 @@ cover: https://gw.alipayobjects.com/zos/alicdn/ORmcdeaoO/Form.svg
 | wrapperCol | 需要为输入控件设置布局样式时，使用该属性，用法同 labelCol | [object](/components/grid-cn/#Col) |  |  |
 | colon | 配置 Form.Item 的 colon 的默认值 (只有在属性 layout 为 horizontal 时有效) | boolean | true |  |
 | validateOnRuleChange | 是否在 rules 属性改变后立即触发一次验证 | boolean | true |  |
-| scrollToFirstError | 提交失败自动滚动到第一个错误字段 | boolean | false | 2.0.0 |
+| scrollToFirstError | 提交失败自动滚动到第一个错误字段 | boolean \| [options](https://github.com/stipsan/scroll-into-view-if-needed/#options) | false | 2.0.0 |
 | name | 表单名称，会作为表单字段 `id` 前缀使用 | string | - | 2.0.0 |
 | validateTrigger | 统一设置字段校验规则 | string \| string[] | `change` | 2.0.0 |
 

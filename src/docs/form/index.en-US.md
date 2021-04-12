@@ -43,7 +43,7 @@ A form consists of one or more form fields whose type includes input, textarea, 
 | colon | change default props colon value of Form.Item (only effective when prop layout is horizontal) | boolean | true |  |
 | validateOnRuleChange | whether to trigger validation when the `rules` prop is changed | boolean | true |  |
 | name | Form name. Will be the prefix of Field `id` | string | - | 2.0.0 |
-| scrollToFirstError | Auto scroll to first failed field when submit | boolean | false | 2.0.0 |
+| scrollToFirstError | Auto scroll to first failed field when submit | boolean \| [options](https://github.com/stipsan/scroll-into-view-if-needed/#options) | false | 2.0.0 |
 | validateTrigger | Config field validate trigger | string \| string[] | `change` | 2.0.0 |
 
 ### Events
