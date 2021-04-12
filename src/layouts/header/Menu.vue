@@ -12,9 +12,7 @@
       :getPopupContainer="trigger => trigger.parentNode"
     >
       <a-select-option :value="antdVersion">{{ antdVersion }}</a-select-option>
-      <a-select-option value="1.x" @click="location.href = 'https://1x.antdv.com'">
-        1.x
-      </a-select-option>
+      <a-select-option value="1.x" @click="changeVersion">1.x</a-select-option>
     </a-select>
     <a-button
       size="small"
@@ -36,11 +34,13 @@ import Navigation from './Navigation.vue';
 import Ecosystem from './Ecosystem.vue';
 import { version } from 'ant-design-vue';
 import { isZhCN, isLocalStorageNameSupported, getLocalizedPathname } from '@/utils/util';
+import { useRoute } from 'vue-router';
 export default defineComponent({
   name: 'HeaderMenu',
   props: ['isMobile'],
   setup() {
     const antdVersion = ref(version);
+    const route = useRoute();
     const onLangChange = () => {
       const {
         location: { pathname },
@@ -59,10 +59,14 @@ export default defineComponent({
           getLocalizedPathname(pathname, !isZhCN(pathname)).path,
         );
     };
+
+    const changeVersion = () => {
+      location.href = `https://1x.antdv.com${route.fullPath}`;
+    };
     return {
       onLangChange,
       antdVersion,
-      location: window.location,
+      changeVersion,
     };
   },
   components: {
