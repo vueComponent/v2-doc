@@ -44,7 +44,7 @@ const optionsWithDisabled = [
   { label: 'Orange', value: 'Orange', disabled: false },
 ];
 export default defineComponent({
-  data() {
+  setup() {
     const state = reactive({
       value1: [],
       value2: ['Apple'],
