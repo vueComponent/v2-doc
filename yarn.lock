@@ -964,10 +964,10 @@ algoliasearch@^3.24.5:
     semver "^5.1.0"
     tunnel-agent "^0.6.0"
 
-ali-oss@^6.13.2:
-  version "6.13.2"
-  resolved "https://registry.yarnpkg.com/ali-oss/-/ali-oss-6.13.2.tgz#ebd965b935bb8f436c5c5ef0fc03fd228fbf00a7"
-  integrity sha512-85z+2Cd3ydCmdw/l6oFkaMmyswPVXm2r6a8GI+738s7O6YsDHDSogQ04joymUT2gdFNVWHYWTmXWLKEkD19eEQ==
+ali-oss@6.15.2:
+  version "6.15.2"
+  resolved "https://registry.npm.taobao.org/ali-oss/download/ali-oss-6.15.2.tgz?cache=0&sync_timestamp=1617266889358&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fali-oss%2Fdownload%2Fali-oss-6.15.2.tgz#276c3bdff5f89460ac9feac8d1d2a0bc32a18d6c"
+  integrity sha1-J2w73/X4lGCsn+rI0dKgvDKhjWw=
   dependencies:
     address "^1.0.0"
     agentkeepalive "^3.4.1"
