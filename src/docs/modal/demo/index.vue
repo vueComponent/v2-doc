@@ -12,6 +12,7 @@
     <confirm-promise />
     <width />
     <button-props />
+    <fullscreen />
   </demo-sort>
 </template>
 <script lang="ts">
@@ -26,6 +27,7 @@ import Position from './position.vue';
 import ConfirmRouter from './confirm-router.vue';
 import ConfirmPromise from './confirm-promise.vue';
 import Width from './width.vue';
+import Fullscreen from './fullscreen.vue';
 import ButtonProps from './button-props.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
@@ -46,6 +48,7 @@ export default defineComponent({
     ConfirmPromise,
     Width,
     ButtonProps,
+    Fullscreen,
   },
   setup() {
     return {};
