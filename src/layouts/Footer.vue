@@ -69,6 +69,12 @@
             <div>
               <a href="https://cli.vuejs.org/" target="_blank">Vue CLI</a>
             </div>
+            <div>
+              <a href="https://vitejs.dev/" target="_blank">Vite</a>
+            </div>
+            <div v-if="showPpy()">
+              <a href="https://www.pengpengyu.com/" target="_blank">砰砰鱼</a>
+            </div>
           </div>
         </a-col>
         <a-col :md="6" :sm="24" :xs="24">
@@ -102,9 +108,19 @@
   </footer>
 </template>
 <script>
+import moment from 'moment';
 export default {
   props: {
     isCN: Boolean,
+  },
+  setup() {
+    const showPpy = () => {
+      return moment().isBefore(moment('2021-06-01'));
+    };
+    return {
+      moment,
+      showPpy,
+    };
   },
 };
 </script>
