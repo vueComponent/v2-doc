@@ -18,8 +18,8 @@ When there's too much information to show and the table can't display all at onc
 
 <template>
   <a-table :columns="columns" :data-source="data">
-    <template>
-      <a>Delete</a>
+    <template #action>
+      <a h>Delete</a>
     </template>
     <template #expandedRowRender="{ record }">
       <p style="margin: 0">
