@@ -19,7 +19,7 @@ When there's too much information to show and the table can't display all at onc
 <template>
   <a-table :columns="columns" :data-source="data">
     <template #action>
-      <a h>Delete</a>
+      <a>Delete</a>
     </template>
     <template #expandedRowRender="{ record }">
       <p style="margin: 0">
