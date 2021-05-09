@@ -115,7 +115,7 @@ export default {
   },
   setup() {
     const showPpy = () => {
-      return moment().isBefore(moment('2021-06-01'));
+      return moment().isBefore(moment('2021-06-15'));
     };
     return {
       moment,
