@@ -24,8 +24,8 @@ Image, Icon and letter are supported, and the latter two kinds avatar can have c
   <a-avatar>U</a-avatar>
   <a-avatar>USER</a-avatar>
   <a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-  <a-avatar style="color: #f56a00; backgroundcolor: #fde3cf">U</a-avatar>
-  <a-avatar style="backgroundcolor: #87d068">
+  <a-avatar style="color: #f56a00; background-color: #fde3cf">U</a-avatar>
+  <a-avatar style="background-color: #87d068">
     <template #icon>
       <UserOutlined />
     </template>
