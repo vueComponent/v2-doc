@@ -569,10 +569,10 @@
   resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-14.14.21.tgz#d934aacc22424fe9622ebf6857370c052eae464e"
   integrity sha1-2TSqzCJCT+liLr9oVzcMBS6uRk4=
 
-"@types/node@^13.13.4":
-  version "13.13.40"
-  resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-13.13.40.tgz#f655ef327362cc83912f2e69336ddc62a24a9f88"
-  integrity sha1-9lXvMnNizIORLy5pM23cYqJKn4g=
+"@types/node@13.13.52":
+  version "13.13.52"
+  resolved "https://registry.nlark.com/@types/node/download/@types/node-13.13.52.tgz#03c13be70b9031baaed79481c0c0cfb0045e53f7"
+  integrity sha1-A8E75wuQMbqu15SBwMDPsAReU/c=
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
