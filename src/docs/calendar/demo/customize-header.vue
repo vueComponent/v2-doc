@@ -10,7 +10,7 @@ title:
 
 自定义日历头部内容。
 
-## en-uS
+## en-US
 
 Customize Calendar header content.
 
