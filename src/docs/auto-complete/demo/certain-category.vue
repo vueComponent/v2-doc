@@ -25,7 +25,6 @@ Lookup-Patterns - Certain Category.
       :dropdown-style="{ width: '300px' }"
       size="large"
       style="width: 100%"
-      placeholder="input here"
       option-label-prop="value"
     >
       <template #dataSource>
@@ -58,7 +57,7 @@ Lookup-Patterns - Certain Category.
           </a>
         </a-select-option>
       </template>
-      <a-input>
+      <a-input placeholder="input here">
         <template #suffix><search-outlined class="certain-category-icon" /></template>
       </a-input>
     </a-auto-complete>
