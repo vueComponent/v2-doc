@@ -71,7 +71,7 @@ Specify `dataSource` of Table as an array of data.
 | --- | --- | --- | --- | --- |
 | tableLayout | [table-layout](https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout) attribute of table element | - \| 'auto' \| 'fixed' | -<hr />`fixed` when header/columns are fixed, or using `column.ellipsis` | 1.5.0 |
 | bordered | Whether to show all table borders | boolean | `false` |  |
-| childrenColumnName | The column contains children to display | string\[] | children |  |
+| childrenColumnName | The column contains children to display | string | `children` |  |
 | columns | Columns of table [config](#Column) | array | - |  |
 | components | Override default table elements | object | - |  |
 | dataSource | Data record array to be displayed | any\[] | - |  |
