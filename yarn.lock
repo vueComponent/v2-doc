@@ -4541,10 +4541,10 @@ vue-i18n@^9.0.0-rc.1:
     "@intlify/shared" "9.0.0-rc.2"
     "@vue/devtools-api" "^6.0.0-beta.3"
 
-vue-request@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.npm.taobao.org/vue-request/download/vue-request-1.0.4.tgz?cache=0&sync_timestamp=1615176447437&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-request%2Fdownload%2Fvue-request-1.0.4.tgz#f24d26a6a40b65c30651fe146341491ec2969fb2"
-  integrity sha1-8k0mpqQLZcMGUf4UY0FJHsKWn7I=
+vue-request@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.nlark.com/vue-request/download/vue-request-1.2.0.tgz#ed4dd7d8657f03bd125a530e331c0243cdecc60f"
+  integrity sha1-7U3X2GV/A70SWlMOMxwCQ83sxg8=
 
 vue-router@^4.0.2:
   version "4.0.3"
