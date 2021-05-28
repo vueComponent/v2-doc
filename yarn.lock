@@ -503,10 +503,24 @@
   dependencies:
     "@types/koa" "*"
 
-"@types/koa@*", "@types/koa@^2.11.6":
+"@types/koa@*":
   version "2.11.6"
   resolved "https://registry.npm.taobao.org/@types/koa/download/@types/koa-2.11.6.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fkoa%2Fdownload%2F%40types%2Fkoa-2.11.6.tgz#b7030caa6b44af801c2aea13ba77d74aff7484d5"
   integrity sha1-twMMqmtEr4AcKuoTunfXSv90hNU=
+  dependencies:
+    "@types/accepts" "*"
+    "@types/content-disposition" "*"
+    "@types/cookies" "*"
+    "@types/http-assert" "*"
+    "@types/http-errors" "*"
+    "@types/keygrip" "*"
+    "@types/koa-compose" "*"
+    "@types/node" "*"
+
+"@types/koa@2.13.3":
+  version "2.13.3"
+  resolved "https://registry.nlark.com/@types/koa/download/@types/koa-2.13.3.tgz?cache=0&sync_timestamp=1622234699618&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fkoa%2Fdownload%2F%40types%2Fkoa-2.13.3.tgz#5b44c0956d7f7bf41f74ccfb530fec60fbed45ca"
+  integrity sha1-W0TAlW1/e/QfdMz7Uw/sYPvtRco=
   dependencies:
     "@types/accepts" "*"
     "@types/content-disposition" "*"
