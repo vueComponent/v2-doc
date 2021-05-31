@@ -28,7 +28,7 @@ See more advanced usage at [async-validator](https://github.com/yiminghe/async-v
     @finish="handleFinish"
     @finishFailed="handleFinishFailed"
   >
-    <a-form-item required has-feedback label="Password" name="pass">
+    <a-form-item has-feedback label="Password" name="pass">
       <a-input v-model:value="formState.pass" type="password" autocomplete="off" />
     </a-form-item>
     <a-form-item has-feedback label="Confirm" name="checkPass">
@@ -94,7 +94,7 @@ export default defineComponent({
     };
 
     const rules = {
-      pass: [{ validator: validatePass, trigger: 'change' }],
+      pass: [{ required: true, validator: validatePass, trigger: 'change' }],
       checkPass: [{ validator: validatePass2, trigger: 'change' }],
       age: [{ validator: checkAge, trigger: 'change' }],
     };
