@@ -34,23 +34,29 @@ Here is [a complete demo](/components/layout/#components-layout-demo-side) with 
       v-model:selectedKeys="selectedKeys"
     >
       <a-menu-item key="1">
+        <template #icon>
         <PieChartOutlined />
+        </template>
         <span>Option 1</span>
       </a-menu-item>
       <a-menu-item key="2">
+        <template #icon>
         <DesktopOutlined />
+        </template>
         <span>Option 2</span>
       </a-menu-item>
       <a-menu-item key="3">
+        <template #icon>
         <InboxOutlined />
+        </template>
         <span>Option 3</span>
       </a-menu-item>
       <a-sub-menu key="sub1">
+        <template #icon>
+          <MailOutlined />
+        </template>
         <template #title>
-          <span>
-            <MailOutlined />
-            <span>Navigation One</span>
-          </span>
+          Navigation One
         </template>
         <a-menu-item key="5">Option 5</a-menu-item>
         <a-menu-item key="6">Option 6</a-menu-item>
@@ -58,11 +64,11 @@ Here is [a complete demo](/components/layout/#components-layout-demo-side) with 
         <a-menu-item key="8">Option 8</a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="sub2">
+        <template #icon>
+          <AppstoreOutlined />
+        </template>
         <template #title>
-          <span>
-            <AppstoreOutlined />
-            <span>Navigation Two</span>
-          </span>
+          Navigation Two
         </template>
         <a-menu-item key="9">Option 9</a-menu-item>
         <a-menu-item key="10">Option 10</a-menu-item>

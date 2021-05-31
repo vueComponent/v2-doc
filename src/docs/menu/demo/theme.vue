@@ -34,19 +34,23 @@ There are two built-in themes: `light` and `dark`. The default value is `light`.
       :theme="theme"
     >
       <a-menu-item key="1">
+        <template #icon>
         <MailOutlined />
+        </template>
         Navigation One
       </a-menu-item>
       <a-menu-item key="2">
+        <template #icon>
         <CalendarOutlined />
+        </template>
         Navigation Two
       </a-menu-item>
       <a-sub-menu key="sub1">
+        <template #icon>
+          <AppstoreOutlined />
+        </template>
         <template #title>
-          <span>
-            <AppstoreOutlined />
-            <span>Navigation Three</span>
-          </span>
+          Navigation Three
         </template>
         <a-menu-item key="3">Option 3</a-menu-item>
         <a-menu-item key="4">Option 4</a-menu-item>
@@ -56,11 +60,11 @@ There are two built-in themes: `light` and `dark`. The default value is `light`.
         </a-sub-menu>
       </a-sub-menu>
       <a-sub-menu key="sub2">
+        <template #icon>
+          <SettingOutlined />
+        </template>
         <template #title>
-          <span>
-            <SettingOutlined />
-            <span>Navigation Four</span>
-          </span>
+          Navigation Four
         </template>
         <a-menu-item key="7">Option 7</a-menu-item>
         <a-menu-item key="8">Option 8</a-menu-item>

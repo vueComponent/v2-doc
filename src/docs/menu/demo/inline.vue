@@ -25,16 +25,18 @@ Vertical menu with inline submenus.
     @click="handleClick"
   >
     <a-sub-menu key="sub1" @titleClick="titleClick">
+      <template #icon>
+        <MailOutlined />
+      </template>
       <template #title>
-        <span>
-          <MailOutlined />
-          <span>Navigation One</span>
-        </span>
+        Navigation One
       </template>
       <a-menu-item-group key="g1">
-        <template #title>
+        <template #icon>
           <QqOutlined />
-          <span>Item 1</span>
+      </template>
+        <template #title>
+          Item 1
         </template>
         <a-menu-item key="1">Option 1</a-menu-item>
         <a-menu-item key="2">Option 2</a-menu-item>
@@ -45,11 +47,11 @@ Vertical menu with inline submenus.
       </a-menu-item-group>
     </a-sub-menu>
     <a-sub-menu key="sub2" @titleClick="titleClick">
+      <template #icon>
+        <AppstoreOutlined />
+      </template>
       <template #title>
-        <span>
-          <AppstoreOutlined />
-          <span>Navigation Two</span>
-        </span>
+        Navigation Two
       </template>
       <a-menu-item key="5">Option 5</a-menu-item>
       <a-menu-item key="6">Option 6</a-menu-item>
@@ -59,11 +61,11 @@ Vertical menu with inline submenus.
       </a-sub-menu>
     </a-sub-menu>
     <a-sub-menu key="sub4">
+      <template #icon>
+        <SettingOutlined />
+      </template>
       <template #title>
-        <span>
-          <SettingOutlined />
-          <span>Navigation Three</span>
-        </span>
+        Navigation Three
       </template>
       <a-menu-item key="9">Option 9</a-menu-item>
       <a-menu-item key="10">Option 10</a-menu-item>
