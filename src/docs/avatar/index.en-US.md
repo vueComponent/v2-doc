@@ -15,15 +15,15 @@ Avatars can be used to represent people or objects. It supports images, `Icon`s,
 | --- | --- | --- | --- | --- |
 | icon | the `Icon` type for an icon avatar, see `Icon` Component | VNode \| slot | - |
 | shape | the shape of avatar | `circle` \| `square` | `circle` |
-| size | The size of the avatar | number \| `large` \| `small` \| `default` \| { xs: number, sm: number, ...} | `default` | 3.x |
+| size | The size of the avatar | number \| `large` \| `small` \| `default` \| { xs: number, sm: number, ...} | `default` | 2.2.0 |
 | src | the address of the image for an image avatar | string | - |
 | srcset | a list of sources to use for different screen resolutions | string | - |
 | alt | This attribute defines the alternative text describing the image | string | - |
-| gap | Letter type unit distance between left and right sides | number | 4 | 3.x |
-| draggable | Whether the picture is allowed to be dragged | boolean \| `'true'` \| `'false'` | - | 3.x |
+| gap | Letter type unit distance between left and right sides | number | 4 | 2.2.0 |
+| draggable | Whether the picture is allowed to be dragged | boolean \| `'true'` \| `'false'` | - | 2.2.0 |
 | loadError | handler when img load error, return false to prevent default fallback behavior | () => boolean | - |
 
-### Avatar.Group (3.x)
+### Avatar.Group (2.2.0)
 
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
