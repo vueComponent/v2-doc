@@ -43,7 +43,7 @@ export default defineComponent({
     ProgressDot,
     CustomizedProgressDot,
     Clickable,
-    Nav
+    Nav,
   },
   setup() {
     return {};

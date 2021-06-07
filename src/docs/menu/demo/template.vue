@@ -30,8 +30,10 @@ Use the single file method to recursively generate menus.
       <template v-for="item in list" :key="item.key">
         <template v-if="!item.children">
           <a-menu-item :key="item.key">
-            <PieChartOutlined />
-            <span>{{ item.title }}</span>
+            <template #icon>
+              <PieChartOutlined />
+            </template>
+            {{ item.title }}
           </a-menu-item>
         </template>
         <template v-else>
@@ -60,17 +62,16 @@ const SubMenu = {
     },
   },
   template: `
-    <a-sub-menu :key="menuInfo.key" v-bind="$attrs">
-      <template #title>
-        <span>
-          <MailOutlined /><span>{{ menuInfo.title }}</span>
-        </span>
-      </template>
+    <a-sub-menu :key="menuInfo.key">
+      <template #icon><MailOutlined /></template>
+      <template #title>{{ menuInfo.title }}</template>
       <template v-for="item in menuInfo.children" :key="item.key">
         <template v-if="!item.children">
           <a-menu-item :key="item.key">
-            <PieChartOutlined />
-            <span>{{ item.title }}</span>
+            <template #icon>
+              <PieChartOutlined />
+            </template>
+            {{ item.title }}
           </a-menu-item>
         </template>
         <template v-else>

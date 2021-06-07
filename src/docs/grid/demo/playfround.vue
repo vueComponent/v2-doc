@@ -58,8 +58,7 @@ A simple playground for column count and gutter.
       >
         <div>Column</div>
       </a-col>
-    </a-row>
-    <a-row :gutter="[gutters[gutterKey], vgutters[vgutterKey]]">
+
       <a-col
         v-for="item in colCounts[colCountKey]"
         :key="item.toString()"

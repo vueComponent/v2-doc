@@ -1,15 +1,15 @@
 <template>
   <demo-sort>
-      <Basic />
-      <InputNumber />
-      <IconSlider />
-      <TipFormatter />
-      <Event />
-      <Mark />
-      <Vertical />
-      <ShowTooltip />
-      <Reverse />
-    </demo-sort>
+    <Basic />
+    <InputNumber />
+    <IconSlider />
+    <TipFormatter />
+    <Event />
+    <Mark />
+    <Vertical />
+    <ShowTooltip />
+    <Reverse />
+  </demo-sort>
 </template>
 <script lang="ts">
 import Basic from './basic.vue';
