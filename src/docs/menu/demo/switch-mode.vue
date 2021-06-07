@@ -34,13 +34,13 @@ Show the dynamic switching mode (between `inline` and `vertical`).
     >
       <a-menu-item key="1">
         <template #icon>
-        <MailOutlined />
+          <MailOutlined />
         </template>
         Navigation One
       </a-menu-item>
       <a-menu-item key="2">
         <template #icon>
-        <CalendarOutlined />
+          <CalendarOutlined />
         </template>
         Navigation Two
       </a-menu-item>
@@ -48,9 +48,7 @@ Show the dynamic switching mode (between `inline` and `vertical`).
         <template #icon>
           <AppstoreOutlined />
         </template>
-        <template #title>
-          Navigation Three
-        </template>
+        <template #title>Navigation Three</template>
         <a-menu-item key="3">Option 3</a-menu-item>
         <a-menu-item key="4">Option 4</a-menu-item>
         <a-sub-menu key="sub1-2" title="Submenu">
@@ -60,12 +58,10 @@ Show the dynamic switching mode (between `inline` and `vertical`).
       </a-sub-menu>
       <a-sub-menu key="sub2">
         <template #icon>
-        <SettingOutlined />
+          <SettingOutlined />
         </template>
 
-        <template #title>
-            Navigation Four
-        </template>
+        <template #title>Navigation Four</template>
         <a-menu-item key="7">Option 7</a-menu-item>
         <a-menu-item key="8">Option 8</a-menu-item>
         <a-menu-item key="9">Option 9</a-menu-item>

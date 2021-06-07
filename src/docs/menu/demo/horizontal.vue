@@ -34,9 +34,7 @@ Horizontal top navigation menu.
       <template #icon>
         <setting-outlined />
       </template>
-      <template #title>
-          Navigation Three - Submenu
-      </template>
+      <template #title>Navigation Three - Submenu</template>
       <a-menu-item-group title="Item 1">
         <a-menu-item key="setting:1">Option 1</a-menu-item>
         <a-menu-item key="setting:2">Option 2</a-menu-item>

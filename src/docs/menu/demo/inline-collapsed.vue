@@ -35,19 +35,19 @@ Here is [a complete demo](/components/layout/#components-layout-demo-side) with 
     >
       <a-menu-item key="1">
         <template #icon>
-        <PieChartOutlined />
+          <PieChartOutlined />
         </template>
         <span>Option 1</span>
       </a-menu-item>
       <a-menu-item key="2">
         <template #icon>
-        <DesktopOutlined />
+          <DesktopOutlined />
         </template>
         <span>Option 2</span>
       </a-menu-item>
       <a-menu-item key="3">
         <template #icon>
-        <InboxOutlined />
+          <InboxOutlined />
         </template>
         <span>Option 3</span>
       </a-menu-item>
@@ -55,9 +55,7 @@ Here is [a complete demo](/components/layout/#components-layout-demo-side) with 
         <template #icon>
           <MailOutlined />
         </template>
-        <template #title>
-          Navigation One
-        </template>
+        <template #title>Navigation One</template>
         <a-menu-item key="5">Option 5</a-menu-item>
         <a-menu-item key="6">Option 6</a-menu-item>
         <a-menu-item key="7">Option 7</a-menu-item>
@@ -67,9 +65,7 @@ Here is [a complete demo](/components/layout/#components-layout-demo-side) with 
         <template #icon>
           <AppstoreOutlined />
         </template>
-        <template #title>
-          Navigation Two
-        </template>
+        <template #title>Navigation Two</template>
         <a-menu-item key="9">Option 9</a-menu-item>
         <a-menu-item key="10">Option 10</a-menu-item>
         <a-sub-menu key="sub3" title="Submenu">

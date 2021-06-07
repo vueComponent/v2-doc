@@ -31,7 +31,7 @@ Use the single file method to recursively generate menus.
         <template v-if="!item.children">
           <a-menu-item :key="item.key">
             <template #icon>
-            <PieChartOutlined />
+              <PieChartOutlined />
             </template>
             {{ item.title }}
           </a-menu-item>
