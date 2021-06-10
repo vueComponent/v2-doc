@@ -74,7 +74,7 @@ app.config.globalProperties.$message = message;
 
 ### 4. Component list
 
-[Component list](https://github.com/vueComponent/ant-design-vue/blob/master/components/index.js)
+[Component list](https://github.com/vueComponent/ant-design-vue/blob/next/components/index.js)
 
 ## Compatibility
 

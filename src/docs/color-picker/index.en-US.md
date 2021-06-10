@@ -5,7 +5,7 @@
 | defaultValue | default color | string | - |
 | config | pickr config | [pickr options](https://github.com/Simonwep/pickr) | - |
 | value | color value | string | - |
-| locale | locale package | [default setting](https://github.com/vueComponent/ant-design-vue/blob/master/components/color-picker/locale) | - |
+| locale | locale package | [default setting](https://github.com/vueComponent/ant-design-vue/blob/next/components/color-picker/locale) | - |
 | colorRounded | precision of color | number | 0 |
 | size | size of pickr | 'large'\|'small'\|'default' | 'default' |
 | getPopupContainer | to set the container of the floating layer, while the default is to create a div element in body | Function(triggerNode) | () => document.body |

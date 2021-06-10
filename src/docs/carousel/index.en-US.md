@@ -34,4 +34,4 @@ A carousel component. Scales with its container.
 | next() | Change current slide to next slide |  |
 | prev() | Change current slide to previous slide |  |
 
-For more info on the parameters, refer to the [vc-slick props](https://github.com/vueComponent/ant-design-vue/blob/master/components/vc-slick/src/default-props.js#L3)
+For more info on the parameters, refer to the [vc-slick props](https://github.com/vueComponent/ant-design-vue/blob/next/components/vc-slick/src/default-props.js#L3)
