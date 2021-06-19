@@ -1340,11 +1340,6 @@ color-name@~1.1.4:
   resolved "https://registry.npm.taobao.org/color-name/download/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
   integrity sha1-wqCah6y95pVD3m9j+jmVyCbFNqI=
 
-colorette@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.npm.taobao.org/colorette/download/colorette-1.2.1.tgz#4d0b921325c14faf92633086a536db6e89564b1b"
-  integrity sha1-TQuSEyXBT6+SYzCGpTbbbolWSxs=
-
 colorette@^1.2.2:
   version "1.2.2"
   resolved "https://registry.npm.taobao.org/colorette/download/colorette-1.2.2.tgz?cache=0&sync_timestamp=1614259838969&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcolorette%2Fdownload%2Fcolorette-1.2.2.tgz#cbcc79d5e99caea2dbf10eb3a26fd8b3e6acfa94"
@@ -1772,10 +1767,10 @@ es6-promisify@^5.0.0:
   dependencies:
     es6-promise "^4.0.3"
 
-esbuild@^0.8.34:
-  version "0.8.42"
-  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.8.42.tgz#26101cf17fe4c4602c7c767e3177cf0c538073ac"
-  integrity sha512-zUtj5RMqROCCCH0vV/a7cd8YQg8I0GWBhV3A3PklWRT+oM/YwVbnrtFnITzE1otGdnXplWHWdZ4OcYiV0PN+JQ==
+esbuild@^0.12.8:
+  version "0.12.9"
+  resolved "https://registry.nlark.com/esbuild/download/esbuild-0.12.9.tgz?cache=0&sync_timestamp=1623821111626&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fesbuild%2Fdownload%2Fesbuild-0.12.9.tgz#bed4e7087c286cd81d975631f77d47feb1660070"
+  integrity sha1-vtTnCHwobNgdl1Yx931H/rFmAHA=
 
 escape-html@^1.0.3:
   version "1.0.3"
@@ -2161,7 +2156,7 @@ fs.realpath@^1.0.0:
   resolved "https://registry.npm.taobao.org/fs.realpath/download/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
   integrity sha1-FQStJSMVjKpA20onh8sBQRmU6k8=
 
-fsevents@~2.3.1:
+fsevents@~2.3.1, fsevents@~2.3.2:
   version "2.3.2"
   resolved "https://registry.npm.taobao.org/fsevents/download/fsevents-2.3.2.tgz?cache=0&sync_timestamp=1612536512306&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ffsevents%2Fdownload%2Ffsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
   integrity sha1-ilJveLj99GI7cJ4Ll1xSwkwC/Ro=
@@ -2560,10 +2555,10 @@ is-class-hotfix@~0.0.6:
   resolved "https://registry.yarnpkg.com/is-class-hotfix/-/is-class-hotfix-0.0.6.tgz#a527d31fb23279281dde5f385c77b5de70a72435"
   integrity sha512-0n+pzCC6ICtVr/WXnN2f03TK/3BfXY7me4cjCAqT8TYXEl0+JBRoqBo94JJHXcyDSLUeWbNX8Fvy5g5RJdAstQ==
 
-is-core-module@^2.1.0:
-  version "2.2.0"
-  resolved "https://registry.npm.taobao.org/is-core-module/download/is-core-module-2.2.0.tgz?cache=0&sync_timestamp=1606413651726&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fis-core-module%2Fdownload%2Fis-core-module-2.2.0.tgz#97037ef3d52224d85163f5597b2b63d9afed981a"
-  integrity sha1-lwN+89UiJNhRY/VZeytj2a/tmBo=
+is-core-module@^2.2.0:
+  version "2.4.0"
+  resolved "https://registry.nlark.com/is-core-module/download/is-core-module-2.4.0.tgz?cache=0&sync_timestamp=1620592570629&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fis-core-module%2Fdownload%2Fis-core-module-2.4.0.tgz#8e9fc8e15027b011418026e98f0e6f4d86305cc1"
+  integrity sha1-jp/I4VAnsBFBgCbpjw5vTYYwXME=
   dependencies:
     has "^1.0.3"
 
@@ -3168,15 +3163,15 @@ mz@^2.7.0:
     object-assign "^4.0.1"
     thenify-all "^1.0.0"
 
-nanoid@^3.1.20:
-  version "3.1.20"
-  resolved "https://registry.npm.taobao.org/nanoid/download/nanoid-3.1.20.tgz#badc263c6b1dcf14b71efaa85f6ab4c1d6cfc788"
-  integrity sha1-utwmPGsdzxS3HvqoX2q0wdbPx4g=
-
 nanoid@^3.1.22:
   version "3.1.22"
   resolved "https://registry.npm.taobao.org/nanoid/download/nanoid-3.1.22.tgz#b35f8fb7d151990a8aebd5aa5015c03cf726f844"
   integrity sha1-s1+Pt9FRmQqK69WqUBXAPPcm+EQ=
+
+nanoid@^3.1.23:
+  version "3.1.23"
+  resolved "https://registry.nlark.com/nanoid/download/nanoid-3.1.23.tgz?cache=0&sync_timestamp=1620673736265&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fnanoid%2Fdownload%2Fnanoid-3.1.23.tgz#f744086ce7c2bc47ee0a8472574d5c78e4183a81"
+  integrity sha1-90QIbOfCvEfuCoRyV01ceOQYOoE=
 
 nanopop@^2.1.0:
   version "2.1.0"
@@ -3552,14 +3547,14 @@ postcss@^8.1.10:
     nanoid "^3.1.22"
     source-map "^0.6.1"
 
-postcss@^8.2.1:
-  version "8.2.4"
-  resolved "https://registry.npm.taobao.org/postcss/download/postcss-8.2.4.tgz?cache=0&sync_timestamp=1610186273182&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fpostcss%2Fdownload%2Fpostcss-8.2.4.tgz#20a98a39cf303d15129c2865a9ec37eda0031d04"
-  integrity sha1-IKmKOc8wPRUSnChlqew37aADHQQ=
+postcss@^8.3.4:
+  version "8.3.5"
+  resolved "https://registry.nlark.com/postcss/download/postcss-8.3.5.tgz?cache=0&sync_timestamp=1623900620710&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fpostcss%2Fdownload%2Fpostcss-8.3.5.tgz#982216b113412bc20a86289e91eb994952a5b709"
+  integrity sha1-mCIWsRNBK8IKhiiekeuZSVKltwk=
   dependencies:
-    colorette "^1.2.1"
-    nanoid "^3.1.20"
-    source-map "^0.6.1"
+    colorette "^1.2.2"
+    nanoid "^3.1.23"
+    source-map-js "^0.6.2"
 
 prelude-ls@^1.2.1:
   version "1.2.1"
@@ -3813,12 +3808,12 @@ resolve-from@^4.0.0:
   resolved "https://registry.npm.taobao.org/resolve-from/download/resolve-from-4.0.0.tgz#4abcd852ad32dd7baabfe9b40e00a36db5f392e6"
   integrity sha1-SrzYUq0y3Xuqv+m0DgCjbbXzkuY=
 
-resolve@^1.19.0:
-  version "1.19.0"
-  resolved "https://registry.npm.taobao.org/resolve/download/resolve-1.19.0.tgz#1af5bf630409734a067cae29318aac7fa29a267c"
-  integrity sha1-GvW/YwQJc0oGfK4pMYqsf6KaJnw=
+resolve@^1.20.0:
+  version "1.20.0"
+  resolved "https://registry.nlark.com/resolve/download/resolve-1.20.0.tgz#629a013fb3f70755d6f0b7935cc1c2c5378b1975"
+  integrity sha1-YpoBP7P3B1XW8LeTXMHCxTeLGXU=
   dependencies:
-    is-core-module "^2.1.0"
+    is-core-module "^2.2.0"
     path-parse "^1.0.6"
 
 restore-cursor@^3.1.0:
@@ -4006,6 +4001,11 @@ socks@~2.3.2:
   dependencies:
     ip "1.1.5"
     smart-buffer "^4.1.0"
+
+source-map-js@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.npm.taobao.org/source-map-js/download/source-map-js-0.6.2.tgz#0bb5de631b41cfbda6cfba8bd05a80efdfd2385e"
+  integrity sha1-C7XeYxtBz72mz7qL0FqA79/SOF4=
 
 source-map@0.6.1, source-map@^0.6.1, source-map@~0.6.0, source-map@~0.6.1:
   version "0.6.1"
@@ -4508,17 +4508,17 @@ vfile@^2.0.0:
     unist-util-stringify-position "^1.0.0"
     vfile-message "^1.0.0"
 
-vite@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npm.taobao.org/vite/download/vite-2.0.0.tgz#156f35eadaa7947629aa8a24eb23129b07116ee3"
-  integrity sha1-FW816tqnlHYpqook6yMSmwcRbuM=
+vite@2.3.8:
+  version "2.3.8"
+  resolved "https://registry.nlark.com/vite/download/vite-2.3.8.tgz?cache=0&sync_timestamp=1624121999687&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fvite%2Fdownload%2Fvite-2.3.8.tgz#42e3e03953859fd410e4e6ab3d1cca0aab2adc3c"
+  integrity sha1-QuPgOVOFn9QQ5OarPRzKCqsq3Dw=
   dependencies:
-    esbuild "^0.8.34"
-    postcss "^8.2.1"
-    resolve "^1.19.0"
+    esbuild "^0.12.8"
+    postcss "^8.3.4"
+    resolve "^1.20.0"
     rollup "^2.38.5"
   optionalDependencies:
-    fsevents "~2.3.1"
+    fsevents "~2.3.2"
 
 vue-eslint-parser@^7.0.0, vue-eslint-parser@^7.3.0:
   version "7.3.0"
