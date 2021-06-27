@@ -699,10 +699,10 @@
     "@vue/babel-plugin-jsx" "^1.0.1"
     hash-sum "^2.0.0"
 
-"@vitejs/plugin-vue@^1.0.5":
-  version "1.0.6"
-  resolved "https://registry.npm.taobao.org/@vitejs/plugin-vue/download/@vitejs/plugin-vue-1.0.6.tgz#698afa5a77a6dcd22cf7757801f46a6f01cdbb53"
-  integrity sha1-aYr6Wnem3NIs93V4AfRqbwHNu1M=
+"@vitejs/plugin-vue@1.2.4":
+  version "1.2.4"
+  resolved "https://registry.nlark.com/@vitejs/plugin-vue/download/@vitejs/plugin-vue-1.2.4.tgz#a7aa6e6a31c556a8b781de730316deeecf7f56f2"
+  integrity sha1-p6puajHFVqi3gd5zAxbe7s9/VvI=
 
 "@vue/babel-helper-vue-transform-on@^1.0.2":
   version "1.0.2"
