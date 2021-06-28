@@ -8,11 +8,11 @@ title:
 
 ## zh-CN
 
-集成 [@ant-design-vue/use](https://github.com/vueComponent/use) 更加灵活的使用表单组件。`useForm` 合并展示表单校验信息。
+通过 [`Form.useForm`](#useForm)  合并展示表单校验信息。
 
 ## en-US
 
-Integration [@ant-design-vue/use](https://github.com/vueComponent/use) use form components. `useForm` combined display form verification information.
+use [`Form.useForm`](#useForm)  combined display form verification information.
 </docs>
 
 <template>
@@ -41,8 +41,10 @@ Integration [@ant-design-vue/use](https://github.com/vueComponent/use) use form 
 </template>
 <script lang="ts">
 import { reactive, toRaw, computed, defineComponent } from 'vue';
-import { useForm } from '@ant-design-vue/use';
 import { toArray } from 'lodash-es';
+import { Form } from 'ant-design-vue';
+
+const useForm = Form.useForm;
 export default defineComponent({
   setup() {
     const modelRef = reactive({

@@ -8,11 +8,11 @@ title:
 
 ## zh-CN
 
-集成 [@ant-design-vue/use](https://github.com/vueComponent/use) 更加灵活的使用表单组件。`useForm` 提供表单校验逻辑和状态。
+通过 [`Form.useForm`](#useForm) 更加灵活的使用表单组件。
 
 ## en-US
 
-Integration [@ant-design-vue/use](https://github.com/vueComponent/use) use form components. `useForm` provides form validation logic and status.
+use [`Form.useForm`](#useForm) provides form validation logic and status.
 </docs>
 
 <template>
@@ -41,7 +41,9 @@ Integration [@ant-design-vue/use](https://github.com/vueComponent/use) use form 
 </template>
 <script lang="ts">
 import { defineComponent, reactive, toRaw } from 'vue';
-import { useForm } from '@ant-design-vue/use';
+import { Form } from 'ant-design-vue';
+
+const useForm = Form.useForm;
 export default defineComponent({
   setup() {
     const modelRef = reactive({
