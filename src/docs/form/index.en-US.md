@@ -124,3 +124,56 @@ If the form field to be monitored does not meet the conditions for automatic mon
 | whitespace | treat required fields that only contain whitespace as errors | boolean | `false` |
 
 See more advanced usage at [async-validator](https://github.com/yiminghe/async-validator).
+
+
+### useForm (v2.2)
+
+`useForm` is a method that can run independently of the Form component. It uses the Vue response mechanism to monitor and verify data, and returns the verification result. You can bind the verification result to any component, `Form. Item` only displays the results.
+
+The following versions need to be provided separately by `@ant-design-vue/use` library, it is not recommended to continue to use, you should upgrade to version 2.2+ as soon as possible
+
+
+```ts
+import { Form } from 'ant-design-vue';
+const useForm = Form.useForm;
+
+useForm(modelRef, ruleRef, [options]);
+
+```
+
+参数说明：
+
+```ts
+/*
+ modelRef`, `ruleRef` must be responsive data
+*/
+
+interface Props {
+  [key: string]: any;
+}
+function useForm(
+  modelRef: Props | Ref<Props>,
+  rulesRef?: Props | Ref<Props>,
+  options?: {
+    immediate?: boolean;
+    deep?: boolean;
+    validateOnRuleChange?: boolean;
+    debounce?: DebounceSettings;
+  },
+): {
+  modelRef: Props | Ref<Props>;
+  rulesRef: Props | Ref<Props>;
+  initialModel: Props;
+  validateInfos: validateInfos;
+  resetFields: (newValues?: Props) => void;
+  validate: <T = any>(names?: namesType, option?: validateOptions) => Promise<T>;
+  validateField: (
+    name?: string,
+    value?: any,
+    rules?: [Record<string, unknown>],
+    option?: validateOptions,
+  ) => Promise<RuleError[]>;
+  mergeValidateInfo: (items: ValidateInfo | ValidateInfo[]) => ValidateInfo;
+  clearValidate: (names?: namesType) => void;
+}
+```
