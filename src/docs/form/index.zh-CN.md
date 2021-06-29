@@ -8,7 +8,6 @@ cover: https://gw.alipayobjects.com/zos/alicdn/ORmcdeaoO/Form.svg
 ---
 
 高性能表单控件，自带数据域管理。包含数据录入、校验以及对应样式。
-集成 [@ant-design-vue/use](https://github.com/vueComponent/use) 更加灵活的使用表单组件。
 
 ## 何时使用
 

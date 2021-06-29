@@ -7,7 +7,6 @@ cover: https://gw.alipayobjects.com/zos/alicdn/ORmcdeaoO/Form.svg
 ---
 
 High performance Form component with data scope management. Including data collection, verification, and styles.
-Integration [@ant-design-vue/use](https://github.com/vueComponent/use) use form components.
 
 ## When to use
 

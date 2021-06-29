@@ -36,7 +36,6 @@ export default {
       'ant-design-vue/es/locale-provider/default',
       'ant-design-vue/es/vc-drawer/src',
       '@ant-design/icons-vue',
-      '@ant-design-vue/use',
       'lodash-es',
     ],
   },
