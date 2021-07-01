@@ -59,7 +59,7 @@
   </a-button>
 </template>
 <script>
-  import SmileOutlined from '@ant-design/icons/SmileOutlined';
+  import SmileOutlined from '@ant-design/icons-vue/SmileOutlined';
   export default {
     components: {
       SmileOutlined,
