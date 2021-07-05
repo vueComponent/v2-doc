@@ -66,13 +66,10 @@ import Button from 'ant-design-vue/lib/button';
 import 'ant-design-vue/dist/antd.css';
 import App from './App';
 
-Vue.component(Button.name, Button);
+const app = createApp(App);
 
-Vue.config.productionTip = false;
-
-new Vue({
-  render: h => h(App),
-}).$mount('#app');
+/* Automatically register components under Button, such as Button.Group */
+app.use(Button).mount('#app');
 ```
 
 Modify `src/App.vue`。

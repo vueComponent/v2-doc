@@ -54,9 +54,10 @@ to work with `Form`.
   </a-form>
 </template>
 <script>
-import { Mentions } from 'ant-design-vue';
+import { Mentions, Form } from 'ant-design-vue';
 import { defineComponent, reactive } from 'vue';
-import { useForm } from '@ant-design-vue/use';
+
+const useForm = Form.useForm;
 const { getMentions } = Mentions;
 export default defineComponent({
   setup() {

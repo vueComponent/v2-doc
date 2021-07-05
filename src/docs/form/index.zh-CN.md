@@ -8,7 +8,6 @@ cover: https://gw.alipayobjects.com/zos/alicdn/ORmcdeaoO/Form.svg
 ---
 
 高性能表单控件，自带数据域管理。包含数据录入、校验以及对应样式。
-集成 [@ant-design-vue/use](https://github.com/vueComponent/use) 更加灵活的使用表单组件。
 
 ## 何时使用
 
@@ -124,3 +123,55 @@ Form.Item 会对唯一子元素进行劫持，并监听 `blur` 和 `change` 事�
 | whitespace | 必选时，空格是否会被视为错误 | boolean | `false` |
 
 更多高级用法可研究 [async-validator](https://github.com/yiminghe/async-validator)。
+
+### useForm (v2.2)
+
+`useForm` 是一个可以独立 Form 组件运行的方法，它使用 Vue 响应式机制进行数据的监听和校验，并将校验结果返回，你可以将校验结果绑定到任何组件上，`Form.Item` 也仅仅是将结果展示。
+
+2.2 以下版本需要需要 @ant-design-vue/use 库单独提供，不建议继续使用，你应该尽快升级到 2.2+ 版本
+
+
+```ts
+import { Form } from 'ant-design-vue';
+const useForm = Form.useForm;
+
+useForm(modelRef, ruleRef, [options]);
+
+```
+
+参数说明：
+
+```ts
+/*
+ modelRef`, `ruleRef` 必须是响应式数据
+*/
+
+interface Props {
+  [key: string]: any;
+}
+function useForm(
+  modelRef: Props | Ref<Props>,
+  rulesRef?: Props | Ref<Props>,
+  options?: {
+    immediate?: boolean;
+    deep?: boolean;
+    validateOnRuleChange?: boolean;
+    debounce?: DebounceSettings;
+  },
+): {
+  modelRef: Props | Ref<Props>;
+  rulesRef: Props | Ref<Props>;
+  initialModel: Props;
+  validateInfos: validateInfos;
+  resetFields: (newValues?: Props) => void;
+  validate: <T = any>(names?: namesType, option?: validateOptions) => Promise<T>;
+  validateField: (
+    name?: string,
+    value?: any,
+    rules?: [Record<string, unknown>],
+    option?: validateOptions,
+  ) => Promise<RuleError[]>;
+  mergeValidateInfo: (items: ValidateInfo | ValidateInfo[]) => ValidateInfo;
+  clearValidate: (names?: namesType) => void;
+}
+```

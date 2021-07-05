@@ -66,13 +66,11 @@ import Button from 'ant-design-vue/lib/button';
 import 'ant-design-vue/dist/antd.css';
 import App from './App';
 
-Vue.component(Button.name, Button);
+const app = createApp(App);
+app.config.productionTip = false;
 
-Vue.config.productionTip = false;
-
-new Vue({
-  render: h => h(App),
-}).$mount('#app');
+/* 会自动注册 Button 下的子组件, 例如 Button.Group */
+app.use(Button).mount('#app');
 ```
 
 修改 `src/App.vue`的 template 内容。

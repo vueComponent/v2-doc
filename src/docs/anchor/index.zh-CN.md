@@ -24,7 +24,7 @@ cover: https://gw.alipayobjects.com/zos/alicdn/_1-C1JwsC/Anchor.svg
 | getContainer | 指定滚动的容器 | () => HTMLElement | () => window |  |
 | offsetBottom | 距离窗口底部达到指定偏移量后触发 | number |  |  |
 | offsetTop | 距离窗口顶部达到指定偏移量后触发 | number |  |  |
-| showInkInFixed | 固定模式是否显示小圆点 | boolean | false |  |
+| showInkInFixed | `:affix="false"` 时是否显示小圆点 | boolean | false |  |
 | wrapperClass | 容器的类名 | string | - |  |
 | wrapperStyle | 容器样式 | object | - |  |
 | getCurrentAnchor | 自定义高亮的锚点 | () => string | - | 1.5.0 |

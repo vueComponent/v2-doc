@@ -1,7 +1,7 @@
 <docs>
 ---
 order: 1
-title: 
+title:
   zh-CN: 带边框的
   en-US: Bordered
 ---

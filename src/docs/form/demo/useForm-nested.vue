@@ -8,11 +8,11 @@ title:
 
 ## zh-CN
 
-集成 [@ant-design-vue/use](https://github.com/vueComponent/use) 更加灵活的使用表单组件。使用点字符串拼接进行嵌套数据校验。
+通过 [`Form.useForm`](#useForm)  使用点字符串拼接进行嵌套数据校验。
 
 ## en-US
 
-Integration [@ant-design-vue/use](https://github.com/vueComponent/use) use form components. Use dot string splicing for nested data verification.
+[`Form.useForm`](#useForm) use dot string splicing for nested data verification.
 </docs>
 
 <template>
@@ -31,7 +31,9 @@ Integration [@ant-design-vue/use](https://github.com/vueComponent/use) use form 
 </template>
 <script lang="ts">
 import { defineComponent, reactive, toRaw } from 'vue';
-import { useForm } from '@ant-design-vue/use';
+import { Form } from 'ant-design-vue';
+
+const useForm = Form.useForm;
 export default defineComponent({
   setup() {
     const modelRef = reactive({

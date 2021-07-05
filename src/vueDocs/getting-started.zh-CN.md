@@ -63,11 +63,11 @@ import { createApp } from 'vue';
 import { Button, message } from 'ant-design-vue';
 import App from './App';
 
-const app = createApp();
+const app = createApp(App);
 app.config.productionTip = false;
 
-/* Automatically register components under Button, such as Button.Group */
-app.use(Button);
+/* 会自动注册 Button 下的子组件, 例如 Button.Group */
+app.use(Button).mount('#app');
 
 app.config.globalProperties.$message = message;
 ```
@@ -76,7 +76,7 @@ app.config.globalProperties.$message = message;
 
 ## 兼容性
 
-Ant Design Vue 2.x 支持所有的现代浏览器和 IE11+。
+Ant Design Vue 2.x 支持所有的现代浏览器。
 
 如果需要支持 IE9+，你可以使用 Ant Design Vue 1.x & Vue 2.x。
 
@@ -88,11 +88,7 @@ Ant Design Vue 2.x 支持所有的现代浏览器和 IE11+。
 
 ## 按需加载
 
-如果你在开发环境的控制台看到下面的提示，那么你可能使用了 `import { Button } from 'ant-design-vue';` 的写法引入了 antd 下所有的模块，这会影响应用的网络性能。
-
-> ![](https://zos.alipayobjects.com/rmsportal/GHIRszVcmjccgZRakJDQ.png)
-
-可以通过以下的写法来按需加载组件。
+如果你仅需要加载使用的组件，可以通过以下的写法来按需加载组件。
 
 ```jsx
 import Button from 'ant-design-vue/lib/button';
@@ -108,6 +104,8 @@ import { Button } from 'ant-design-vue';
 插件会帮你转换成 `ant-design-vue/lib/xxx` 的写法。另外此插件配合 [style](https://github.com/ant-design/babel-plugin-import#usage) 属性可以做到模块样式的按需自动加载。
 
 > 注意，babel-plugin-import 的 `style` 属性除了引入对应组件的样式，也会引入一些必要的全局样式。如果你不需要它们，建议不要使用此属性。你可以 `import 'ant-design-vue/dist/antd.css` 手动引入，并覆盖全局样式。
+
+如果你使用的 Vite，你可以使用 [vite-plugin-components](https://github.com/antfu/vite-plugin-components) 来进行按需加载
 
 ## 配置主题和字体
 
