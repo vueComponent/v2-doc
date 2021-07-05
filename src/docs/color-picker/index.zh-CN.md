@@ -5,7 +5,7 @@
 | defaultValue | 默认颜色 | string | - |
 | config | pickr 配置项 | [pickr options](https://github.com/Simonwep/pickr) | - |
 | value | 颜色值 | string | - |
-| locale | 语言包 | [默认配置](https://github.com/vueComponent/ant-design-vue/blob/master/components/color-picker/locale) | - |
+| locale | 语言包 | [默认配置](https://github.com/vueComponent/ant-design-vue/blob/next/components/color-picker/locale) | - |
 | colorRounded | 颜色数值精度 | number | 0 |
 | size | 取色器尺寸 | 'large'\|'small'\|'default' | 'default' |
 | getPopupContainer | 浮层渲染父节点，默认渲染到 body 上 | Function(triggerNode) | () => document.body |

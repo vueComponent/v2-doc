@@ -79,7 +79,7 @@ Note: You don't need `Col` to control the width in the `compact` mode.
       />
       <a-input
         v-model:value="value13"
-        style="width: 30px; border-left: 0; pointer-events: none; backgroundcolor: #fff"
+        style="width: 30px; border-left: 0; pointer-events: none; background-color: #fff"
         placeholder="~"
         disabled
       />

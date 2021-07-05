@@ -71,7 +71,7 @@ cover: https://gw.alipayobjects.com/zos/alicdn/_0XzgOis7/Select.svg
 | change | 选中 option，或 input 的 value 变化（combobox 模式下）时，调用此函数 | function(value, option:Option/Array&lt;Option>) |
 | deselect | 取消选中时调用，参数为选中项的 value (或 key) 值，仅在 multiple 或 tags 模式下生效 | function(value，option:Option) |
 | focus | 获得焦点时回调 | function |
-| inputKeydown | 键盘按下时回调 | function |
+| inputKeyDown | 键盘按下时回调 | function |
 | mouseenter | 鼠标移入时回调 | function |
 | mouseleave | 鼠标移出时回调 | function |
 | popupScroll | 下拉列表滚动时的回调 | function |

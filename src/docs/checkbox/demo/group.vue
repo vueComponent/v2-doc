@@ -21,7 +21,7 @@ Generate a group of checkboxes from an array
   <br />
   <a-checkbox-group v-model:value="value2" :options="plainOptions" />
   <br />
-  <a-checkbox-group v-model:value="value3" :options="options" :value="['Pear']" />
+  <a-checkbox-group v-model:value="value3" :options="options" />
   <br />
   <a-checkbox-group v-model:value="value4" :options="optionsWithDisabled" disabled>
     <template #label="{ value }">

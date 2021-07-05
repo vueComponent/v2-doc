@@ -69,7 +69,7 @@ Select component to select value from options.
 | change | Called when select an option or input value change, or value of input is changed in combobox mode | function(value, option:Option/Array&lt;Option>) |
 | deselect | Called when a option is deselected, the params are option's value (or key) . only called for multiple or tags, effective in multiple or tags mode only. | function(value, option:Option) |
 | focus | Called when focus | function |
-| inputKeydown | Called when key pressed | function |
+| inputKeyDown | Called when key pressed | function |
 | mouseenter | Called when mouse enter | function |
 | mouseleave | Called when mouse leave | function |
 | popupScroll | Called when dropdown scrolls | function |

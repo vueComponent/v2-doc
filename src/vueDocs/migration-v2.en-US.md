@@ -58,7 +58,7 @@ In 2.0, an on-demand introduction method will be adopted:
   </a-button>
 </template>
 <script>
-  import SmileOutlined from '@ant-design/icons/SmileOutlined';
+  import SmileOutlined from '@ant-design/icons-vue/SmileOutlined';
   export default {
     components: {
       SmileOutlined,

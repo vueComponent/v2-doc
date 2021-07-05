@@ -6,6 +6,7 @@
     <Validation />
     <CustomValidation />
     <DynamicFormItem />
+    <NestedForm />
     <UseFormBasic />
     <UseFormNested />
     <UseFormTrigger />
@@ -17,6 +18,7 @@ import Basic from './basic.vue';
 import CustomValidation from './custom-validation.vue';
 import DynamicFormItem from './dynamic-form-item.vue';
 import HorizontalLogin from './horizontal-login.vue';
+import NestedForm from './nested-form.vue';
 import Layout from './layout.vue';
 import Validation from './validation.vue';
 import UseFormBasic from './useForm-basic.vue';
@@ -35,6 +37,7 @@ export default {
     CustomValidation,
     DynamicFormItem,
     HorizontalLogin,
+    NestedForm,
     Layout,
     Validation,
     UseFormBasic,
