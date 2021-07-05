@@ -19,20 +19,40 @@ const client = new OSS({
 
 const assetsPath = path.join(process.cwd(), 'dist', 'assets');
 
-async function put(file) {
+const put = file => {
+  return new Promise((reslove, reject) => {
+    client.put(`v2/assets/${file}`, path.join(assetsPath, file))
+      .then(res => {
+        if (res.res.status !== 200) {
+          console.log(`${res.name} upload failed!`);
+          reject();
+          process.exit(500);
+        } else {
+          console.log(`${res.name} upload success!`);
+          reslove();
+        }
+      })
+      .catch(err => {
+        if (err) {
+          err && console.log(err);
+          process.exit(500);
+        }
+      });
+  });
+};
+
+async function upload() {
   try {
-    //object-name可以自定义为文件名（例如file.txt）或目录（例如abc/test/file.txt）的形式，实现将文件上传至当前Bucket或Bucket下的指定目录。
-    await client.put(`v2/assets/${file}`, path.join(assetsPath, file));
-  } catch (e) {
-    console.log(e);
+    const files = await fs.promises.readdir(assetsPath, {
+      withFileTypes: true,
+    });
+    for (const file of files) {
+      if (file.isFile()) {
+        await put(file.name);
+      }
+    }
+  } catch (err) {
+    console.error(err);
   }
 }
-
-if (fs.existsSync(assetsPath)) {
-  fs.readdir(assetsPath, async (err, files) => {
-    for (let file of files) {
-      console.log('upload ', file);
-      await put(file);
-    }
-  });
-}
+upload();
