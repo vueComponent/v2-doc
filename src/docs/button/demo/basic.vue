@@ -17,7 +17,7 @@ There are `primary` button, `default` button, `dashed` button, `text` button and
 </docs>
 
 <template>
-  <a-button type="primary"></a-button>
+  <a-button type="primary">Primary</a-button>
   <a-button>Default</a-button>
   <a-button type="dashed">Dashed</a-button>
   <a-button danger>Danger</a-button>

@@ -111,6 +111,26 @@ import "ant-design-vue/dist/antd.css"; // or 'ant-design-vue/dist/antd.less'
   // import 'ant-design-vue/lib/date-picker/style';         // that will import less
   ```
 
+- For Vite
+  ```js
+  // vite.config.js
+  import ViteComponents, {
+    AntDesignVueResolver,
+  } from 'vite-plugin-components';
+
+  export default {
+    plugins: [
+      /* ... */
+      ViteComponents({
+        customComponentResolvers: [
+          AntDesignVueResolver(),
+        ]
+      }),
+    ],
+  };
+
+  ```
+
 ## Links
 
 - [Home Page](https://www.antdv.com/)

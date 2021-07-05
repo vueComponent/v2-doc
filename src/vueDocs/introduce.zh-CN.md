@@ -114,6 +114,26 @@ import "ant-design-vue/dist/antd.css"; // or 'ant-design-vue/dist/antd.less'
   // import 'ant-design-vue/lib/date-picker/style';         // 加载 LESS
   ```
 
+- Vite 按需
+  ```js
+  // vite.config.js
+  import ViteComponents, {
+    AntDesignVueResolver,
+  } from 'vite-plugin-components';
+
+  export default {
+    plugins: [
+      /* ... */
+      ViteComponents({
+        customComponentResolvers: [
+          AntDesignVueResolver(),
+        ]
+      }),
+    ],
+  };
+
+  ```
+
 ## 链接
 
 - [首页](https://www.antdv.com/)

@@ -61,11 +61,11 @@ import { createApp } from 'vue';
 import { Button, message } from 'ant-design-vue';
 import App from './App';
 
-const app = createApp();
+const app = createApp(App);
 app.config.productionTip = false;
 
 /* Automatically register components under Button, such as Button.Group */
-app.use(Button);
+app.use(Button).mount('#app');
 
 app.config.globalProperties.$message = message;
 ```
@@ -74,7 +74,7 @@ app.config.globalProperties.$message = message;
 
 ### 4. Component list
 
-[Component list](https://github.com/vueComponent/ant-design-vue/blob/master/components/index.js)
+[Component list](https://github.com/vueComponent/ant-design-vue/blob/next/components/components.ts)
 
 ## Compatibility
 
@@ -88,11 +88,7 @@ If you are using babel, we strongly recommend using [babel-polyfill](https://bab
 
 ## Import on Demand
 
-If you see logs like below screenshot, you might be importing all components by writing `import { Button } from 'ant-design-vue';`. This will affect your app's network performance.
-
-> ![](https://zos.alipayobjects.com/rmsportal/GHIRszVcmjccgZRakJDQ.png)
-
-However, we can import individual components on demand:
+we can import individual components on demand:
 
 ```jsx
 import Button from 'ant-design-vue/lib/button';
@@ -108,6 +104,8 @@ import { Button } from 'ant-design-vue';
 And this plugin can load styles too, read [usage](https://github.com/ant-design/babel-plugin-import#usage) for more details.
 
 > FYI, babel-plugin-import's `style` option will importing some global reset styles, don't use it if you don't need those styles. You can import styles manually via `import 'ant-design-vue/dist/antd.css'` and override the global reset styles.
+
+If you use Vite, you can use [vite-plugin-components](https://github.com/antfu/vite-plugin-components) to load on demand.
 
 ## Customization
 
