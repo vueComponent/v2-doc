@@ -4,3 +4,4 @@ dist
 dist-ssr
 src/router/demoRoutes.js
 *.local
+yarn.lock
