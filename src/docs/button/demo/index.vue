@@ -8,6 +8,7 @@
     <multiple />
     <size />
     <block />
+    <danger />
   </demo-sort>
 </template>
 <script lang="ts">
@@ -19,6 +20,7 @@ import Loading from './loading.vue';
 import Multiple from './multiple.vue';
 import Size from './size.vue';
 import Block from './block.vue';
+import Danger from './danger.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
 import { defineComponent } from 'vue';
@@ -35,6 +37,7 @@ export default defineComponent({
     Multiple,
     Size,
     Block,
+    Danger,
   },
   setup() {
     return {};
