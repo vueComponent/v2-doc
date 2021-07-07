@@ -39,6 +39,10 @@ export default defineComponent({
     const iconLoading = ref<boolean | DelayLoading>(false);
     const enterIconLoading = () => {
       iconLoading.value = { delay: 1000 };
+
+      setTimeout(() => {
+        iconLoading.value = false;
+      }, 6000);
     };
     return {
       loading: ref(false),
