@@ -78,7 +78,7 @@ app.config.globalProperties.$message = message;
 
 ## Compatibility
 
-Ant Design Vue 2.x supports all the modern browsers and IE11+. If you want to use IE9+, you can use Ant Design Vue 1.x & Vue 2.x.
+Ant Design Vue 2.x supports all the modern browsers. If you want to use IE9+, you can use Ant Design Vue 1.x & Vue 2.x.
 
 You need to provide [es5-shim](https://github.com/es-shims/es5-shim) and [es6-shim](https://github.com/paulmillr/es6-shim) and other polyfills for IE browsers.
 

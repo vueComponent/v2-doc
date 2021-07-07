@@ -16,7 +16,6 @@ This document will help you upgrade from ant-design-vue `1.x` version to ant-des
 
 ### Compatibility adjustment
 
-- The minimum supported version of IE is IE 11.
 - The minimum supported version of Vue is Vue 3.0.
 
 #### Adjusted API
