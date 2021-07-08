@@ -24,12 +24,16 @@ Commonly displayed on the details page.
 | layout | Define description layout | `horizontal | vertical` | `horizontal` |  |
 | size | set the size of the list. Can be set to `middle`,`small`, or not filled | `default | middle | small` | `default` |  |
 | title | The title of the description list, placed at the top | string \| VNode \| slot | - |  |
+| labelStyle | Customize label style | CSSProperties | - | 2.2.0 |
+| contentStyle | Customize content style | CSSProperties | - | 2.2.0 |
 
 ### Item props
 
-| Property | Description                    | Type                      | Default |
-| -------- | ------------------------------ | ------------------------- | ------- |
-| label    | description of the content     | string \| VNode \| slot | -       |
-| span     | The number of columns included | number                    | 1       |
+| Property     | Description                    | Type                    | Default | Version |
+| ------------ | ------------------------------ | ----------------------- | ------- | ------- |
+| label        | description of the content     | string \| VNode \| slot | -       |         |
+| span         | The number of columns included | number                  | 1       |         |
+| labelStyle   | Customize label style          | CSSProperties           | -       | 2.2.0   |
+| contentStyle | Customize content style        | CSSProperties           | -       | 2.2.0   |
 
 > The number of span Descriptions.Item. span={2} takes up the width of two DescriptionsItems.
