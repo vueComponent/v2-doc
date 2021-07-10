@@ -11,6 +11,7 @@
     <segment />
     <line-cap />
     <gradient-line />
+    <steps />
   </demo-sort>
 </template>
 <script lang="ts">
@@ -25,6 +26,7 @@ import Dashboard from './dashboard.vue';
 import Segment from './segment.vue';
 import LineCap from './linecap.vue';
 import GradientLine from './gradient-line.vue';
+import Steps from './steps.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
 import { defineComponent } from 'vue';
@@ -44,6 +46,7 @@ export default defineComponent({
     Segment,
     LineCap,
     GradientLine,
+    Steps,
   },
   setup() {
     return {};
