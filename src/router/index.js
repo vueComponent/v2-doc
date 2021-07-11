@@ -137,4 +137,9 @@ export default createRouter({
   history: createWebHistory(),
   fallback: false,
   routes,
+  scrollBehavior: to => {
+    if (to.hash) {
+      return { el: to.hash, top: 80, behavior: 'auto' };
+    }
+  },
 });
