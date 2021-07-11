@@ -38,7 +38,7 @@ Flex layout uses a 24 grid layout to define the width of each "box", but does no
 | align | the vertical alignment of the flex layout: `top` `middle` `bottom` | string | `top` |
 | gutter | spacing between grids, could be a number or a object like `{ xs: 8, sm: 16, md: 24}`. or you can use array to make horizontal and vertical spacing work at the same time `[horizontal, vertical]` (supported after `1.5.0`) | number/object/array | 0 |
 | justify | horizontal arrangement of the flex layout: `start` `end` `center` `space-around` `space-between` | string | `start` |
-| type | layout mode, optional `flex`, [browser support](http://caniuse.com/#search=flex) | string |  |
+| wrap | Auto wrap line | boolean | false |
 
 ### Col
 
