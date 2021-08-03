@@ -30,8 +30,8 @@ Render extra footer in panel for customized requirements.
     <a-range-picker show-time>
       <template #renderExtraFooter>extra footer</template>
     </a-range-picker>
-    <a-month-picker placeholder="Select month">
+    <a-date-picker placeholder="Select month" picker="month">
       <template #renderExtraFooter>extra footer</template>
-    </a-month-picker>
+    </a-date-picker>
   </a-space>
 </template>
