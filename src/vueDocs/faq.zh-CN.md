@@ -6,13 +6,9 @@
 
 不。事实上你可以使用工具（请自行 Google）将 Less 转换成 Sass/Stylus 等。
 
-### 如何在 DatePicker 中使用 dayjs
-
-我们还提供另一种实现方式。使用 antd-dayjs-webpack-plugin 插件，无需对现有代码做任何修改直接替换成 Day.js。请参考 [antd-dayjs-webpack-plugin](https://github.com/ant-design/antd-dayjs-webpack-plugin)。
-
 ### 国际化没有生效？
 
-组件提供的语言包并不对日期格式化起作用，你需要额外导入 moment 语言包，并应用，参考 `ConfigProvider` 组件。如果你使用 Vite 作为构建工具，因 Vite 尚不完善，你需要在你的项目中额外执行 `npm i --save moment` 进行安装。
+组件提供的语言包并不对日期格式化起作用，你需要额外导入 dayjs 语言包，并应用，参考 `ConfigProvider` 组件。
 
 ### 当我点击 `Select Dropdown DatePicker TimePicker Popover Popconfirm` 内的另一个 popup 组件时它会消失，如何解决？
 
@@ -25,10 +21,6 @@
 ### 如何修改 Ant Design Vue 的默认主题？
 
 参考[主题定制](/docs/vue/customize-theme/)。
-
-### 如何配置 webpack 以优化 momentjs 的打包大小？
-
-参考：https://github.com/jmblog/how-to-optimize-momentjs-with-webpack 。
 
 ### 当我动态改变 `defaultValue`,`defaultOpenKeys`, `initialValue`等`defaultXxxx`的时候它并没有生效。
 

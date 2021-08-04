@@ -7,12 +7,14 @@ cover: https://gw.alipayobjects.com/zos/alicdn/RT_USzA48/DatePicker.svg
 
 ## API
 
-There are four kinds of picker:
+There are five kinds of picker:
 
 - DatePicker
-- MonthPicker
+- DatePicker\[picker="month"]
+- DatePicker\[picker="week"]
+- DatePicker\[picker="year"]
+- DatePicker\[picker="quarter"]
 - RangePicker
-- WeekPicker
 
 ### Localization
 
@@ -38,22 +40,25 @@ If there are special needs (only modifying single component language), Please us
 </script>
 ```
 
-**Note:** Part of locale of DatePicker, MonthPicker, RangePicker, WeekPicker is read from value. So, please set the locale of moment correctly.
-
 ```html
 <template>
-  <a-date-picker v-model:value="value" />
+  <a-config-provider :locale="locale">
+    <a-date-picker v-model:value="value" />
+  </a-config-provider>
 </template>
 <script>
   // The default locale is en-US, if you want to use other locale, just set locale in entry file globally.
-  import moment from 'moment';
-  import 'moment/dist/locale/zh-cn';
+  import dayjs from 'dayjs';
+  import 'dayjs/locale/zh-cn';
+  import locale from 'ant-design-vue/es/date-picker/locale/zh_CN';
   import { defineComponent } from 'vue';
+  dayjs.locale('zh-cn');
   export default defineComponent({
     setup() {
       return {
-        value: moment('2015-01-01', 'YYYY-MM-DD')
-        moment,
+        value: dayjs('2015-01-01', 'YYYY-MM-DD')
+        dayjs,
+        locale
       };
     },
   });
@@ -62,28 +67,28 @@ If there are special needs (only modifying single component language), Please us
 
 ### Common API
 
-The following APIs are shared by DatePicker, MonthPicker, RangePicker, WeekPicker.
+The following APIs are shared by DatePicker, RangePicker.
 
 | Property | Description | Type | Default | Version |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | allowClear | Whether to show clear button | boolean | true |  |
-| autofocus | get focus when component mounted | boolean | false |  |
-| dateRender | custom rendering function for date cells by setting a slot | #dateRender="{current, today}" | - |  |
-| disabled | determine whether the DatePicker is disabled | boolean | false |  |
-| disabledDate | specify the date that cannot be selected | (currentDate: moment) => boolean | - |  |
-| getCalendarContainer | to set the container of the floating layer, while the default is to create a `div` element in `body` | function(trigger) | - |  |
-| locale | localization configuration | object | [default](https://github.com/vueComponent/ant-design-vue/blob/next/components/date-picker/locale/example.json) |  |
-| mode | picker panel mode | `time | date | month | year` | 'date' |  |
-| open | open state of picker | boolean | - |  |
-| placeholder | placeholder of date input | string\|RangePicker\[] | - |  |
-| popupStyle | to customize the style of the popup calendar | CSSProperties | {} |  |
-| dropdownClassName | to customize the class of the popup calendar | string | - |  |
-| size | determine the size of the input box, the height of `large` and `small`, are 40px and 24px respectively, while default size is 32px | string | - |  |
-| suffixIcon | The custom suffix icon | VNode \| slot | - |  |
-| inputReadOnly | Set the readonly attribute of the input tag (avoids virtual keyboard on touch devices) | boolean | - | 1.5.4 |
-| align | this value will be merged into placement's config, please refer to the settings [dom-align](https://github.com/yiminghe/dom-align) | Object | - | 1.5.4 |
-| valueFormat | optional, format of binding value. If not specified, the binding value will be a Date object | string，[date formats](https://momentjs.com/docs/#/displaying/format/) | - | 1.5.4 |
-
+| autofocus | If get focus when component mounted | boolean | false |  |
+| bordered | Whether has border style | boolean | true |  |
+| dateRender | Custom rendering function for date cells | v-slot:dateRender="{current, today}" | - |  |
+| disabled | Determine whether the DatePicker is disabled | boolean | false |  |
+| disabledDate | Specify the date that cannot be selected | (currentDate: dayjs) => boolean | - |  |
+| dropdownClassName | To customize the className of the popup calendar | string | - |  |
+| getPopupContainer | To set the container of the floating layer, while the default is to create a `div` element in `body` | function(trigger) | - |  |
+| inputReadOnly | Set the `readonly` attribute of the input tag (avoids virtual keyboard on touch devices) | boolean | false |  |
+| locale | Localization configuration | object | [default](https://github.com/vueComponent/ant-design-vue/blob/next/components/date-picker/locale/example.json) |  |
+| mode | The picker panel mode | `time` \| `date` \| `month` \| `year` \| `decade` | - |  |
+| open | The open state of picker | boolean | - |  |
+| picker | Set picker type | `date` \| `week` \| `month` \| `quarter` \| `year` | `date` | `quarter` |
+| placeholder | The placeholder of date input | string \| \[string,string] | - |  |
+| popupStyle | To customize the style of the popup calendar | CSSProperties | {} |  |
+| size | To determine the size of the input box, the height of `large` and `small`, are 40px and 24px respectively, while default size is 32px | `large` \| `middle` \| `small` | - |  |
+| suffixIcon | The custom suffix icon | v-slot:suffixIcon | - |  |
+| valueFormat | optional, format of binding value. If not specified, the binding value will be a Date object | string，[date formats](https://day.js.org/docs/en/display/format) | - |  |
 ### Common Events
 
 | Events Name | Description | Arguments | Version |
@@ -102,75 +107,77 @@ The following APIs are shared by DatePicker, MonthPicker, RangePicker, WeekPicke
 
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
-| defaultValue | to set default date | [moment](http://momentjs.com/) | - |  |
-| defaultPickerValue | to set default picker date | [moment](http://momentjs.com/) | - |  |
-| disabledTime | to specify the time that cannot be selected | function(date) | - |  |
-| format | to set the date format, refer to [moment.js](http://momentjs.com/) | string | "YYYY-MM-DD" |  |
-| renderExtraFooter | render extra footer in panel by setting a slot | #renderExtraFooter="mode" | - |  |
-| showTime | to provide an additional time selection | object\|boolean | [TimePicker Options](/components/time-picker/#API) |  |
-| showTime.defaultValue | to set default time of selected date | [moment](http://momentjs.com/) | moment() |  |
-| showToday | whether to show "Today" button | boolean | true |  |
-| value(v-model) | to set date | [moment](http://momentjs.com/) | - |  |
-
+| defaultPickerValue | To set default picker date | [dayjs](https://day.js.org/) | - |  |
+| disabledTime | To specify the time that cannot be selected | function(date) | - |  |
+| format | To set the date format, refer to [dayjs](https://day.js.org/). When an array is provided, all values are used for parsing and first value is used for formatting, support [Custom Format](#components-date-picker-demo-format) | string \| (value: dayjs) => string \| (string \| (value: dayjs) => string)\[] | `YYYY-MM-DD` |  |
+| renderExtraFooter | Render extra footer in panel | v-slot:renderExtraFooter="mode" | - |  |
+| showNow | Whether to show 'Now' button on panel when `showTime` is set | boolean | - |  |
+| showTime | To provide an additional time selection | object \| boolean | [TimePicker Options](/components/time-picker/#API) |  |
+| showTime.defaultValue | To set default time of selected date, [demo](#components-date-picker-demo-disabled-date) | [dayjs](https://day.js.org/) | dayjs() |  |
+| showToday | Whether to show `Today` button | boolean | true |  |
+| value(v-model) | To set date | [dayjs](https://day.js.org/) | - |  |
 ### DatePicker Events
 
 | Events Name | Description | Arguments | Version |
 | --- | --- | --- | --- |
-| change | a callback function, can be executed when the selected time is changing | function(date: moment \| string, dateString: string) |  |
-| ok | callback when click ok button | function(date: moment \| string) |  |
+| change | a callback function, can be executed when the selected time is changing | function(date: dayjs \| string, dateString: string) |  |
+| ok | callback when click ok button | function(date: dayjs \| string) |  |
 
-### MonthPicker
-
-| Property | Description | Type | Default | Version |
-| --- | --- | --- | --- | --- |
-| defaultValue | to set default date | [moment](http://momentjs.com/) | - |
-| defaultPickerValue | to set default picker date | [moment](http://momentjs.com/) | - |  |
-| format | to set the date format. When an array is provided, all values are used for parsing and first value for display. refer to [moment.js](http://momentjs.com/) | string \| string[] | "YYYY-MM" |  |
-| monthCellContentRender | Custom month cell content render method by setting a slot | #monthCellContentRender="date, locale" | - |  |
-| renderExtraFooter | render extra footer in panel by setting a slot | #renderExtraFooter="mode" | - |  |
-| value(v-model) | to set date | [moment](http://momentjs.com/) | - |  |
-
-### MonthPicker Events
-
-| Events Name | Description | Arguments | Version |
-| --- | --- | --- | --- |
-| change | a callback function, can be executed when the selected time is changing | function(date: moment \| string, dateString: string) |  |
-
-### WeekPicker
+### DatePicker\[picker=year]
 
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
-| defaultValue | to set default date | [moment](http://momentjs.com/) | - |  |
-| defaultPickerValue | to set default picker date | [moment](http://momentjs.com/) | - |  |
-| format | to set the date format, refer to [moment.js](http://momentjs.com/) | string | "YYYY-wo" |  |
-| value(v-model) | to set date | [moment](http://momentjs.com/) | - |  |
-| renderExtraFooter | render extra footer in panel by setting a slot | #renderExtraFooter="mode" | - |  |
+| format | To set the date format, refer to [dayjs](https://day.js.org/) | string | `YYYY` |  |
 
-### WeekPicker Events
+### DatePicker\[picker=quarter]
 
-| Events Name | Description | Arguments | Version |
-| --- | --- | --- | --- |
-| change | a callback function, can be executed when the selected time is changing | function(date: moment \| string, dateString: string) |  |
+| Property | Description | Type | Default | Version |
+| --- | --- | --- | --- | --- |
+| format | To set the date format, refer to [dayjs](https://day.js.org/) | string | `YYYY-\QQ` |  |
 
+### DatePicker\[picker=month]
+
+| Property | Description | Type | Default | Version |
+| --- | --- | --- | --- | --- |
+| format | To set the date format, refer to [dayjs](https://day.js.org/) | string | `YYYY-MM` |  |
+| monthCellRender | Custom month cell content render method | v-slot:monthCellRender="{current, locale}" | - |  |
+
+### DatePicker\[picker=week]
+
+| Property | Description | Type | Default | Version |
+| --- | --- | --- | --- | --- |
+| format | To set the date format, refer to [dayjs](https://day.js.org/) | string | `YYYY-wo` |  |
 ### RangePicker
 
 | Property | Description | Type | Default | Version |
-| --- | --- | --- | --- | --- | --- |
-| defaultValue | to set default date | [moment](http://momentjs.com/)\[] | - |  |
-| defaultPickerValue | to set default picker date | [moment](http://momentjs.com/)\[] | - |  |
-| disabledTime | to specify the time that cannot be selected | function(dates: \[moment, moment\], partial: `'start' | 'end'`) | - |  |
-| format | to set the date format | string | "YYYY-MM-DD HH:mm:ss" |  |
-| ranges | preseted ranges for quick selection | { \[range: string]: [moment](http://momentjs.com/)\[] } \| { \[range: string]: () => [moment](http://momentjs.com/)\[] } | - |  |
-| renderExtraFooter | render extra footer in panel by setting a slot | #renderExtraFooter="mode" | - |  |
-| separator | set separator between inputs | string | '~' | 1.5.0 |
-| showTime | to provide an additional time selection | object\|boolean | [TimePicker Options](/components/time-picker/#API) |  |
-| showTime.defaultValue | to set default time of selected date, [demo](#components-date-picker-demo-disabled-date) | [moment](http://momentjs.com/)\[] | \[moment(), moment()] |  |
-| value(v-model) | to set date | \[[moment](http://momentjs.com/), [moment](http://momentjs.com/)] | - |  |
+| --- | --- | --- | --- | --- |
+| allowEmpty | Allow start or end input leave empty | \[boolean, boolean] | \[false, false] |  |
+| dateRender | Customize date cell. | v-slot:dateRender="{current: dayjs, today: dayjs, info: { range: `start` \| `end` }}" | - |  |
+| defaultPickerValue | To set default picker date | \[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)] | - |  |
+| disabled | If disable start or end | \[boolean, boolean] | - |  |
+| disabledTime | To specify the time that cannot be selected | function(date: dayjs, partial: `start` \| `end`) | - |  |
+| format | To set the date format, refer to [dayjs](https://day.js.org/). When an array is provided, all values are used for parsing and first value is used for formatting | string \| string\[] | `YYYY-MM-DD HH:mm:ss` |  |
+| ranges | The preseted ranges for quick selection | { \[range: string]: [dayjs](https://day.js.org/)\[] } \| { \[range: string]: () => [dayjs](https://day.js.org/)\[] } | - |  |
+| renderExtraFooter | Render extra footer in panel | v-slot:renderExtraFooter | - |  |
+| separator | Set separator between inputs | string \| v-slot:separator | `<SwapRightOutlined />` |  |
+| showTime | To provide an additional time selection | object \| boolean | [TimePicker Options](/components/time-picker/#API) |  |
+| showTime.defaultValue | To set default time of selected date, [demo](#components-date-picker-demo-disabled-date) | [dayjs](https://day.js.org/)\[] | \[dayjs(), dayjs()] |  |
+| value(v-model) | To set date | \[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)] | - |  |
 
 ### RangePicker Events
 
 | Events Name | Description | Arguments | Version |
 | --- | --- | --- | --- |
-| calendarChange | a callback function, can be executed when the start time or the end time of the range is changing | function(dates: \[moment, moment\] \| \[string, string\], dateStrings: \[string, string\]) |  |
-| change | a callback function, can be executed when the selected time is changing | function(dates: \[moment, moment\] \| \[string, string\], dateStrings: \[string, string\]) |  |
-| ok | callback when click ok button | function(dates: \[moment, moment\] \| \[string, string\]) |  |
+| calendarChange | Callback function, can be executed when the start time or the end time of the range is changing. | function(dates: \[dayjs, dayjs], dateStrings: \[string, string], info: { range:`start`\|`end` }) | - |  |
+| change | a callback function, can be executed when the selected time is changing | function(dates: \[dayjs, dayjs\] \| \[string, string\], dateStrings: \[string, string\]) |  |
+| ok | callback when click ok button | function(dates: \[dayjs, dayjs\] \| \[string, string\]) |  |
+
+
+## FAQ
+### How to use DatePicker with customize date library（like moment.js \| dayjs \| date-fns）？
+
+Please refer [replace date](/docs/vue/replace-date)
+
+### Why config moment.locale globally not work?
+
+DatePicker default set `locale` as `en` in v4. You can config DatePicker `locale` prop or [ConfigProvider `locale`](/components/config-provider) prop instead.
