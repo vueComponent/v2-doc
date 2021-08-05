@@ -32,21 +32,21 @@ value 和 onChange 需要配合使用。也可以直接使用v-model。
   </div>
 </template>
 <script lang="ts">
-import moment, { Moment } from 'moment';
+import dayjs, { Dayjs } from 'dayjs';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   setup() {
-    const value = ref<Moment>();
+    const value = ref<Dayjs>();
 
-    const onChange = (time: Moment) => {
+    const onChange = (time: Dayjs) => {
       console.log(time);
       value.value = time;
     };
 
     return {
       value,
-      value2: ref(moment()),
+      value2: ref(dayjs()),
       onChange,
     };
   },
