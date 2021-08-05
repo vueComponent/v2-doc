@@ -38,7 +38,7 @@ Following the Ant Design specification, we developed a Vue UI library `antd` tha
 
 ## Version
 
-- Stable: [![npm package](https://img.shields.io/npm/v/ant-design-vue.svg?style=flat-square)](https://www.npmjs.org/package/ant-design-vue)
+- Stable: [![npm package](https://img.shields.io/npm/v/ant-design-vue/next.svg?style=flat-square)](https://www.npmjs.org/package/ant-design-vue)
 
 You can subscribe to this feed for new version notifications: https://github.com/vueComponent/ant-design-vue/releases.atom
 
@@ -49,11 +49,11 @@ You can subscribe to this feed for new version notifications: https://github.com
 **We recommend using npm or yarn to install**，it not only makes development easier，but also allow you to take advantage of the rich ecosystem of Javascript packages and tooling.
 
 ```bash
-$ npm install ant-design-vue --save
+$ npm install ant-design-vue@next --save
 ```
 
 ```bash
-$ yarn add ant-design-vue
+$ yarn add ant-design-vue@next
 ```
 
 If you are in a bad network environment，you can try other registries and tools like [cnpm](https://github.com/cnpm/cnpm).
@@ -114,22 +114,17 @@ import "ant-design-vue/dist/antd.css"; // or 'ant-design-vue/dist/antd.less'
 - For Vite
   ```js
   // vite.config.js
-  import ViteComponents, {
-    AntDesignVueResolver,
-  } from 'vite-plugin-components';
+  import ViteComponents, { AntDesignVueResolver } from 'vite-plugin-components';
 
   export default {
     plugins: [
       /* ... */
       ViteComponents({
-        customComponentResolvers: [
-          AntDesignVueResolver(),
-        ]
+        customComponentResolvers: [AntDesignVueResolver()],
       }),
     ],
   };
-
-  ```
+```
 
 ## Links
 
