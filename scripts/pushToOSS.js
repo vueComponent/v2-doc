@@ -7,7 +7,7 @@ const accessKeyId = process.env.ALI_OSS_ACCESSKEY;
 const accessKeySecret = process.env.ALI_OSS_SECRETKEY;
 
 const client = new OSS({
-  bucket: 'antdv',
+  bucket: 'antdv-beijing',
   cname: 'true',
   endpoint: 'aliyuncdn.antdv.com',
   // region以杭州为例（oss-cn-hangzhou），其他region按实际情况填写。
