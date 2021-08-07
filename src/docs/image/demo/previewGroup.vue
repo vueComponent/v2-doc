@@ -18,8 +18,8 @@ Click the left and right switch buttons to preview multiple images.
 
 <template>
   <a-image-preview-group>
-    <a-image :width="200" src="https://alicdn.antdv.com/vue.png" />
-    <a-image :width="200" src="https://alicdn.antdv.com/logo.png" />
+    <a-image :width="200" src="https://aliyuncdn.antdv.com/vue.png" />
+    <a-image :width="200" src="https://aliyuncdn.antdv.com/logo.png" />
   </a-image-preview-group>
 </template>
 <script lang="ts">
