@@ -18,7 +18,7 @@
         style="position: relative"
       >
         {{ $t('app.header.menu.store') }}
-        <a-badge color="red" style="position: absolute; top: -30px; right: -10px" />
+        <a-badge color="red" style="position: absolute; top: -35px; right: -15px" />
       </a>
     </a-menu-item>
     <a-menu-item v-if="isZhCN" key="geektime">
@@ -29,7 +29,7 @@
         style="position: relative"
       >
         实战课程
-        <a-badge color="red" style="position: absolute; top: -10px; right: -10px" />
+        <a-badge color="red" style="position: absolute; top: -35px; right: -15px" />
       </a>
     </a-menu-item>
     <template v-if="isMobile">
