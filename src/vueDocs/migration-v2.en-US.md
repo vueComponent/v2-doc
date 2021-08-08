@@ -31,7 +31,7 @@ This document will help you upgrade from ant-design-vue `1.x` version to ant-des
 - v-model is changed to v-model:xxx, which specifically involves components:
 
   - The components changed from v-model to v-model:checked are: CheckableTag, Checkbox, Switch
-  - The components changed from v-model to v-model:value are: Radio, Mentions, CheckboxGroup, Rate, DatePicker
+  - The components changed from v-model to v-model:value are: Radio, Mentions, CheckboxGroup, Rate, DatePicker、Select
   - The components changed from v-model to v-model:visible are: Tag, Popconfirm, Popove, Tooltip, Moda, Dropdown
   - The components changed from v-model to v-model:activeKey are: Collaps, Tabs
   - The components changed from v-model to v-model:current are: Steps
