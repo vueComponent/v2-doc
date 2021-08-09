@@ -49,7 +49,7 @@ Components which need localization support are listed here, you can toggle the l
         <a-transfer :data-source="[]" show-search :target-keys="[]" :render="item => item.title" />
       </div>
       <div class="site-config-provider-calendar-wrapper">
-        <a-calendar :fullscreen="false" :value="moment()" />
+        <a-calendar :fullscreen="false" />
       </div>
       <div class="example">
         <a-table :data-source="[]" :columns="columns" />
@@ -64,11 +64,11 @@ Components which need localization support are listed here, you can toggle the l
 import { Modal } from 'ant-design-vue';
 import enUS from 'ant-design-vue/es/locale/en_US';
 import zhCN from 'ant-design-vue/es/locale/zh_CN';
-import moment from 'moment';
-import 'moment/dist/locale/zh-cn';
+import dayjs from 'dayjs';
+import 'dayjs/locale/zh-cn';
 import { defineComponent, ref, watch } from 'vue';
 
-moment.locale('en');
+dayjs.locale('en');
 
 const columns = [
   {
@@ -91,7 +91,7 @@ export default defineComponent({
     const visible = ref(false);
     const locale = ref(enUS.locale);
     watch(locale, val => {
-      moment.locale(val);
+      dayjs.locale(val);
     });
     const info = () => {
       Modal.info({
@@ -109,7 +109,7 @@ export default defineComponent({
       columns,
       visible,
       locale,
-      moment,
+      dayjs,
       enUS,
       zhCN,
       info,

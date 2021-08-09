@@ -178,6 +178,6 @@ The following APIs are shared by DatePicker, RangePicker.
 
 Please refer [replace date](/docs/vue/replace-date)
 
-### Why config moment.locale globally not work?
+### Why config dayjs.locale globally not work?
 
 DatePicker default set `locale` as `en` in v4. You can config DatePicker `locale` prop or [ConfigProvider `locale`](/components/config-provider) prop instead.

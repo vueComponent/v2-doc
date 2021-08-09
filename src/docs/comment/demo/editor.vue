@@ -55,7 +55,7 @@ Comment can be used as editor, user can customize the editor component.
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 type Comment = Record<string, string>;
 
@@ -78,7 +78,7 @@ export default defineComponent({
             author: 'Han Solo',
             avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
             content: value.value,
-            datetime: moment().fromNow(),
+            datetime: dayjs().fromNow(),
           },
           ...comments.value,
         ];
