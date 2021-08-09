@@ -14,7 +14,10 @@
 </template>
 
 <script lang="ts">
-import moment from 'moment';
+import dayjs from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
+dayjs.extend(isBetween);
+
 export default {
   props: ['isMobile'],
   data() {
@@ -28,7 +31,7 @@ export default {
   },
   methods: {
     isEffective({ start, end }) {
-      return moment().isBetween(start, end);
+      return dayjs().isBetween(start, end);
     },
   },
 };

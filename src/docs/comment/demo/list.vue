@@ -47,6 +47,9 @@ Displaying a series of comments using the `antd` List Component.
 <script lang="ts">
 import dayjs from 'dayjs';
 import { defineComponent } from 'vue';
+import relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTime);
+
 export default defineComponent({
   setup() {
     return {

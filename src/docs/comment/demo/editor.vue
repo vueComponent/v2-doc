@@ -56,6 +56,8 @@ Comment can be used as editor, user can customize the editor component.
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTime);
 
 type Comment = Record<string, string>;
 

@@ -108,17 +108,17 @@
   </footer>
 </template>
 <script>
-import moment from 'moment';
+import dayjs from 'dayjs';
 export default {
   props: {
     isCN: Boolean,
   },
   setup() {
     const showPpy = () => {
-      return moment().isBefore(moment('2021-06-15'));
+      return dayjs().isBefore(dayjs('2021-06-15'));
     };
     return {
-      moment,
+      dayjs,
       showPpy,
     };
   },
