@@ -1,7 +1,7 @@
 <docs>
 ---
 order: 2
-title: 
+title:
   zh-CN: 通知事项日历
   en-US: Notice Calendar
 ---
@@ -18,16 +18,16 @@ This component can be rendered by using `dateCellRender` and `monthCellRender` w
 
 <template>
   <a-calendar v-model:value="value">
-    <template #dateCellRender="{ current: value }">
+    <template #dateCellRender="{ current }">
       <ul class="events">
-        <li v-for="item in getListData(value)" :key="item.content">
+        <li v-for="item in getListData(current)" :key="item.content">
           <a-badge :status="item.type" :text="item.content" />
         </li>
       </ul>
     </template>
-    <template #monthCellRender="{ current: value }">
-      <div v-if="getMonthData(value)" class="notes-month">
-        <section>{{ getMonthData(value) }}</section>
+    <template #monthCellRender="{ current }">
+      <div v-if="getMonthData(current)" class="notes-month">
+        <section>{{ getMonthData(current) }}</section>
         <span>Backlog number</span>
       </div>
     </template>
@@ -35,13 +35,13 @@ This component can be rendered by using `dateCellRender` and `monthCellRender` w
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { Moment } from 'moment';
+import { Dayjs } from 'dayjs';
 
 export default defineComponent({
   setup() {
-    const value = ref<Moment>();
+    const value = ref<Dayjs>();
 
-    const getListData = (value: Moment) => {
+    const getListData = (value: Dayjs) => {
       let listData;
       switch (value.date()) {
         case 8:
@@ -72,7 +72,7 @@ export default defineComponent({
       return listData || [];
     };
 
-    const getMonthData = (value: Moment) => {
+    const getMonthData = (value: Dayjs) => {
       if (value.month() === 8) {
         return 1394;
       }
@@ -107,3 +107,4 @@ export default defineComponent({
   font-size: 28px;
 }
 </style>
+

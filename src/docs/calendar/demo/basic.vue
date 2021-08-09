@@ -1,7 +1,7 @@
 <docs>
 ---
 order: 0
-title: 
+title:
   zh-CN: 基本
   en-US: Basic
 ---
@@ -15,18 +15,17 @@ title:
 A basic calendar component with Year/Month switch.
 
 </docs>
-
 <template>
   <a-calendar v-model:value="value" @panelChange="onPanelChange" />
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { Moment } from 'moment';
+import { Dayjs } from 'dayjs';
 
 export default defineComponent({
   setup() {
-    const value = ref<Moment>();
-    const onPanelChange = (value: Moment, mode: string) => {
+    const value = ref<Dayjs>();
+    const onPanelChange = (value: Dayjs, mode: string) => {
       console.log(value, mode);
     };
 
@@ -37,3 +36,4 @@ export default defineComponent({
   },
 });
 </script>
+
