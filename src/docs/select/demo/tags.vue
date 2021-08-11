@@ -37,7 +37,7 @@ export default defineComponent({
     return {
       value: ref([]),
       handleChange,
-      options: [...Array(25)].map((_, i) => ({ value: (i + 10).toString(36) + i })),
+      options: [...Array(25)].map((_, i) => ({ value: (i + 10).toString(36) + (i + 1) })),
     };
   },
 });

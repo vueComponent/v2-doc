@@ -66,7 +66,7 @@ export default defineComponent({
       value1: ref('a1'),
       value2: ref(['a1', 'b2']),
       value3: ref(['a1', 'b2']),
-      options: [...Array(25)].map((_, i) => ({ value: (i + 10).toString(36) + i })),
+      options: [...Array(25)].map((_, i) => ({ value: (i + 10).toString(36) + (i + 1) })),
     };
   },
 });
