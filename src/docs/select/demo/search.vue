@@ -21,22 +21,24 @@ Search the options while expanded.
     v-model:value="value"
     show-search
     placeholder="Select a person"
-    option-filter-prop="children"
     style="width: 200px"
-    :filter-option="filterOption"
+    :options="options"
     @focus="handleFocus"
     @blur="handleBlur"
     @change="handleChange"
   >
-    <a-select-option value="jack">Jack</a-select-option>
-    <a-select-option value="lucy">Lucy</a-select-option>
-    <a-select-option value="tom">Tom</a-select-option>
   </a-select>
 </template>
 <script lang="ts">
+import { SelectTypes } from 'ant-design-vue/es/select';
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
+    const options = ref<SelectTypes['options']>([
+      { value: 'jack', label: 'Jack' },
+      { value: 'lucy', label: 'Lucy' },
+      { value: 'tom', label: 'Tom' },
+    ]);
     const handleChange = (value: string) => {
       console.log(`selected ${value}`);
     };
@@ -47,7 +49,7 @@ export default defineComponent({
       console.log('focus');
     };
     const filterOption = (input: string, option: any) => {
-      return option.props.value.toLowerCase().indexOf(input.toLowerCase()) >= 0;
+      return option.value.toLowerCase().indexOf(input.toLowerCase()) >= 0;
     };
     return {
       value: ref<string | undefined>(undefined),
@@ -55,7 +57,9 @@ export default defineComponent({
       handleBlur,
       handleFocus,
       handleChange,
+      options,
     };
   },
 });
 </script>
+

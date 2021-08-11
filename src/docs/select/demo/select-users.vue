@@ -18,21 +18,19 @@ A complete multiple select sample with remote search, debounce fetch, ajax callb
 
 <template>
   <a-select
+    v-model:value="value"
     mode="multiple"
     label-in-value
-    v-model:value="value"
     placeholder="Select users"
     style="width: 100%"
     :filter-option="false"
     :not-found-content="fetching ? undefined : null"
+    :options="data"
     @search="fetchUser"
   >
     <template v-if="fetching" #notFoundContent>
       <a-spin size="small" />
     </template>
-    <a-select-option v-for="d in data" :key="d.value">
-      {{ d.text }}
-    </a-select-option>
   </a-select>
 </template>
 <script>
@@ -63,13 +61,13 @@ export default defineComponent({
             return;
           }
           const data = body.results.map(user => ({
-            text: `${user.name.first} ${user.name.last}`,
+            label: `${user.name.first} ${user.name.last}`,
             value: user.login.username,
           }));
           state.data = data;
           state.fetching = false;
         });
-    }, 800);
+    }, 300);
 
     watch(state.value, () => {
       state.data = [];

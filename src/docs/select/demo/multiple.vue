@@ -18,15 +18,13 @@ Multiple selection, selecting from existing items (scroll the menu).
 
 <template>
   <a-select
-    mode="multiple"
     v-model:value="value"
+    mode="multiple"
     style="width: 100%"
     placeholder="Please select"
+    :options="[...Array(25)].map((_, i) => ({ value: (i + 10).toString(36) + i }))"
     @change="handleChange"
   >
-    <a-select-option v-for="i in 25" :key="(i + 9).toString(36) + i">
-      {{ (i + 9).toString(36) + i }}
-    </a-select-option>
   </a-select>
 </template>
 <script lang="ts">

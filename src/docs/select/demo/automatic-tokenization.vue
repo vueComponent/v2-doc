@@ -22,24 +22,33 @@ Try to copy `Lucy,Jack` to the input. Only available in tags and multiple mode.
     mode="tags"
     style="width: 100%"
     :token-separators="[',']"
+    placeholder="Automatic tokenization"
+    :options="options"
     @change="handleChange"
-  >
-    <a-select-option v-for="i in 25" :key="(i + 9).toString(36) + i">
-      {{ (i + 9).toString(36) + i }}
-    </a-select-option>
-  </a-select>
+  ></a-select>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, watch } from 'vue';
+import { SelectTypes } from 'ant-design-vue/es/select';
 export default defineComponent({
   setup() {
+    const options = ref<SelectTypes['options']>([
+      {
+        value: 'a1',
+        label: 'a1',
+      },
+    ]);
+    const value = ref<string[]>([]);
     const handleChange = (value: string) => {
       console.log(`selected ${value}`);
     };
-
+    watch(value, () => {
+      console.log('value', value.value);
+    });
     return {
+      options,
       handleChange,
-      value: ref<string[]>([]),
+      value,
     };
   },
 });
