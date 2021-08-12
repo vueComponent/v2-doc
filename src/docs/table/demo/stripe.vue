@@ -78,7 +78,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.ant-table-striped :deep(.table-striped) {
+.ant-table-striped :deep(.table-striped) td {
   background-color: #fafafa;
 }
 </style>
