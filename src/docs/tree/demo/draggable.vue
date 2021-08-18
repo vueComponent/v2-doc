@@ -15,18 +15,16 @@ title:
 Drag treeNode to insert after the other treeNode or insert into the other parent TreeNode.
 
 </docs>
-
 <template>
   <a-tree
     class="draggable-tree"
-    v-model:expandedKeys="expandedKeys"
     draggable
+    block-node
     :tree-data="gData"
     @dragenter="onDragEnter"
     @drop="onDrop"
   />
 </template>
-
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { TreeDataItem, TreeDragEvent, DropEvent } from 'ant-design-vue/es/tree/Tree';
@@ -34,7 +32,7 @@ import { TreeDataItem, TreeDragEvent, DropEvent } from 'ant-design-vue/es/tree/T
 const x = 3;
 const y = 2;
 const z = 1;
-const genData: TreeDataItem[] = [];
+const genData = [];
 
 const generateData = (_level: number, _preKey?: string, _tns?: TreeDataItem[]) => {
   const preKey = _preKey || '0';
@@ -60,24 +58,24 @@ const generateData = (_level: number, _preKey?: string, _tns?: TreeDataItem[]) =
 generateData(z);
 export default defineComponent({
   setup() {
-    const expandedKeys = ref<string[]>(['0-0', '0-0-0', '0-0-0-0']);
+    const expandedKeys = ref<(string | number)[]>(['0-0', '0-0-0', '0-0-0-0']);
     const gData = ref<TreeDataItem[]>(genData);
     const onDragEnter = (info: TreeDragEvent) => {
       console.log(info);
       // expandedKeys 需要展开时
-      // expandedKeys.value = info.expandedKeys
+      // expandedKeys.value = info.expandedKeys;
     };
 
     const onDrop = (info: DropEvent) => {
       console.log(info);
-      const dropKey = info.node.eventKey;
-      const dragKey = info.dragNode.eventKey;
+      const dropKey = info.node.key;
+      const dragKey = info.dragNode.key;
       const dropPos = info.node.pos.split('-');
       const dropPosition = info.dropPosition - Number(dropPos[dropPos.length - 1]);
       const loop = (data: TreeDataItem[], key: string, callback: any) => {
-        data.forEach((item, index, arr) => {
+        data.forEach((item, index) => {
           if (item.key === key) {
-            return callback(item, index, arr);
+            return callback(item, index, data);
           }
           if (item.children) {
             return loop(item.children, key, callback);
@@ -96,8 +94,8 @@ export default defineComponent({
         // Drop on the content
         loop(data, dropKey, (item: TreeDataItem) => {
           item.children = item.children || [];
-          // where to insert 示例添加到尾部，可以是随意位置
-          item.children.push(dragObj);
+          /// where to insert 示例添加到头部，可以是随意位置
+          item.children.unshift(dragObj);
         });
       } else if (
         (info.node.children || []).length > 0 && // Has children
@@ -106,7 +104,7 @@ export default defineComponent({
       ) {
         loop(data, dropKey, (item: TreeDataItem) => {
           item.children = item.children || [];
-          // where to insert 示例添加到尾部，可以是随意位置
+          // where to insert 示例添加到头部，可以是随意位置
           item.children.unshift(dragObj);
         });
       } else {

@@ -15,16 +15,18 @@ title:
 The most basic usage, tell you how to use checkable, selectable, disabled, defaultExpandKeys, and etc.
 
 </docs>
-
 <template>
   <a-tree
-    checkable
-    :tree-data="treeData"
     v-model:expandedKeys="expandedKeys"
     v-model:selectedKeys="selectedKeys"
     v-model:checkedKeys="checkedKeys"
+    checkable
+    :tree-data="treeData"
   >
-    <template #title0010><span style="color: #1890ff">sss</span></template>
+    <template #title="{ title, key }">
+      <span v-if="key === '0-0-1-0'" style="color: #1890ff">{{ title }}</span>
+      <template v-else>{{ title }}</template>
+    </template>
   </a-tree>
 </template>
 <script lang="ts">
@@ -48,7 +50,7 @@ const treeData: TreeDataItem[] = [
       {
         title: 'parent 1-1',
         key: '0-0-1',
-        children: [{ key: '0-0-1-0', slots: { title: 'title0010' } }],
+        children: [{ key: '0-0-1-0', title: 'sss' }],
       },
     ],
   },
@@ -78,3 +80,4 @@ export default defineComponent({
   },
 });
 </script>
+
