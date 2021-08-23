@@ -15,7 +15,6 @@ title:
 The tree structure can be populated using `treeData` property. This is a quick and easy way to provide the tree content.
 
 </docs>
-
 <template>
   <a-tree-select
     v-model:value="value"
@@ -26,7 +25,7 @@ The tree structure can be populated using `treeData` property. This is a quick a
     tree-default-expand-all
   >
     <template #title="{ key, value }">
-      <span style="color: #08c" v-if="key === '0-0-1'">Child Node1 {{ value }}</span>
+      <span v-if="key === '0-0-1'" style="color: #08c">Child Node1 {{ value }}</span>
     </template>
   </a-tree-select>
 </template>
@@ -51,9 +50,6 @@ const treeData: TreeDataItem[] = [
       {
         value: '0-0-1',
         key: '0-0-1',
-        slots: {
-          title: 'title',
-        },
       },
       {
         title: 'Child Node2',
@@ -82,3 +78,4 @@ export default defineComponent({
   },
 });
 </script>
+

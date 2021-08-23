@@ -15,7 +15,6 @@ title:
 Multiple and checkable.
 
 </docs>
-
 <template>
   <a-tree-select
     v-model:value="value"
@@ -24,56 +23,42 @@ Multiple and checkable.
     tree-checkable
     allow-clear
     :show-checked-strategy="SHOW_PARENT"
-    search-placeholder="Please select"
+    placeholder="Please select"
   />
 </template>
-
 <script lang="ts">
-import { TreeSelect } from 'ant-design-vue';
+import { TreeSelectProps, TreeSelect } from 'ant-design-vue';
 import { defineComponent, ref, watch } from 'vue';
 const SHOW_PARENT = TreeSelect.SHOW_PARENT;
 
-interface TreeDataItem {
-  value: string;
-  key: string;
-  title?: string;
-  disabled?: boolean;
-  children?: TreeDataItem[];
-}
-
-const treeData: TreeDataItem[] = [
+const treeData: TreeSelectProps['treeData'] = [
   {
     title: 'Node1',
     value: '0-0',
-    key: '0-0',
     children: [
       {
         title: 'Child Node1',
         value: '0-0-0',
-        key: '0-0-0',
       },
     ],
   },
   {
     title: 'Node2',
     value: '0-1',
-    key: '0-1',
+
     children: [
       {
         title: 'Child Node3',
         value: '0-1-0',
-        key: '0-1-0',
         disabled: true,
       },
       {
         title: 'Child Node4',
         value: '0-1-1',
-        key: '0-1-1',
       },
       {
         title: 'Child Node5',
         value: '0-1-2',
-        key: '0-1-2',
       },
     ],
   },

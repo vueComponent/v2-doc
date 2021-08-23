@@ -2,7 +2,7 @@
   <demo-sort>
     <basic />
     <multiple />
-    <tree-data />
+    <!-- <tree-data /> -->
     <checkable />
     <suffix />
     <async />
@@ -11,7 +11,7 @@
 <script lang="ts">
 import Basic from './basic.vue';
 import Multiple from './multiple.vue';
-import TreeData from './treeData.vue';
+// import TreeData from './treeData.vue';
 import Checkable from './checkable.vue';
 import Suffix from './suffix.vue';
 import Async from './async.vue';
@@ -25,7 +25,7 @@ export default defineComponent({
   components: {
     Basic,
     Multiple,
-    TreeData,
+    // TreeData,
     Checkable,
     Suffix,
     Async,
