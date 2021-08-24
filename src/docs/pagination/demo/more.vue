@@ -20,11 +20,11 @@ More pages.
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
     return {
-      current: 6,
+      current: ref(6),
     };
   },
 });
