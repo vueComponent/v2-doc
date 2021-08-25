@@ -1,21 +1,3 @@
-<docs>
----
-order: 4
-title:
-  zh-CN: 后缀图标
-  en-US: Suffix
----
-
-## zh-CN
-
-最简单的用法。
-
-## en-US
-
-The most basic usage.
-
-</docs>
-
 <template>
   <a-space direction="vertical" style="width: 100%">
     <a-tree-select
@@ -47,7 +29,6 @@ The most basic usage.
     </a-tree-select>
   </a-space>
 </template>
-
 <script lang="ts">
 import { SmileOutlined } from '@ant-design/icons-vue';
 import { TreeSelectProps } from 'ant-design-vue';
@@ -58,7 +39,7 @@ export default defineComponent({
     SmileOutlined,
   },
   setup() {
-    const value = ref<string[]>([]);
+    const value = ref<string>();
     const value1 = ref<string[]>([]);
     const treeData = ref<TreeSelectProps['treeData']>([
       {
