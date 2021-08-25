@@ -20,11 +20,11 @@ Basic pagination.
   <a-pagination v-model:current="current" :total="50" show-less-items />
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
     return {
-      current: 2,
+      current: ref(2),
     };
   },
 });
