@@ -17,37 +17,36 @@ You can customize icons for different nodes.
 </docs>
 
 <template>
-  <a-tree :tree-data="treeData" show-icon default-expand-all v-model:selectedKeys="selectedKeys">
+  <a-tree v-model:selectedKeys="selectedKeys" :tree-data="treeData" show-icon default-expand-all>
     <template #switcherIcon>
       <down-outlined />
     </template>
-    <template #smile>
-      <smile-outlined />
-    </template>
-    <template #meh>
-      <smile-outlined />
-    </template>
-    <template #custom="{ selected }">
-      <frown-filled v-if="selected" />
-      <frown-outlined v-else />
+    <template #icon="{ data, selected }">
+      <template v-if="data.key === '0-0'">
+        <smile-outlined />
+      </template>
+      <template v-else-if="data.key === '0-0-0'">
+        <smile-outlined />
+      </template>
+      <template v-else>
+        <frown-filled v-if="selected" />
+        <frown-outlined v-else />
+      </template>
     </template>
   </a-tree>
 </template>
 <script lang="ts">
 import { DownOutlined, SmileOutlined, FrownOutlined, FrownFilled } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
-import { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
+import type { TreeProps } from 'ant-design-vue';
 
-const treeData: TreeDataItem[] = [
+const treeData: TreeProps['treeData'] = [
   {
     title: 'parent 1',
     key: '0-0',
-    slots: {
-      icon: 'smile',
-    },
     children: [
-      { title: 'leaf', key: '0-0-0', slots: { icon: 'meh' } },
-      { title: 'leaf', key: '0-0-1', slots: { icon: 'custom' } },
+      { title: 'leaf', key: '0-0-0' },
+      { title: 'leaf', key: '0-0-1' },
     ],
   },
 ];

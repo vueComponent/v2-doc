@@ -27,7 +27,7 @@ The most basic usage.
     tree-default-expand-all
     :tree-data="treeData"
   >
-    <template #titleRender="{ value: val, title }">
+    <template #title="{ value: val, title }">
       <b v-if="val === 'parent 1-1'" style="color: #08c">sss</b>
       <template v-else>{{ title }}</template>
     </template>

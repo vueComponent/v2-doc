@@ -30,10 +30,10 @@ The most basic usage, tell you how to use checkable, selectable, disabled, defau
   </a-tree>
 </template>
 <script lang="ts">
+import type { TreeProps } from 'ant-design-vue';
 import { defineComponent, ref, watch } from 'vue';
-import { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
 
-const treeData: TreeDataItem[] = [
+const treeData: TreeProps['treeData'] = [
   {
     title: 'parent 1',
     key: '0-0',
@@ -80,4 +80,3 @@ export default defineComponent({
   },
 });
 </script>
-
