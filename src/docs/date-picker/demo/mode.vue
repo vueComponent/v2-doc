@@ -17,7 +17,7 @@ Determing which panel to show with `mode` and `onPanelChange`.
 </docs>
 
 <template>
-  <a-space direction="vertical">
+  <a-space direction="vertical" :size="12">
     <a-date-picker
       :mode="mode1"
       show-time
@@ -35,13 +35,13 @@ Determing which panel to show with `mode` and `onPanelChange`.
   </a-space>
 </template>
 <script lang="ts">
-import { Moment } from 'moment';
+import { Dayjs } from 'dayjs';
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
     const mode1 = ref<string>('time');
     const mode2 = ref<string[]>(['month', 'month']);
-    const value = ref<Moment[]>([]);
+    const value = ref<Dayjs[]>([]);
 
     const handleOpenChange1 = (open: boolean) => {
       if (open) {
@@ -49,15 +49,15 @@ export default defineComponent({
       }
     };
 
-    const handleChange = (val: Moment[]) => {
+    const handleChange = (val: Dayjs[]) => {
       value.value = val;
     };
 
-    const handlePanelChange1 = (val: Moment[], mode: string) => {
+    const handlePanelChange1 = (_val: Dayjs[], mode: string) => {
       mode1.value = mode;
     };
 
-    const handlePanelChange2 = (val: Moment[], mode: string[]) => {
+    const handlePanelChange2 = (val: Dayjs[], mode: string[]) => {
       value.value = val;
       mode2.value = [
         mode[0] === 'date' ? 'month' : mode[0],

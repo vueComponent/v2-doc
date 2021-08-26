@@ -1,7 +1,7 @@
 <docs>
 ---
 order: 4
-title: 
+title:
   zh-CN: 自定义头部
   en-US: Customize Header
 ---
@@ -19,7 +19,7 @@ Customize Calendar header content.
 <template>
   <div style="width: 300px; border: 1px solid #d9d9d9; border-radius: 4px">
     <a-calendar v-model:value="value" :fullscreen="false" @panelChange="onPanelChange">
-      <template #headerRender="{ value, type, onChange, onTypeChange }">
+      <template #headerRender="{ value: current, type, onChange, onTypeChange }">
         <div style="padding: 10px">
           <div style="margin-bottom: 10px">Custom header</div>
           <a-row type="flex" justify="space-between">
@@ -34,15 +34,15 @@ Customize Calendar header content.
                 size="small"
                 :dropdown-match-select-width="false"
                 class="my-year-select"
-                :value="String(value.year())"
+                :value="String(current.year())"
                 @change="
                   newYear => {
-                    onChange(value.clone().year(newYear));
+                    onChange(current.year(newYear));
                   }
                 "
               >
                 <a-select-option
-                  v-for="val in getYears(value)"
+                  v-for="val in getYears(current)"
                   :key="String(val)"
                   class="year-item"
                 >
@@ -54,15 +54,15 @@ Customize Calendar header content.
               <a-select
                 size="small"
                 :dropdown-match-select-width="false"
-                :value="String(value.month())"
+                :value="String(current.month())"
                 @change="
                   selectedMonth => {
-                    onChange(value.clone().month(parseInt(selectedMonth, 10)));
+                    onChange(current.month(parseInt(selectedMonth, 10)));
                   }
                 "
               >
                 <a-select-option
-                  v-for="(val, index) in getMonths(value)"
+                  v-for="(val, index) in getMonths(current)"
                   :key="String(index)"
                   class="month-item"
                 >
@@ -78,28 +78,26 @@ Customize Calendar header content.
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { Moment } from 'moment';
+import { Dayjs } from 'dayjs';
 
 export default defineComponent({
   setup() {
-    const value = ref<Moment>();
+    const value = ref<Dayjs>();
 
-    const onPanelChange = (value: Moment, mode: string) => {
+    const onPanelChange = (value: Dayjs, mode: string) => {
       console.log(value, mode);
     };
 
-    const getMonths = (value: Moment) => {
-      const current = value.clone();
+    const getMonths = (value: Dayjs) => {
       const localeData = value.localeData();
       const months = [];
       for (let i = 0; i < 12; i++) {
-        current.month(i);
-        months.push(localeData.monthsShort(current));
+        months.push(localeData.monthsShort(value.month(i)));
       }
       return months;
     };
 
-    const getYears = (value: Moment) => {
+    const getYears = (value: Dayjs) => {
       const year = value.year();
       const years = [];
       for (let i = year - 10; i < year + 10; i += 1) {
@@ -117,3 +115,4 @@ export default defineComponent({
   },
 });
 </script>
+

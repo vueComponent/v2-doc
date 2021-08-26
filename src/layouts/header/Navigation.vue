@@ -18,7 +18,7 @@
         style="position: relative"
       >
         {{ $t('app.header.menu.store') }}
-        <a-badge color="red" style="position: absolute; top: -10px; right: -10px" />
+        <a-badge color="red" style="position: absolute; top: -35px; right: -15px" />
       </a>
     </a-menu-item>
     <a-menu-item v-if="isZhCN" key="geektime">
@@ -29,7 +29,7 @@
         style="position: relative"
       >
         实战课程
-        <a-badge color="red" style="position: absolute; top: -10px; right: -10px" />
+        <a-badge color="red" style="position: absolute; top: -35px; right: -15px" />
       </a>
     </a-menu-item>
     <template v-if="isMobile">
@@ -106,17 +106,18 @@ export default defineComponent({
 
     & > .ant-menu-item,
     & > .ant-menu-submenu {
-      min-width: 40px;
+      min-width: (40px + 12px * 2);
       height: @header-height;
-      margin-right: 12px;
-      margin-left: 12px;
-      line-height: @header-height - @menu-item-border - 2px;
-      border-top: @menu-item-border solid transparent;
-      padding: 0;
+      padding-right: 12px;
+      padding-left: 12px;
+      line-height: @header-height;
 
-      &:hover {
-        border-top: @menu-item-border solid @primary-color;
-        border-bottom: @menu-item-border solid transparent;
+      &::after {
+        top: 0;
+        right: 12px;
+        bottom: auto;
+        left: 12px;
+        border-width: @menu-item-border;
       }
     }
 
@@ -124,14 +125,7 @@ export default defineComponent({
       margin: 0;
     }
 
-    & > .ant-menu-submenu-open {
-      border-top: @menu-item-border solid @primary-color;
-      border-bottom: @menu-item-border solid transparent;
-    }
-
     & > .ant-menu-item-selected {
-      border-top: @menu-item-border solid @primary-color;
-      border-bottom: @menu-item-border solid transparent;
       a {
         color: @primary-color;
       }
@@ -141,6 +135,43 @@ export default defineComponent({
   & > .ant-menu-item,
   & > .ant-menu-submenu {
     text-align: center;
+  }
+}
+
+.header-link {
+  color: @site-text-color;
+}
+
+.ant-menu-item-active .header-link {
+  color: @primary-color;
+}
+
+// Popover menu is only used for mobile
+.popover-menu {
+  width: 300px;
+
+  .ant-popover-inner-content {
+    padding: 0;
+
+    #nav {
+      .ant-menu-item,
+      .ant-menu-submenu {
+        text-align: left;
+      }
+
+      .ant-menu-item-group-title {
+        padding-left: 24px;
+      }
+
+      .ant-menu-item-group-list {
+        padding: 0 16px;
+      }
+
+      .ant-menu-item,
+      a {
+        color: #333;
+      }
+    }
   }
 }
 </style>

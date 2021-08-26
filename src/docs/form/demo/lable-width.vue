@@ -2,37 +2,22 @@
 ---
 order: 0
 title:
-  zh-CN: 基本使用
-  en-US: Basic Usage
+  zh-CN: 固定 Label 宽度
+  en-US: Fixed lable width
 ---
 
 ## zh-CN
 
-基本的表单数据域控制展示，包含布局、初始化、验证、提交。
+通过 labelCol.style 设置固定宽度
 
 ## en-US
 
-Basic Form data control. Includes layout, initial values, validation and submit.
+Set label width by labelCol.style
 </docs>
 <template>
   <a-form :model="formState" :label-col="labelCol" :wrapper-col="wrapperCol">
     <a-form-item label="Activity name">
       <a-input v-model:value="formState.name" />
-    </a-form-item>
-    <a-form-item label="Activity zone">
-      <a-select v-model:value="formState.region" placeholder="please select your zone">
-        <a-select-option value="shanghai">Zone one</a-select-option>
-        <a-select-option value="beijing">Zone two</a-select-option>
-      </a-select>
-    </a-form-item>
-    <a-form-item label="Activity time">
-      <a-date-picker
-        v-model:value="formState.date1"
-        show-time
-        type="date"
-        placeholder="Pick a date"
-        style="width: 100%"
-      />
     </a-form-item>
     <a-form-item label="Instant delivery">
       <a-switch v-model:checked="formState.delivery" />
@@ -60,12 +45,9 @@ Basic Form data control. Includes layout, initial values, validation and submit.
   </a-form>
 </template>
 <script lang="ts">
-import { Dayjs } from 'dayjs';
 import { defineComponent, reactive, toRaw, UnwrapRef } from 'vue';
 interface FormState {
   name: string;
-  region: string | undefined;
-  date1: Dayjs | undefined;
   delivery: boolean;
   type: string[];
   resource: string;
@@ -75,8 +57,6 @@ export default defineComponent({
   setup() {
     const formState: UnwrapRef<FormState> = reactive({
       name: '',
-      region: undefined,
-      date1: undefined,
       delivery: false,
       type: [],
       resource: '',
@@ -86,7 +66,7 @@ export default defineComponent({
       console.log('submit!', toRaw(formState));
     };
     return {
-      labelCol: { span: 4 },
+      labelCol: { style: { width: '150px' } },
       wrapperCol: { span: 14 },
       formState,
       onSubmit,

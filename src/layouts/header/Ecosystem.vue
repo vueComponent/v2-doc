@@ -1,5 +1,5 @@
 <template>
-  <a-menu>
+  <a-menu class="ecosystem">
     <a-menu-item-group key="ecosystem" :title="$t('app.header.menu.ecosystem')">
       <a-menu-item key="pro">
         <a target="_blank" href="https://pro.antdv.com">Pro For Vue2(Free)</a>
@@ -31,13 +31,11 @@
           </template>
         </a-popover>
       </a-menu-item>
-      <a-menu-item key="qq">
-        <a-popover placement="right" }>
-          <a>QQ(217490093)</a>
-          <template v-slot:content>
-            <img width="160" height="160" alt="qq" src="https://qn.antdv.com/qq.png" />
-          </template>
-        </a-popover>
+      <a-menu-item key="qq1">
+        <a>QQ 1群(217490093)</a>
+      </a-menu-item>
+      <a-menu-item key="qq2">
+        <a>QQ 2群(809774695)</a>
       </a-menu-item>
     </a-menu-item-group>
   </a-menu>
@@ -65,3 +63,8 @@ export default defineComponent({
   },
 });
 </script>
+<style scoped>
+.ecosystem a {
+  color: rgba(0, 0, 0, 0.65);
+}
+</style>

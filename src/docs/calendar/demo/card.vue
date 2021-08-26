@@ -1,7 +1,7 @@
 <docs>
 ---
 order: 1
-title: 
+title:
   zh-CN: 卡片模式
   en-US: Card
 ---
@@ -22,12 +22,12 @@ Nested inside a container element for rendering in limited space.
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { Moment } from 'moment';
+import { Dayjs } from 'dayjs';
 
 export default defineComponent({
   setup() {
-    const value = ref<Moment>();
-    const onPanelChange = (value: Moment, mode: string) => {
+    const value = ref<Dayjs>();
+    const onPanelChange = (value: Dayjs, mode: string) => {
       console.log(value, mode);
     };
 

@@ -32,7 +32,7 @@
 - v-model 更改成 v-model:xxx，具体涉及组件：
 
   - v-model 改成 v-model:checked 的组件有: CheckableTag、Checkbox、Switch
-  - v-model 改成 v-model:value 的组件有: Radio、Mentions、CheckboxGroup、Rate、DatePicker
+  - v-model 改成 v-model:value 的组件有: Radio、Mentions、CheckboxGroup、Rate、DatePicker、Select
   - v-model 改成 v-model:visible 的组件有: Tag、Popconfirm、Popove、Tooltip、Moda、Dropdown
   - v-model 改成 v-model:activeKey 的组件有: Collaps、Tabs
   - v-model 改成 v-model:current 的组件有: Steps

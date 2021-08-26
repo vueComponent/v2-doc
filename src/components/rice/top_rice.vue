@@ -19,11 +19,13 @@
 </template>
 
 <script>
-import moment from 'moment';
+import dayjs from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
+dayjs.extend(isBetween);
 import GoogleAdsTop from './GoogleAdsTop.vue';
 import WWAds from './WWAds.vue';
 const isEffective = (start, end) => {
-  return moment().isBetween(start, end);
+  return dayjs().isBetween(start, end);
 };
 export default {
   components: {

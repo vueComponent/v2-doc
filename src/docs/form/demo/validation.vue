@@ -68,12 +68,12 @@ Just add the `rules` attribute for `Form` component, pass validation rules, and 
 </template>
 <script lang="ts">
 import { ValidateErrorEntity } from 'ant-design-vue/es/form/interface';
-import { Moment } from 'moment';
+import { Dayjs } from 'dayjs';
 import { defineComponent, reactive, ref, toRaw, UnwrapRef } from 'vue';
 interface FormState {
   name: string;
   region: string | undefined;
-  date1: Moment | undefined;
+  date1: Dayjs | undefined;
   delivery: boolean;
   type: string[];
   resource: string;

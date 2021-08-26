@@ -1,6 +1,7 @@
 <template>
   <demo-sort :cols="1">
     <Basic />
+    <LableWidth />
     <HorizontalLogin />
     <Layout />
     <Validation />
@@ -25,6 +26,7 @@ import UseFormBasic from './useForm-basic.vue';
 import UseFormNested from './useForm-nested.vue';
 import UseFormTrigger from './useForm-trigger.vue';
 import UseFormMerge from './useForm-merge.vue';
+import LableWidth from './lable-width.vue';
 
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
@@ -44,6 +46,7 @@ export default {
     UseFormNested,
     UseFormTrigger,
     UseFormMerge,
+    LableWidth
   },
 };
 </script>

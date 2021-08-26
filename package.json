@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "yarn routes && vite",
     "build": "yarn routes && node --max_old_space_size=8000 ./node_modules/vite/bin/vite.js build",
-    "site": "yarn routes && node --max_old_space_size=8000 ./node_modules/vite/bin/vite.js build --base=https://alicdn.antdv.com/v2/",
+    "site": "yarn routes && node --max_old_space_size=8000 ./node_modules/vite/bin/vite.js build --base=https://aliyuncdn.antdv.com/v2/",
     "routes": "node scripts/genrateRoutes.js",
     "lint": "eslint -c ./.eslintrc.js --fix --ext .jsx,.vue,.ts,.tsx ./src",
     "pub": "npm run site && node scripts/pushToOSS.js"
@@ -21,6 +21,7 @@
     "ant-design-vue": "^2.1.2",
     "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.5",
+    "dayjs": "^1.10.5",
     "diacritics": "^1.3.0",
     "docsearch.js": "^2.6.3",
     "enquire-js": "^0.2.1",
@@ -40,7 +41,6 @@
     "markdown-it-emoji": "^1.4.0",
     "markdown-it-table-of-contents": "^0.4.4",
     "marked": "^1.2.7",
-    "moment": "^2.29.1",
     "nprogress": "^0.2.0",
     "prettier": "^2.2.1",
     "prismjs": "^1.23.0",

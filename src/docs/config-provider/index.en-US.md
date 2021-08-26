@@ -60,7 +60,7 @@ Some components use dynamic style to support wave effect. You can config `csp` p
 
 #### Does the locale problem still exist in DatePicker even if ConfigProvider `locale` is used?
 
-Please make sure you set moment locale by `moment.locale('zh-cn')` or that you don't have two different versions of moment. If you use Vite as a build tool, because Vite is not yet complete, you need to additionally execute `npm i --save moment` in your project to install it.
+Please make sure you set dayjs locale by `dayjs.locale('zh-cn')` or that you don't have two different versions of dayjs.
 
 #### Modal throw error when setting `getPopupContainer`?
 

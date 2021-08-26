@@ -23,28 +23,32 @@ Disabled part of dates and time by `disabledDate` and `disabledTime` respectivel
       format="YYYY-MM-DD HH:mm:ss"
       :disabled-date="disabledDate"
       :disabled-time="disabledDateTime"
-      :show-time="{ defaultValue: moment('00:00:00', 'HH:mm:ss') }"
+      :show-time="{ defaultValue: dayjs('00:00:00', 'HH:mm:ss') }"
     />
-    <a-month-picker
+    <a-date-picker
       v-model:value="value2"
       :disabled-date="disabledDate"
-      placeholder="Select month"
+      picker="month"
+    />
+    <a-range-picker
+      v-model:value="value3"
+      :disabled-date="disabledDate"
     />
     <a-range-picker
       style="width: 400px"
-      v-model:value="value3"
+      v-model:value="value4"
       :disabled-date="disabledDate"
       :disabled-time="disabledRangeTime"
       :show-time="{
         hideDisabledOptions: true,
-        defaultValue: [moment('00:00:00', 'HH:mm:ss'), moment('11:59:59', 'HH:mm:ss')],
+        defaultValue: [dayjs('00:00:00', 'HH:mm:ss'), dayjs('11:59:59', 'HH:mm:ss')],
       }"
       format="YYYY-MM-DD HH:mm:ss"
     />
   </a-space>
 </template>
 <script lang="ts">
-import moment, { Moment } from 'moment';
+import dayjs, { Dayjs } from 'dayjs';
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
@@ -58,9 +62,9 @@ export default defineComponent({
       return result;
     };
 
-    const disabledDate = (current: Moment) => {
+    const disabledDate = (current: Dayjs) => {
       // Can not select days before today and today
-      return current && current < moment().endOf('day');
+      return current && current < dayjs().endOf('day');
     };
 
     const disabledDateTime = () => {
@@ -71,7 +75,7 @@ export default defineComponent({
       };
     };
 
-    const disabledRangeTime = (_: Moment[], type: 'start' | 'end') => {
+    const disabledRangeTime = (_: Dayjs[], type: 'start' | 'end') => {
       if (type === 'start') {
         return {
           disabledHours: () => range(0, 60).splice(4, 20),
@@ -87,10 +91,11 @@ export default defineComponent({
     };
 
     return {
-      moment,
-      value1: ref<Moment>(),
-      value2: ref<Moment>(),
-      value3: ref<Moment[]>([]),
+      dayjs,
+      value1: ref<Dayjs>(),
+      value2: ref<Dayjs>(),
+      value3: ref<Dayjs[]>([]),
+      value4: ref<Dayjs[]>([]),
       disabledDate,
       disabledDateTime,
       disabledRangeTime,

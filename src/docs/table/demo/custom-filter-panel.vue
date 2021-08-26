@@ -128,7 +128,7 @@ export default defineComponent({
             setTimeout(() => {
               console.log(searchInput.value);
               searchInput.value.focus();
-            }, 0);
+            }, 100);
           }
         },
       },
@@ -147,7 +147,7 @@ export default defineComponent({
           if (visible) {
             setTimeout(() => {
               searchInput.value.focus();
-            });
+            }, 100);
           }
         },
       },
@@ -166,7 +166,7 @@ export default defineComponent({
           if (visible) {
             setTimeout(() => {
               searchInput.value.focus();
-            });
+            }, 100);
           }
         },
       },
