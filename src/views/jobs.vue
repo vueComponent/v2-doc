@@ -42,7 +42,7 @@
   </div>
 </template>
 <script>
-import moment from 'moment';
+import dayjs from 'dayjs';
 export default {
   data() {
     return {
@@ -159,7 +159,7 @@ export default {
   },
   methods: {
     isEffective({ start, end }) {
-      return moment().isBetween(start, end);
+      return dayjs().isBetween(start, end);
     },
   },
 };

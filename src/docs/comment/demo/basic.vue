@@ -62,16 +62,19 @@ A basic comment with author, avatar, time and actions.
       </p>
     </template>
     <template #datetime>
-      <a-tooltip :title="moment().format('YYYY-MM-DD HH:mm:ss')">
-        <span>{{ moment().fromNow() }}</span>
+      <a-tooltip :title="dayjs().format('YYYY-MM-DD HH:mm:ss')">
+        <span>{{ dayjs().fromNow() }}</span>
       </a-tooltip>
     </template>
   </a-comment>
 </template>
 <script lang="ts">
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { LikeFilled, LikeOutlined, DislikeFilled, DislikeOutlined } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
+import relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTime);
+
 export default defineComponent({
   components: {
     LikeFilled,
@@ -102,7 +105,7 @@ export default defineComponent({
       action,
       like,
       dislike,
-      moment,
+      dayjs,
     };
   },
 });

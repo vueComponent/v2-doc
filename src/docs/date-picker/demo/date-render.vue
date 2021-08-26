@@ -15,38 +15,30 @@ title:
 We can customize the rendering of date cells in the calendar by providing a `dateRender` function to `DatePicker`.
 
 </docs>
-
 <template>
-  <a-space direction="vertical">
+  <a-space direction="vertical" :size="12">
     <a-date-picker v-model:value="value1">
       <template #dateRender="{ current, today }">
-        <div class="ant-calendar-date" :style="getCurrentStyle(current, today)">
+        <div class="ant-picker-cell-inner" :style="getCurrentStyle(current, today)">
           {{ current.date() }}
         </div>
       </template>
     </a-date-picker>
     <a-range-picker v-model:value="value2">
       <template #dateRender="{ current }">
-        <div class="ant-calendar-date" :style="getCurrentStyle(current)">
+        <div class="ant-picker-cell-inner" :style="getCurrentStyle(current)">
           {{ current.date() }}
         </div>
       </template>
     </a-range-picker>
-    <a-week-picker v-model:value="value3">
-      <template #dateRender="{ current }">
-        <div class="ant-calendar-date" :style="getCurrentStyle(current)">
-          {{ current.date() }}
-        </div>
-      </template>
-    </a-week-picker>
   </a-space>
 </template>
 <script lang="ts">
-import { Moment } from 'moment';
+import type { Dayjs } from 'dayjs';
 import { CSSProperties, defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
-    const getCurrentStyle = (current: Moment) => {
+    const getCurrentStyle = (current: Dayjs) => {
       const style: CSSProperties = {};
 
       if (current.date() === 1) {
@@ -57,11 +49,12 @@ export default defineComponent({
       return style;
     };
     return {
-      value1: ref<Moment>(),
-      value2: ref<Moment[]>([]),
-      value3: ref<Moment>(),
+      value1: ref<Dayjs>(),
+      value2: ref<Dayjs[]>([]),
+      value3: ref<Dayjs>(),
       getCurrentStyle,
     };
   },
 });
 </script>
+

@@ -18,14 +18,14 @@ Click `TimePicker`, and then we could select or input a time in panel.
 
 <template>
   <a-time-picker v-model:value="value" />
-  <a-time-picker v-model:value="strValue" valueFormat="HH:mm:ss" />
+  <a-time-picker v-model:value="strValue" value-format="HH:mm:ss" />
 </template>
 <script lang="ts">
-import moment, { Moment } from 'moment';
+import dayjs, { Dayjs } from 'dayjs';
 import { defineComponent, ref, watch } from 'vue';
 export default defineComponent({
   setup() {
-    const value = ref<Moment>(moment('08:00:00', 'HH:mm:ss'));
+    const value = ref<Dayjs>(dayjs('08:00:00', 'HH:mm:ss'));
     const strValue = ref<string>('09:00:00');
 
     watch(value, () => {
@@ -37,7 +37,6 @@ export default defineComponent({
     return {
       value,
       strValue,
-      moment,
     };
   },
 });

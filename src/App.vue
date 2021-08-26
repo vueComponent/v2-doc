@@ -6,14 +6,14 @@
 
 <script lang="ts">
 import { computed, defineComponent, provide, Ref, watch, ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import useMediaQuery from './hooks/useMediaQuery';
 import { GLOBAL_CONFIG } from './SymbolKey';
 import enUS from 'ant-design-vue/es/locale/en_US';
 import zhCN from 'ant-design-vue/es/locale/zh_CN';
-import moment from 'moment';
-import 'moment/dist/locale/zh-cn';
+import dayjs from 'dayjs';
+import 'dayjs/locale/zh-cn';
 function isZhCN(name: string) {
   return /-cn\/?$/.test(name);
 }
@@ -27,7 +27,6 @@ export interface GlobalConfig {
 export default defineComponent({
   setup() {
     const route = useRoute();
-    const router = useRouter();
     const i18n = useI18n();
     const colSize = useMediaQuery();
     const isMobile = computed(() => colSize.value === 'sm' || colSize.value === 'xs');
@@ -67,9 +66,9 @@ export default defineComponent({
       globalConfig.isZhCN,
       val => {
         if (val) {
-          moment.locale(zhCN.locale);
+          dayjs.locale(zhCN.locale);
         } else {
-          moment.locale(enUS.locale);
+          dayjs.locale(enUS.locale);
         }
       },
       { immediate: true },

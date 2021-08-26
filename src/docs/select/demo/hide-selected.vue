@@ -18,14 +18,12 @@ Hide already selected options in the dropdown.
 
 <template>
   <a-select
+    v-model:value="selectedItems"
     mode="multiple"
     placeholder="Inserted are removed"
-    v-model:value="selectedItems"
     style="width: 100%"
+    :options="filteredOptions.map(item => ({ value: item }))"
   >
-    <a-select-option v-for="item in filteredOptions" :key="item" :value="item">
-      {{ item }}
-    </a-select-option>
   </a-select>
 </template>
 <script lang="ts">

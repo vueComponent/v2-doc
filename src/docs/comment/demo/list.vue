@@ -1,8 +1,8 @@
 <docs>
 ---
-order: 1 
-title: 
-  zh-CN: 配合 List 组件 
+order: 1
+title:
+  zh-CN: 配合 List 组件
   en-US: Usage with list
 ---
 
@@ -45,8 +45,11 @@ Displaying a series of comments using the `antd` List Component.
   </a-list>
 </template>
 <script lang="ts">
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { defineComponent } from 'vue';
+import relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTime);
+
 export default defineComponent({
   setup() {
     return {
@@ -57,7 +60,7 @@ export default defineComponent({
           avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
           content:
             'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-          datetime: moment().subtract(1, 'days'),
+          datetime: dayjs().subtract(1, 'days'),
         },
         {
           actions: ['Reply to'],
@@ -65,10 +68,10 @@ export default defineComponent({
           avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
           content:
             'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-          datetime: moment().subtract(2, 'days'),
+          datetime: dayjs().subtract(2, 'days'),
         },
       ],
-      moment,
+      dayjs,
     };
   },
 });

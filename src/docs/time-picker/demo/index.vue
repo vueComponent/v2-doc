@@ -1,6 +1,8 @@
 <template>
   <demo-sort>
     <Basic />
+    <Bordered/>
+    <RangePicker/>
     <Hours />
     <Addon />
     <Disabled />
@@ -20,6 +22,8 @@ import HideColumn from './hide-column.vue';
 import IntervalOptions from './interval-options.vue';
 import Size from './size.vue';
 import Suffix from './suffix.vue';
+import Bordered from './bordered.vue';
+import RangePicker from './range-picker.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
 
@@ -35,6 +39,8 @@ export default {
     IntervalOptions,
     Size,
     Suffix,
+    Bordered,
+    RangePicker
   },
 };
 </script>

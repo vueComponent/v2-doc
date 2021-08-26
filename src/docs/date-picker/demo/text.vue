@@ -17,7 +17,7 @@ Added custom rendering function, in the default `slot`, you can set any componen
 </docs>
 
 <template>
-  <a-space direction="vertical">
+  <a-space direction="vertical" :size="12">
     <a-date-picker v-model:value="time1" placeholder="Select Time" @ok="onOk">
       <span>{{ time1 ? time1.toString() : 'SelectTime' }}</span>
     </a-date-picker>
@@ -29,14 +29,14 @@ Added custom rendering function, in the default `slot`, you can set any componen
   </a-space>
 </template>
 <script lang="ts">
-import moment, { Moment } from 'moment';
+import { Dayjs } from 'dayjs';
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
-    const time1 = ref<Moment>();
-    const time2 = ref<Moment>();
+    const time1 = ref<Dayjs>();
+    const time2 = ref<Dayjs>();
 
-    const onOk = (value: Moment) => {
+    const onOk = (value: Dayjs) => {
       console.log('onOk: ', value);
     };
 
@@ -47,7 +47,6 @@ export default defineComponent({
     return {
       time1,
       time2,
-      moment,
       onOk,
       clearTime,
     };

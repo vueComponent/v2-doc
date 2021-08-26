@@ -27,13 +27,13 @@ To load data asynchronously when click to expand a treeNode.
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
+import type { TreeProps } from 'ant-design-vue';
 
 export default defineComponent({
   setup() {
     const expandedKeys = ref<string[]>([]);
     const selectedKeys = ref<string[]>([]);
-    const treeData = ref<TreeDataItem[]>([
+    const treeData = ref<TreeProps['treeData']>([
       { title: 'Expand to load', key: '0' },
       { title: 'Expand to load', key: '1' },
       { title: 'Tree Node', key: '2', isLeaf: true },

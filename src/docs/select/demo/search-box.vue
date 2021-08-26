@@ -18,20 +18,18 @@ Search with remote data.
 
 <template>
   <a-select
-    show-search
     v-model:value="value"
+    show-search
     placeholder="input search text"
     style="width: 200px"
     :default-active-first-option="false"
     :show-arrow="false"
     :filter-option="false"
     :not-found-content="null"
+    :options="data"
     @search="handleSearch"
     @change="handleChange"
   >
-    <a-select-option v-for="d in data" :key="d.value">
-      {{ d.text }}
-    </a-select-option>
   </a-select>
 </template>
 <script lang="ts">
@@ -63,7 +61,7 @@ function fetch(value: string, callback: any) {
           result.forEach((r: any) => {
             data.push({
               value: r[0],
-              text: r[0],
+              label: r[0],
             });
           });
           callback(data);

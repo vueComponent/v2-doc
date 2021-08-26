@@ -19,23 +19,25 @@ A disabled state of the `DatePicker`.
 <template>
   <a-space direction="vertical">
     <a-date-picker v-model:value="value1" />
-    <a-month-picker v-model:value="value2" disabled />
+    <a-date-picker v-model:value="value2" disabled picker="month" />
     <a-range-picker v-model:value="value3" disabled />
+    <a-range-picker v-model:value="value4" :disabled="[false, true]" />
   </a-space>
 </template>
 <script lang="ts">
-import moment from 'moment';
+import dayjs, { Dayjs } from 'dayjs';
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
     const dateFormat = 'YYYY-MM-DD';
     return {
-      value1: ref<moment.Moment>(moment('2015-06-06', dateFormat)),
-      value2: ref<moment.Moment>(moment('2015-06', 'YYYY-MM')),
-      value3: ref<moment.Moment[]>([
-        moment('2015-06-06', dateFormat),
-        moment('2015-06-06', dateFormat),
+      value1: ref<Dayjs>(dayjs('2015-06-06', dateFormat)),
+      value2: ref<Dayjs>(dayjs('2015-06', 'YYYY-MM')),
+      value3: ref<Dayjs[]>([
+        dayjs('2015-06-06', dateFormat),
+        dayjs('2015-06-06', dateFormat),
       ]),
+      value4: ref<Dayjs[]>([dayjs('2019-09-03', dateFormat), dayjs('2019-11-22', dateFormat)]),
     };
   },
 });
