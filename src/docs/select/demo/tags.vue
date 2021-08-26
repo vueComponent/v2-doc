@@ -22,11 +22,9 @@ Select with tags, transform input to tag (scroll the menu)
     mode="tags"
     style="width: 100%"
     placeholder="Tags Mode"
+    :options="options"
     @change="handleChange"
   >
-    <a-select-option v-for="i in 25" :key="(i + 9).toString(36) + i">
-      {{ (i + 9).toString(36) + i }}
-    </a-select-option>
   </a-select>
 </template>
 <script lang="ts">
@@ -39,6 +37,7 @@ export default defineComponent({
     return {
       value: ref([]),
       handleChange,
+      options: [...Array(25)].map((_, i) => ({ value: (i + 10).toString(36) + (i + 1) })),
     };
   },
 });

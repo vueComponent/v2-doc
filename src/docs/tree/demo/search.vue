@@ -20,7 +20,7 @@ Searchable Tree.
   <div>
     <a-input-search v-model:value="searchValue" style="margin-bottom: 8px" placeholder="Search" />
     <a-tree
-      :expandedKeys="expandedKeys"
+      :expanded-keys="expandedKeys"
       :auto-expand-parent="autoExpandParent"
       :tree-data="gData"
       @expand="onExpand"
@@ -39,14 +39,14 @@ Searchable Tree.
 
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue';
-import { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
+import { TreeProps } from 'ant-design-vue';
 
 const x = 3;
 const y = 2;
 const z = 1;
-const genData: TreeDataItem[] = [];
+const genData: TreeProps['treeData'] = [];
 
-const generateData = (_level: number, _preKey?: string, _tns?: TreeDataItem[]) => {
+const generateData = (_level: number, _preKey?: string, _tns?: TreeProps['treeData']) => {
   const preKey = _preKey || '0';
   const tns = _tns || genData;
 
@@ -69,12 +69,12 @@ const generateData = (_level: number, _preKey?: string, _tns?: TreeDataItem[]) =
 };
 generateData(z);
 
-const dataList: TreeDataItem[] = [];
-const generateList = (data: TreeDataItem[]) => {
+const dataList: TreeProps['treeData'] = [];
+const generateList = (data: TreeProps['treeData']) => {
   for (let i = 0; i < data.length; i++) {
     const node = data[i];
     const key = node.key;
-    dataList.push({ key, title: key as string });
+    dataList.push({ key, title: key });
     if (node.children) {
       generateList(node.children);
     }
@@ -82,7 +82,7 @@ const generateList = (data: TreeDataItem[]) => {
 };
 generateList(genData);
 
-const getParentKey = (key: string, tree: TreeDataItem[]): string | number | undefined => {
+const getParentKey = (key: string, tree: TreeProps['treeData']): string | number | undefined => {
   let parentKey;
   for (let i = 0; i < tree.length; i++) {
     const node = tree[i];
@@ -101,7 +101,7 @@ export default defineComponent({
     const expandedKeys = ref<string[]>([]);
     const searchValue = ref<string>('');
     const autoExpandParent = ref<boolean>(true);
-    const gData = ref<TreeDataItem[]>(genData);
+    const gData = ref<TreeProps['treeData']>(genData);
 
     const onExpand = (keys: string[]) => {
       expandedKeys.value = keys;
@@ -110,14 +110,14 @@ export default defineComponent({
 
     watch(searchValue, value => {
       const expanded = dataList
-        .map((item: TreeDataItem) => {
-          if ((item.title as string).indexOf(value) > -1) {
-            return getParentKey(item.key as string, gData.value);
+        .map((item: TreeProps['treeData'][number]) => {
+          if (item.title.indexOf(value) > -1) {
+            return getParentKey(item.key, gData.value);
           }
           return null;
         })
         .filter((item, i, self) => item && self.indexOf(item) === i);
-      expandedKeys.value = expanded as string[];
+      expandedKeys.value = expanded;
       searchValue.value = value;
       autoExpandParent.value = true;
     });

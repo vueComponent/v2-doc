@@ -1,26 +1,27 @@
 <docs>
 ---
-order: 0
+order: 9
 title:
-  zh-CN: 基本用法
-  en-US: Basic usage
+  zh-CN: 虚拟滚动
+  en-US: Virtual scroll
 ---
 
 ## zh-CN
 
-最简单的用法，展示可勾选，可选中，禁用，默认展开等功能。
+使用 `height` 属性则切换为虚拟滚动。
 
 ## en-US
 
-The most basic usage, tell you how to use checkable, selectable, disabled, defaultExpandKeys, and etc.
+Use virtual list through `height` prop.
 
 </docs>
 <template>
   <a-tree
-    v-model:expandedKeys="expandedKeys"
     v-model:selectedKeys="selectedKeys"
     v-model:checkedKeys="checkedKeys"
+    default-expand-all
     checkable
+    :height="233"
     :tree-data="treeData"
   >
     <template #title="{ title, key }">
@@ -33,37 +34,28 @@ The most basic usage, tell you how to use checkable, selectable, disabled, defau
 import type { TreeProps } from 'ant-design-vue';
 import { defineComponent, ref, watch } from 'vue';
 
-const treeData: TreeProps['treeData'] = [
-  {
-    title: 'parent 1',
-    key: '0-0',
-    children: [
-      {
-        title: 'parent 1-0',
-        key: '0-0-0',
-        disabled: true,
-        children: [
-          { title: 'leaf', key: '0-0-0-0', disableCheckbox: true },
-          { title: 'leaf', key: '0-0-0-1' },
-        ],
-      },
-      {
-        title: 'parent 1-1',
-        key: '0-0-1',
-        children: [{ key: '0-0-1-0', title: 'sss' }],
-      },
-    ],
-  },
-];
+function dig(path = '0', level = 3) {
+  const list: TreeProps['treeData'] = [];
+  for (let i = 0; i < 10; i += 1) {
+    const key = `${path}-${i}`;
+    const treeNode: TreeProps['treeData'][number] = {
+      title: key,
+      key,
+    };
+
+    if (level > 0) {
+      treeNode.children = dig(key, level - 1);
+    }
+
+    list.push(treeNode);
+  }
+  return list;
+}
 
 export default defineComponent({
   setup() {
-    const expandedKeys = ref<string[]>(['0-0-0', '0-0-1']);
     const selectedKeys = ref<string[]>(['0-0-0', '0-0-1']);
     const checkedKeys = ref<string[]>(['0-0-0', '0-0-1']);
-    watch(expandedKeys, () => {
-      console.log('expandedKeys', expandedKeys);
-    });
     watch(selectedKeys, () => {
       console.log('selectedKeys', selectedKeys);
     });
@@ -72,8 +64,7 @@ export default defineComponent({
     });
 
     return {
-      treeData,
-      expandedKeys,
+      treeData: dig(),
       selectedKeys,
       checkedKeys,
     };

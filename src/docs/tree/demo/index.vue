@@ -10,6 +10,7 @@
     <switcher-icon />
     <replace-fields />
     <context-menu />
+    <virtual-scroll />
   </demo-sort>
 </template>
 <script lang="ts">
@@ -23,6 +24,7 @@ import Directory from './directory.vue';
 import SwitcherIcon from './switcher-icon.vue';
 import ReplaceFields from './replaceFields.vue';
 import ContextMenu from './context-menu.vue';
+import VirtualScroll from './virtual-scroll';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
 import { defineComponent } from 'vue';
@@ -41,6 +43,7 @@ export default defineComponent({
     SwitcherIcon,
     ReplaceFields,
     ContextMenu,
+    VirtualScroll
   },
   setup() {
     return {};

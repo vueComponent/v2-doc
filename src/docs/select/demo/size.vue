@@ -24,36 +24,33 @@ The height of the input field for the select defaults to 32px. If size is set to
   </a-radio-group>
   <br />
   <br />
-  <a-select :size="size" v-model:value="value1" style="width: 200px">
-    <a-select-option v-for="i in 25" :key="(i + 9).toString(36) + i">
-      {{ (i + 9).toString(36) + i }}
-    </a-select-option>
-  </a-select>
-  <br />
-  <a-select
-    mode="multiple"
-    :size="size"
-    placeholder="Please select"
-    v-model:value="value2"
-    style="width: 200px"
-    @popupScroll="popupScroll"
-  >
-    <a-select-option v-for="i in 25" :key="(i + 9).toString(36) + i">
-      {{ (i + 9).toString(36) + i }}
-    </a-select-option>
-  </a-select>
-  <br />
-  <a-select
-    mode="tags"
-    :size="size"
-    placeholder="Please select"
-    v-model:value="value3"
-    style="width: 200px"
-  >
-    <a-select-option v-for="i in 25" :key="(i + 9).toString(36) + i">
-      {{ (i + 9).toString(36) + i }}
-    </a-select-option>
-  </a-select>
+  <a-space direction="vertical">
+    <a-select
+      v-model:value="value1"
+      :size="size"
+      style="width: 200px"
+      :options="options"
+    ></a-select>
+    <a-select
+      v-model:value="value2"
+      :options="options"
+      mode="multiple"
+      :size="size"
+      placeholder="Please select"
+      style="width: 200px"
+      @popupScroll="popupScroll"
+    >
+    </a-select>
+    <a-select
+      v-model:value="value3"
+      :options="options"
+      mode="tags"
+      :size="size"
+      placeholder="Please select"
+      style="width: 200px"
+    >
+    </a-select>
+  </a-space>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
@@ -69,6 +66,7 @@ export default defineComponent({
       value1: ref('a1'),
       value2: ref(['a1', 'b2']),
       value3: ref(['a1', 'b2']),
+      options: [...Array(25)].map((_, i) => ({ value: (i + 10).toString(36) + (i + 1) })),
     };
   },
 });
