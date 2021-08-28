@@ -8,27 +8,52 @@ title:
 
 ## zh-CN
 
-使用 `marks` 属性标注分段式滑块，使用 `value` / `defaultValue` 指定滑块位置。当 `included=false` 时，表明不同标记间为并列关系。当 `step=null` 时，Slider 的可选值仅有 `marks` 标出来的部分。
+使用 `marks` 属性标注分段式滑块，使用 `value` 指定滑块位置。当 `included=false` 时，表明不同标记间为并列关系。当 `step=null` 时，Slider 的可选值仅有 `marks` 标出来的部分。
 
 ## en-US
 
-Using `marks` property to mark a graduated slider, use `value` or `defaultValue` to specify the position of thumb. When `included` is false, means that different thumbs are coordinative. when `step` is null, users can only slide the thumbs onto marks.
+Using `marks` property to mark a graduated slider, use `value` to specify the position of thumb. When `included` is false, means that different thumbs are coordinative. when `step` is null, users can only slide the thumbs onto marks.
 </docs>
 
 <template>
   <div id="components-slider-demo-mark">
     <h4>included=true</h4>
-    <a-slider :marks="marks" v-model:value="value1" />
-    <a-slider range :marks="marks" v-model:value="value2" />
+    <a-slider :marks="marks" v-model:value="value1">
+      <template #mark="{label, point }">
+        <template v-if="point === 100"><strong>{{label}}</strong></template>
+        <template v-else>{{label}}</template>
+      </template>
+    </a-slider>
+    <a-slider range :marks="marks" v-model:value="value2">
+      <template #mark="{label, point }">
+        <template v-if="point === 100"><strong>{{label}}</strong></template>
+        <template v-else>{{label}}</template>
+      </template>
+    </a-slider>
 
     <h4>included=false</h4>
-    <a-slider :marks="marks" :included="false" v-model:value="value3" />
+    <a-slider :marks="marks" :included="false" v-model:value="value3">
+      <template #mark="{label, point }">
+        <template v-if="point === 100"><strong>{{label}}</strong></template>
+        <template v-else>{{label}}</template>
+      </template>
+    </a-slider>
 
     <h4>marks & step</h4>
-    <a-slider :marks="marks" :step="10" v-model:value="value4" />
+    <a-slider :marks="marks" :step="10" v-model:value="value4">
+      <template #mark="{label, point }">
+        <template v-if="point === 100"><strong>{{label}}</strong></template>
+        <template v-else>{{label}}</template>
+      </template>
+    </a-slider>
 
     <h4>step=null</h4>
-    <a-slider :marks="marks" :step="null" v-model:value="value5" />
+    <a-slider :marks="marks" :step="null" v-model:value="value5">
+      <template #mark="{label, point }">
+        <template v-if="point === 100"><strong>{{label}}</strong></template>
+        <template v-else>{{label}}</template>
+      </template>
+    </a-slider>
   </div>
 </template>
 <script lang="ts">
@@ -49,7 +74,7 @@ export default defineComponent({
         style: {
           color: '#f50',
         },
-        label: createVNode('strong', {}, '100°C'),
+        label: '100°C',
       },
     });
 

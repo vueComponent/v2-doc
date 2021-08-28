@@ -20,6 +20,7 @@ To input a value in a range.
 | dots | Whether the thumb can drag over tick only. | boolean | false |  |
 | included | Make effect when `marks` not null，`true` means containment and `false` means coordinative | boolean | true |  |
 | marks | Tick mark of Slider, type of key must be `number`, and must in closed interval \[min, max], each mark can declare its own style. | object | { number: string\|VNode } or { number: { style: object, label: string\|VNode } } or { number: () => VNode } |  |
+| mark | Custom tick mark of Slider, | v-slot:mark | { point: number, label: any } | 3.0 |
 | max | The maximum value the slider can slide to | number | 100 |  |
 | min | The minimum value the slider can slide to. | number | 0 |  |
 | range | dual thumb mode | boolean | false |  |
