@@ -17,12 +17,12 @@ Click `TimePicker`, and then we could select or input a time in panel.
 </docs>
 
 <template>
-  <a-time-picker v-model:value="value" :defaultOpenValue="moment('00:00:00', 'HH:mm:ss')">
+  <a-time-picker v-model:value="value" :default-value="dayjs('00:00:00', 'HH:mm:ss')">
     <template #suffixIcon><smile-outlined /></template>
   </a-time-picker>
 </template>
 <script lang="ts">
-import moment, { Moment } from 'moment';
+import dayjs, { Dayjs } from 'dayjs';
 import { SmileOutlined } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
 
@@ -32,8 +32,8 @@ export default defineComponent({
   },
   setup() {
     return {
-      moment,
-      value: ref<Moment | undefined>(),
+      dayjs,
+      value: ref<Dayjs>(),
     };
   },
 });

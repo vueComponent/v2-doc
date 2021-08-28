@@ -19,20 +19,24 @@ Using the [Cascader](/components/cascader) component is strongly recommended ins
 </docs>
 
 <template>
-  <a-select v-model:value="province" style="width: 120px">
-    <a-select-option v-for="pro in provinceData" :key="pro">
-      {{ pro }}
-    </a-select-option>
-  </a-select>
-  <a-select v-model:value="secondCity" style="width: 120px">
-    <a-select-option v-for="city in cities" :key="city">
-      {{ city }}
-    </a-select-option>
-  </a-select>
+  <a-space>
+    <a-select
+      v-model:value="province"
+      style="width: 120px"
+      :options="provinceData.map(pro => ({ value: pro }))"
+    >
+    </a-select>
+    <a-select
+      v-model:value="secondCity"
+      style="width: 120px"
+      :options="cities.map(city => ({ value: city }))"
+    >
+    </a-select>
+  </a-space>
 </template>
 <script lang="ts">
 const provinceData = ['Zhejiang', 'Jiangsu'];
-const cityData: Record<string, string[]> = {
+const cityData = {
   Zhejiang: ['Hangzhou', 'Ningbo', 'Wenzhou'],
   Jiangsu: ['Nanjing', 'Suzhou', 'Zhenjiang'],
 };

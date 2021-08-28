@@ -17,7 +17,7 @@ We can set presetted ranges to RangePicker to improve user experience.
 </docs>
 
 <template>
-  <a-space direction="vertical">
+  <a-space direction="vertical" :size="12">
     <a-range-picker v-model:value="value1" :ranges="ranges" />
     <a-range-picker
       style="width: 400px"
@@ -29,14 +29,14 @@ We can set presetted ranges to RangePicker to improve user experience.
   </a-space>
 </template>
 <script lang="ts">
-import moment, { Moment } from 'moment';
+import dayjs, { Dayjs } from 'dayjs';
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
     return {
-      value1: ref<Moment[]>([]),
-      value2: ref<Moment[]>([]),
-      ranges: { Today: [moment(), moment()], 'This Month': [moment(), moment().endOf('month')] },
+      value1: ref<Dayjs[]>([]),
+      value2: ref<Dayjs[]>([]),
+      ranges: { Today: [dayjs(), dayjs()], 'This Month': [dayjs(), dayjs().endOf('month')] },
     };
   },
 });

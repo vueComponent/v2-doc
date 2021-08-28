@@ -8,11 +8,11 @@ No, actually, you can convert Less to Sass/Stylus(etc...) with tools (which you 
 
 ### How to use DatePicker with dayjs
 
-We also provide another implementation, which we provide with antd-dayjs-webpack-plugin, replacing momentjs with Day.js directly without changing a line of existing code. More info can be found at [antd-dayjs-webpack-plugin](https://github.com/ant-design/antd-dayjs-webpack-plugin).
+We also provide another implementation, which we provide with antd-dayjs-webpack-plugin, replacing dayjs with Day.js directly without changing a line of existing code. More info can be found at [antd-dayjs-webpack-plugin](https://github.com/ant-design/antd-dayjs-webpack-plugin).
 
 ### Internationalization does not take effect?
 
-The language pack provided by the component does not affect date formatting. You need to import the moment language pack and apply it. Refer to the `ConfigProvider` component. If you use Vite as a build tool, because Vite is not yet complete, you need to additionally execute `npm i --save moment` in your project to install it.
+The language pack provided by the component does not affect date formatting. You need to import the dayjs language pack and apply it. Refer to the `ConfigProvider` component.
 
 ### `Select Dropdown DatePicker TimePicker Popover Popconfirm` disappear when I click another popup component inside it, How to resolve it?
 
@@ -25,10 +25,6 @@ Use `<a-select :getPopupContainer="trigger => trigger.parentNode">` to render co
 ### How to modify the default theme of Ant Design Vue?
 
 See [Customize Theme](/docs/vue/customize-theme/).
-
-### How to optimize momentjs bundle size with webpack?
-
-See: https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
 
 ### It doesn't work when I change `defaultValue`,`defaultOpenKeys`, `initialValue` dynamically.
 

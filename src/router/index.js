@@ -88,6 +88,16 @@ const routes = [
         component: () => import('../vueDocs/migration-v2.en-US.md'),
       },
       {
+        path: 'vue/replace-date-cn',
+        meta: { enTitle: 'Custom Date Library', title: '自定义时间库', category: 'docs' },
+        component: () => import('../vueDocs/replace-date.zh-CN.md'),
+      },
+      {
+        path: 'vue/replace-date',
+        meta: { enTitle: 'Custom Date Library', title: '自定义时间库', category: 'docs' },
+        component: () => import('../vueDocs/replace-date.en-US.md'),
+      },
+      {
         path: 'vue/i18n-cn',
         meta: { enTitle: 'Internationalization', title: '国际化', category: 'docs' },
         component: () => import('../vueDocs/i18n.zh-CN.md'),

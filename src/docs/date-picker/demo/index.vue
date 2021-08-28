@@ -1,6 +1,8 @@
 <template>
   <demo-sort>
     <Basic />
+    <RangePicker/>
+    <Bordered/>
     <Format />
     <Time />
     <Disabled />
@@ -11,8 +13,7 @@
     <Size />
     <DateRender />
     <Mode />
-    <StartEnd />
-    <Text />
+    <Switchable />
     <Suffix />
   </demo-sort>
 </template>
@@ -27,10 +28,11 @@ import Mode from './mode.vue';
 import PresettedRanges from './presetted-ranges.vue';
 import SelectInRnage from './select-in-range.vue';
 import Size from './size.vue';
-import StartEnd from './start-end.vue';
+import Switchable from './switchable.vue';
 import Time from './time.vue';
 import Suffix from './suffix.vue';
-import Text from './text.vue';
+import Bordered from './bordered.vue';
+import RangePicker from './range-picker.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
 import { defineComponent } from 'vue';
@@ -48,11 +50,12 @@ export default defineComponent({
     Mode,
     PresettedRanges,
     Size,
-    StartEnd,
+    Switchable,
     Time,
     Suffix,
-    Text,
     SelectInRnage,
+    Bordered,
+    RangePicker
   },
 });
 </script>

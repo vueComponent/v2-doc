@@ -15,7 +15,6 @@ title:
 The tree structure can be populated using `treeData` property. This is a quick and easy way to provide the tree content.
 
 </docs>
-
 <template>
   <a-tree-select
     v-model:value="value"
@@ -25,24 +24,18 @@ The tree structure can be populated using `treeData` property. This is a quick a
     placeholder="Please select"
     tree-default-expand-all
   >
-    <template #title="{ key, value }">
-      <span style="color: #08c" v-if="key === '0-0-1'">Child Node1 {{ value }}</span>
+    <template #title="{ key, value: val, title }">
+      <span v-if="key === '0-0-1'" style="color: #08c">Child Node1 {{ val }}</span>
+      <template v-else> {{ title }} </template>
     </template>
   </a-tree-select>
 </template>
 
 <script lang="ts">
+import { TreeSelectProps } from 'ant-design-vue';
 import { defineComponent, ref, watch } from 'vue';
 
-interface TreeDataItem {
-  value: string;
-  key: string;
-  title?: string;
-  slots?: Record<string, string>;
-  children?: TreeDataItem[];
-}
-
-const treeData: TreeDataItem[] = [
+const treeData: TreeSelectProps['treeData'] = [
   {
     title: 'Node1',
     value: '0-0',
@@ -51,9 +44,6 @@ const treeData: TreeDataItem[] = [
       {
         value: '0-0-1',
         key: '0-0-1',
-        slots: {
-          title: 'title',
-        },
       },
       {
         title: 'Child Node2',

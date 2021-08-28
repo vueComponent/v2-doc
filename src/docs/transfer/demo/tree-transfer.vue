@@ -29,12 +29,12 @@ Customize render list with Tree component.
       <template #children="{ direction, selectedKeys, onItemSelect }">
         <a-tree
           v-if="direction === 'left'"
-          blockNode
+          block-node
           checkable
-          checkStrictly
-          defaultExpandAll
-          :checkedKeys="[...selectedKeys, ...targetKeys]"
-          :treeData="treeData"
+          check-strictly
+          default-expand-all
+          :checked-keys="[...selectedKeys, ...targetKeys]"
+          :tree-data="treeData"
           @check="
             (_, props) => {
               onChecked(_, props, [...selectedKeys, ...targetKeys], onItemSelect);
@@ -51,15 +51,10 @@ Customize render list with Tree component.
   </div>
 </template>
 <script lang="ts">
-import { CheckEvent } from 'ant-design-vue/es/tree/Tree';
 import { computed, defineComponent, ref } from 'vue';
-interface TreeDataItem {
-  key: string;
-  title: string;
-  disabled?: boolean;
-  children?: TreeDataItem[];
-}
-const tData: TreeDataItem[] = [
+import { TreeProps } from 'ant-design-vue';
+import { AntTreeNodeCheckedEvent } from 'ant-design-vue/es/tree';
+const tData: TreeProps['treeData'] = [
   { key: '0-0', title: '0-0' },
   {
     key: '0-1',
@@ -72,8 +67,8 @@ const tData: TreeDataItem[] = [
   { key: '0-2', title: '0-3' },
 ];
 
-const transferDataSource: TreeDataItem[] = [];
-function flatten(list: TreeDataItem[] = []) {
+const transferDataSource: TreeProps['treeData'] = [];
+function flatten(list: TreeProps['treeData'] = []) {
   list.forEach(item => {
     transferDataSource.push(item);
     flatten(item.children);
@@ -81,11 +76,14 @@ function flatten(list: TreeDataItem[] = []) {
 }
 flatten(JSON.parse(JSON.stringify(tData)));
 
-function isChecked(selectedKeys: string[], eventKey: string) {
+function isChecked(selectedKeys: (string | number)[], eventKey: string | number) {
   return selectedKeys.indexOf(eventKey) !== -1;
 }
 
-function handleTreeData(data: TreeDataItem[], targetKeys: string[] = []): TreeDataItem[] {
+function handleTreeData(
+  data: TreeProps['treeData'],
+  targetKeys: string[] = [],
+): TreeProps['treeData'] {
   data.forEach(item => {
     item['disabled'] = targetKeys.includes(item.key);
     if (item.children) {
@@ -99,9 +97,9 @@ export default defineComponent({
   setup() {
     const targetKeys = ref<string[]>([]);
 
-    const dataSource = ref<TreeDataItem[]>(transferDataSource);
+    const dataSource = ref<TreeProps['treeData']>(transferDataSource);
 
-    const treeData = computed<TreeDataItem[]>(() => {
+    const treeData = computed<TreeProps['treeData']>(() => {
       return handleTreeData(tData, targetKeys.value);
     });
 
@@ -110,7 +108,7 @@ export default defineComponent({
     };
     const onChecked = (
       _: Record<string, string[]>,
-      e: CheckEvent,
+      e: AntTreeNodeCheckedEvent,
       checkedKeys: string[],
       onItemSelect: (n: any, c: boolean) => void,
     ) => {

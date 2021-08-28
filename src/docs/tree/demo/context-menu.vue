@@ -5,19 +5,19 @@ title:
   zh-CN: 右键菜单
   en-US: Context Menu
 ---
-  
+
 ## zh-CN
-  
+
 自定义展示右键菜单
 
 ## en-US
-  
+
 Custom display the context menu
 
 </docs>
 
 <template>
-  <a-tree :tree-data="treeData" v-model:expandedKeys="expandedKeys">
+  <a-tree v-model:expandedKeys="expandedKeys" :tree-data="treeData">
     <template #title="{ key: treeKey, title }">
       <a-dropdown :trigger="['contextmenu']">
         <span>{{ title }}</span>

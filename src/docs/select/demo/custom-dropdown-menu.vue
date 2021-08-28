@@ -17,7 +17,11 @@ Customize the dropdown menu via `dropdownRender`.
 </docs>
 
 <template>
-  <a-select v-model:value="value" style="width: 120px">
+  <a-select
+    v-model:value="value"
+    style="width: 120px"
+    :options="items.map(item => ({ value: item }))"
+  >
     <template #dropdownRender="{ menuNode: menu }">
       <v-nodes :vnodes="menu" />
       <a-divider style="margin: 4px 0" />
@@ -30,9 +34,6 @@ Customize the dropdown menu via `dropdownRender`.
         Add item
       </div>
     </template>
-    <a-select-option v-for="item in items" :key="item" :value="item">
-      {{ item }}
-    </a-select-option>
   </a-select>
 </template>
 <script lang="ts">
@@ -41,6 +42,12 @@ import { defineComponent, ref } from 'vue';
 
 let index = 0;
 export default defineComponent({
+  components: {
+    PlusOutlined,
+    VNodes: (_, { attrs }) => {
+      return attrs.vnodes;
+    },
+  },
   setup() {
     const items = ref(['jack', 'lucy']);
     const value = ref('lucy');
@@ -54,12 +61,6 @@ export default defineComponent({
       value,
       addItem,
     };
-  },
-  components: {
-    PlusOutlined,
-    VNodes: (_, { attrs }) => {
-      return attrs.vnodes;
-    },
   },
 });
 </script>

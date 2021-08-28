@@ -17,37 +17,67 @@ Basic Usage
 </docs>
 
 <template>
-  <a-select v-model:value="value1" style="width: 120px" @change="handleChange">
-    <template #suffixIcon><smile-outlined /></template>
-    <a-select-option value="jack">Jack</a-select-option>
-    <a-select-option value="lucy">Lucy</a-select-option>
-    <a-select-option value="disabled" disabled>Disabled</a-select-option>
-    <a-select-option value="Yiminghe">yiminghe</a-select-option>
-  </a-select>
-  <a-select v-model:value="value2" style="width: 120px" disabled>
-    <template #suffixIcon><meh-outlined /></template>
-    <a-select-option value="lucy">Lucy</a-select-option>
-  </a-select>
+  <a-space>
+    <a-select
+      v-model:value="value1"
+      style="width: 120px"
+      :options="options1"
+      @change="handleChange"
+    >
+      <template #suffixIcon><smile-outlined /></template>
+    </a-select>
+    <a-select v-model:value="value2" style="width: 120px" disabled :options="options2">
+      <template #suffixIcon><meh-outlined /></template>
+    </a-select>
+  </a-space>
 </template>
 <script lang="ts">
 import { SmileOutlined, MehOutlined } from '@ant-design/icons-vue';
+import { SelectTypes } from 'ant-design-vue/es/select';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
+  components: {
+    SmileOutlined,
+    MehOutlined,
+  },
   setup() {
     const handleChange = (value: string) => {
       console.log(`selected ${value}`);
     };
 
+    const options1 = ref<SelectTypes['options']>([
+      {
+        value: 'jack',
+        label: 'Jack',
+      },
+      {
+        value: 'lucy',
+        label: 'Lucy',
+      },
+      {
+        value: 'disabled',
+        label: 'Disabled',
+        disabled: true,
+      },
+      {
+        value: 'yiminghe',
+        label: 'Yiminghe',
+      },
+    ]);
+    const options2 = ref<SelectTypes['options']>([
+      {
+        value: 'lucy',
+        label: 'Lucy',
+      },
+    ]);
     return {
       handleChange,
       value1: ref('lucy'),
       value2: ref('lucy'),
+      options1,
+      options2,
     };
-  },
-  components: {
-    SmileOutlined,
-    MehOutlined,
   },
 });
 </script>
