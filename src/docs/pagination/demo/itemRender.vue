@@ -16,23 +16,22 @@ Use text link for prev and next button.
 </docs>
 
 <template>
-  <a-pagination :total="500">
+  <a-pagination v-model:current="current" :total="500">
     <template #itemRender="{ page, type, originalElement }">
       <a v-if="type === 'prev'">Previous</a>
       <a v-else-if="type === 'next'">Next</a>
-      <renderVNode v-else :vnode="originalElement"></renderVNode>
+      <component :is="originalElement" v-else></component>
     </template>
   </a-pagination>
 </template>
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue';
+import { defineComponent, ref } from 'vue';
 
-function renderVNode(_, { attrs: { vnode } }) {
-  return vnode;
-}
 export default defineComponent({
-  components: {
-    renderVNode,
+  setup() {
+    return {
+      current: ref(1),
+    };
   },
 });
 </script>
