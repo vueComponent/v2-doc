@@ -43,3 +43,4 @@ Node of timeline
 | color | Set the circle's color to `blue`, `red`, `green` or other custom colors | string | `blue` |  |
 | dot | Customize timeline dot | string\|slot | - |  |
 | position | Customize node position | `left` \| `right` | - |  |
+| label | Set the label | string \| slot | - | 3.0 |
