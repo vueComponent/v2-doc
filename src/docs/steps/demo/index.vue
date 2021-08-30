@@ -11,6 +11,7 @@
     <CustomizedProgressDot />
     <Clickable />
     <Nav />
+    <Progress />
   </demo-sort>
 </template>
 <script lang="ts">
@@ -24,6 +25,7 @@ import StepNext from './step-next.vue';
 import VerticalSmall from './vertical-small.vue';
 import Vertical from './vertical.vue';
 import Clickable from './clickable.vue';
+import Progress from './progress.vue';
 import Nav from './nav.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
@@ -44,6 +46,7 @@ export default defineComponent({
     CustomizedProgressDot,
     Clickable,
     Nav,
+    Progress
   },
   setup() {
     return {};

@@ -33,7 +33,9 @@ cover: https://gw.alipayobjects.com/zos/antfincdn/UZYqMizXHaj/Steps.svg
 | current (v-model) | 指定当前步骤，从 0 开始记数。在子 Step 元素中，可以通过 `status` 属性覆盖状态, 1.5.0 后支持 v-model | number | 0 |  |
 | direction | 指定步骤条方向。目前支持水平（`horizontal`）和竖直（`vertical`）两种方向 | string | horizontal |  |
 | labelPlacement | 指定标签放置位置，默认水平放图标右侧，可选`vertical`放图标下方 | string | `horizontal` |  |
-| progressDot | 点状步骤条，可以设置为一个 作用域插槽,labelPlacement 将强制为`vertical` | Boolean or slot="progressDot" slot-scope="{index, status, title, description, prefixCls})" | false |  |
+| progressDot | 点状步骤条，可以设置为一个 作用域插槽,labelPlacement 将强制为`vertical` | Boolean or v-slot:progressDot="{index, status, title, description, prefixCls, iconDot}" | false |  |
+| percent | 当前 `process` 步骤显示的进度条进度（只对基本类型的 Steps 生效） | number | - | 3.0 |
+| responsive | 当屏幕宽度小于 532px 时自动变为垂直模式 | boolean | true | 3.0 |
 | size | 指定大小，目前支持普通（`default`）和迷你（`small`） | string | default |  |
 | status | 指定当前步骤的状态，可选 `wait` `process` `finish` `error` | string | process |  |
 | initial | 起始序号，从 0 开始记数 | number | 0 |  |
