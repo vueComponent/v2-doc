@@ -25,7 +25,7 @@ title:
         </a-collapse-panel>
       </a-collapse>
     </a-collapse-panel>
-    <a-collapse-panel key="2" header="This is panel header 2" :disabled="false">
+    <a-collapse-panel key="2" header="This is panel header 2">
       <p>{{ text }}</p>
     </a-collapse-panel>
     <a-collapse-panel key="3" header="This is panel header 3">

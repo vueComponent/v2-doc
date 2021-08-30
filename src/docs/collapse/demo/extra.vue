@@ -22,11 +22,11 @@ More than one panel can be expanded at a time, the first panel is initialized to
       <p>{{ text }}</p>
       <template #extra><setting-outlined @click="handleClick" /></template>
     </a-collapse-panel>
-    <a-collapse-panel key="2" header="This is panel header 2" :disabled="false">
+    <a-collapse-panel key="2" header="This is panel header 2">
       <p>{{ text }}</p>
       <template #extra><setting-outlined @click="handleClick" /></template>
     </a-collapse-panel>
-    <a-collapse-panel key="3" header="This is panel header 3" disabled>
+    <a-collapse-panel key="3" header="This is panel header 3" collapsible="disabled">
       <p>{{ text }}</p>
       <template #extra><setting-outlined @click="handleClick" /></template>
     </a-collapse-panel>

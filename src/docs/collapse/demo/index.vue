@@ -7,6 +7,7 @@
     <Custom />
     <Noarrow />
     <Extra />
+    <Ghost />
   </demo-sort>
 </template>
 
@@ -18,6 +19,7 @@ import Custom from './custom.vue';
 import Mix from './mix.vue';
 import Noarrow from './noarrow.vue';
 import Extra from './extra.vue';
+import Ghost from './ghost.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
 
@@ -32,6 +34,7 @@ export default {
     Mix,
     Noarrow,
     Extra,
+    Ghost
   },
 };
 </script>
