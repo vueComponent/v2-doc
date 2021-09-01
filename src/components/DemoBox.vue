@@ -19,6 +19,12 @@
       </div>
       <div class="code-box-description" v-html="docHtml"></div>
       <div class="code-box-actions">
+        <a-tooltip :title="$t('app.demo.codesandbox')">
+          <CodeSandboxOutlined
+            class="code-box-code-copy code-box-code-action"
+            @click="handleCodeSandbox"
+          />
+        </a-tooltip>
         <a-tooltip :title="$t(`app.demo.type.${type === 'JS' ? 'js' : 'ts'}`)">
           <span
             class="code-expand-icon code-box-code-action"
@@ -72,7 +78,7 @@
       </div>
     </section>
     <section :class="highlightClass">
-      <div class="highlight">
+      <div class="highlight" ref="codeRef">
         <slot v-if="type === 'TS'" name="htmlCode" />
         <slot v-else name="jsVersionHtml" />
       </div>
@@ -84,8 +90,9 @@
 import { GlobalConfig } from '@/App.vue';
 import { GLOBAL_CONFIG } from '@/SymbolKey';
 import { computed, defineComponent, inject, onMounted, ref } from 'vue';
-import { CheckOutlined, SnippetsOutlined } from '@ant-design/icons-vue';
+import { CheckOutlined, SnippetsOutlined, CodeSandboxOutlined } from '@ant-design/icons-vue';
 import { Modal } from 'ant-design-vue';
+import { getCodeSandboxParams } from '../utils/generateOnlineDemo';
 export default defineComponent({
   name: 'DemoBox',
   props: {
@@ -96,6 +103,7 @@ export default defineComponent({
     const type = ref('TS');
     const copyTooltipVisible = ref(false);
     const copied = ref(false);
+    const codeRef = ref<HTMLDivElement>();
     const sectionId = computed(() => {
       const relativePath = props.jsfiddle?.relativePath || '';
       return `components-${relativePath
@@ -179,6 +187,21 @@ export default defineComponent({
       });
     });
     const theme = computed(() => inject('themeMode', { theme: ref('default') }).theme.value);
+    const handleCodeSandbox = () => {
+      const code = codeRef.value!.innerText;
+      const params = getCodeSandboxParams(code, {
+        title: `${title.value} - ant-design-vue@next`,
+      });
+      const div = document.createElement('div');
+      div.style.display = 'none';
+      div.innerHTML = `<form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank">
+        <input type="hidden" name="parameters" value="${params}" />
+        <input type="submit" value="Open in sandbox" />
+      </form>`;
+      document.body.appendChild(div);
+      (div.firstElementChild as HTMLFormElement).submit();
+      document.body.removeChild(div);
+    };
     return {
       docHtml,
       iframeDemo,
@@ -202,11 +225,14 @@ export default defineComponent({
       highlightClass,
       sourceCode: decodeURIComponent(escape(window.atob(props.jsfiddle?.sourceCode))),
       jsSourceCode: decodeURIComponent(escape(window.atob(props.jsfiddle?.jsSourceCode))),
+      handleCodeSandbox,
+      codeRef,
     };
   },
   components: {
     CheckOutlined,
     SnippetsOutlined,
+    CodeSandboxOutlined,
   },
 });
 </script>
