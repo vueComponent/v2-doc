@@ -71,7 +71,7 @@ Implement a customized column search example via `filterDropdown`.
 
 <script>
 import { SearchOutlined } from '@ant-design/icons-vue';
-import { defineComponent, reactive, ref } from 'vue';
+import { defineComponent, reactive, ref, toRefs } from 'vue';
 const data = [
   {
     key: '1',
@@ -188,9 +188,8 @@ export default defineComponent({
       columns,
       handleSearch,
       handleReset,
-      searchText: '',
       searchInput,
-      searchedColumn: '',
+      ...toRefs(state),
     };
   },
 });
