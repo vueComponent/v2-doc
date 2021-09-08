@@ -56,8 +56,8 @@
     "vuex": "^4.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/plugin-transform-typescript": "^7.12.1",
+    "@babel/core": "7.15.5",
+    "@babel/plugin-transform-typescript": "7.15.4",
     "@types/compression": "^1.7.0",
     "@types/fs-extra": "^9.0.1",
     "@types/jest": "^26.0.15",
