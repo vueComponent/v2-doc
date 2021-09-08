@@ -31,8 +31,8 @@ export default defineComponent({
   setup() {
     const info = () => {
       Modal.info({
-        title: 'This is a notification message',
-        content: h('div', {}, [
+        title: () => 'This is a notification message',
+        content: () => h('div', {}, [
           h('p', 'some messages...some messages...'),
           h('p', 'some messages...some messages...'),
         ]),
@@ -43,8 +43,8 @@ export default defineComponent({
     };
     const success = () => {
       Modal.success({
-        title: 'This is a success message',
-        content: h('div', {}, [
+        title: () => 'This is a success message',
+        content: () => h('div', {}, [
           h('p', 'some messages...some messages...'),
           h('p', 'some messages...some messages...'),
         ]),
@@ -53,15 +53,15 @@ export default defineComponent({
 
     const error = () => {
       Modal.error({
-        title: 'This is an error message',
-        content: 'some messages...some messages...',
+        title: () => 'This is an error message',
+        content: () => 'some messages...some messages...',
       });
     };
 
     const warning = () => {
       Modal.warning({
-        title: 'This is a warning message',
-        content: 'some messages...some messages...',
+        title: () => 'This is a warning message',
+        content: () => 'some messages...some messages...',
       });
     };
 

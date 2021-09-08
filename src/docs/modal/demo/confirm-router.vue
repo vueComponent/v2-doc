@@ -29,14 +29,14 @@ export default defineComponent({
       for (let i = 0; i < 3; i += 1) {
         setTimeout(() => {
           Modal.confirm({
-            content: 'destroy all',
-            icon: createVNode(ExclamationCircleOutlined),
+            content: () => 'destroy all',
+            icon: () => createVNode(ExclamationCircleOutlined),
             onOk() {
               return new Promise((resolve, reject) => {
                 setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
               }).catch(() => console.log('Oops errors!'));
             },
-            cancelText: 'Click to destroy all',
+            cancelText: () => 'Click to destroy all',
             onCancel() {
               Modal.destroyAll();
             },

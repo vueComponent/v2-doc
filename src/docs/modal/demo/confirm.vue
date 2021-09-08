@@ -31,9 +31,9 @@ export default defineComponent({
   setup() {
     const showConfirm = () => {
       Modal.confirm({
-        title: 'Do you Want to delete these items?',
-        icon: createVNode(ExclamationCircleOutlined),
-        content: createVNode('div', { style: 'color:red;' }, 'Some descriptions'),
+        title: () => 'Do you Want to delete these items?',
+        icon: () => createVNode(ExclamationCircleOutlined),
+        content: () => createVNode('div', { style: 'color:red;' }, 'Some descriptions'),
         onOk() {
           console.log('OK');
         },
@@ -45,12 +45,12 @@ export default defineComponent({
     };
     const showDeleteConfirm = () => {
       Modal.confirm({
-        title: 'Are you sure delete this task?',
-        icon: createVNode(ExclamationCircleOutlined),
-        content: 'Some descriptions',
-        okText: 'Yes',
+        title: () => 'Are you sure delete this task?',
+        icon: () => createVNode(ExclamationCircleOutlined),
+        content: () => 'Some descriptions',
+        okText: () => 'Yes',
         okType: 'danger',
-        cancelText: 'No',
+        cancelText: () => 'No',
         onOk() {
           console.log('OK');
         },
@@ -61,15 +61,15 @@ export default defineComponent({
     };
     const showPropsConfirm = () => {
       Modal.confirm({
-        title: 'Are you sure delete this task?',
-        icon: createVNode(ExclamationCircleOutlined),
-        content: 'Some descriptions',
-        okText: 'Yes',
+        title: () => 'Are you sure delete this task?',
+        icon: () => createVNode(ExclamationCircleOutlined),
+        content: () => 'Some descriptions',
+        okText: () => 'Yes',
         okType: 'danger',
         okButtonProps: {
           disabled: true,
         },
-        cancelText: 'No',
+        cancelText: () => 'No',
         onOk() {
           console.log('OK');
         },
