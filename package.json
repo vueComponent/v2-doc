@@ -12,8 +12,8 @@
   "license": "UNLICENSED",
   "dependencies": {
     "@ant-design/icons-vue": "^6.0.1",
-    "@typescript-eslint/eslint-plugin": "^4.13.0",
-    "@typescript-eslint/parser": "^4.13.0",
+    "@typescript-eslint/eslint-plugin": "4.31.0",
+    "@typescript-eslint/parser": "4.31.0",
     "@vue/babel-plugin-jsx": "^1.0.1",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
