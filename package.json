@@ -60,7 +60,7 @@
     "@babel/plugin-transform-typescript": "^7.12.1",
     "@types/compression": "^1.7.0",
     "@types/fs-extra": "^9.0.1",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "27.0.2",
     "@types/koa": "^2.11.6",
     "@types/lodash-es": "^4.17.4",
     "@types/lru-cache": "^5.1.0",
