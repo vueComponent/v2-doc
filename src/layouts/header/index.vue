@@ -1,6 +1,6 @@
 <template>
   <header id="header" :class="headerClassName">
-    <div class="adblock-banner" v-if="visibleAdblockBanner">
+    <!-- <div class="adblock-banner" v-if="visibleAdblockBanner">
       <template v-if="isZhCN">
         我们检测到你可能使用了 AdBlock 或 Adblock
         Plus，它会影响到正常功能的使用（如复制、展开代码等）。
@@ -15,6 +15,31 @@
       </template>
 
       <CloseOutlined class="close-icon" @click="visibleAdblockBanner = false" />
+    </div> -->
+
+    <div v-if="isZhCN && showTopBanner" class="global-notification">
+      <span>
+        v3 版本已发布，请访问 &nbsp;&nbsp;
+        <a href="https://next.antdv.com/" target="_blank">next.antdv.com</a>
+        &nbsp;&nbsp;查看更多详情
+      </span>
+      <CloseOutlined
+        class="close-icon"
+        style="position: absolute; top: 13px; right: 15px"
+        @click="handleClose('next')"
+      />
+    </div>
+    <div v-if="!isZhCN && showTopBanner" class="global-notification">
+      <span>
+        v3 beta is out! Discover more about it on &nbsp;
+        <a href="https://next.antdv.com/" target="_blank">next.antdv.com</a>
+        &nbsp;
+      </span>
+      <CloseOutlined
+        class="close-icon"
+        style="position: absolute; top: 8px; right: 15px"
+        @click="handleClose('next')"
+      />
     </div>
     <a-popover
       overlayClassName="popover-menu"
@@ -61,7 +86,12 @@ export default defineComponent({
     const isHome = computed(() => {
       return ['', 'index', 'index-cn'].includes(route.path);
     });
-
+    const showTopBanner = ref(!localStorage.getItem('notification-key-next'));
+    const handleClose = key => {
+      localStorage.removeItem(`notification-key-${key}`);
+      localStorage.setItem(`notification-key-${key}`, key);
+      showTopBanner.value = false;
+    };
     const menuVisible = ref(false);
     const colProps = isHome.value
       ? [{ flex: 'none' }, { flex: 'auto' }]
@@ -125,6 +155,8 @@ export default defineComponent({
       colProps,
       menuVisible,
       onTriggerSearching,
+      showTopBanner,
+      handleClose,
     };
   },
   components: {
@@ -148,9 +180,24 @@ export default defineComponent({
   text-align: center;
   background-color: #ebebeb;
 }
-.close-icon {
+
+.global-notification-close-icon {
   position: absolute;
   top: 15px;
   right: 15px;
+}
+.global-notification {
+  text-align: center;
+  background: #001529;
+  padding: 20px 0;
+  font-size: 16px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  z-index: 99;
+}
+.global-notification a {
+  color: #177ddc;
 }
 </style>

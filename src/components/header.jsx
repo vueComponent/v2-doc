@@ -12,6 +12,7 @@ export default {
   data() {
     return {
       value: null,
+      showTopBanner: !localStorage.getItem('notification-key-next'),
     };
   },
   mounted() {
@@ -19,8 +20,9 @@ export default {
   },
   methods: {
     handleClose(key) {
-      localStorage.removeItem('jobs-notification-key');
-      localStorage.setItem('jobs-notification-key', key);
+      localStorage.removeItem(`notification-key-${key}`);
+      localStorage.setItem(`notification-key-${key}`, true);
+      this.showTopBanner = false;
     },
     initDocSearch(locale) {
       window.docsearch({
@@ -57,8 +59,42 @@ export default {
     const isCN = isZhCN(name);
     const path = this.$route.path;
     const selectedKeys = path === '/jobs/list-cn' ? ['jobs'] : ['components'];
+    console.log('isCN && this.showTopBanner', isCN, this.showTopBanner);
     return (
       <header id="header">
+        {isCN && this.showTopBanner && (
+          <div class="global-notification">
+            <span>
+              v3 版本已发布，请访问 &nbsp;&nbsp;
+              <a href="https://next.antdv.com/" target="_blank">
+                next.antdv.com
+              </a>
+              &nbsp;&nbsp;查看更多详情
+            </span>
+            <a-icon
+              type="close"
+              style="position: absolute;top: 13px;right: 15px;"
+              onClick={() => this.handleClose('next')}
+            />
+          </div>
+        )}
+        {!isCN && this.showTopBanner && (
+          <div class="global-notification">
+            <span>
+              v3 beta is out! Discover more about it on &nbsp;
+              <a href="https://next.antdv.com/" target="_blank">
+                next.antdv.com
+              </a>
+              &nbsp;
+            </span>
+            <a-icon
+              class="global-notification-close-icon"
+              type="close"
+              style="position: absolute;top: 8px;right: 15px;"
+              onClick={() => this.handleClose('next')}
+            />
+          </div>
+        )}
         <a-row>
           <a-col class="header-left" xxl={4} xl={5} lg={5} md={6} sm={24} xs={24}>
             <router-link to={{ path: '/' }} id="logo">
@@ -106,7 +142,13 @@ export default {
             >
               <a-select-option value={packageInfo.version}>{packageInfo.version}</a-select-option>
               <a-select-option value="1.x" onClick={() => (location.href = 'https://1x.antdv.com')}>
-                1.x
+                v1
+              </a-select-option>
+              <a-select-option
+                value="v3"
+                onClick={() => (location.href = 'https://next.antdv.com')}
+              >
+                v3
               </a-select-option>
             </a-select>
             <a-menu selectedKeys={selectedKeys} mode="horizontal" class="menu-site" id="nav">
