@@ -23,6 +23,7 @@
     <Size />
     <Stripe />
     <Template />
+    <bigData />
   </demo-sort>
 </template>
 
@@ -51,6 +52,7 @@ import Size from './size.vue';
 import Template from './template.vue';
 import Ellipsis from './ellipsis.vue';
 import Stripe from './stripe.vue';
+import bigData from './big-data.vue';
 import CN from '../index.zh-CN.md';
 import US from '../index.en-US.md';
 
@@ -81,6 +83,7 @@ export default {
     Size,
     Template,
     Stripe,
+    bigData,
   },
 };
 </script>
