@@ -10,7 +10,9 @@
           :visible="visible"
           key="mobile-menu"
           wrapperClassName="drawer-wrapper"
+          width="60%"
         >
+          <surelyVueVue />
           <Menu :menus="dataSource" :activeMenuItem="activeMenuItem" :isZhCN="isZhCN" />
           <template #handle>
             <div class="drawer-handle" @click="handleClickShowButton">
@@ -24,7 +26,7 @@
         <a-col :xxl="4" :xl="5" :lg="6" :md="6" :sm="24" :xs="24" class="main-menu">
           <a-affix>
             <section class="main-menu-inner">
-              <Sponsors :isCN="isZhCN" />
+              <surelyVueVue />
               <Menu :menus="dataSource" :activeMenuItem="activeMenuItem" :isZhCN="isZhCN" />
             </section>
           </a-affix>
@@ -87,6 +89,7 @@ import Sponsors from '../components/rice/sponsors.vue';
 import RightBottomAd from '../components/rice/right_bottom_rice.vue';
 import { CloseOutlined, MenuOutlined } from '@ant-design/icons-vue';
 import ThemeIcon from './ThemeIcon.vue';
+import surelyVueVue from '../components/surelyVue.vue';
 
 export default defineComponent({
   name: 'Layout',
@@ -180,6 +183,7 @@ export default defineComponent({
     CloseOutlined,
     MenuOutlined,
     ThemeIcon,
+    surelyVueVue,
   },
 });
 </script>
