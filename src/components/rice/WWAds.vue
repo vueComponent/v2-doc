@@ -6,24 +6,7 @@
 <script>
 import { defineComponent } from 'vue';
 
-export default defineComponent({
-  mounted() {
-    this.load();
-  },
-  methods: {
-    load() {
-      if (this.scriptDom) {
-        this.$el.removeChild(this.scriptDom);
-      }
-      this.$refs.inner.innerHTML = '';
-      const e = document.createElement('script');
-      e.src = 'https://wwads.cn/js/makemoney.js';
-      e.async = true;
-      this.$el.appendChild(e);
-      this.scriptDom = e;
-    },
-  },
-});
+export default defineComponent({});
 </script>
 <style scoped>
 #rice {
