@@ -19,17 +19,17 @@
 
     <div v-if="isZhCN && showTopBanner" class="global-notification">
       <span>
-        v3 版本已发布，请访问 &nbsp;&nbsp;
-        <a href="https://next.antdv.com/" target="_blank">next.antdv.com</a>
-        &nbsp;&nbsp;查看更多详情
+        Surely Form 私有化部署专属的调研，投票、NPS、报名等系统，访问 &nbsp;&nbsp;
+        <a href="https://form.antdv.com/" target="_blank">form.antdv.com</a>
+        &nbsp;&nbsp;立即体验
       </span>
       <CloseOutlined
         class="close-icon"
         style="position: absolute; top: 13px; right: 15px"
-        @click="handleClose('next')"
+        @click="handleClose('surelyform')"
       />
     </div>
-    <div v-if="!isZhCN && showTopBanner" class="global-notification">
+    <!-- <div v-if="!isZhCN && showTopBanner" class="global-notification">
       <span>
         v3 beta is out! Discover more about it on &nbsp;
         <a href="https://next.antdv.com/" target="_blank">next.antdv.com</a>
@@ -40,7 +40,7 @@
         style="position: absolute; top: 8px; right: 15px"
         @click="handleClose('next')"
       />
-    </div>
+    </div> -->
     <a-popover
       overlayClassName="popover-menu"
       placement="bottomRight"
@@ -86,7 +86,7 @@ export default defineComponent({
     const isHome = computed(() => {
       return ['', 'index', 'index-cn'].includes(route.path);
     });
-    const showTopBanner = ref(!localStorage.getItem('notification-key-next'));
+    const showTopBanner = ref(!localStorage.getItem('notification-key-surelyform'));
     const handleClose = key => {
       localStorage.removeItem(`notification-key-${key}`);
       localStorage.setItem(`notification-key-${key}`, key);

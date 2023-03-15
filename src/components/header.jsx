@@ -232,9 +232,14 @@ export default {
                     <a>{isCN ? '微信' : 'WeChat'}</a>
                   </a-popover>
                 </a-menu-item>
-                <a-menu-item key="qq">
-                  <a>QQ 群1：217490093（3000人已满）</a>
-                  <a>QQ 群2：809774695</a>
+                <a-menu-item key="qq1">
+                  <a>QQ 1群(217490093) 已满</a>
+                </a-menu-item>
+                <a-menu-item key="qq2">
+                  <a>QQ 2群(809774695) 已满</a>
+                </a-menu-item>
+                <a-menu-item key="qq3">
+                  <a>QQ 3群(927828249)</a>
                 </a-menu-item>
               </a-sub-menu>
             </a-menu>
