@@ -63,7 +63,7 @@
     "@types/jest": "^26.0.15",
     "@types/koa": "^2.11.6",
     "@types/lodash-es": "^4.17.4",
-    "@types/lru-cache": "^5.1.0",
+    "@types/lru-cache": "^7.0.0",
     "@types/markdown-it": "^10.0.2",
     "@types/node": "^13.13.4",
     "@types/postcss-load-config": "^2.0.1",
