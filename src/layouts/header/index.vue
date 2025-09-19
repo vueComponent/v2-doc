@@ -1,46 +1,5 @@
 <template>
   <header id="header" :class="headerClassName">
-    <!-- <div class="adblock-banner" v-if="visibleAdblockBanner">
-      <template v-if="isZhCN">
-        我们检测到你可能使用了 AdBlock 或 Adblock
-        Plus，它会影响到正常功能的使用（如复制、展开代码等）。
-        <br />
-        你可以将 Ant Design Vue 加入白名单，以便我们更好地提供服务。
-      </template>
-      <template v-else>
-        We have detected that you may use AdBlock or Adblock Plus, which will affect the use of
-        normal functions (such as copying, expanding code, etc.)
-        <br />
-        You can add Ant Design Vue to the whitelist so that we can provide better services.
-      </template>
-
-      <CloseOutlined class="close-icon" @click="visibleAdblockBanner = false" />
-    </div> -->
-
-    <div v-if="isZhCN && showTopBanner" class="global-notification">
-      <span>
-        Surely Form 私有化部署专属的调研，投票、NPS、报名等系统，访问 &nbsp;&nbsp;
-        <a href="https://form.antdv.com/" target="_blank">form.antdv.com</a>
-        &nbsp;&nbsp;立即体验
-      </span>
-      <CloseOutlined
-        class="close-icon"
-        style="position: absolute; top: 13px; right: 15px"
-        @click="handleClose('surelyform')"
-      />
-    </div>
-    <!-- <div v-if="!isZhCN && showTopBanner" class="global-notification">
-      <span>
-        v3 beta is out! Discover more about it on &nbsp;
-        <a href="https://next.antdv.com/" target="_blank">next.antdv.com</a>
-        &nbsp;
-      </span>
-      <CloseOutlined
-        class="close-icon"
-        style="position: absolute; top: 8px; right: 15px"
-        @click="handleClose('next')"
-      />
-    </div> -->
     <a-popover
       overlayClassName="popover-menu"
       placement="bottomRight"
@@ -77,7 +36,7 @@ import { computed, defineComponent, inject, onMounted, Ref, ref, watch } from 'v
 import { useRoute } from 'vue-router';
 import Logo from './Logo.vue';
 import Menu from './Menu.vue';
-import { UnorderedListOutlined, CloseOutlined } from '@ant-design/icons-vue';
+import { UnorderedListOutlined } from '@ant-design/icons-vue';
 import SearchBox from './SearchBox.vue';
 export default defineComponent({
   setup() {
@@ -164,7 +123,6 @@ export default defineComponent({
     Menu,
     UnorderedListOutlined,
     SearchBox,
-    CloseOutlined,
   },
 });
 </script>

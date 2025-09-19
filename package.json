@@ -3,11 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "yarn routes && vite",
-    "build": "yarn routes && node --max_old_space_size=8000 ./node_modules/vite/bin/vite.js build",
-    "site": "yarn routes && node --max_old_space_size=8000 ./node_modules/vite/bin/vite.js build --base=https://aliyuncdn.antdv.com/v2/",
+    "build": "yarn routes && node --max_old_space_size=8000 ./node_modules/vite/bin/vite.js build --base=/",
     "routes": "node scripts/genrateRoutes.js",
-    "lint": "eslint -c ./.eslintrc.js --fix --ext .jsx,.vue,.ts,.tsx ./src",
-    "pub": "npm run site && node scripts/pushToOSS.js"
+    "lint": "eslint -c ./.eslintrc.js --fix --ext .jsx,.vue,.ts,.tsx ./src"
   },
   "license": "UNLICENSED",
   "dependencies": {
