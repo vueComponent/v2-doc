@@ -10,23 +10,20 @@
       </a-carousel>
     </template>
     <template v-else-if="showGoogleAd">
-      <template v-if="isCN">
+      <!-- <template v-if="isCN">
         <WWAds :key="`WWAds_${$route.path}`" />
-      </template>
+      </template> -->
     </template>
   </div>
 </template>
 
 <script>
 import moment from 'moment';
-import WWAds from './WWAds.vue';
 const isEffective = (start, end) => {
   return moment().isBetween(start, end);
 };
 export default {
-  components: {
-    WWAds,
-  },
+  components: {},
   props: ['isCN', 'isMobile'],
   data() {
     return {
