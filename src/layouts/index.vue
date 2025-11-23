@@ -1,4 +1,5 @@
 <template>
+  <Mentorbook />
   <Header />
   <div class="main-wrapper">
     <a-row>
@@ -40,16 +41,18 @@
             <component :is="matchCom" />
           </Demo>
           <router-view v-else />
-          <a-affix v-if="headers.length" class="toc-affix" :offsetTop="20">
-            <a-anchor>
-              <a-anchor-link
-                v-for="h in headers"
-                :key="h.title"
-                :href="h.href || `#${h.title}`"
-                :title="h.title"
-              ></a-anchor-link>
-            </a-anchor>
-          </a-affix>
+          <div class="toc-affix">
+            <a-affix v-if="headers.length" :offsetTop="20">
+              <a-anchor>
+                <a-anchor-link
+                  v-for="h in headers"
+                  :key="h.title"
+                  :href="h.href || `#${h.title}`"
+                  :title="h.title"
+                ></a-anchor-link>
+              </a-anchor>
+            </a-affix>
+          </div>
         </section>
         <div class="fixed-widgets" :style="isZhCN ? { bottom: '175px' } : {}">
           <a-dropdown placement="topCenter">
@@ -87,11 +90,12 @@ import Demo from './Demo.vue';
 import useMenus from '@/hooks/useMenus';
 import TopAd from '../components/rice/top_rice.vue';
 import Sponsors from '../components/rice/sponsors.vue';
-import RightBottomAd from '../components/rice/right_bottom_rice.vue';
+import RightBottomAd from '../components/rice/right_bottom_ad.vue';
 import { CloseOutlined, MenuOutlined } from '@ant-design/icons-vue';
 import ThemeIcon from './ThemeIcon.vue';
 import surelyVueVue from '../components/surelyVue.vue';
 import WWAdsVue from '../components/rice/WWAds.vue';
+import Mentorbook from '../components/rice/mentorbook.vue';
 export default defineComponent({
   name: 'Layout',
   setup() {
@@ -173,6 +177,7 @@ export default defineComponent({
     };
   },
   components: {
+    Mentorbook,
     TopAd,
     Sponsors,
     RightBottomAd,
